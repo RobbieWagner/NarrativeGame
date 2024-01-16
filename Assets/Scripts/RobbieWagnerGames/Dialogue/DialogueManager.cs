@@ -250,6 +250,7 @@ namespace RobbieWagnerGames
             List<string> tags = currentStory.currentTags;
 
             string speaker = "";
+            Sprite characterSprite = null;
             bool removeSpriteOnLeft = false;
             bool removeSpriteOnRight = false;
             bool? placeSpriteOnLeft = null;
@@ -257,6 +258,7 @@ namespace RobbieWagnerGames
             foreach(string t in tags)
             {
                 string tag = Regex.Replace(t, @"\s+", "");
+                tag = tag.Replace("~"," ");
                 tag = tag.ToUpper();
                 
                 if(tag.Contains("SPEAKERISONLEFT"))
@@ -269,10 +271,18 @@ namespace RobbieWagnerGames
                 }
                 else if(tag.Contains("PLACESPRITEONLEFT"))
                 {
+                    tag = tag.Remove(tag.IndexOf("PLACESPRITEONLEFT"), 17).ToLower();
+                    string filePath = StaticGameStats.characterSpriteFilePath + tag;
+                    characterSprite = Resources.Load<Sprite>(filePath);
+                    if(characterSprite == null) Debug.LogWarning($"sprite name provided \"{tag}\" is not a valid sprite name, please reconfigure this tag");
                     placeSpriteOnLeft = true;
                 }
                 else if(tag.Contains("PLACESPRITEONRIGHT"))
                 {
+                    tag = tag.Remove(tag.IndexOf("PLACESPRITEONRIGHT"), 18).ToLower();
+                    string filePath = StaticGameStats.characterSpriteFilePath + tag;
+                    characterSprite = Resources.Load<Sprite>(filePath);
+                    if(characterSprite == null) Debug.LogWarning($"sprite name provided \"{tag}\" is not a valid sprite name, please reconfigure this tag");
                     placeSpriteOnLeft = false;
                 }
                 else if(tag.Contains("REMOVESPRITEONLEFT"))
@@ -310,16 +320,16 @@ namespace RobbieWagnerGames
             }
 
             if(removeSpriteOnLeft) 
-                ToggleSprite(leftSpeakerSprite, false);
+                ToggleSprite(leftSpeakerSprite, false, characterSprite);
             if(removeSpriteOnRight) 
             {
-                ToggleSprite(rightSpeakerSprite, false);
+                ToggleSprite(rightSpeakerSprite, false, characterSprite);
             }
 
             if(placeSpriteOnLeft == true)
-                ToggleSprite(leftSpeakerSprite, true);
+                ToggleSprite(leftSpeakerSprite, true, characterSprite);
             else if(placeSpriteOnLeft == false)
-                ToggleSprite(rightSpeakerSprite, true);
+                ToggleSprite(rightSpeakerSprite, true, characterSprite);
         }
 
         //TODO: include sprite placement

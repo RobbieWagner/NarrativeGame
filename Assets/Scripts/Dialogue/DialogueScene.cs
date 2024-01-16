@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 using RobbieWagnerGames;
+using UnityEditor.PackageManager;
+using System.Linq;
 
 public class DialogueScene : MonoBehaviour
 {
-    [SerializeField] private TextAsset storyTextAsset;
-
     public static DialogueScene Instance {get; private set;}
+    [SerializeField] private List<SceneEvent> sceneEvents;
+    [SerializeField] private Transform dialogueEventParent;
 
     private void Awake()
     {
@@ -26,10 +28,22 @@ public class DialogueScene : MonoBehaviour
 
     private IEnumerator PlayDialogueScene()
     {
-        Story story = new Story(storyTextAsset.text);
-        if(SceneTransition.Instance != null) yield return StartCoroutine(SceneTransition.Instance.FadeOutScreen());
-        yield return StartCoroutine(DialogueManager.Instance.EnterDialogueModeCo(story));
-        if(SceneTransition.Instance != null) yield return StartCoroutine(SceneTransition.Instance.FadeInScreen());
+        if(sceneEvents != null && sceneEvents.Count > 0)
+        {
+            foreach(SceneEvent sceneEvent in sceneEvents)
+            {
+                yield return StartCoroutine(sceneEvent.RunSceneEvent());
+            }
+        }
+        else if(dialogueEventParent.childCount > 0)
+        {
+            sceneEvents = dialogueEventParent.GetComponentsInChildren<SceneEvent>().ToList();
+
+            foreach(SceneEvent sceneEvent in sceneEvents)
+            {
+                yield return StartCoroutine(sceneEvent.RunSceneEvent());
+            }
+        }
 
         StopCoroutine(PlayDialogueScene()); 
     }
