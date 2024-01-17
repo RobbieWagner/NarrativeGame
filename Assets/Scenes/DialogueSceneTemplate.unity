@@ -158,7 +158,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &201047414
 MonoBehaviour:
@@ -173,14 +173,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7eebdaddc561f1a4ea521eb56623622a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -874,6 +874,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1260452716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260452717}
+  - component: {fileID: 1260452718}
+  m_Layer: 0
+  m_Name: UIActionTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1260452717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260452716}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1435864139}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1260452718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260452716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae80789dc88cff47955633cff1c3329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyTextAsset: {fileID: 4900000, guid: 70d71f31a069d1644a5c4071bcc7a499, type: 3}
 --- !u!1 &1356058494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +1133,7 @@ Transform:
   - {fileID: 1936605033}
   - {fileID: 2118214725}
   - {fileID: 1585128158}
+  - {fileID: 1260452717}
   - {fileID: 1356058495}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1682,18 +1728,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasEnabledOnStart: 0
+  choicePrefab: {fileID: 7453232148974496998, guid: 78adaecaab4d0884c84f20f115f36505,
+    type: 3}
+  choiceParent: {fileID: 1477737670}
   dialogueCanvas: {fileID: 1720649029}
+  backgroundImage: {fileID: 201047414}
   currentText: {fileID: 1626580368}
+  continueIcon: {fileID: 1776991251}
   leftSpeakerSprite: {fileID: 503249179}
   leftSpeakerNamePlate: {fileID: 413079879}
   leftSpeakerName: {fileID: 2087834624}
   rightSpeakerSprite: {fileID: 1554505538}
   rightSpeakerNamePlate: {fileID: 758032407}
   rightSpeakerName: {fileID: 1070851094}
-  choicePrefab: {fileID: 7453232148974496998, guid: 78adaecaab4d0884c84f20f115f36505,
-    type: 3}
-  choiceParent: {fileID: 1477737670}
-  continueIcon: {fileID: 1776991251}
 --- !u!1 &1776991249
 GameObject:
   m_ObjectHideFlags: 0

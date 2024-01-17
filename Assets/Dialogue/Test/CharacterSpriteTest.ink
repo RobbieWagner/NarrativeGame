@@ -1,3 +1,10 @@
+Test Speakers
++ [Continue]
+    -> Test
++ [Skip]
+    -> STOP
+
+=== Test ===
 apple_head #speaker Apple~Head #placespriteonleft apple_head #speakerisonleft
 waterbottle_guy #speaker Water~B #placespriteonright waterbottle_guy #speakerisonright
 cellphone_girl #speaker Cell~Girl #placespriteonleft cellphone_girl #speakerisonleft
@@ -11,3 +18,7 @@ lightbulb_guy #speaker Lightbulb #placespriteonright lightbulb_guy #speakerisonr
 mirror_face #speaker Mirror~Face #placespriteonleft mirror_face #speakerisonleft
 sapphire_gal #speaker Sapphire #placespriteonright sapphire_gal #speakerisonright
 tree_head #speaker Tree~Head #placespriteonleft tree_head #speakerisonleft
+-> STOP
+
+=== STOP ===
+-> END
