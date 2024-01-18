@@ -103,6 +103,7 @@ namespace RobbieWagnerGames
                 {
                     currentSpeakerIsOnLeft = false;
                 }
+
                 else if(tag.Contains("PLACESPRITEONLEFT"))
                 {
                     tag = tag.Remove(tag.IndexOf("PLACESPRITEONLEFT"), 17).ToLower();
@@ -119,6 +120,7 @@ namespace RobbieWagnerGames
                     if(characterSprite == null) Debug.LogWarning($"sprite name provided \"{tag}\" is not a valid sprite name, please reconfigure this tag");
                     placeSpriteOnLeft = false;
                 }
+
                 else if(tag.Contains("REMOVESPRITEONLEFT"))
                 {
                     removeSpriteOnLeft = true;
@@ -132,6 +134,7 @@ namespace RobbieWagnerGames
                     removeSpriteOnLeft = true;
                     removeSpriteOnRight = true;
                 }
+
                 else if(tag.Contains("LEFTSHAKESPRITE"))
                 {
                     StartCoroutine(ShakeSprite(leftSpeakerSprite, 40f));
@@ -140,6 +143,7 @@ namespace RobbieWagnerGames
                 {
                     StartCoroutine(ShakeSprite(rightSpeakerSprite, 40f));
                 }
+
                 else if(tag.Contains("SHAKEBACKGROUND"))
                 {
                     StartCoroutine(ShakeSprite(backgroundImage, 15f));
@@ -152,6 +156,20 @@ namespace RobbieWagnerGames
                     if(sprite == null) Debug.LogWarning($"sprite name provided \"{tag}\" is not a valid sprite name, please reconfigure this tag");
                     StartCoroutine(ChangeBackground(sprite));
                 }
+
+                else if(tag.Contains("PLAYSOUND"))
+                {
+                    tag = tag.Remove(tag.IndexOf("PLAYSOUND"), 9).ToLower();
+                    string filePath = StaticGameStats.soundFilePath + tag;
+                    AudioClip soundClip = Resources.Load<AudioClip>(filePath);
+                    if(soundClip == null) Debug.LogWarning($"sound name provided \"{tag}\" is not a sound sprite name, please reconfigure this tag");
+                    else
+                    {
+                        dialogueSound.clip = soundClip;
+                        dialogueSound.Play();
+                    }
+                }
+
                 else if(tag.Contains("SPEAKER"))
                 {
                     tag = tag.Remove(tag.IndexOf("SPEAKER"), 7);

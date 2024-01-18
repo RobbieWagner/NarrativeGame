@@ -13,7 +13,6 @@ namespace RobbieWagnerGames
 {
     public partial class DialogueManager : MonoBehaviour
     {
-
         [Header("General")]
         [SerializeField] private bool canvasEnabledOnStart;
 
@@ -25,6 +24,8 @@ namespace RobbieWagnerGames
         private bool sentenceTyping = false;
         private bool skipSentenceTyping = false;
         private bool currentSpeakerIsOnLeft = true;
+
+        [SerializeField] private AudioSource dialogueSound;
 
         [Header("Choices")]
         [SerializeField] private DialogueChoice choicePrefab;

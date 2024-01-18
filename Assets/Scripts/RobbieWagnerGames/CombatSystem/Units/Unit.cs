@@ -14,14 +14,22 @@ namespace RobbieWagnerGames.StrategyCombat
     }
 
     [Serializable]
+    public enum HealthStat
+    {
+        Fight = 0,
+        Wits = 1,
+        Spirit = 2,
+    }
+
+    [Serializable]
     public enum UnitStat
     {
         Strength = 0,
-        Defense = 1,
-        Agility = 2,
-        Brain = 3,
+        Agility = 1,
+        Cunning = 2,
+        Intuition = 3,
         Care = 4,
-        Magic = 5,
+        Will = 5,
     }
 
     public class Unit : MonoBehaviour
@@ -36,15 +44,15 @@ namespace RobbieWagnerGames.StrategyCombat
         #region Unit Stats
         public UnitStatInfo strength;
         [SerializeField] public int baseStrength = 10;
-        public UnitStatInfo defense;
+        public UnitStatInfo cunning;
         [SerializeField] public int baseDefense = 10;
         public UnitStatInfo agility;
         [SerializeField] public int baseAgility = 10;
-        public UnitStatInfo brain;
+        public UnitStatInfo intuition;
         [SerializeField] public int baseBrain = 10;
         public UnitStatInfo care;
         [SerializeField] public int baseCare = 10;
-        public UnitStatInfo magic;
+        public UnitStatInfo will;
         [SerializeField] public int baseMagic = 10;
         #endregion
 
@@ -130,10 +138,10 @@ namespace RobbieWagnerGames.StrategyCombat
         {
             strength.init(this, baseStrength);
             agility.init(this, baseAgility);
-            defense.init(this, baseDefense);
-            brain.init(this, baseBrain);
+            cunning.init(this, baseDefense);
+            intuition.init(this, baseBrain);
             care.init(this, baseCare);
-            magic.init(this, baseMagic);
+            will.init(this, baseMagic);
 
             InitializeMaxHP();
             InitializeMaxMP();
@@ -152,11 +160,11 @@ namespace RobbieWagnerGames.StrategyCombat
         public void ChangeStatValue(UnitStat stat, int amount)
         {
             if(stat == UnitStat.Strength) strength.StatValue += amount;
-            else if(stat == UnitStat.Defense) defense.StatValue += amount;
             else if(stat == UnitStat.Agility) agility.StatValue += amount;
-            else if(stat == UnitStat.Brain) brain.StatValue += amount;
+            else if(stat == UnitStat.Cunning) cunning.StatValue += amount;
+            else if(stat == UnitStat.Intuition) intuition.StatValue += amount;
             else if(stat == UnitStat.Care) care.StatValue += amount;
-            else if(stat == UnitStat.Magic) magic.StatValue += amount;
+            else if(stat == UnitStat.Will) will.StatValue += amount;
         }
 
         public virtual IEnumerator DownUnit()
@@ -211,24 +219,24 @@ namespace RobbieWagnerGames.StrategyCombat
         public int GetDamageBoost() {return strength.StatValue;}
         public int InitializeMaxHP()
         {
-            maxHP = baseHP + defense.StatValue;
+            maxHP = baseHP + cunning.StatValue;
             return maxHP;
         }
         public int GetMaxHP() {return maxHP;}
         public int GetInitiativeBoost() {return agility.StatValue;}
-        public int GetAccuracyBoost() {return brain.StatValue;}
+        public int GetAccuracyBoost() {return intuition.StatValue;}
         public int GetBoonBoost() {return care.StatValue;}
         public int InitializeMaxMP() 
         {
-            maxMP = baseMP + magic.StatValue;
+            maxMP = baseMP + will.StatValue;
             return care.StatValue;
         }
         public int GetMaxMP() {return maxMP;}
 
         #region derived stat getters;
         public int GetCritChance() {return (strength.StatValue + agility.StatValue)/2;}
-        public int GetItemPotency() {return (defense.StatValue + magic.StatValue)/2;}
-        public int GetBaneBoost() {return (brain.StatValue + care.StatValue)/2;}
+        public int GetItemPotency() {return (cunning.StatValue + will.StatValue)/2;}
+        public int GetBaneBoost() {return (intuition.StatValue + care.StatValue)/2;}
         #endregion
         #endregion
         #endregion
