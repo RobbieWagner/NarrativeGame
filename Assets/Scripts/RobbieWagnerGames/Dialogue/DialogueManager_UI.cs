@@ -9,6 +9,7 @@ using TMPro;
 using Ink.Runtime;
 using System.Text.RegularExpressions;
 using DG.Tweening;
+using Unity.Mathematics;
 
 namespace RobbieWagnerGames
 {
@@ -60,25 +61,12 @@ namespace RobbieWagnerGames
             return configuredText;
         }
 
-        private void ToggleSprite(Image spriteDisplay, bool on, Sprite sprite = null)
-        {
-            if(sprite != null && spriteDisplay != null) spriteDisplay.sprite = sprite;
-            spriteDisplay.enabled = on;
-        }
-
         private void ToggleSpeaker(Image namePlate, TextMeshProUGUI nameText, bool on)
         {
             namePlate.gameObject.SetActive(on);
             nameText.gameObject.SetActive(on);
         }
 
-        private void DisableSpeakerVisuals()
-        {
-            ToggleSpeaker(rightSpeakerNamePlate, rightSpeakerName, false);
-            ToggleSprite(leftSpeakerSprite, false);
-            ToggleSpeaker(rightSpeakerNamePlate, rightSpeakerName, false);
-            ToggleSprite(rightSpeakerSprite, false);
-        }
         #endregion
 
         #region UI Actions
@@ -94,6 +82,71 @@ namespace RobbieWagnerGames
             yield return backgroundImage.DOColor(Color.black, .5f).WaitForCompletion();
             backgroundImage.sprite = sprite;
             yield return backgroundImage.DOColor(Color.white, .5f).WaitForCompletion();
+        }
+
+        private IEnumerator ToggleSprite(Image spriteDisplay, bool on, Coroutine thisCoroutine = null, Sprite sprite = null, bool switchImmediately = false)
+        {
+            if(!switchImmediately)
+            {
+                if(spriteDisplay.enabled && on)
+                {
+                    yield return StartCoroutine(SwitchCharacterSprites(spriteDisplay, sprite));
+                }
+                else if(on)
+                {
+                    if(spriteDisplay != null) spriteDisplay.sprite = sprite;
+                    yield return StartCoroutine(FadeInImage(spriteDisplay));
+                }
+                else
+                {
+                    yield return StartCoroutine(FadeOutImage(spriteDisplay));
+                }
+            }
+            else
+            {           
+                if(spriteDisplay != null) spriteDisplay.sprite = sprite;
+                spriteDisplay.enabled = on;
+            }
+
+            StopToggleCoroutine(thisCoroutine);
+        }
+
+        private void StopToggleCoroutine(Coroutine coroutine)
+        {
+            if(coroutine != null) StopCoroutine(coroutine);
+            if(coroutine == leftSpriteSwapCoroutine) leftSpriteSwapCoroutine = null;
+            if(coroutine == rightSpriteSwapCoroutine) rightSpriteSwapCoroutine = null;
+        }
+
+        private IEnumerator SwitchCharacterSprites(Image image, Sprite sprite = null, float timeInOut = .5f)
+        {
+            yield return FadeOutImage(image, timeInOut);
+            image.sprite = sprite;
+            yield return FadeInImage(image, timeInOut);
+            StopCoroutine(SwitchCharacterSprites(image, sprite, timeInOut));
+        }
+
+        private IEnumerator FadeInImage(Image image, float time = 1f)
+        {
+            image.color = Color.clear;
+            image.enabled = true;
+            yield return image.DOColor(Color.white, time);
+            StopCoroutine(FadeInImage(image, time));
+        }
+
+        private IEnumerator FadeOutImage(Image image, float time = 1f)
+        {
+            yield return image.DOColor(Color.clear, time);
+            image.enabled = false;
+            StopCoroutine(FadeOutImage(image, time));
+        }
+
+        private void DisableSpeakerVisuals()
+        {
+            ToggleSpeaker(rightSpeakerNamePlate, rightSpeakerName, false);
+            StartCoroutine(ToggleSprite(leftSpeakerSprite, false));
+            ToggleSpeaker(rightSpeakerNamePlate, rightSpeakerName, false);
+            StartCoroutine(ToggleSprite(rightSpeakerSprite, false));
         }
         #endregion
     }

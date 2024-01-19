@@ -13,6 +13,10 @@ namespace RobbieWagnerGames
 {
     public partial class DialogueManager : MonoBehaviour
     {
+
+        private Coroutine leftSpriteSwapCoroutine = null;
+        private Coroutine rightSpriteSwapCoroutine = null;
+
         private void OnNextDialogueLine(InputAction.CallbackContext context)
         {
             if(CanContinue)
@@ -192,16 +196,14 @@ namespace RobbieWagnerGames
             }
 
             if(removeSpriteOnLeft) 
-                ToggleSprite(leftSpeakerSprite, false, characterSprite);
+                leftSpriteSwapCoroutine = StartCoroutine(ToggleSprite(leftSpeakerSprite,  false, leftSpriteSwapCoroutine, characterSprite));
             if(removeSpriteOnRight) 
-            {
-                ToggleSprite(rightSpeakerSprite, false, characterSprite);
-            }
+                rightSpriteSwapCoroutine = StartCoroutine(ToggleSprite(rightSpeakerSprite, false, rightSpriteSwapCoroutine, characterSprite));
 
             if(placeSpriteOnLeft == true)
-                ToggleSprite(leftSpeakerSprite, true, characterSprite);
+                leftSpriteSwapCoroutine = StartCoroutine(ToggleSprite(leftSpeakerSprite, true, leftSpriteSwapCoroutine, characterSprite));
             else if(placeSpriteOnLeft == false)
-                ToggleSprite(rightSpeakerSprite, true, characterSprite);
+                rightSpriteSwapCoroutine = StartCoroutine(ToggleSprite(rightSpeakerSprite, true, rightSpriteSwapCoroutine, characterSprite));
         }
 
         //TODO: include sprite placement
