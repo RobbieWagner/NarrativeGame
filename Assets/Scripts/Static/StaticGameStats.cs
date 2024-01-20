@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class StaticGameStats
 {
+    #region Asset File Paths
     //All file paths are local to Resources folder.
     public static string spritesFilePath = "Sprites/";
     public static string characterSpriteFilePath = "Sprites/Characters/";
@@ -13,4 +14,5 @@ public static class StaticGameStats
     public static string dialogueSoundEffectsFilePath = "Sounds/Dialogue/SoundEffects/";
     public static string combatMusicFilePath = "Sounds/Combat/Music/";
     public static string combatSoundEffectsFilePath = "Sounds/Combat/SoundEffects/";
+    #endregion
 }
