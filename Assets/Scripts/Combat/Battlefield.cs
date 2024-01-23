@@ -7,7 +7,8 @@ public class Battlefield : MonoBehaviour
     public Vector3 alliesPosition;
     public Vector3 enemiesPosition;
 
-    public Vector3 distanceBetweenUnits;
+    public Vector3 distanceBetweenAllies;
+    public Vector3 distanceBetweenEnemies;
 
     public void PlaceUnits(List<Transform> units, bool unitsAreAllies = true)
     {
@@ -15,28 +16,28 @@ public class Battlefield : MonoBehaviour
 
         if(unitsAreAllies)
         {
-            unitPosition = alliesPosition - (distanceBetweenUnits * (units.Count - 1)/2);
+            unitPosition = alliesPosition - (distanceBetweenAllies * (units.Count - 1)/2);
 
             for(int i = 0; i < units.Count; i++)
             {
                 units[i].position = unitPosition;
-                unitPosition += distanceBetweenUnits;
+                unitPosition += distanceBetweenAllies;
             }
         }
         else
         {
-            unitPosition = enemiesPosition - (distanceBetweenUnits * (units.Count - 1)/2);
+            unitPosition = enemiesPosition - (distanceBetweenEnemies * (units.Count - 1)/2);
 
             for(int i = 0; i < units.Count; i++)
             {
                 units[i].position = unitPosition;
-                unitPosition += distanceBetweenUnits;
+                unitPosition += distanceBetweenEnemies;
             }
         }
     }
 
     public void PlaceUnit(Transform unit, Vector3 position)
     {
-
+        Debug.LogWarning("Place Unit not implemented!");
     }
 }
