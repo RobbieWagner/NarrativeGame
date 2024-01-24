@@ -12,7 +12,7 @@ public class CombatManager : ICombatManager
     {
         
         currentUI = Instantiate(currentCombat.combatUIPrefab);
-        yield return currentUI.InitializeUI();
+        yield return StartCoroutine(currentUI.InitializeUI());
 
         allies = new List<Unit>();
         enemies = new List<Unit>();

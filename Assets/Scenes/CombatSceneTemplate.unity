@@ -168,13 +168,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfefda06b9fb8824791d6c49dbf403a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allies:
+  allyPrefabs:
   - {fileID: 2244696816062546445, guid: 0e9d19a78befbb44a93d5f0c83719b83, type: 3}
+  - {fileID: 2244696816062546445, guid: 0e9d19a78befbb44a93d5f0c83719b83, type: 3}
+  - {fileID: 2244696816062546445, guid: 0e9d19a78befbb44a93d5f0c83719b83, type: 3}
+  enemyPrefabs:
   - {fileID: 2244696816062546445, guid: a467ed14e44f1724384877a4d35f144a, type: 3}
-  enemies:
-  - {fileID: 2244696816062546445, guid: de00a7993ebea394090d9f9b5559ddfe, type: 3}
-  - {fileID: 2244696816062546445, guid: 0d25805a457c0f94a8e914c44ea94853, type: 3}
-  - {fileID: 2244696816062546445, guid: 8ebd55f4b39ab174292daa01666926f1, type: 3}
+  - {fileID: 2244696816062546445, guid: a467ed14e44f1724384877a4d35f144a, type: 3}
+  - {fileID: 2244696816062546445, guid: a467ed14e44f1724384877a4d35f144a, type: 3}
+  combatUIPrefab: {fileID: 6232295000836538449, guid: 642c241870374784eab1099d4d303449,
+    type: 3}
 --- !u!1 &161925157
 GameObject:
   m_ObjectHideFlags: 0

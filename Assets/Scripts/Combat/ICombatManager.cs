@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Ink.Runtime;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -31,6 +32,7 @@ public class ICombatManager : MonoBehaviour
 
     private bool isInterrupted = false;
     private Coroutine currentInterruptionCoroutine;
+    public delegate IEnumerator CombatCoroutineEventHandler();
 
     [SerializeField] private ICombat debugCombat;
 
@@ -144,8 +146,14 @@ public class ICombatManager : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         //Debug.Log("Combat Set up!");
         currentTurn = 1;
+
+        //TODO: Find a way to put this in a <T> function
+        StartCoroutine(InvokeCombatEvent(OnCombatSetupComplete, false));
+
+        yield return StartCoroutine(InvokeCombatEvent(OnCombatSetupComplete));
         StartCoroutine(RunCombatPhases());
     }
+    public event CombatCoroutineEventHandler OnCombatSetupComplete;
 
     protected virtual IEnumerator StartTurn()
     {
@@ -153,7 +161,9 @@ public class ICombatManager : MonoBehaviour
         foreach(Unit ally in allies) ally.currentSelectedAction = null;
         Debug.Log($"Turn {currentTurn}");
         yield return new WaitForSeconds(.2f);
+        yield return StartCoroutine(InvokeCombatEvent(OnCombatTurnStarted));
     }
+    public event CombatCoroutineEventHandler OnCombatTurnStarted;
 
     protected virtual IEnumerator HandleActionSelection()
     {
@@ -173,8 +183,9 @@ public class ICombatManager : MonoBehaviour
 
         while(!UnitsAllHaveSelectedActions()) yield return null;
 
-        yield return new WaitForSeconds(.2f); 
+        yield return StartCoroutine(InvokeCombatEvent(OnActionSelectionComplete));
     }
+    public event CombatCoroutineEventHandler OnActionSelectionComplete;
 
     protected virtual IEnumerator ExecuteActions()
     {
@@ -199,20 +210,23 @@ public class ICombatManager : MonoBehaviour
 
         //foreach(Unit unit in unitsInInitiativeOrder) Debug.Log(unit.ToString());
 
-        yield return new WaitForSeconds(.2f); 
+        yield return StartCoroutine(InvokeCombatEvent(OnActionExecutionComplete));
     }
+    public event CombatCoroutineEventHandler OnActionExecutionComplete;
 
     protected virtual IEnumerator EndTurn()
     {
         //Debug.Log("End Turn");
-        yield return new WaitForSeconds(.2f);
+       yield return StartCoroutine(InvokeCombatEvent(OnTurnEnded));
     }
+    public event CombatCoroutineEventHandler OnTurnEnded;
 
     protected virtual IEnumerator ResolveCombat()
     {
         Debug.Log("End of Combat Reached");
-        yield return new WaitForSeconds(.2f);
+        yield return StartCoroutine(InvokeCombatEvent(OnCombatResolved));
     }
+    public event CombatCoroutineEventHandler OnCombatResolved;
     #endregion
 
     protected virtual bool TryAddAllyToCombat(Unit ally)
@@ -221,10 +235,12 @@ public class ICombatManager : MonoBehaviour
         {
             Unit instantiatedUnit = Instantiate(ally, unitParent);
             allies.Add(instantiatedUnit);
+            OnAddNewAlly?.Invoke(instantiatedUnit);
             return true;
         }
         else return false;
     }
+    public event UnitEventHandler OnAddNewAlly;
 
     protected virtual bool TryAddEnemyToCombat(Unit enemy)
     {
@@ -232,10 +248,13 @@ public class ICombatManager : MonoBehaviour
         {
             Unit instantiatedUnit = Instantiate(enemy, unitParent);
             enemies.Add(instantiatedUnit);
+            OnAddNewEnemy?.Invoke(instantiatedUnit);
             return true;
         }
         else return false;
     }
+    public event UnitEventHandler OnAddNewEnemy;
+    public delegate void UnitEventHandler(Unit unit);
 
     protected virtual CombatAction SelectAnAction(Unit unit, List<CombatAction> actions)
     {
@@ -312,5 +331,14 @@ public class ICombatManager : MonoBehaviour
         returnValue.AddRange(allies.Where(u => u.isUnitActive));
         returnValue.AddRange(enemies.Where(u => u.isUnitActive));
         return returnValue;
+    }
+
+    protected virtual IEnumerator InvokeCombatEvent(CombatCoroutineEventHandler handler, bool yield = true)
+    {
+        if(handler != null)
+        {
+            if(yield) foreach(CombatCoroutineEventHandler invocation in handler?.GetInvocationList()) yield return StartCoroutine(invocation?.Invoke());
+            else foreach(CombatCoroutineEventHandler invocation in handler?.GetInvocationList()) StartCoroutine(invocation?.Invoke());
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using AYellowpaper.SerializedCollections;
 using System;
+using System.Linq;
 
 public enum UnitClass
 {
@@ -58,7 +59,6 @@ public class Unit : MonoBehaviour
             fight = value;
             if(fight < 0) fight = 0;
             OnFightChanged?.Invoke(fight);
-            Debug.Log(ToString());
         } 
     }
     public delegate void OnFightChangedDelegate(int fightValue);
@@ -114,18 +114,23 @@ public class Unit : MonoBehaviour
 
         foreach(KeyValuePair<UnitStat, int> stat in unitStats)
         {
-            if(IsStatFightStat(stat.Key)) fight += stat.Value;
-            if(IsStatMindStat(stat.Key)) mind += stat.Value;
-            if(IsStatSpiritStat(stat.Key)) 
-            {
+            if(IsStatFightStat(stat.Key)) 
+                fight += stat.Value;
+            if(IsStatMindStat(stat.Key)) 
+                mind += stat.Value;
+            if(IsStatSpiritStat(stat.Key))
                 spirit += stat.Value;
-            }
         }
 
         OnFightChanged += CheckUnitStatus;
         OnMindChanged += CheckUnitStatus;
         OnSpiritChanged += CheckUnitStatus;
+        
+        OnUnitInitialized?.Invoke();
     }
+
+    public delegate void OnUnitInitializedDelegate();
+    public event OnUnitInitializedDelegate OnUnitInitialized;
 
     private void CheckUnitStatus(int newStatValue = -1)
     {
@@ -156,11 +161,18 @@ public class Unit : MonoBehaviour
         return $"Name: {name}\nFight: {fight}\nMind: {mind}\nSpirit: {spirit}";
     }
 
+    public int GetStatValue(UnitStat stat)
+    {
+        if(unitStats.ContainsKey(stat)) return unitStats[stat];
+        else return -1;
+    }
+
+
     // public override bool Equals(object obj)
     // {
     //     if(obj == null || GetType() != typeof(Unit)) return false;
     //     Unit unit = (Unit) obj;
-        
+
     //     return true;
     // }
 }
