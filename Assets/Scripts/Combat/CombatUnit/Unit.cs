@@ -8,21 +8,14 @@ using System.Linq;
 public enum UnitClass
 {
     None = -1,
-    HighBrawn = 0,
-    HighAgility = 1,
-    HighFocus = 2,
-    HighMagic = 3,
-    HighHeart = 4,
-    HighWill = 5,
-    Other = 6
+    
+    Other = 5
 }
 
 public enum UnitStat
 {
     Brawn,
     Agility,
-    Focus,
-    Magic,
     Heart,
     Will
 }
@@ -30,7 +23,6 @@ public enum UnitStat
 public enum HealthType
 {
     Fight,
-    Mind,
     Spirit
 }
 
@@ -63,22 +55,6 @@ public class Unit : MonoBehaviour
     }
     public delegate void OnFightChangedDelegate(int fightValue);
     public event OnFightChangedDelegate OnFightChanged;
-    
-    private int mind;
-    public int Mind 
-    { 
-        get => mind; 
-    
-        set
-        {
-            if(value == mind) return;
-            mind = value;
-            if(mind < 0) mind = 0;
-            OnMindChanged?.Invoke(mind);
-        } 
-    }
-    public delegate void OnMindChangedDelegate(int mindValue);
-    public event OnMindChangedDelegate OnMindChanged;
 
     private int spirit;
     public int Spirit 
@@ -109,21 +85,17 @@ public class Unit : MonoBehaviour
     private void InitializeUnit()
     {
         fight = 0;
-        mind = 0;
         spirit = 0;
 
         foreach(KeyValuePair<UnitStat, int> stat in unitStats)
         {
             if(IsStatFightStat(stat.Key)) 
                 fight += stat.Value;
-            if(IsStatMindStat(stat.Key)) 
-                mind += stat.Value;
             if(IsStatSpiritStat(stat.Key))
                 spirit += stat.Value;
         }
 
         OnFightChanged += CheckUnitStatus;
-        OnMindChanged += CheckUnitStatus;
         OnSpiritChanged += CheckUnitStatus;
         
         OnUnitInitialized?.Invoke();
@@ -134,7 +106,7 @@ public class Unit : MonoBehaviour
 
     private void CheckUnitStatus(int newStatValue = -1)
     {
-        if(Fight <= 0 || Mind <= 0 || Spirit <= 0) 
+        if(Fight <= 0 || Spirit <= 0) 
         {
             isUnitActive = false;
             Debug.Log($"{name} is defeated!");
@@ -146,11 +118,6 @@ public class Unit : MonoBehaviour
         return stat == UnitStat.Brawn || stat == UnitStat.Agility;
     }
 
-    private bool IsStatMindStat(UnitStat stat)
-    {
-        return stat == UnitStat.Focus || stat == UnitStat.Magic;
-    }
-
     private bool IsStatSpiritStat(UnitStat stat)
     {
         return stat == UnitStat.Heart || stat == UnitStat.Will;
@@ -158,7 +125,7 @@ public class Unit : MonoBehaviour
 
     public override string ToString()
     {
-        return $"Name: {name}\nFight: {fight}\nMind: {mind}\nSpirit: {spirit}";
+        return $"Name: {name}\nFight: {fight}\nSpirit: {spirit}";
     }
 
     public int GetStatValue(UnitStat stat)

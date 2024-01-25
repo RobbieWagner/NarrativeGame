@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4719582625950988044}
-  - component: {fileID: 7298532758261085620}
+  - component: {fileID: 4359118317783692944}
   m_Layer: 5
   m_Name: EnemiesUI
   m_TagString: Untagged
@@ -36,7 +36,7 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: -5}
   m_SizeDelta: {x: -10, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7298532758261085620
+--- !u!114 &4359118317783692944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2759021595051465774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -54,7 +54,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 2
-  m_Spacing: 10
+  m_Spacing: 5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 103357980177594237}
-  - component: {fileID: 8276757726680420527}
+  - component: {fileID: 4208772313518420068}
   m_Layer: 5
   m_Name: AlliesUI
   m_TagString: Untagged
@@ -98,7 +98,7 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: -5}
   m_SizeDelta: {x: -10, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8276757726680420527
+--- !u!114 &4208772313518420068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6666560126592416868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -116,7 +116,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 10
+  m_Spacing: 5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -240,9 +240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f3dfa757dc4454c92729149cdbf7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitUIPrefab: {fileID: 5688550100626983245, guid: 5a27a89dcfac880449d35973d09cadd0,
+  unitUIPrefab: {fileID: 5688550100626983245, guid: 3b74ee5f1dee56944803c80e60cbef9c,
     type: 3}
-  allyUnits: {fileID: 8276757726680420527}
-  enemyUnits: {fileID: 7298532758261085620}
+  allyUnits: {fileID: 4208772313518420068}
+  enemyUnits: {fileID: 4359118317783692944}
   alliesUI: []
   enemiesUI: []

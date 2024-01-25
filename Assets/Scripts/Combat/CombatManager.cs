@@ -10,7 +10,8 @@ public class CombatManager : ICombatManager
     #region Combat Phases
     protected override IEnumerator SetupCombat()
     {
-        
+        yield return StartCoroutine(debugBattlefield?.SetupBattlefield());
+
         currentUI = Instantiate(currentCombat.combatUIPrefab);
         yield return StartCoroutine(currentUI.InitializeUI());
 

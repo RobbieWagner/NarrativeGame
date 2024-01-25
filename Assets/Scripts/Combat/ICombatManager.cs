@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Ink.Runtime;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -33,6 +34,8 @@ public class ICombatManager : MonoBehaviour
     private bool isInterrupted = false;
     private Coroutine currentInterruptionCoroutine;
     public delegate IEnumerator CombatCoroutineEventHandler();
+
+    public Vector3 UNIT_OFFSET;
 
     [SerializeField] private ICombat debugCombat;
 
@@ -201,9 +204,14 @@ public class ICombatManager : MonoBehaviour
         {
             //Debug.Log($"{unit.name} is acting");
             if(unit.isUnitActive && unit.currentSelectedAction != null)
+            {
+                yield return StartCoroutine(CombatCamera.Instance?.MoveCamera(unit.transform.position + UNIT_OFFSET, 1.2f));
+                //show UI for action
+                yield return StartCoroutine(CombatCamera.Instance?.ResetCameraPosition(.9f));
                 yield return StartCoroutine(unit.currentSelectedAction?.ExecuteAction(
                     unit, 
                     unit.currentSelectedAction.GetTargetUnits(unit.selectedUnits)));
+            }
             else if(!unit.isUnitActive) Debug.Log($"{unit.name} defeated, action cancelled");
             unit.currentSelectedAction = null;
         }

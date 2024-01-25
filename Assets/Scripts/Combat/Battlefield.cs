@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Battlefield : MonoBehaviour
@@ -9,6 +10,8 @@ public class Battlefield : MonoBehaviour
 
     public Vector3 distanceBetweenAllies;
     public Vector3 distanceBetweenEnemies;
+
+    public Vector3 camPosition;
 
     public void PlaceUnits(List<Transform> units, bool unitsAreAllies = true)
     {
@@ -39,5 +42,11 @@ public class Battlefield : MonoBehaviour
     public void PlaceUnit(Transform unit, Vector3 position)
     {
         Debug.LogWarning("Place Unit not implemented!");
+    }
+
+    public IEnumerator SetupBattlefield()
+    {
+        if(CombatCamera.Instance != null) CombatCamera.Instance.defaultPosition = camPosition;
+        yield return StartCoroutine(CombatCamera.Instance?.ResetCameraPosition());
     }
 }

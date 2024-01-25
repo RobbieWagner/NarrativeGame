@@ -51,7 +51,6 @@ public class ContestDamageEffect : ContestStatEffect
             if(hitTarget.Value)
             {
                 if(effectedHealthType == HealthType.Fight) hitTarget.Key.Fight -= power;
-                else if(effectedHealthType == HealthType.Mind) hitTarget.Key.Mind -= power;
                 else if(effectedHealthType == HealthType.Spirit) hitTarget.Key.Spirit -= power;
                 else Debug.LogWarning($"{effectedHealthType} is not a valid health type");
 
