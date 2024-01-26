@@ -7,6 +7,7 @@ using UnityEngine;
 public class CombatAction : ScriptableObject
 {
     public string actionName;
+    public Sprite actionSprite;
     
     public bool targetsAllOpposition;
     public bool targetsAllAllies;

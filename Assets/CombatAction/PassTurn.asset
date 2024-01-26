@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PassTurn
   m_EditorClassIdentifier: 
   actionName: Rest
+  actionSprite: {fileID: 21300000, guid: 38564a19d4809e04e832b2c8504c8fbb, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
   canTargetSelf: 0

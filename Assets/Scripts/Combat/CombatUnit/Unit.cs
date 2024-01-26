@@ -35,7 +35,7 @@ public class Unit : MonoBehaviour
 
     public CombatAction currentSelectedAction;
     public List<CombatAction> availableActions;
-    public List<Unit> selectedUnits;
+    public List<Unit> selectedTargets;
 
     [HideInInspector] public bool isUnitActive = true;
 

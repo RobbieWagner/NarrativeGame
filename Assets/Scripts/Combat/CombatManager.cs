@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CombatManager : ICombatManager
+public partial class CombatManager : ICombatManager
 {
     [SerializeField] private Battlefield debugBattlefield;
 

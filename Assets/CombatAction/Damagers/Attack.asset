@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   actionName: Attack
+  actionSprite: {fileID: 21300000, guid: 3bf8c7e367adcd94d87e9d1f8439194e, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
   canTargetSelf: 0

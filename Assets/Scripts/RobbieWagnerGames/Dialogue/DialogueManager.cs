@@ -18,7 +18,7 @@ namespace RobbieWagnerGames
 
         private Story currentStory;
         public IEnumerator dialogueCoroutine {get; private set;}
-        private DialogueInputActions controls;
+        private MenuControls controls;
 
         private string currentSentenceText = "";
         private bool sentenceTyping = false;
@@ -76,7 +76,7 @@ namespace RobbieWagnerGames
             dialogueCanvas.enabled = canvasEnabledOnStart;
             CanContinue = false;
             continueIcon.enabled = false;
-            controls = new DialogueInputActions();
+            controls = new MenuControls();
             controls.UIInput.Navigate.performed += OnNavigateDialogueMenu;
             controls.UIInput.Select.performed += OnNextDialogueLine;
         }

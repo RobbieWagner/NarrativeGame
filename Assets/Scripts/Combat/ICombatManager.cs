@@ -35,6 +35,8 @@ public class ICombatManager : MonoBehaviour
     private Coroutine currentInterruptionCoroutine;
     public delegate IEnumerator CombatCoroutineEventHandler();
 
+    protected bool finishedSelectingActions = true;
+
     public Vector3 UNIT_OFFSET;
 
     [SerializeField] private ICombat debugCombat;
@@ -171,23 +173,26 @@ public class ICombatManager : MonoBehaviour
     protected virtual IEnumerator HandleActionSelection()
     {
         Debug.Log("Handling Action Selection...");
+        OnBeginActionSelection?.Invoke();
         foreach(Unit enemy in enemies)
         { 
             if(enemy.isUnitActive) enemy.currentSelectedAction = SelectAnAction(enemy, enemy.availableActions);
-            if(enemy.currentSelectedAction != null) enemy.selectedUnits = SelectTargetsForSelectedAction(enemy);
+            if(enemy.currentSelectedAction != null) enemy.selectedTargets = SelectTargetsForSelectedAction(enemy);
         }
 
         //TODO: Replace this with ally unit selection setup
-        foreach(Unit ally in allies)
-        {
-            if(ally.isUnitActive) ally.currentSelectedAction = SelectAnAction(ally, ally.availableActions);
-            if(ally.currentSelectedAction != null) ally.selectedUnits = SelectTargetsForSelectedAction(ally);
-        }
+        // foreach(Unit ally in allies)
+        // {
+        //     if(ally.isUnitActive) ally.currentSelectedAction = SelectAnAction(ally, ally.availableActions);
+        //     if(ally.currentSelectedAction != null) ally.selectedUnits = SelectTargetsForSelectedAction(ally);
+        // }
 
-        while(!UnitsAllHaveSelectedActions()) yield return null;
+        while(!finishedSelectingActions) yield return null;
 
         yield return StartCoroutine(InvokeCombatEvent(OnActionSelectionComplete));
     }
+    public delegate void OnBeginActionSelectionDelegate();
+    public event OnBeginActionSelectionDelegate OnBeginActionSelection;
     public event CombatCoroutineEventHandler OnActionSelectionComplete;
 
     protected virtual IEnumerator ExecuteActions()
@@ -210,7 +215,8 @@ public class ICombatManager : MonoBehaviour
                 yield return StartCoroutine(CombatCamera.Instance?.ResetCameraPosition(.9f));
                 yield return StartCoroutine(unit.currentSelectedAction?.ExecuteAction(
                     unit, 
-                    unit.currentSelectedAction.GetTargetUnits(unit.selectedUnits)));
+                    unit.currentSelectedAction.GetTargetUnits(unit.selectedTargets)));
+                    if(CheckForCombatEnd()) break;
             }
             else if(!unit.isUnitActive) Debug.Log($"{unit.name} defeated, action cancelled");
             unit.currentSelectedAction = null;
@@ -291,7 +297,7 @@ public class ICombatManager : MonoBehaviour
 
     private bool UnitsAllHaveSelectedActions()
     {
-        foreach(Unit ally in allies) if(!ally.currentSelectedAction && ally.isUnitActive) return false;
+        foreach(Unit ally in allies) if(ally.currentSelectedAction == null && ally.isUnitActive) return false;
         return true;
     }
 
@@ -348,5 +354,17 @@ public class ICombatManager : MonoBehaviour
             if(yield) foreach(CombatCoroutineEventHandler invocation in handler?.GetInvocationList()) yield return StartCoroutine(invocation?.Invoke());
             else foreach(CombatCoroutineEventHandler invocation in handler?.GetInvocationList()) StartCoroutine(invocation?.Invoke());
         }
+    }
+
+    protected List<Unit> GetActiveAlliesOfUnit(Unit unit)
+    {
+        if(enemies.Contains(unit)) return enemies.Where(x => !x.Equals(unit)).ToList();
+        else return allies.Where(x => !x.Equals(unit)).ToList();
+    }
+
+    protected List<Unit> GetActiveEnemiesOfUnit(Unit unit)
+    {
+        if(allies.Contains(unit)) return enemies.Where(x => !x.Equals(unit) && x.isUnitActive).ToList();
+        else return allies.Where(x => !x.Equals(unit) && x.isUnitActive).ToList();
     }
 }
