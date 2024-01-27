@@ -65,20 +65,30 @@ public partial class CombatManager : ICombatManager
             unit.currentSelectedAction = passTurn;
             StartActionSelectionForNextUnit();
         }
+        else
+        {
+            //display ui
+            unit.StartBlinking();
 
-        targetSelectionControls.Disable();
-        actionSelectionControls.Enable();
+            targetSelectionControls.Disable();
+            actionSelectionControls.Enable();
 
-        currentUnit = unit;
-        ConsiderAction(0);
-        //open UI
+            currentUnit = unit;
+            ConsiderAction(0);
+        }
     }
 
     private void CancelPreviousSelection(InputAction.CallbackContext context)
     {
         Debug.Log($"Going back to last action");
-        if(isSelectingAction && currentUnitIndex > 0) OpenActionSelectionForUnit(allies[currentUnitIndex - 1]);
-        else if(isSelectingTargets) OpenActionSelectionForUnit(currentUnit);
+        if(isSelectingAction && currentUnitIndex > 0) 
+        {
+            currentUnitIndex--;
+            currentUnit = allies[currentTargetIndex];
+            OpenActionSelectionForUnit(currentUnit);
+        }
+        else if(isSelectingTargets) 
+            OpenActionSelectionForUnit(currentUnit);
     }
 
     private void NavigateActions(InputAction.CallbackContext context)
@@ -126,32 +136,34 @@ public partial class CombatManager : ICombatManager
         isSelectingAction = false;
         isSelectingTargets = true;
 
+        currentUnit.StopBlinking();
+
         if(currentSelectedAction.canTargetSelf) actionTargets.Add(currentUnit);
         if(currentSelectedAction.canTargetAllies) actionTargets.AddRange(GetActiveAlliesOfUnit(currentUnit));
         if(currentSelectedAction.canTargetEnemies) actionTargets.AddRange(GetActiveEnemiesOfUnit(currentUnit));
 
         if(actionTargets.Count == 0) StartActionSelectionForNextUnit();
-        else if(actionTargets.Count == 1)
-        {
-            currentUnit.selectedTargets.AddRange(actionTargets);
-            StartActionSelectionForNextUnit();
-        }
-
+        // else if(actionTargets.Count == 1)
+        // {
+        //     currentUnit.selectedTargets.AddRange(actionTargets);
+        //     StartActionSelectionForNextUnit();
+        // }
         else
         {
             targetSelectionControls.UIInput.Enable();
             actionSelectionControls.UIInput.Disable();
 
-            DisplayTarget(0);
+            SetActionTarget(actionTargets[0]);
         }
     }
 
-    private void DisplayTarget(int unit)
+    private void SetActionTarget(Unit unit)
     {
-        Debug.Log($"Target is {unit}");
-        currentTargetIndex = unit % actionTargets.Count;
-        if(currentTargetIndex < 0) currentTargetIndex = actionTargets.Count - 1;
-        currentTarget = actionTargets[currentTargetIndex]; 
+        Debug.Log($"Target is {unit.name}");
+
+        currentTarget?.StopBlinking();
+        currentTarget = actionTargets[currentTargetIndex];
+        currentTarget.StartBlinking(); 
     }
 
     private void NavigateTargets(InputAction.CallbackContext context)
@@ -159,14 +171,17 @@ public partial class CombatManager : ICombatManager
         Debug.Log($"navigating targets");
         float direction = context.ReadValue<float>();
 
-        if(direction > 0) DisplayTarget(currentTargetIndex + 1);
-        else DisplayTarget(currentTargetIndex - 1);
+        int newTarget = direction > 0 ? currentTargetIndex + 1 : currentTargetIndex - 1;
+        if(newTarget == currentTargetIndex || newTarget >= actionTargets.Count || newTarget < 0) return;
+        currentTargetIndex = newTarget;
+        SetActionTarget(actionTargets[currentTargetIndex]);
     }
 
     private void SelectTarget(InputAction.CallbackContext context)
     {
         Debug.Log($"Selecting Target");
         currentUnit.selectedTargets.Add(currentTarget);
+        currentTarget.StopBlinking();
         StartActionSelectionForNextUnit();
     }
 
@@ -174,6 +189,7 @@ public partial class CombatManager : ICombatManager
     {
         Debug.Log($"Action selection complete");
         actionSelectionControls.Disable();
+        targetSelectionControls.Disable();
 
         finishedSelectingActions = true;
     }

@@ -29,12 +29,12 @@ public class Battlefield : MonoBehaviour
         }
         else
         {
-            unitPosition = enemiesPosition - (distanceBetweenEnemies * (units.Count - 1)/2);
+            unitPosition = enemiesPosition + (distanceBetweenEnemies * (units.Count - 1)/2);
 
             for(int i = 0; i < units.Count; i++)
             {
                 units[i].position = unitPosition;
-                unitPosition += distanceBetweenEnemies;
+                unitPosition -= distanceBetweenEnemies;
             }
         }
     }

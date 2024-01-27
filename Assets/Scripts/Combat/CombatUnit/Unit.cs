@@ -4,6 +4,7 @@ using UnityEngine;
 using AYellowpaper.SerializedCollections;
 using System;
 using System.Linq;
+using DG.Tweening;
 
 public enum UnitClass
 {
@@ -29,12 +30,22 @@ public enum HealthType
 public class Unit : MonoBehaviour
 {
     // Unit properties
+    [Header("Vanity")]
     public string UnitName;
+    [SerializeField] private UnitAnimator unitAnimator;
+    [SerializeField] private SpriteRenderer unitSprite;
+    private Coroutine parentBlinkCo;
+    private Sequence currentBlinkCo;
+
+    private const float BLINK_TIME = 1f;
+
+    [Header("Statistics")]
     public UnitClass Class;
     [SerializedDictionary("Stat","Base Value")] public SerializedDictionary<UnitStat, int> unitStats;
-
-    public CombatAction currentSelectedAction;
     public List<CombatAction> availableActions;
+
+    [Header("Runtime")]
+    public CombatAction currentSelectedAction;
     public List<Unit> selectedTargets;
 
     [HideInInspector] public bool isUnitActive = true;
@@ -79,6 +90,11 @@ public class Unit : MonoBehaviour
     private void Awake()
     {
         InitializeUnit();
+        SetupBlinkTween();
+    }
+
+    private void SetupBlinkTween()
+    {
     }
 
     // Method to initialize unit
@@ -97,6 +113,8 @@ public class Unit : MonoBehaviour
 
         OnFightChanged += CheckUnitStatus;
         OnSpiritChanged += CheckUnitStatus;
+
+        unitAnimator.SetAnimationState(UnitAnimationState.Idle);
         
         OnUnitInitialized?.Invoke();
     }
@@ -134,6 +152,31 @@ public class Unit : MonoBehaviour
         else return -1;
     }
 
+    public void SetUnitAnimatorState(UnitAnimationState state) => unitAnimator.SetAnimationState(state);
+
+    public void StartBlinking()
+    {
+        if(currentBlinkCo == null || !currentBlinkCo.IsPlaying())
+        {
+            float halfBlinkTime = BLINK_TIME/2;
+            currentBlinkCo = DOTween.Sequence();
+            currentBlinkCo.Append(unitSprite.DOColor(Color.clear, halfBlinkTime).SetEase(Ease.InCubic));
+            currentBlinkCo.Append(unitSprite.DOColor(Color.white, halfBlinkTime).SetEase(Ease.OutCubic));
+            currentBlinkCo.SetLoops(-1, LoopType.Restart);
+
+            unitSprite.color = Color.white;
+            currentBlinkCo.Play();
+        }
+    }
+
+    public void StopBlinking()
+    {
+        if(currentBlinkCo != null && currentBlinkCo.IsPlaying()) 
+        {
+            currentBlinkCo.Kill(true);
+            unitSprite.color = Color.white;
+        }
+    }
 
     // public override bool Equals(object obj)
     // {
