@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public partial class CombatManager : ICombatManager
+public partial class ICombatManager : MonoBehaviour
 {
     private MenuControls actionSelectionControls;
     private MenuControls targetSelectionControls;
@@ -25,10 +25,8 @@ public partial class CombatManager : ICombatManager
     private List<Unit> actionTargets;
     private List<Unit> selectedTargets;
     
-    protected override void Awake()
+    protected virtual void AwakenControls()
     {
-        Debug.Log("awake");
-        base.Awake();
         actionSelectionControls = new MenuControls();
         targetSelectionControls = new MenuControls();
         OnBeginActionSelection += BeginActionSelection;
@@ -83,12 +81,15 @@ public partial class CombatManager : ICombatManager
         Debug.Log($"Going back to last action");
         if(isSelectingAction && currentUnitIndex > 0) 
         {
+            currentUnit.StopBlinking();
             currentUnitIndex--;
-            currentUnit = allies[currentTargetIndex];
-            OpenActionSelectionForUnit(currentUnit);
+            OpenActionSelectionForUnit(allies[currentUnitIndex]);
         }
         else if(isSelectingTargets) 
+        {
+            currentTarget.StopBlinking();
             OpenActionSelectionForUnit(currentUnit);
+        }
     }
 
     private void NavigateActions(InputAction.CallbackContext context)
@@ -153,18 +154,25 @@ public partial class CombatManager : ICombatManager
             targetSelectionControls.UIInput.Enable();
             actionSelectionControls.UIInput.Disable();
 
-            SetActionTarget(actionTargets[0]);
+            currentTargetIndex = 0;
+            ConsiderTarget(actionTargets[0]);
         }
     }
 
-    private void SetActionTarget(Unit unit)
+    private void ConsiderTarget(Unit unit)
     {
         Debug.Log($"Target is {unit.name}");
 
-        currentTarget?.StopBlinking();
-        currentTarget = actionTargets[currentTargetIndex];
-        currentTarget.StartBlinking(); 
+
+        OnStopConsideringTarget?.Invoke(currentTarget);
+        currentTarget = unit;
+        OnConsiderTarget?.Invoke(currentUnit, currentTarget, currentUnit.currentSelectedAction);
     }
+    public delegate void OnStopConsideringTargetDelegate(Unit target);
+    public event OnStopConsideringTargetDelegate OnStopConsideringTarget;
+
+    public delegate void OnConsiderTargetDelegate(Unit user, Unit target, CombatAction action);
+    public event OnConsiderTargetDelegate OnConsiderTarget;
 
     private void NavigateTargets(InputAction.CallbackContext context)
     {
@@ -174,7 +182,7 @@ public partial class CombatManager : ICombatManager
         int newTarget = direction > 0 ? currentTargetIndex + 1 : currentTargetIndex - 1;
         if(newTarget == currentTargetIndex || newTarget >= actionTargets.Count || newTarget < 0) return;
         currentTargetIndex = newTarget;
-        SetActionTarget(actionTargets[currentTargetIndex]);
+        ConsiderTarget(actionTargets[currentTargetIndex]);
     }
 
     private void SelectTarget(InputAction.CallbackContext context)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,14 +13,27 @@ public class ICombatUI : MonoBehaviour
     [SerializeField] protected List<UnitUI> alliesUI;
     [SerializeField] protected List<UnitUI> enemiesUI;
 
+    [SerializeField] protected Canvas ScreenSpaceCanvas;
+    [SerializeField] protected Canvas WorldSpaceCanvas;
+
     public virtual IEnumerator InitializeUI()
     {
         yield return null;
 
-        if(ICombatManager.Instance != null)
+        try
         {
-            ICombatManager.Instance.OnAddNewAlly += AddAllyUI;
-            ICombatManager.Instance.OnAddNewEnemy += AddEnemyUI;
+            if(ICombatManager.Instance != null)
+            {
+                ICombatManager.Instance.OnAddNewAlly += AddAllyUI;
+                ICombatManager.Instance.OnAddNewEnemy += AddEnemyUI;
+
+                ICombatManager.Instance.OnStopConsideringTarget += StopConsideringTarget;
+                ICombatManager.Instance.OnConsiderTarget += DisplayConsideredTarget;
+            }
+        }
+        catch(NullReferenceException e)
+        {
+            Debug.LogError("Combat Manager Found Null in Combat UI, Please define a Combat Manager before calling InitializeUI.");
         }
     }
 
@@ -35,5 +49,32 @@ public class ICombatUI : MonoBehaviour
         UnitUI newUnitUI = Instantiate(unitUIPrefab, enemyUnits.transform);
         newUnitUI.Unit = enemy;
         enemiesUI.Add(newUnitUI);
+    }
+
+    protected virtual void StopConsideringTarget(Unit target)
+    {
+        target?.StopBlinking();
+    }
+
+    protected virtual void DisplayConsideredTarget(Unit user, Unit target, CombatAction action)
+    {
+        target.StartBlinking(); 
+    }
+
+    protected virtual void SetupActionSelection(Unit unit)
+    {
+
+    }
+
+    protected virtual void SetDisplayedAction(Unit unit, int action)
+    {
+        CombatAction curAction = unit.availableActions[action];
+        CombatAction prevAction;
+        CombatAction nextAction;
+
+        if(action != 0) prevAction = unit.availableActions[action - 1];
+        if(action < unit.availableActions.Count - 1) nextAction = unit.availableActions[action + 1];
+
+        
     }
 }

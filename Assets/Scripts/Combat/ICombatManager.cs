@@ -19,7 +19,7 @@ public enum CombatPhase
 }
 
 // Base class for the combat system manager
-public class ICombatManager : MonoBehaviour
+public partial class ICombatManager : MonoBehaviour
 {
     public bool canStartNewCombat = true;
     protected ICombat currentCombat;
@@ -65,6 +65,7 @@ public class ICombatManager : MonoBehaviour
         } 
         //DEBUG ONLY! COMMENT OUT IF NOT USING
         StartNewCombat(debugCombat);
+        AwakenControls();
     }
 
     public virtual bool StartNewCombat(ICombat newCombat)

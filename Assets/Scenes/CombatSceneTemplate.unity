@@ -170,13 +170,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allyPrefabs:
   - {fileID: 2244696816062546445, guid: 0e9d19a78befbb44a93d5f0c83719b83, type: 3}
-  - {fileID: 2244696816062546445, guid: 0e9d19a78befbb44a93d5f0c83719b83, type: 3}
-  - {fileID: 2244696816062546445, guid: 0e9d19a78befbb44a93d5f0c83719b83, type: 3}
+  - {fileID: 2244696816062546445, guid: 437c7021d3a44da4cafba098dd8b85bf, type: 3}
+  - {fileID: 2244696816062546445, guid: 66cf3b7b02a342f428e9f8ddbba57294, type: 3}
   enemyPrefabs:
-  - {fileID: 2244696816062546445, guid: a467ed14e44f1724384877a4d35f144a, type: 3}
-  - {fileID: 2244696816062546445, guid: a467ed14e44f1724384877a4d35f144a, type: 3}
-  - {fileID: 2244696816062546445, guid: a467ed14e44f1724384877a4d35f144a, type: 3}
-  combatUIPrefab: {fileID: 6232295000836538449, guid: 642c241870374784eab1099d4d303449,
+  - {fileID: 2244696816062546445, guid: 2e71cb464c1d6f14b99dcc2fe87b38d0, type: 3}
+  - {fileID: 2244696816062546445, guid: 2e71cb464c1d6f14b99dcc2fe87b38d0, type: 3}
+  - {fileID: 2244696816062546445, guid: 2e71cb464c1d6f14b99dcc2fe87b38d0, type: 3}
+  combatUIPrefab: {fileID: 5245649321746192247, guid: f315a5e90cb6a0a41b5c9967a40340c7,
     type: 3}
 --- !u!1 &161925157
 GameObject:
@@ -209,9 +209,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alliesPosition: {x: -2, y: 0, z: 0}
   enemiesPosition: {x: 2, y: 0, z: 0}
-  distanceBetweenAllies: {x: 0.5, y: 0, z: 2}
-  distanceBetweenEnemies: {x: -0.5, y: 0, z: 2}
-  camPosition: {x: 0, y: 2, z: -6}
+  distanceBetweenAllies: {x: 0.5, y: 0, z: 1.5}
+  distanceBetweenEnemies: {x: -0.5, y: 0, z: 1.5}
+  camPosition: {x: 0, y: 2, z: -5}
 --- !u!4 &161925159
 Transform:
   m_ObjectHideFlags: 0
@@ -796,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557372bc6f859c746bac000fc92514c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  passTurn: {fileID: 0}
   canStartNewCombat: 1
   allies: []
   enemies: []

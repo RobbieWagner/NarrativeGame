@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8567043819297008731}
   - component: {fileID: 7735696984222723974}
+  - component: {fileID: 2456878965738600212}
+  - component: {fileID: 5134551292801406725}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3566375970970110391}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,7 +86,43 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
+--- !u!114 &2456878965738600212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3566375970970110391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28b60331a49cec47b66d0f5c1264ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5134551292801406725}
+  states: 00000000
+  unitSprite: {fileID: 0}
+--- !u!95 &5134551292801406725
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3566375970970110391}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c2d5f2a074cd0a4f8aa0496853f9d44, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5212934018939674024
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +134,7 @@ GameObject:
   - component: {fileID: 8833176736595712028}
   - component: {fileID: 2244696816062546445}
   m_Layer: 0
-  m_Name: unit5
+  m_Name: Lyle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c445727aeeb164b81dbf353f5f2280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: DEBUG
+  UnitName: DEBUG-L
+  unitAnimator: {fileID: 2456878965738600212}
+  unitSprite: {fileID: 7735696984222723974}
   Class: 0
   unitStats:
     _serializedList:
@@ -142,13 +182,9 @@ MonoBehaviour:
       Value: 1
     - Key: 3
       Value: 1
-    - Key: 4
-      Value: 1
-    - Key: 5
-      Value: 1
-  currentSelectedAction: {fileID: 0}
   availableActions:
   - {fileID: 11400000, guid: 0180b87c6e9a56d46bda54728358220f, type: 2}
   - {fileID: 11400000, guid: 3006749205d13df4e9cf2e5d2046dceb, type: 2}
-  selectedUnits: []
+  currentSelectedAction: {fileID: 0}
+  selectedTargets: []
   isUnitActive: 1

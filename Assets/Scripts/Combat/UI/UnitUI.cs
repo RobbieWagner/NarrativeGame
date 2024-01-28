@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UnitUI : MonoBehaviour
 {
+    public TextMeshProUGUI unitNameText;
     public TextMeshProUGUI fightValueText;
     public TextMeshProUGUI spiritValueText;
     [Space(10)]
@@ -24,7 +25,7 @@ public class UnitUI : MonoBehaviour
             if(unit != null && unit.Equals(value)) return;
             if(unit != null) Unsubscribe();
             unit = value;
-            if(unit != null) InitializeUnitUI(unit);
+            if(unit != null) InitializeUnitUI();
         }
     }
 
@@ -39,25 +40,29 @@ public class UnitUI : MonoBehaviour
         unit.OnFightChanged += UpdateFightText;
         unit.OnSpiritChanged += UpdateSpiritText;
 
-        unit.OnUnitInitialized += UpdateStatTexts;
+        unit.OnUnitInitialized += UpdateHealthTexts;
     }
 
-    private void InitializeUnitUI(Unit unit)
+    private void InitializeUnitUI()
     {
+        UpdateHealthTexts();
         UpdateStatTexts();
-
-        brawnValueText.text = unit.GetStatValue(UnitStat.Brawn).ToString();
-        agilityValueText.text = unit.GetStatValue(UnitStat.Agility).ToString();
-        heartValueText.text = unit.GetStatValue(UnitStat.Heart).ToString();
-        willValueText.text = unit.GetStatValue(UnitStat.Will).ToString();
-
         Subscribe();
+        //unitNameText.text = unit.UnitName;
+    }
+
+    public void UpdateHealthTexts()
+    {
+        fightValueText.text = unit.Fight.ToString();
+        spiritValueText.text = unit.Spirit.ToString();
     }
 
     public void UpdateStatTexts()
     {
-        fightValueText.text = unit.Fight.ToString();
-        spiritValueText.text = unit.Spirit.ToString();
+        brawnValueText.text = unit.GetStatValue(UnitStat.Brawn).ToString();
+        agilityValueText.text = unit.GetStatValue(UnitStat.Agility).ToString();
+        heartValueText.text = unit.GetStatValue(UnitStat.Heart).ToString();
+        willValueText.text = unit.GetStatValue(UnitStat.Will).ToString();
     }
 
     private void UpdateFightText(int fightValue)
