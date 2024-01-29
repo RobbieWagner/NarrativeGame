@@ -13,8 +13,8 @@ public class ICombatUI : MonoBehaviour
     [SerializeField] protected List<UnitUI> alliesUI;
     [SerializeField] protected List<UnitUI> enemiesUI;
 
-    [SerializeField] protected Canvas ScreenSpaceCanvas;
-    [SerializeField] protected Canvas WorldSpaceCanvas;
+    [SerializeField] public Canvas ScreenSpaceCanvas;
+    [SerializeField] public Canvas WorldSpaceCanvas;
 
     public virtual IEnumerator InitializeUI()
     {
@@ -29,6 +29,8 @@ public class ICombatUI : MonoBehaviour
 
                 ICombatManager.Instance.OnStopConsideringTarget += StopConsideringTarget;
                 ICombatManager.Instance.OnConsiderTarget += DisplayConsideredTarget;
+
+                ICombatManager.Instance.OnConsiderAction += UpdateActionUI;
             }
         }
         catch(NullReferenceException e)
@@ -37,10 +39,19 @@ public class ICombatUI : MonoBehaviour
         }
     }
 
+    private void UpdateActionUI(Unit unit, CombatAction action)
+    {
+        OnUpdateActionUI?.Invoke(unit, action, this);
+    }
+    public delegate void OnUpdateActionUIDelegate(Unit unit, CombatAction action, ICombatUI combatUI);
+    public event OnUpdateActionUIDelegate OnUpdateActionUI;
+
     protected virtual void AddAllyUI(Unit ally)
     {
         UnitUI newUnitUI = Instantiate(unitUIPrefab, allyUnits.transform);
         newUnitUI.Unit = ally;
+        newUnitUI.combatUI = this;
+        newUnitUI.InitializeUnitUI();
         alliesUI.Add(newUnitUI);
     }
 
@@ -48,6 +59,8 @@ public class ICombatUI : MonoBehaviour
     {
         UnitUI newUnitUI = Instantiate(unitUIPrefab, enemyUnits.transform);
         newUnitUI.Unit = enemy;
+        newUnitUI.combatUI = this;
+        newUnitUI.InitializeUnitUI();
         enemiesUI.Add(newUnitUI);
     }
 
@@ -59,22 +72,5 @@ public class ICombatUI : MonoBehaviour
     protected virtual void DisplayConsideredTarget(Unit user, Unit target, CombatAction action)
     {
         target.StartBlinking(); 
-    }
-
-    protected virtual void SetupActionSelection(Unit unit)
-    {
-
-    }
-
-    protected virtual void SetDisplayedAction(Unit unit, int action)
-    {
-        CombatAction curAction = unit.availableActions[action];
-        CombatAction prevAction;
-        CombatAction nextAction;
-
-        if(action != 0) prevAction = unit.availableActions[action - 1];
-        if(action < unit.availableActions.Count - 1) nextAction = unit.availableActions[action + 1];
-
-        
     }
 }

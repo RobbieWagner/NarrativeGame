@@ -42,6 +42,7 @@ public class Unit : MonoBehaviour
     [Header("Statistics")]
     public UnitClass Class;
     [SerializedDictionary("Stat","Base Value")] public SerializedDictionary<UnitStat, int> unitStats;
+    Dictionary<UnitStat, int> maxStatValues;
     public List<CombatAction> availableActions;
 
     [Header("Runtime")]
@@ -103,8 +104,11 @@ public class Unit : MonoBehaviour
         fight = 0;
         spirit = 0;
 
+        maxStatValues = new Dictionary<UnitStat, int>();
+
         foreach(KeyValuePair<UnitStat, int> stat in unitStats)
         {
+            maxStatValues.Add(stat.Key, stat.Value);
             if(IsStatFightStat(stat.Key)) 
                 fight += stat.Value;
             if(IsStatSpiritStat(stat.Key))
@@ -150,6 +154,18 @@ public class Unit : MonoBehaviour
     {
         if(unitStats.ContainsKey(stat)) return unitStats[stat];
         else return -1;
+    }
+
+    public int GetMaxValue(HealthType healthType)
+    {
+        switch(healthType)
+        {
+            case HealthType.Fight:
+            return maxStatValues[UnitStat.Brawn] + maxStatValues[UnitStat.Agility];
+            case HealthType.Spirit:
+            return maxStatValues[UnitStat.Heart] + maxStatValues[UnitStat.Will];
+        }
+        return -1;
     }
 
     public void SetUnitAnimatorState(UnitAnimationState state) => unitAnimator.SetAnimationState(state);

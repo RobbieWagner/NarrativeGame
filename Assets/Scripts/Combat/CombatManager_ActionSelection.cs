@@ -157,7 +157,11 @@ public partial class ICombatManager : MonoBehaviour
             currentTargetIndex = 0;
             ConsiderTarget(actionTargets[0]);
         }
+
+        OnBeginTargetSelection?.Invoke();
     }
+    public delegate void OnBeginTargetSelectionDelegate();
+    public event OnBeginTargetSelectionDelegate OnBeginTargetSelection;
 
     private void ConsiderTarget(Unit unit)
     {
