@@ -169,13 +169,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allyPrefabs:
-  - {fileID: 2244696816062546445, guid: 0e9d19a78befbb44a93d5f0c83719b83, type: 3}
-  - {fileID: 2244696816062546445, guid: 437c7021d3a44da4cafba098dd8b85bf, type: 3}
-  - {fileID: 2244696816062546445, guid: 66cf3b7b02a342f428e9f8ddbba57294, type: 3}
+  - {fileID: 1310792243713455837, guid: a205a7705826f41478062951a24fde66, type: 3}
+  - {fileID: 3309883733138662285, guid: 256ad17e10fe58f4ba6896463048df37, type: 3}
+  - {fileID: 2134746039857156681, guid: c36f36649e8209942a757652c1c49865, type: 3}
   enemyPrefabs:
-  - {fileID: 2244696816062546445, guid: 2e71cb464c1d6f14b99dcc2fe87b38d0, type: 3}
-  - {fileID: 2244696816062546445, guid: 2e71cb464c1d6f14b99dcc2fe87b38d0, type: 3}
-  - {fileID: 2244696816062546445, guid: 2e71cb464c1d6f14b99dcc2fe87b38d0, type: 3}
+  - {fileID: 7476791559980108051, guid: de33ef519a921414ebc7d71191e75eef, type: 3}
+  - {fileID: 7476791559980108051, guid: de33ef519a921414ebc7d71191e75eef, type: 3}
+  - {fileID: 7476791559980108051, guid: de33ef519a921414ebc7d71191e75eef, type: 3}
   combatUIPrefab: {fileID: 5245649321746192247, guid: f315a5e90cb6a0a41b5c9967a40340c7,
     type: 3}
 --- !u!1 &161925157
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557372bc6f859c746bac000fc92514c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passTurn: {fileID: 0}
+  passTurn: {fileID: 11400000, guid: 3006749205d13df4e9cf2e5d2046dceb, type: 2}
   canStartNewCombat: 1
   allies: []
   enemies: []

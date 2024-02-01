@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class StatText : MonoBehaviour
 {
-    [SerializeField] private Slider statSlider;
     [SerializeField] private TextMeshProUGUI statText; 
-    public Unit currentUnit;
+    public Image statIcon;
+    [HideInInspector] public Unit currentUnit;
 
     public void Initialize(Unit unit, int maxValue, int curValue, UnitStat stat)
     {
@@ -19,7 +19,6 @@ public class StatText : MonoBehaviour
 
     public void UpdateVisual(int newValue)
     {
-        statSlider.value = newValue;
         statText.text = $"{newValue}";
     }
 }

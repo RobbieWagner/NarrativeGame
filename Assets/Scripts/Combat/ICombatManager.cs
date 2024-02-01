@@ -181,13 +181,6 @@ public partial class ICombatManager : MonoBehaviour
             if(enemy.currentSelectedAction != null) enemy.selectedTargets = SelectTargetsForSelectedAction(enemy);
         }
 
-        //TODO: Replace this with ally unit selection setup
-        // foreach(Unit ally in allies)
-        // {
-        //     if(ally.isUnitActive) ally.currentSelectedAction = SelectAnAction(ally, ally.availableActions);
-        //     if(ally.currentSelectedAction != null) ally.selectedUnits = SelectTargetsForSelectedAction(ally);
-        // }
-
         while(!finishedSelectingActions) yield return null;
 
         yield return StartCoroutine(InvokeCombatEvent(OnActionSelectionComplete));

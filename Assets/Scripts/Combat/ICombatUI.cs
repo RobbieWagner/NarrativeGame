@@ -31,6 +31,7 @@ public class ICombatUI : MonoBehaviour
                 ICombatManager.Instance.OnConsiderTarget += DisplayConsideredTarget;
 
                 ICombatManager.Instance.OnConsiderAction += UpdateActionUI;
+                ICombatManager.Instance.OnActionSelectionComplete += DestroyUnitActionSelectionUI;
             }
         }
         catch(NullReferenceException e)
@@ -45,6 +46,15 @@ public class ICombatUI : MonoBehaviour
     }
     public delegate void OnUpdateActionUIDelegate(Unit unit, CombatAction action, ICombatUI combatUI);
     public event OnUpdateActionUIDelegate OnUpdateActionUI;
+
+    private IEnumerator DestroyUnitActionSelectionUI()
+    {
+        foreach(UnitUI unitUI in alliesUI)
+        {
+            unitUI.EndActionSelectionDisplay();
+        }
+        yield return null;
+    }
 
     protected virtual void AddAllyUI(Unit ally)
     {

@@ -9,6 +9,8 @@ public class Statbar : MonoBehaviour
     [SerializeField] private Slider statSlider;
     [SerializeField] private TextMeshProUGUI statText; 
     [SerializeField] private TextMeshProUGUI statNameText;
+    public Image statIcon;
+    public Image sliderFill;
 
     public void Initialize(Unit unit, int maxValue, int curValue, UnitStat stat)
     {

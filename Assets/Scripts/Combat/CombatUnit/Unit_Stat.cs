@@ -29,7 +29,9 @@ public partial class Unit : MonoBehaviour
     [Header("Statistics")]
     public UnitClass Class;
     private Dictionary<UnitStat, int> unitStats;
-    [SerializedDictionary("Stat","Base Value")] private SerializedDictionary<UnitStat, int> maxStatValues;
+    [Space(10)]
+    [SerializeField][SerializedDictionary("Stat","Base Value")] private SerializedDictionary<UnitStat, int> maxStatValues;
+    [Space(10)]
     public List<CombatAction> availableActions;
 
     public delegate void OnStatValueChangedDelegate(int value);
@@ -45,6 +47,7 @@ public partial class Unit : MonoBehaviour
             hp = value;
             if(hp < 0) hp = 0;
             if(hp > GetMaxStatValue(UnitStat.HP)) hp = GetMaxStatValue(UnitStat.HP);
+            Debug.Log($"{UnitName}: {HP}/{GetMaxStatValue(UnitStat.HP)}");
             OnHPChanged?.Invoke(hp);
         }
     }
@@ -267,6 +270,39 @@ public partial class Unit : MonoBehaviour
             return maxStatValues[UnitStat.Defense] + maxStatValues[UnitStat.Focus] + maxStatValues[UnitStat.Heart];
         }
         return -1;
+    }
+
+    public int GetStatValue(UnitStat stat)
+    {
+        switch (stat)
+        {
+            case UnitStat.Brawn:
+            return Brawn;
+            case UnitStat.Agility:
+            return Agility;
+            case UnitStat.Defense:
+            return Defense;
+            case UnitStat.Psych:
+            return Psych;
+            case UnitStat.Focus:
+            return Focus;
+            case UnitStat.Heart:
+            return Heart;
+            case UnitStat.HP:
+            return HP;
+            case UnitStat.Mana:
+            return Mana;
+            case UnitStat.Initiative:
+            return Initiative;
+            case UnitStat.PCrit:
+            return PCrit;
+            case UnitStat.MCrit:
+            return MCrit;
+            case UnitStat.BMR:
+            return BadMentRes;
+            default:
+            return -999;
+        }
     }
 
     public void SubscribeToStatChangeEvent(OnStatValueChangedDelegate action, UnitStat stat)

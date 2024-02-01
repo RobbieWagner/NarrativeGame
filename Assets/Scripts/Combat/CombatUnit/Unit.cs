@@ -52,6 +52,7 @@ public partial class Unit : MonoBehaviour
         unitStats = new Dictionary<UnitStat, int>();
         InitializeStats();
         
+        OnHPChanged += CheckUnitStatus;
 
         unitAnimator.SetAnimationState(UnitAnimationState.Idle);
         
@@ -63,7 +64,7 @@ public partial class Unit : MonoBehaviour
 
     private void CheckUnitStatus(int newStatValue = -1)
     {
-        if(unitStats[UnitStat.HP] <= 0) 
+        if(HP <= 0) 
         {
             isUnitActive = false;
             Debug.Log($"{name} is defeated!");
@@ -72,7 +73,7 @@ public partial class Unit : MonoBehaviour
 
     public override string ToString()
     {
-        return $"Name: {name}\nHP: {unitStats[UnitStat.HP]}";
+        return $"Name: {name}\nHP: {HP}";
     }
 
     public void SetUnitAnimatorState(UnitAnimationState state) => unitAnimator.SetAnimationState(state);

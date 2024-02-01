@@ -1,25 +1,13 @@
 using System;
+using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitUI : MonoBehaviour
+public partial class UnitUI : MonoBehaviour
 {
     public TextMeshProUGUI unitNameText;
-    public Transform statbarParent;
-    public Statbar statbarPrefab;
-    public Statbar HPBar;
-    public Statbar ManaBar;
-
-    [Space(10)]
-    public Transform statTextParent; 
-    public StatText brawnStatUI;
-    public StatText agilityStatUI;
-    public StatText defenseStatUI;
-    public StatText psychStatUI;
-    public StatText focusStatUI;
-    public StatText heartStatUI;
+   
     [Space(10)]
     public ActionSelectionUI selectionUIPrefab;
     [HideInInspector] public ActionSelectionUI selectionUIInstace;
@@ -62,9 +50,16 @@ public class UnitUI : MonoBehaviour
         if(Unit != null)
         {
             Subscribe();
-            HPBar = Instantiate(statbarPrefab, statbarParent);
-            HPBar.Initialize(Unit, Unit.GetMaxStatValue(UnitStat.HP), Unit.HP, UnitStat.HP);
-            ManaBar.Initialize(Unit, Unit.GetMaxStatValue(UnitStat.Mana), Unit.Mana, UnitStat.Mana);
+            SetupStatDisplay();
+        }
+    }
+
+    public void EndActionSelectionDisplay()
+    {
+        if (selectionUIInstace != null)
+        {
+            Destroy(selectionUIInstace.gameObject); // TODO: CONSIDER SHOWING THE SELECTION UI AFTER SELECTION SO PLAYER CAN SEE WHAT THEY SELECTION
+            selectionUIInstace = null;
         }
     }
 
