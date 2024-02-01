@@ -111,7 +111,7 @@ public class ICombatUI : MonoBehaviour
             statParent.SetActive(enabled);
         }
     }
-    public virtual void DisableActionInfo() { SetActionInfoActiveState(false); Debug.Log("disabled");}
+    public virtual void DisableActionInfo() => SetActionInfoActiveState(false);
     public virtual void EnableActionInfo() => SetActionInfoActiveState(true);
 
     public virtual void SetTargetInfoActiveState(bool enabled)
@@ -119,7 +119,7 @@ public class ICombatUI : MonoBehaviour
 
     }
     public virtual void DisableTargetInfo() => SetTargetInfoActiveState(false);
-    public virtual void EnableTargetInfo() => SetActionInfoActiveState(false);
+    public virtual void EnableTargetInfo() => SetTargetInfoActiveState(true);
 
     private void CheckToEnableTargetInfo()
     {
