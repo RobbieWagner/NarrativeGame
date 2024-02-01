@@ -30,7 +30,7 @@ public class ContestStatEffect : ActionEffect
 
     protected virtual bool IsUserWinner(Unit user, Unit target)
     {
-        return user.unitStats[userContestStat] >= target.unitStats[targetContestStat];
+        return true;
     }
 }
 
@@ -39,7 +39,6 @@ public class ContestDamageEffect : ContestStatEffect
 {
 
     [Header("Damage Contest")]
-    [SerializeField] private HealthType effectedHealthType;
     [SerializeField] private int power;
 
     public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
@@ -50,11 +49,9 @@ public class ContestDamageEffect : ContestStatEffect
         {
             if(hitTarget.Value)
             {
-                if(effectedHealthType == HealthType.Fight) hitTarget.Key.Fight -= power;
-                else if(effectedHealthType == HealthType.Spirit) hitTarget.Key.Spirit -= power;
-                else Debug.LogWarning($"{effectedHealthType} is not a valid health type");
+                hitTarget.Key.HP -= power;
 
-                Debug.Log($"{user.name} hit {hitTarget.Key.name} for {power} {effectedHealthType}");
+                Debug.Log($"{user.name} hit {hitTarget.Key.name} for {power} damage!");
             }
         }
     }

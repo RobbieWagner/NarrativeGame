@@ -7,15 +7,19 @@ using UnityEngine.UI;
 public class UnitUI : MonoBehaviour
 {
     public TextMeshProUGUI unitNameText;
-    public TextMeshProUGUI fightValueText;
-    public Slider fightSlider;
-    public TextMeshProUGUI spiritValueText;
-    public Slider spiritSlider;
+    public Transform statbarParent;
+    public Statbar statbarPrefab;
+    public Statbar HPBar;
+    public Statbar ManaBar;
+
     [Space(10)]
-    public TextMeshProUGUI brawnValueText;
-    public TextMeshProUGUI agilityValueText;
-    public TextMeshProUGUI heartValueText;
-    public TextMeshProUGUI willValueText;
+    public Transform statTextParent; 
+    public StatText brawnStatUI;
+    public StatText agilityStatUI;
+    public StatText defenseStatUI;
+    public StatText psychStatUI;
+    public StatText focusStatUI;
+    public StatText heartStatUI;
     [Space(10)]
     public ActionSelectionUI selectionUIPrefab;
     [HideInInspector] public ActionSelectionUI selectionUIInstace;
@@ -38,19 +42,11 @@ public class UnitUI : MonoBehaviour
 
     private void Unsubscribe()
     {
-        unit.OnFightChanged -= UpdateFightUI;
-        unit.OnSpiritChanged -= UpdateSpiritUI;
-
         combatUI.OnUpdateActionUI -= UpdateActionsUI;
     }
 
     private void Subscribe()
     {
-        unit.OnFightChanged += UpdateFightUI;
-        unit.OnSpiritChanged += UpdateSpiritUI;
-
-        unit.OnUnitInitialized += UpdateHealthTexts;
-
         combatUI.OnUpdateActionUI += UpdateActionsUI;
 
         if (ICombatManager.Instance != null)
@@ -65,41 +61,11 @@ public class UnitUI : MonoBehaviour
     {
         if(Unit != null)
         {
-            fightSlider.maxValue = Unit.Fight;
-            fightSlider.value = Unit.Fight;
-            spiritSlider.maxValue = Unit.Spirit;
-            spiritSlider.value = Unit.Spirit;
-            UpdateHealthTexts();
-            UpdateStatTexts();
             Subscribe();
-            //unitNameText.text = unit.UnitName;
+            HPBar = Instantiate(statbarPrefab, statbarParent);
+            HPBar.Initialize(Unit, Unit.GetMaxStatValue(UnitStat.HP), Unit.HP, UnitStat.HP);
+            ManaBar.Initialize(Unit, Unit.GetMaxStatValue(UnitStat.Mana), Unit.Mana, UnitStat.Mana);
         }
-    }
-
-    public void UpdateHealthTexts()
-    {
-        UpdateFightUI(unit.Fight);
-        UpdateSpiritUI(unit.Spirit);
-    }
-
-    public void UpdateStatTexts()
-    {
-        brawnValueText.text = unit.GetStatValue(UnitStat.Brawn).ToString();
-        agilityValueText.text = unit.GetStatValue(UnitStat.Agility).ToString();
-        heartValueText.text = unit.GetStatValue(UnitStat.Heart).ToString();
-        willValueText.text = unit.GetStatValue(UnitStat.Will).ToString();
-    }
-
-    private void UpdateFightUI(int fightValue)
-    {
-        fightValueText.text = $"{fightValue}/{fightSlider.maxValue}";
-        fightSlider.value = fightValue;
-    }
-
-    private void UpdateSpiritUI(int spiritValue)
-    {
-        spiritValueText.text = $"{spiritValue}/{spiritSlider.maxValue}";
-        spiritSlider.value = spiritValue;
     }
 
     public void UpdateActionsUI(Unit user, CombatAction action, ICombatUI combatUI)

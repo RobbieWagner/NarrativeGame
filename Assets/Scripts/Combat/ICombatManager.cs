@@ -204,7 +204,7 @@ public partial class ICombatManager : MonoBehaviour
         unitsInInitiativeOrder.AddRange(allies);
         unitsInInitiativeOrder.AddRange(enemies);
 
-        unitsInInitiativeOrder = unitsInInitiativeOrder.OrderBy(u => u.unitStats[UnitStat.Agility]).ToList();
+        unitsInInitiativeOrder = unitsInInitiativeOrder.OrderBy(u => u.Initiative).ToList();
 
         foreach(Unit unit in unitsInInitiativeOrder)
         {
