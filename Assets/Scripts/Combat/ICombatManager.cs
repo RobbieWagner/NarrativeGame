@@ -183,11 +183,13 @@ public partial class ICombatManager : MonoBehaviour
 
         while(!finishedSelectingActions) yield return null;
 
-        yield return StartCoroutine(InvokeCombatEvent(OnActionSelectionComplete));
+        OnEndActionSelection?.Invoke();
+        yield return StartCoroutine(InvokeCombatEvent(OnActionSelectionCompleteCo));
     }
-    public delegate void OnBeginActionSelectionDelegate();
-    public event OnBeginActionSelectionDelegate OnBeginActionSelection;
-    public event CombatCoroutineEventHandler OnActionSelectionComplete;
+    public delegate void OnToggleActionSelectionStateDelegate();
+    public event OnToggleActionSelectionStateDelegate OnBeginActionSelection;
+    public event OnToggleActionSelectionStateDelegate OnEndActionSelection;
+    public event CombatCoroutineEventHandler OnActionSelectionCompleteCo;
 
     protected virtual IEnumerator ExecuteActions()
     {

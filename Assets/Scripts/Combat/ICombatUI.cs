@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,7 +32,14 @@ public class ICombatUI : MonoBehaviour
                 ICombatManager.Instance.OnConsiderTarget += DisplayConsideredTarget;
 
                 ICombatManager.Instance.OnConsiderAction += UpdateActionUI;
-                ICombatManager.Instance.OnActionSelectionComplete += DestroyUnitActionSelectionUI;
+                ICombatManager.Instance.OnActionSelectionCompleteCo += DestroyUnitActionSelectionUI;
+
+                ICombatManager.Instance.OnEndActionSelection += DisableActionInfo;
+                ICombatManager.Instance.OnEndActionSelection += DisableTargetInfo;
+                ICombatManager.Instance.OnBeginTargetSelection += CheckToEnableTargetInfo;
+
+                ICombatManager.Instance.OnToggleActionSelectionInfo += ToggleActionSelectionInfo;
+                ICombatManager.Instance.OnToggleTargetSelectionInfo += ToggleTargetSelectionInfo;
             }
         }
         catch(NullReferenceException e)
@@ -82,5 +90,43 @@ public class ICombatUI : MonoBehaviour
     protected virtual void DisplayConsideredTarget(Unit user, Unit target, CombatAction action)
     {
         target.StartBlinking(); 
+    }
+
+    protected virtual void ToggleActionSelectionInfo()
+    {
+        Debug.Log("toggled");
+        bool enable = (ICombatManager.Instance.isSelectingAction || ICombatManager.Instance.isSelectingTargets) && alliesUI.Count > 0 && !alliesUI.FirstOrDefault().statTextParent.gameObject.activeSelf;
+        SetActionInfoActiveState(enable);
+    }
+
+    protected virtual void ToggleTargetSelectionInfo()
+    {
+        
+    }
+
+    public virtual void SetActionInfoActiveState(bool enabled)
+    {
+        foreach(GameObject statParent in alliesUI.Select(s => s.statTextParent.gameObject))
+        {
+            statParent.SetActive(enabled);
+        }
+    }
+    public virtual void DisableActionInfo() { SetActionInfoActiveState(false); Debug.Log("disabled");}
+    public virtual void EnableActionInfo() => SetActionInfoActiveState(true);
+
+    public virtual void SetTargetInfoActiveState(bool enabled)
+    {
+
+    }
+    public virtual void DisableTargetInfo() => SetTargetInfoActiveState(false);
+    public virtual void EnableTargetInfo() => SetActionInfoActiveState(false);
+
+    private void CheckToEnableTargetInfo()
+    {
+        if(alliesUI.Count > 0 && alliesUI.FirstOrDefault().statTextParent.gameObject.activeSelf)
+            EnableTargetInfo();
+        else
+            DisableTargetInfo();
+
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Ink.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,8 +10,8 @@ public partial class ICombatManager : MonoBehaviour
 {
     private MenuControls actionSelectionControls;
     private MenuControls targetSelectionControls;
-    protected bool isSelectingAction = false;
-    protected bool isSelectingTargets = false;
+    [HideInInspector] public bool isSelectingAction = false;
+    [HideInInspector] public bool isSelectingTargets = false;
     [SerializeField] private CombatAction passTurn;
 
     private Unit currentUnit;
@@ -43,9 +44,11 @@ public partial class ICombatManager : MonoBehaviour
             actionSelectionControls.UIInput.Navigate.performed += NavigateActions;
             actionSelectionControls.UIInput.Select.performed += SelectAction;
             actionSelectionControls.UIInput.Cancel.performed += CancelPreviousSelection;
+            actionSelectionControls.UIInput.Info.performed += ToggleActionSelectionInfo;
             targetSelectionControls.UIInput.Navigate.performed += NavigateTargets;
             targetSelectionControls.UIInput.Select.performed += SelectTarget;
             targetSelectionControls.UIInput.Cancel.performed += CancelPreviousSelection;
+            targetSelectionControls.UIInput.Info.performed += ToggleTargetSelectionInfo;
 
             OpenActionSelectionForUnit(allies[currentUnitIndex]);
         }
@@ -205,4 +208,17 @@ public partial class ICombatManager : MonoBehaviour
 
         finishedSelectingActions = true;
     }
+
+    private void ToggleActionSelectionInfo(InputAction.CallbackContext context)
+    {
+        if(isSelectingAction) OnToggleActionSelectionInfo?.Invoke();
+    }
+    public delegate void OnToggleInfoDelegate();
+    public event OnToggleInfoDelegate OnToggleActionSelectionInfo;
+
+    private void ToggleTargetSelectionInfo(InputAction.CallbackContext context)
+    {
+        if(isSelectingTargets) OnToggleTargetSelectionInfo?.Invoke();
+    }
+    public event OnToggleInfoDelegate OnToggleTargetSelectionInfo;
 }
