@@ -8,11 +8,12 @@ using UnityEngine.UI;
 public class ICombatUI : MonoBehaviour
 {
     [SerializeField] protected UnitUI unitUIPrefab;
+    [SerializeField] protected WorldSpaceStatbar worldSpaceStatbarPrefab;
     [SerializeField] protected LayoutGroup allyUnits;
     [SerializeField] protected LayoutGroup enemyUnits;
 
     [SerializeField] protected List<UnitUI> alliesUI;
-    [SerializeField] protected List<UnitUI> enemiesUI;
+    [SerializeField] protected List<WorldSpaceStatbar> enemiesUI;
 
     [SerializeField] public Canvas ScreenSpaceCanvas;
     [SerializeField] public Canvas WorldSpaceCanvas;
@@ -75,11 +76,16 @@ public class ICombatUI : MonoBehaviour
 
     protected virtual void AddEnemyUI(Unit enemy)
     {
-        UnitUI newUnitUI = Instantiate(unitUIPrefab, enemyUnits.transform);
-        newUnitUI.Unit = enemy;
-        newUnitUI.combatUI = this;
-        newUnitUI.InitializeUnitUI();
-        enemiesUI.Add(newUnitUI);
+        WorldSpaceStatbar newStatbar = Instantiate(worldSpaceStatbarPrefab, WorldSpaceCanvas.transform);
+        newStatbar.Initialize(enemy, enemy.GetMaxStatValue(UnitStat.HP), enemy.HP, UnitStat.HP);
+        newStatbar.transform.position = enemy.transform.position;
+        enemiesUI.Add(newStatbar);
+
+        // UnitUI newUnitUI = Instantiate(unitUIPrefab, enemyUnits.transform);
+        // newUnitUI.Unit = enemy;
+        // newUnitUI.combatUI = this;
+        // newUnitUI.InitializeUnitUI();
+        // enemiesUI.Add(newUnitUI);
     }
 
     protected virtual void StopConsideringTarget(Unit target)

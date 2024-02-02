@@ -13,7 +13,7 @@ public class Battlefield : MonoBehaviour
 
     public Vector3 camPosition;
 
-    public void PlaceUnits(List<Transform> units, bool unitsAreAllies = true)
+    public void PlaceUnits(List<Unit> units, bool unitsAreAllies = true)
     {
         Vector3 unitPosition;
 
@@ -23,7 +23,7 @@ public class Battlefield : MonoBehaviour
 
             for(int i = 0; i < units.Count; i++)
             {
-                units[i].position = unitPosition;
+                units[i].MoveUnit(unitPosition);
                 unitPosition += distanceBetweenAllies;
             }
         }
@@ -33,7 +33,7 @@ public class Battlefield : MonoBehaviour
 
             for(int i = 0; i < units.Count; i++)
             {
-                units[i].position = unitPosition;
+                units[i].MoveUnit(unitPosition);
                 unitPosition -= distanceBetweenEnemies;
             }
         }

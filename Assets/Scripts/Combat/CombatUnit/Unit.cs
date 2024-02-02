@@ -20,7 +20,6 @@ public partial class Unit : MonoBehaviour
     public string UnitName;
     [SerializeField] private UnitAnimator unitAnimator;
     [SerializeField] private SpriteRenderer unitSprite;
-    private Coroutine parentBlinkCo;
     private Sequence currentBlinkCo;
 
     private const float BLINK_TIME = 1f;
@@ -98,7 +97,16 @@ public partial class Unit : MonoBehaviour
         if(currentBlinkCo != null && currentBlinkCo.IsPlaying()) 
         {
             currentBlinkCo.Kill(true);
+            currentBlinkCo = null;
             unitSprite.color = Color.white;
         }
     }
+
+    public void MoveUnit(Vector3 position) 
+    {
+        transform.position = position;
+        OnUnitMoved?.Invoke();
+    }  
+    public delegate void OnUnitMovedDelegate();
+    public event OnUnitMovedDelegate OnUnitMoved;
 }

@@ -23,8 +23,8 @@ public partial class CombatManager : ICombatManager
         foreach(Unit enemy in currentCombat.enemyPrefabs)
             TryAddEnemyToCombat(enemy);
 
-        debugBattlefield?.PlaceUnits(allies.Select(a => a.transform).ToList(), true);
-        debugBattlefield?.PlaceUnits(enemies.Select(e => e.transform).ToList(), false);
+        debugBattlefield?.PlaceUnits(allies, true);
+        debugBattlefield?.PlaceUnits(enemies, false);
 
         yield return StartCoroutine(base.SetupCombat());
     }

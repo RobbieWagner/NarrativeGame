@@ -147,11 +147,7 @@ public partial class ICombatManager : MonoBehaviour
         if(currentSelectedAction.canTargetEnemies) actionTargets.AddRange(GetActiveEnemiesOfUnit(currentUnit));
 
         if(actionTargets.Count == 0) StartActionSelectionForNextUnit();
-        // else if(actionTargets.Count == 1)
-        // {
-        //     currentUnit.selectedTargets.AddRange(actionTargets);
-        //     StartActionSelectionForNextUnit();
-        // }
+
         else
         {
             targetSelectionControls.UIInput.Enable();
