@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 63497886668952190}
   - component: {fileID: 9221128126732966550}
   m_Layer: 5
-  m_Name: ICombatUI
+  m_Name: UnitsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [Serializable]
 public class ActionEffect
@@ -12,33 +13,76 @@ public class ActionEffect
     }
 }
 
+//Parent Action Effect class defining actions that may or may not hit their targets
 [Serializable]
-public class ContestStatEffect : ActionEffect
+public class ChanceActionEffect : ActionEffect
 {
-    [Header("Contest")]
-    public UnitStat userContestStat;
-    public UnitStat targetContestStat;
+    [Header("Chance")]
     protected Dictionary<Unit, bool> hitTargets;
+    [SerializeField] private int attackAccuracy = 100;
 
     public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
     {
         Debug.Log("getting hit list");
         hitTargets = new Dictionary<Unit, bool>();
-        foreach(Unit target in targets) hitTargets.Add(target, IsUserWinner(user, target));
+        foreach(Unit target in targets) hitTargets.Add(target, UserHitsTarget(user, target));
         yield return null;
     }
 
-    protected virtual bool IsUserWinner(Unit user, Unit target)
+    protected virtual bool UserHitsTarget(Unit user, Unit target)
     {
-        return true;
+        int hitChance = attackAccuracy + user.Focus - target.Agility;
+        if(hitChance > 100) return true;
+        return UnityEngine.Random.Range(0, 100) < hitChance;
+    }
+}
+
+//TODO: Add action effect that is applied to user
+
+[Serializable]
+public class HealTargetsActionEffect: ActionEffect
+{
+    [Header("Healing")]
+    [SerializeField] private int power;
+    
+    public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
+    {
+        yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
+        Debug.Log($"{user.name} is attacking");
+        //TODO: Add crit chance
+        foreach(Unit target in targets)
+        {
+            int healthDelta = power + user.Heart;
+            target.HP += healthDelta;
+            Debug.Log($"{user.name} hit {target.name} for {healthDelta} damage!");
+        }
     }
 }
 
 [Serializable]
-public class ContestDamageEffect : ContestStatEffect
+public class AutoHitAttackActionEffect: ActionEffect
 {
+    [Header("Attack Action")]
+    [SerializeField] private int power;
 
-    [Header("Damage Contest")]
+    public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
+    {
+        yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
+        Debug.Log($"{user.name} is attacking");
+        //TODO: Add crit chance
+        foreach(Unit target in targets)
+        {
+            int healthDelta = power + user.Brawn - target.Defense;;
+            target.HP -= healthDelta;
+            Debug.Log($"{user.name} hit {target.name} for {healthDelta} damage!");
+        }
+    }
+}
+
+[Serializable]
+public class AttackActionEffect : ChanceActionEffect
+{
+    [Header("Attack Action")]
     [SerializeField] private int power;
 
     public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
@@ -49,23 +93,58 @@ public class ContestDamageEffect : ContestStatEffect
         {
             if(hitTarget.Value)
             {
-                hitTarget.Key.HP -= power;
-
-                Debug.Log($"{user.name} hit {hitTarget.Key.name} for {power} damage!");
+                //TODO: Add crit chance
+                int healthDelta = power + user.Brawn - hitTarget.Key.Defense;
+                hitTarget.Key.HP -= healthDelta;
+                Debug.Log($"{user.name} hit {hitTarget.Key.name} for {healthDelta} damage!");
             }
         }
     }
 }
 
 [Serializable]
-public class StatChangeEffect : ActionEffect
+public class StatChangeActionEffect : ActionEffect
 {
     [Header("Stat Change")]
     [SerializeField] private UnitStat stat;
+    [SerializeField] private int power;
 
     public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
     {
-        throw new System.NotImplementedException();
+        int statDelta = power;
+        if(power > 0) statDelta += user.Heart / 2;
+        yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
+        Debug.Log($"{user.name} is changing stats");
+        foreach(Unit target in targets)
+        {
+            target.EffectStatValue(stat, statDelta);
+            Debug.Log($"{user.name} {(statDelta > 0 ? "raised" : "lowered")} {target}'s {stat} by {Math.Abs(statDelta)}");
+        }
+    }
+}
+
+[Serializable]
+public class StatChangeChanceActionEffect : ChanceActionEffect
+{
+    [Header("Stat Change (Chance)")]
+    [SerializeField] private UnitStat stat;
+    [SerializeField] private int power;
+
+    public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
+    {
+        int statDelta = power;
+        if(power > 0) statDelta += user.Heart / 2;
+
+        yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
+        Debug.Log($"{user.name} is changing stats");
+        foreach(KeyValuePair<Unit, bool> hitTarget in hitTargets)
+        {
+            if(hitTarget.Value)
+            {
+                hitTarget.Key.EffectStatValue(stat, statDelta);
+                Debug.Log($"{user.name} {(statDelta > 0 ? "raised" : "lowered")} {hitTarget.Value}'s {stat} by {Math.Abs(statDelta)}");
+            }
+        }
     }
 }
 

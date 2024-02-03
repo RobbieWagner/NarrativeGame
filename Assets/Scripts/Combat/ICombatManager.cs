@@ -206,7 +206,8 @@ public partial class ICombatManager : MonoBehaviour
             //Debug.Log($"{unit.name} is acting");
             if(unit.isUnitActive && unit.currentSelectedAction != null)
             {
-                yield return StartCoroutine(CombatCamera.Instance?.MoveCamera(unit.transform.position + UNIT_OFFSET, 1.2f));
+                yield return StartCoroutine(CombatCamera.Instance?.MoveCamera
+                                                        (Vector3.MoveTowards(CombatCamera.Instance.transform.position, unit.transform.position + UNIT_OFFSET, 1.75f), 1.2f));
                 //show UI for action
                 yield return StartCoroutine(CombatCamera.Instance?.ResetCameraPosition(.9f));
                 yield return StartCoroutine(unit.currentSelectedAction?.ExecuteAction(

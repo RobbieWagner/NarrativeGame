@@ -189,5 +189,4 @@ MonoBehaviour:
     - Key: 5
       Value: 2
   availableActions:
-  - {fileID: 11400000, guid: 0180b87c6e9a56d46bda54728358220f, type: 2}
   - {fileID: 11400000, guid: 3006749205d13df4e9cf2e5d2046dceb, type: 2}

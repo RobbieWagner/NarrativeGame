@@ -398,4 +398,54 @@ public partial class Unit : MonoBehaviour
             break;
         }
     }
+
+    public void EffectStatValue(UnitStat stat, int delta)
+    {
+        if(delta == 0) return;
+
+        switch(stat)
+        {
+            case UnitStat.Brawn:
+            Brawn += delta;
+            break;
+            case UnitStat.Agility:
+            Agility += delta;
+            break;
+            case UnitStat.Defense:
+            Defense += delta;
+            break;
+            case UnitStat.Psych:
+            Psych += delta;
+            break;
+            case UnitStat.Focus:
+            Focus += delta;
+            break;
+            case UnitStat.Heart:
+            Heart += delta;
+            break;
+
+            case UnitStat.HP:
+            HP += delta;
+            Debug.LogWarning("HP was effected using EffectStatValue. Consider accessing HP directly if possible.");
+            break;
+            case UnitStat.Mana:
+            Mana += delta;
+            break;
+            case UnitStat.Initiative:
+            Initiative += delta;
+            break;
+            case UnitStat.PCrit:
+            PCrit += delta;
+            break;
+            case UnitStat.MCrit:
+            MCrit += delta;
+            break;
+            case UnitStat.BMR:
+            BadMentRes += delta;
+            break;
+            default:
+            Debug.LogWarning("attempt to change stat value unsuccessful (stat was not found)");
+            break;
+        }
+    }
 }
