@@ -17,6 +17,8 @@ public partial class UnitUI : MonoBehaviour
     private Unit unit;
     [HideInInspector] public ICombatUI combatUI;
 
+    [SerializeField] Vector3 actionSelectionUIOffset;
+
     public Unit Unit
     {
         get { return unit; }
@@ -63,14 +65,14 @@ public partial class UnitUI : MonoBehaviour
         }
     }
 
-    public void UpdateActionsUI(Unit user, CombatAction action, ICombatUI combatUI)
+    public void UpdateActionsUI(Unit user, CombatAction action, ICombatUI combatUI, bool actionIndexIncreased = true)
     {
         if (user.Equals(Unit))
         {
             if (selectionUIInstace == null)
             {
                 selectionUIInstace = Instantiate(selectionUIPrefab, combatUI.WorldSpaceCanvas.transform);
-                selectionUIInstace.transform.position = unit.transform.position + new Vector3(0, .01f, -.5f);
+                selectionUIInstace.transform.position = unit.transform.position + actionSelectionUIOffset;
             }
             int actionIndex = user.availableActions.IndexOf(action);
             if (actionIndex >= 0)
@@ -90,9 +92,12 @@ public partial class UnitUI : MonoBehaviour
                 else
                     nextAction = user.availableActions[actionIndex + 1];
 
-                if(selectionUIInstace.prevActionImage != null) selectionUIInstace.prevActionImage.sprite = prevAction.actionSprite;
-                selectionUIInstace.curActionImage.sprite = curAction.actionSprite;
-                if(selectionUIInstace.nextActionImage != null) selectionUIInstace.nextActionImage.sprite = nextAction.actionSprite;
+                //if(selectionUIInstace.prevActionImage != null) selectionUIInstace.prevActionImage.sprite = prevAction.actionSprite;
+                if(selectionUIInstace.isInitialized)
+                    selectionUIInstace.SetCurrentSelectionSprite(curAction.actionSprite, actionIndexIncreased);
+                else
+                    selectionUIInstace.Initialize(curAction.actionSprite, unit.transform.position + actionSelectionUIOffset);
+                //if(selectionUIInstace.nextActionImage != null) selectionUIInstace.nextActionImage.sprite = nextAction.actionSprite;
 
                 selectionUIInstace.EnableActionUI();
             }

@@ -24,7 +24,6 @@ public class CombatCamera : MonoBehaviour
 
     public IEnumerator MoveCamera(Vector3 position, float time = 1f)
     {
-        Debug.Log(position);
         yield return transform.DOMove(position, time).WaitForCompletion();
     }
     public IEnumerator MoveCameraSpeed(Vector3 position, int speed = 1)

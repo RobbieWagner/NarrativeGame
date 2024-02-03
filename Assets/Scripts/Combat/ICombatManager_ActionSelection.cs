@@ -106,14 +106,15 @@ public partial class ICombatManager : MonoBehaviour
 
     private void ConsiderAction(int index)
     {
-        Debug.Log($"considering action {index}");
+        bool actionIndexIncreased = index > consideredActionIndex;
         int actionIndex = index % currentUnit.availableActions.Count; 
         if(actionIndex < 0) actionIndex = currentUnit.availableActions.Count - 1;
+        Debug.Log($"considering action {actionIndex}");
         consideredActionIndex = actionIndex;
         currentConsideredAction = currentUnit.availableActions[consideredActionIndex];
-        OnConsiderAction?.Invoke(currentUnit, currentConsideredAction);
+        OnConsiderAction?.Invoke(currentUnit, currentConsideredAction, actionIndexIncreased);
     }
-    public delegate void OnConsiderActionDelegate(Unit unit, CombatAction action);
+    public delegate void OnConsiderActionDelegate(Unit unit, CombatAction action, bool actionIndexIncreased);
     public event OnConsiderActionDelegate OnConsiderAction;
 
     private void SelectAction(InputAction.CallbackContext context)

@@ -73,6 +73,7 @@ MonoBehaviour:
   prevActionImage: {fileID: 0}
   curActionImage: {fileID: 1773539215160582906}
   nextActionImage: {fileID: 0}
+  isInitialized: 0
 --- !u!1 &5360962649212630734
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.25, y: 0.75}
+  m_AnchoredPosition: {x: 1, y: 0.75}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8895515555737939768
@@ -127,7 +128,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 3
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1

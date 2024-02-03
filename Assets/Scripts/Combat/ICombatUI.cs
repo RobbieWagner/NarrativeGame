@@ -49,11 +49,11 @@ public class ICombatUI : MonoBehaviour
         }
     }
 
-    private void UpdateActionUI(Unit unit, CombatAction action)
+    private void UpdateActionUI(Unit unit, CombatAction action, bool actionIndexIncreased)
     {
-        OnUpdateActionUI?.Invoke(unit, action, this);
+        OnUpdateActionUI?.Invoke(unit, action, this, actionIndexIncreased);
     }
-    public delegate void OnUpdateActionUIDelegate(Unit unit, CombatAction action, ICombatUI combatUI);
+    public delegate void OnUpdateActionUIDelegate(Unit unit, CombatAction action, ICombatUI combatUI, bool actionIndexIncreased);
     public event OnUpdateActionUIDelegate OnUpdateActionUI;
 
     private IEnumerator DestroyUnitActionSelectionUI()
