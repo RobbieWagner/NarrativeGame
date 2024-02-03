@@ -10,8 +10,8 @@ public class ActionSelectionUI : MonoBehaviour
 
     public void EnableActionUI()
     {
-        prevActionImage.enabled = true;
+        if(prevActionImage != null) prevActionImage.enabled = true;
         curActionImage.enabled = true;
-        nextActionImage.enabled = true;
+        if(prevActionImage != null) nextActionImage.enabled = true;
     }
 }

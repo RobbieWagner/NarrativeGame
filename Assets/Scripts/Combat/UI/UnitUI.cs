@@ -90,9 +90,9 @@ public partial class UnitUI : MonoBehaviour
                 else
                     nextAction = user.availableActions[actionIndex + 1];
 
-                selectionUIInstace.prevActionImage.sprite = prevAction.actionSprite;
+                if(selectionUIInstace.prevActionImage != null) selectionUIInstace.prevActionImage.sprite = prevAction.actionSprite;
                 selectionUIInstace.curActionImage.sprite = curAction.actionSprite;
-                selectionUIInstace.nextActionImage.sprite = nextAction.actionSprite;
+                if(selectionUIInstace.nextActionImage != null) selectionUIInstace.nextActionImage.sprite = nextAction.actionSprite;
 
                 selectionUIInstace.EnableActionUI();
             }

@@ -53,6 +53,15 @@ public partial class @MenuControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Info"",
+                    ""type"": ""Button"",
+                    ""id"": ""1aaf65bd-2a08-4a17-8d21-99b6301f8722"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -308,6 +317,39 @@ public partial class @MenuControls: IInputActionCollection2, IDisposable
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3cdfaaf-1d3f-4f61-a41c-916f7b4389c4"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Info"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c4acf6c-b4c6-45bd-a2e9-4087b67f25b7"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Info"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7305ea2-c9c0-4109-8c7d-96d3956e789c"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Info"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -319,6 +361,7 @@ public partial class @MenuControls: IInputActionCollection2, IDisposable
         m_UIInput_Navigate = m_UIInput.FindAction("Navigate", throwIfNotFound: true);
         m_UIInput_Select = m_UIInput.FindAction("Select", throwIfNotFound: true);
         m_UIInput_Cancel = m_UIInput.FindAction("Cancel", throwIfNotFound: true);
+        m_UIInput_Info = m_UIInput.FindAction("Info", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -383,6 +426,7 @@ public partial class @MenuControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_UIInput_Navigate;
     private readonly InputAction m_UIInput_Select;
     private readonly InputAction m_UIInput_Cancel;
+    private readonly InputAction m_UIInput_Info;
     public struct UIInputActions
     {
         private @MenuControls m_Wrapper;
@@ -390,6 +434,7 @@ public partial class @MenuControls: IInputActionCollection2, IDisposable
         public InputAction @Navigate => m_Wrapper.m_UIInput_Navigate;
         public InputAction @Select => m_Wrapper.m_UIInput_Select;
         public InputAction @Cancel => m_Wrapper.m_UIInput_Cancel;
+        public InputAction @Info => m_Wrapper.m_UIInput_Info;
         public InputActionMap Get() { return m_Wrapper.m_UIInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -408,6 +453,9 @@ public partial class @MenuControls: IInputActionCollection2, IDisposable
             @Cancel.started += instance.OnCancel;
             @Cancel.performed += instance.OnCancel;
             @Cancel.canceled += instance.OnCancel;
+            @Info.started += instance.OnInfo;
+            @Info.performed += instance.OnInfo;
+            @Info.canceled += instance.OnInfo;
         }
 
         private void UnregisterCallbacks(IUIInputActions instance)
@@ -421,6 +469,9 @@ public partial class @MenuControls: IInputActionCollection2, IDisposable
             @Cancel.started -= instance.OnCancel;
             @Cancel.performed -= instance.OnCancel;
             @Cancel.canceled -= instance.OnCancel;
+            @Info.started -= instance.OnInfo;
+            @Info.performed -= instance.OnInfo;
+            @Info.canceled -= instance.OnInfo;
         }
 
         public void RemoveCallbacks(IUIInputActions instance)
@@ -443,5 +494,6 @@ public partial class @MenuControls: IInputActionCollection2, IDisposable
         void OnNavigate(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnInfo(InputAction.CallbackContext context);
     }
 }

@@ -69,7 +69,8 @@ public partial class ICombatManager : MonoBehaviour
         else
         {
             //display ui
-            unit.StartBlinking();
+            //unit.StartBlinking();
+            StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition, unit.transform.position, 1f)));
 
             targetSelectionControls.Disable();
             actionSelectionControls.Enable();
@@ -140,7 +141,8 @@ public partial class ICombatManager : MonoBehaviour
         isSelectingAction = false;
         isSelectingTargets = true;
 
-        currentUnit.StopBlinking();
+        //currentUnit.StopBlinking();
+        StartCoroutine(CombatCamera.Instance?.ResetCameraPosition());
 
         if(currentSelectedAction.canTargetSelf) actionTargets.Add(currentUnit);
         if(currentSelectedAction.canTargetAllies) actionTargets.AddRange(GetActiveAlliesOfUnit(currentUnit));
