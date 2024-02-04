@@ -195,7 +195,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 50, y: 25}
-  m_Spacing: {x: 4.5, y: -0.5}
+  m_Spacing: {x: 4.5, y: 3}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &4411083136188941509
@@ -473,11 +473,11 @@ MonoBehaviour:
   agilityStatUI: {fileID: 0}
   agilityIcon: {fileID: 21300000, guid: f2a0d205b349fa94caaa265e4faf21b1, type: 3}
   defenseStatUI: {fileID: 0}
-  defenseIcon: {fileID: 21300000, guid: 1ede68db572070c4b886add6cf799843, type: 3}
+  defenseIcon: {fileID: 21300000, guid: 0aee294d434963d46bda97971fbe57db, type: 3}
   psychStatUI: {fileID: 0}
-  psychIcon: {fileID: 21300000, guid: 97c4595cae4170e4584abda651674c29, type: 3}
+  psychIcon: {fileID: 21300000, guid: 886d49cece41d134197ea44225102e2f, type: 3}
   focusStatUI: {fileID: 0}
-  focusIcon: {fileID: 21300000, guid: 1ab5662c4c4a7d04091860a9a695ab53, type: 3}
+  focusIcon: {fileID: 21300000, guid: 988cc7118706f664daf6c0eb8b460727, type: 3}
   heartStatUI: {fileID: 0}
   heartIcon: {fileID: 21300000, guid: 9efc50646632e6c4b92b8999ab0d04cb, type: 3}
 --- !u!114 &1903916332912048476
