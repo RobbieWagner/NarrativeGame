@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor.Scripting;
 
 [Serializable]
 public class ActionEffect
@@ -151,12 +152,29 @@ public class StatChangeChanceActionEffect : ChanceActionEffect
 [Serializable]
 public class PassEffect : ActionEffect
 {
-    [Header("Pass Turn")]
-    [SerializeField] private bool revitalizes = true;
+    public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets = null)
+    {
+        Debug.Log($"{user.name} is passing their turn");
+        yield return null;
+    }
+}
+
+[Serializable]
+public class Replenish : ActionEffect
+{
+    [Header("Replenishment")]
+    [SerializeField] private float manaRegenPercent = 0;
+    [SerializeField] private float hpRegenPercent = 0;
 
     public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets = null)
     {
         Debug.Log($"{user.name} is resting");
         yield return null;
+
+        int manaRegained = ((int)(manaRegenPercent/100 * user.GetMaxStatValue(UnitStat.Mana))) + user.Psych;
+        int hpRegained = ((int)(hpRegenPercent/100 * user.GetMaxStatValue(UnitStat.HP))) + (user.Defense/3 * 2);
+
+        user.Mana += manaRegained;
+        user.HP += hpRegained;
     }
 }

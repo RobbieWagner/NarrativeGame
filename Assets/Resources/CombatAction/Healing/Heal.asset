@@ -17,9 +17,14 @@ MonoBehaviour:
   targetsAllOpposition: 0
   targetsAllAllies: 0
   canTargetSelf: 0
-  canTargetAllies: 0
+  canTargetAllies: 1
   canTargetEnemies: 0
-  effects: []
+  effects:
+  - rid: 4231065987668770816
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4231065987668770816
+      type: {class: HealTargetsActionEffect, ns: , asm: Assembly-CSharp}
+      data:
+        power: 1

@@ -161,7 +161,11 @@ public partial class Unit : MonoBehaviour
     private int pCrit;
     public int PCrit
     {
-        get => pCrit;
+        get 
+        {
+            if(pCrit > GetMaxStatValue(UnitStat.PCrit)) return GetMaxStatValue(UnitStat.PCrit);
+            return pCrit;
+        }
         set
         {
             if (value == pCrit) return;
@@ -176,7 +180,11 @@ public partial class Unit : MonoBehaviour
     private int mCrit;
     public int MCrit
     {
-        get => mCrit;
+        get 
+        {
+            if(mCrit > GetMaxStatValue(UnitStat.MCrit)) return GetMaxStatValue(UnitStat.MCrit);
+            return mCrit;
+        }
         set
         {
             if (value == mCrit) return;
@@ -191,7 +199,11 @@ public partial class Unit : MonoBehaviour
     private int initiative;
     public int Initiative
     {
-        get => initiative;
+        get 
+        {
+            if(initiative > GetMaxStatValue(UnitStat.Initiative)) return GetMaxStatValue(UnitStat.Initiative);
+            return initiative;
+        }
         set
         {
             if (value == initiative) return;
@@ -206,7 +218,11 @@ public partial class Unit : MonoBehaviour
     private int badMentRes;
     public int BadMentRes
     {
-        get => badMentRes;
+        get 
+        {
+            if(badMentRes > GetMaxStatValue(UnitStat.BMR)) return GetMaxStatValue(UnitStat.BMR);
+            return badMentRes;
+        }
         set
         {
             if (value == badMentRes) return;
@@ -239,6 +255,7 @@ public partial class Unit : MonoBehaviour
     public int GetMaxStatValue(UnitStat stat)
     {
         if(maxStatValues.Keys.Contains(stat)) return maxStatValues[stat];
+        int returnValue;
         switch(stat)
         {
             case UnitStat.None:
@@ -257,9 +274,13 @@ public partial class Unit : MonoBehaviour
             return -1;
 
             case UnitStat.HP:
-            return 10 + maxStatValues[UnitStat.Brawn] / 2 + maxStatValues[UnitStat.Agility] / 2;
+            returnValue = 10 + maxStatValues[UnitStat.Brawn] / 2 + maxStatValues[UnitStat.Defense] / 2;
+            if(!maxStatValues.ContainsKey(stat)) maxStatValues.Add(stat, returnValue);
+            return returnValue;
             case UnitStat.Mana:
-            return 5 + maxStatValues[UnitStat.Psych] + maxStatValues[UnitStat.Heart] / 2;
+            returnValue = 5 + maxStatValues[UnitStat.Psych] + maxStatValues[UnitStat.Heart] / 2;
+            if(!maxStatValues.ContainsKey(stat)) maxStatValues.Add(stat, returnValue);
+            return returnValue;
             case UnitStat.Initiative:
             return Random.Range(1, 7) + maxStatValues[UnitStat.Agility];
             case UnitStat.PCrit:

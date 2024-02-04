@@ -10,20 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2384817494aff8a488301be17228e46e, type: 3}
-  m_Name: PassTurn
+  m_Name: LowerAgility
   m_EditorClassIdentifier: 
-  actionName: Skip Turn
-  actionSprite: {fileID: 21300000, guid: 38564a19d4809e04e832b2c8504c8fbb, type: 3}
+  actionName: Fatigue
+  actionSprite: {fileID: 21300000, guid: 68b76c8067c9e584180fc4afb2a83b2e, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
   canTargetSelf: 0
   canTargetAllies: 0
-  canTargetEnemies: 0
+  canTargetEnemies: 1
   effects:
-  - rid: 7214812176352804865
+  - rid: 4231065987668770820
   references:
     version: 2
     RefIds:
-    - rid: 7214812176352804865
-      type: {class: PassEffect, ns: , asm: Assembly-CSharp}
-      data: 
+    - rid: 4231065987668770820
+      type: {class: StatChangeChanceActionEffect, ns: , asm: Assembly-CSharp}
+      data:
+        attackAccuracy: 95
+        stat: 1
+        power: -1

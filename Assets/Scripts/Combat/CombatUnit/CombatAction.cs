@@ -19,10 +19,11 @@ public class CombatAction : ScriptableObject
     [SerializeReference] public List<ActionEffect> effects;
 
     [ContextMenu("Heal")] void AddHealActionEffect(){effects.Add(new HealTargetsActionEffect());}
-    [ContextMenu("Attack")] void AddAttackActionEffect(){effects.Add(new AttackActionEffect());}
     [ContextMenu("Auto Hit Attack")] void AddAutoHitAttackActionEffect(){effects.Add(new AutoHitAttackActionEffect());}
+    [ContextMenu("Attack")] void AddAttackActionEffect(){effects.Add(new AttackActionEffect());}
     [ContextMenu("Auto Hit Stat Change")] void AddStatChangeActionEffect(){effects.Add(new StatChangeActionEffect());}
     [ContextMenu("Stat Change")] void AddStatChangeChanceActionEffect(){effects.Add(new StatChangeChanceActionEffect());}
+    [ContextMenu("Replenish")] void AddRestActionEffect(){effects.Add(new Replenish());}
     [ContextMenu("Pass")] void AddPassTurnEffect(){effects.Add(new PassEffect());}
     [ContextMenu("CLEAR ACTION")] void Clear(){effects.Clear();}
 
