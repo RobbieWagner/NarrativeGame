@@ -77,7 +77,7 @@ public partial class Unit : MonoBehaviour
             if (value == brawn) return;
             brawn = value;
             if(brawn < 0) brawn = 0;
-            if(brawn > GetMaxStatValue(UnitStat.Brawn)) brawn = GetMaxStatValue(UnitStat.Brawn);
+            Debug.Log($"brawn raised to {brawn}");
             OnBrawnChanged?.Invoke(brawn);
         }
     }
@@ -92,7 +92,6 @@ public partial class Unit : MonoBehaviour
             if (value == agility) return;
             agility = value;
             if(agility < 0) agility = 0;
-            if(agility > GetMaxStatValue(UnitStat.Agility)) agility = GetMaxStatValue(UnitStat.Agility);
             OnAgilityChanged?.Invoke(agility);
         }
     }
@@ -107,7 +106,6 @@ public partial class Unit : MonoBehaviour
             if (value == defense) return;
             defense = value;
             if(defense < 0) defense = 0;
-            if(defense > GetMaxStatValue(UnitStat.Defense)) defense = GetMaxStatValue(UnitStat.Defense);
             OnDefenseChanged?.Invoke(defense);
         }
     }
@@ -122,7 +120,6 @@ public partial class Unit : MonoBehaviour
             if (value == psych) return;
             psych = value;
             if(psych < 0) psych = 0;
-            if(psych > GetMaxStatValue(UnitStat.Psych)) psych = GetMaxStatValue(UnitStat.Psych);
             OnPsychChanged?.Invoke(psych);
         }
     }
@@ -137,7 +134,6 @@ public partial class Unit : MonoBehaviour
             if (value == focus) return;
             focus = value;
             if(focus < 0) focus = 0;
-            if(focus > GetMaxStatValue(UnitStat.Focus)) focus = GetMaxStatValue(UnitStat.Focus);
             OnFocusChanged?.Invoke(focus);
         }
     }
@@ -152,7 +148,6 @@ public partial class Unit : MonoBehaviour
             if (value == heart) return;
             heart = value;
             if(heart < 0) heart = 0;
-            if(heart > GetMaxStatValue(UnitStat.HP)) heart = GetMaxStatValue(UnitStat.HP);
             OnHeartChanged?.Invoke(heart);
         }
     }
@@ -332,6 +327,7 @@ public partial class Unit : MonoBehaviour
         {
             case UnitStat.Brawn:
             OnBrawnChanged += action;
+            Debug.Log("subscribed new event to on brawn changed");
             break;
             case UnitStat.Agility:
             OnAgilityChanged += action;

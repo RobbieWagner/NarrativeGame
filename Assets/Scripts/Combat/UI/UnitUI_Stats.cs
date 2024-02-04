@@ -15,7 +15,7 @@ public partial class UnitUI : MonoBehaviour
     public Sprite manaIcon;
 
     [Space(10)]
-    public Transform statTextParent; 
+    public Image statTextParent; 
     public StatText statTextPrefab;
     [HideInInspector] public StatText brawnStatUI;
     public Sprite brawnIcon;
@@ -37,17 +37,17 @@ public partial class UnitUI : MonoBehaviour
         ManaBar = Instantiate(statbarPrefab, statbarParent);
         SetupNewStatbar(ManaBar, manaColor, manaIcon, UnitStat.Mana);
     
-        brawnStatUI = Instantiate(statTextPrefab, statTextParent);
+        brawnStatUI = Instantiate(statTextPrefab, statTextParent.transform);
         SetupNewStatText(brawnStatUI, brawnIcon, UnitStat.Brawn);
-        agilityStatUI = Instantiate(statTextPrefab, statTextParent);
+        agilityStatUI = Instantiate(statTextPrefab, statTextParent.transform);
         SetupNewStatText(agilityStatUI, agilityIcon, UnitStat.Agility);
-        defenseStatUI = Instantiate(statTextPrefab, statTextParent);
+        defenseStatUI = Instantiate(statTextPrefab, statTextParent.transform);
         SetupNewStatText(defenseStatUI, defenseIcon, UnitStat.Defense);
-        psychStatUI = Instantiate(statTextPrefab, statTextParent);
+        psychStatUI = Instantiate(statTextPrefab, statTextParent.transform);
         SetupNewStatText(psychStatUI, psychIcon, UnitStat.Psych);
-        focusStatUI = Instantiate(statTextPrefab, statTextParent);
+        focusStatUI = Instantiate(statTextPrefab, statTextParent.transform);
         SetupNewStatText(focusStatUI, focusIcon, UnitStat.Focus);
-        heartStatUI = Instantiate(statTextPrefab, statTextParent);
+        heartStatUI = Instantiate(statTextPrefab, statTextParent.transform);
         SetupNewStatText(heartStatUI, heartIcon, UnitStat.Heart);
     }
 
@@ -62,5 +62,27 @@ public partial class UnitUI : MonoBehaviour
     {
         statText.statIcon.sprite = icon;
         statText.Initialize(Unit, Unit.GetMaxStatValue(stat), Unit.GetStatValue(stat), stat);
+    }
+
+    public void EnableStatUI()
+    {
+        statTextParent.enabled = true;
+        brawnStatUI.EnableUI();
+        agilityStatUI.EnableUI();
+        defenseStatUI.EnableUI();
+        psychStatUI.EnableUI();
+        focusStatUI.EnableUI();
+        heartStatUI.EnableUI();
+    }
+
+    public void DisableStatUI()
+    {
+        statTextParent.enabled = false;
+        brawnStatUI.DisableUI();
+        agilityStatUI.DisableUI();
+        defenseStatUI.DisableUI();
+        psychStatUI.DisableUI();
+        focusStatUI.DisableUI();
+        heartStatUI.DisableUI();
     }
 }

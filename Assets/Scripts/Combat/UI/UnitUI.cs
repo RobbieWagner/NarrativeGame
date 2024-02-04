@@ -53,6 +53,7 @@ public partial class UnitUI : MonoBehaviour
         {
             Subscribe();
             SetupStatDisplay();
+            DisableStatUI();
         }
     }
 

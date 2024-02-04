@@ -246,6 +246,7 @@ public partial class ICombatManager : MonoBehaviour
         {
             Unit instantiatedUnit = Instantiate(ally, unitParent);
             allies.Add(instantiatedUnit);
+            instantiatedUnit.SetUnitAnimatorState(UnitAnimationState.CombatIdleRight);
             OnAddNewAlly?.Invoke(instantiatedUnit);
             return true;
         }
@@ -259,6 +260,7 @@ public partial class ICombatManager : MonoBehaviour
         {
             Unit instantiatedUnit = Instantiate(enemy, unitParent);
             enemies.Add(instantiatedUnit);
+            instantiatedUnit.SetUnitAnimatorState(UnitAnimationState.CombatIdleLeft);
             OnAddNewEnemy?.Invoke(instantiatedUnit);
             return true;
         }
