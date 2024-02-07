@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class CombatCamera : MonoBehaviour
+public class CombatCamera : GameCamera
 {
 
     public Vector3 defaultPosition = Vector3.zero;
 
     public static CombatCamera Instance {get; private set;}
 
-    private void Awake()
+    protected override void Awake()
     {
         if (Instance != null && Instance != this) 
         { 
@@ -19,7 +19,9 @@ public class CombatCamera : MonoBehaviour
         else 
         { 
             Instance = this; 
-        } 
+        }
+        
+        base.Awake(); 
     }
 
     public IEnumerator MoveCamera(Vector3 position, float time = 1f)
