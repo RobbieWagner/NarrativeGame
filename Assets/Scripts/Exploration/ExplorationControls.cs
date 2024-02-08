@@ -160,6 +160,56 @@ public partial class @ExplorationControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Exploration"",
+            ""id"": ""9e4f4e6d-3ee6-4bf7-87be-f7ae23927c9c"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""09f35d25-7a62-48b9-924d-881faf54995e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""89273045-3b6d-4a8d-bb9c-6e0cb7121516"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""891e148d-0eb7-43bc-9b47-f830cb07011d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c1cb4a7-ee19-4145-9d6d-f342aa55821e"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -167,6 +217,9 @@ public partial class @ExplorationControls: IInputActionCollection2, IDisposable
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
+        // Exploration
+        m_Exploration = asset.FindActionMap("Exploration", throwIfNotFound: true);
+        m_Exploration_Interact = m_Exploration.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -270,8 +323,58 @@ public partial class @ExplorationControls: IInputActionCollection2, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
+
+    // Exploration
+    private readonly InputActionMap m_Exploration;
+    private List<IExplorationActions> m_ExplorationActionsCallbackInterfaces = new List<IExplorationActions>();
+    private readonly InputAction m_Exploration_Interact;
+    public struct ExplorationActions
+    {
+        private @ExplorationControls m_Wrapper;
+        public ExplorationActions(@ExplorationControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_Exploration_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_Exploration; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ExplorationActions set) { return set.Get(); }
+        public void AddCallbacks(IExplorationActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ExplorationActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ExplorationActionsCallbackInterfaces.Add(instance);
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+        }
+
+        private void UnregisterCallbacks(IExplorationActions instance)
+        {
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+        }
+
+        public void RemoveCallbacks(IExplorationActions instance)
+        {
+            if (m_Wrapper.m_ExplorationActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IExplorationActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ExplorationActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ExplorationActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ExplorationActions @Exploration => new ExplorationActions(this);
     public interface IMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IExplorationActions
+    {
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

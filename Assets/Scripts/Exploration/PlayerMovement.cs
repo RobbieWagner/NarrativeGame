@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     private void LateUpdate()
     {
         RaycastHit hit;
-        isGrounded = Physics.Raycast(transform.position + new Vector3(0, .01f, 0), Vector3.down, out hit, .05f);//, groundMask); //TODO: Fix!!!! (not detecting ground)
+        isGrounded = Physics.Raycast(transform.position + new Vector3(0, .01f, 0), Vector3.down, out hit, .05f, groundMask);
 
         if (hit.collider != null)
         {
@@ -162,15 +162,20 @@ public class PlayerMovement : MonoBehaviour
         StopMovementSounds();
     }
 
-    public void CeasePlayerMovement()
+    public void DisablePlayerMovement()
     {
         explorationControls.Disable();
         StopPlayer();
     }
 
+    public void EnablePlayerMovement()
+    {
+        explorationControls.Enable();
+    }
+
     public IEnumerator MoveUnitToSpot(Vector3 position, float unitsPerSecond = -1)
     {
-        CeasePlayerMovement();
+        DisablePlayerMovement();
         PlayMovementSounds();
         characterController.enabled = false;
 

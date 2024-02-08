@@ -9,7 +9,7 @@ namespace RobbieWagnerGames
     {
 
         [HideInInspector] public bool canInteract;
-        [HideInInspector] protected PlayerInputActions playerControls;
+        [HideInInspector] protected ExplorationControls explorationControls;
 
         [Header("Visual Cue")]
         [SerializeField] protected SpriteRenderer visualCuePrefab;
@@ -19,7 +19,9 @@ namespace RobbieWagnerGames
         protected virtual void Awake()
         {
             canInteract = false;
-            playerControls = new PlayerInputActions();
+            explorationControls = new ExplorationControls();
+            explorationControls.Enable();
+            explorationControls.Exploration.Interact.performed += OnInteract;
         }
 
         protected virtual void OnTriggerEnter(Collider other)
@@ -45,12 +47,12 @@ namespace RobbieWagnerGames
             }
         }
 
-        protected virtual void OnInteract(InputValue inputValue)
+        protected virtual void OnInteract(InputAction.CallbackContext context)
         {
-            if(canInteract) //&& ExplorationManager.Instance.currentInteractable == null)
+            if(canInteract)
             {
-                //ExplorationManager.Instance.currentInteractable = this;
-                if(PlayerMovement.Instance != null) PlayerMovement.Instance.CeasePlayerMovement();
+                canInteract = false;
+                if(PlayerMovement.Instance != null) PlayerMovement.Instance.DisablePlayerMovement();
                 StartCoroutine(Interact());
             }
         }
@@ -59,7 +61,7 @@ namespace RobbieWagnerGames
         {
             //ExplorationManager.Instance.currentInteractable = null;
             canInteract = true;
-            if(PlayerMovement.Instance != null) PlayerMovement.Instance.canMove = true;
+            PlayerMovement.Instance?.EnablePlayerMovement();
         }
 
         protected virtual IEnumerator Interact()

@@ -23,7 +23,7 @@ namespace RobbieWagnerGames
         private Story ConfigureStory()
         {
             Story configuredStory = new Story(dialogueText.text);
-            configuredStory.variablesState["interactions"] = interactions;
+            //configuredStory.variablesState["interactions"] = interactions;
 
             return configuredStory;
         }
@@ -49,7 +49,7 @@ namespace RobbieWagnerGames
 
         protected void SaveInteractionData()
         {
-            SaveInt saveInt = new SaveInt(saveDataName, interactions);
+            //SaveInt saveInt = new SaveInt(saveDataName, interactions);
             //GameManager.Instance.sessionSaveData.AddToSaveList(saveInt);
         }
     }
