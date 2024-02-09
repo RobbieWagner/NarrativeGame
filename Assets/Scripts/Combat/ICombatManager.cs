@@ -366,4 +366,6 @@ public partial class ICombatManager : MonoBehaviour
         if(allies.Contains(unit)) return enemies.Where(x => !x.Equals(unit) && x.isUnitActive).ToList();
         else return allies.Where(x => !x.Equals(unit) && x.isUnitActive).ToList();
     }
+
+    protected void OnDestroy() => Instance = null;
 }

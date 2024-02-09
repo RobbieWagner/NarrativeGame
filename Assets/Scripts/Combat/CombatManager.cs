@@ -5,12 +5,12 @@ using UnityEngine;
 
 public partial class CombatManager : ICombatManager
 {
-    [SerializeField] private Battlefield debugBattlefield;
+    [SerializeField] private Battlefield battleField;
 
     #region Combat Phases
     protected override IEnumerator SetupCombat()
     {
-        yield return StartCoroutine(debugBattlefield?.SetupBattlefield());
+        yield return StartCoroutine(battleField?.SetupBattlefield());
 
         currentUI = Instantiate(currentCombat.combatUIPrefab);
         yield return StartCoroutine(currentUI.InitializeUI());
@@ -23,8 +23,8 @@ public partial class CombatManager : ICombatManager
         foreach(Unit enemy in currentCombat.enemyPrefabs)
             TryAddEnemyToCombat(enemy);
 
-        debugBattlefield?.PlaceUnits(allies, true);
-        debugBattlefield?.PlaceUnits(enemies, false);
+        battleField?.PlaceUnits(allies, true);
+        battleField?.PlaceUnits(enemies, false);
 
         yield return StartCoroutine(base.SetupCombat());
     }

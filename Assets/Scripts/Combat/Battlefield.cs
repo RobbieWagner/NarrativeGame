@@ -23,7 +23,7 @@ public class Battlefield : MonoBehaviour
 
             for(int i = 0; i < units.Count; i++)
             {
-                units[i].MoveUnit(unitPosition);
+                units[i].MoveUnit(unitPosition + transform.position);
                 unitPosition += distanceBetweenAllies;
             }
         }
@@ -33,7 +33,7 @@ public class Battlefield : MonoBehaviour
 
             for(int i = 0; i < units.Count; i++)
             {
-                units[i].MoveUnit(unitPosition);
+                units[i].MoveUnit(unitPosition + transform.position);
                 unitPosition -= distanceBetweenEnemies;
             }
         }
@@ -46,7 +46,11 @@ public class Battlefield : MonoBehaviour
 
     public IEnumerator SetupBattlefield()
     {
-        if(CombatCamera.Instance != null) CombatCamera.Instance.defaultPosition = camPosition;
+        if(CombatCamera.Instance != null) 
+        {
+            CameraManager.Instance.TrySwitchGameCamera(CombatCamera.Instance);
+            CombatCamera.Instance.defaultPosition = transform.position + camPosition;
+        }
         yield return StartCoroutine(CombatCamera.Instance?.ResetCameraPosition());
     }
 }

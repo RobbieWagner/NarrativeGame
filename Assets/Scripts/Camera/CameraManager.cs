@@ -25,6 +25,7 @@ public class CameraManager : MonoBehaviour
     public void AddCamera(GameCamera camera, bool switchToNewCamera = false)
     {
         gameCameras.Add(camera);
+        foreach(GameCamera cam in gameCameras) Debug.Log(cam.gameObject.name);
 
         if(switchToNewCamera)
             TrySwitchGameCamera(camera);
@@ -41,14 +42,15 @@ public class CameraManager : MonoBehaviour
         {
             foreach(GameCamera cam in gameCameras)
             {
-                cam.cam.enabled = false;
                 cam.audioListener.enabled = false;
+                cam.cam.enabled = false;
             }
             activeGameCamera = camera;
             camera.cam.enabled = true;
             camera.audioListener.enabled = true;
             return true;
         }
+        foreach(GameCamera cam in gameCameras) Debug.Log(cam.gameObject.name);
         Debug.LogWarning("Could not switch game cameras (game camera was never added to the manager)");
         return false;
     }
