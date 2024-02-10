@@ -33,7 +33,7 @@ public class ICombatUI : MonoBehaviour
                 ICombatManager.Instance.OnConsiderTarget += DisplayConsideredTarget;
 
                 ICombatManager.Instance.OnConsiderAction += UpdateActionUI;
-                ICombatManager.Instance.OnActionSelectionCompleteCo += DestroyUnitActionSelectionUI;
+                ICombatManager.Instance.OnActionSelectionComplete += DestroyUnitActionSelectionUI;
 
                 ICombatManager.Instance.OnEndActionSelection += DisableActionInfo;
                 ICombatManager.Instance.OnEndActionSelection += DisableTargetInfo;

@@ -90,6 +90,8 @@ public partial class ICombatManager : MonoBehaviour
 
     private IEnumerator RunCombatPhases()
     {
+        Debug.Log("starting combat");
+        yield return StartCoroutine(InvokeCombatEvent(OnCombatStarted));
         while (currentPhase != CombatPhase.CombatEnd)
         {
             if(currentPhase == CombatPhase.TurnEnd) currentTurn++;
@@ -99,6 +101,7 @@ public partial class ICombatManager : MonoBehaviour
         }
         yield return StartCoroutine(CheckForCombatInterruption());
     }
+    public event CombatCoroutineEventHandler OnCombatStarted;
 
     protected virtual IEnumerator StartCombatPhase(CombatPhase phase)
     {
@@ -151,13 +154,10 @@ public partial class ICombatManager : MonoBehaviour
     protected virtual IEnumerator SetupCombat()
     {
         yield return new WaitForSeconds(.2f);
-        //Debug.Log("Combat Set up!");
         currentTurn = 1;
 
-        //TODO: Find a way to put this in a <T> function
-        StartCoroutine(InvokeCombatEvent(OnCombatSetupComplete, false));
-
         yield return StartCoroutine(InvokeCombatEvent(OnCombatSetupComplete));
+        //TODO: start combat run somewhere else
         StartCoroutine(RunCombatPhases());
     }
     public event CombatCoroutineEventHandler OnCombatSetupComplete;
@@ -173,6 +173,7 @@ public partial class ICombatManager : MonoBehaviour
 
     protected virtual IEnumerator HandleActionSelection()
     {
+        yield return StartCoroutine(InvokeCombatEvent(OnActionSelectionStarted));
         Debug.Log("Handling Action Selection...");
         OnBeginActionSelection?.Invoke();
         foreach(Unit enemy in enemies)
@@ -184,15 +185,18 @@ public partial class ICombatManager : MonoBehaviour
         while(!finishedSelectingActions) yield return null;
 
         OnEndActionSelection?.Invoke();
-        yield return StartCoroutine(InvokeCombatEvent(OnActionSelectionCompleteCo));
+        yield return StartCoroutine(InvokeCombatEvent(OnActionSelectionComplete));
     }
     public delegate void OnToggleActionSelectionStateDelegate();
     public event OnToggleActionSelectionStateDelegate OnBeginActionSelection;
     public event OnToggleActionSelectionStateDelegate OnEndActionSelection;
-    public event CombatCoroutineEventHandler OnActionSelectionCompleteCo;
+    public event CombatCoroutineEventHandler OnActionSelectionStarted;
+    public event CombatCoroutineEventHandler OnActionSelectionComplete;
 
     protected virtual IEnumerator ExecuteActions()
     {
+        yield return StartCoroutine(InvokeCombatEvent(OnActionExecutionStarted));
+
         Debug.Log("Executing Actions...");
 
         List<Unit> unitsInInitiativeOrder = new List<Unit>();
@@ -223,6 +227,7 @@ public partial class ICombatManager : MonoBehaviour
 
         yield return StartCoroutine(InvokeCombatEvent(OnActionExecutionComplete));
     }
+    public event CombatCoroutineEventHandler OnActionExecutionStarted;
     public event CombatCoroutineEventHandler OnActionExecutionComplete;
 
     protected virtual IEnumerator EndTurn()
@@ -236,12 +241,18 @@ public partial class ICombatManager : MonoBehaviour
     {
         Debug.Log("End of Combat Reached");
         yield return StartCoroutine(InvokeCombatEvent(OnCombatResolved));
+        if(allies.Select(a => a.isUnitActive).Any())
+            yield return StartCoroutine(InvokeCombatEvent(OnCombatWon));
+        else
+            yield return StartCoroutine(InvokeCombatEvent(OnCombatLost));
         
         //TODO: add end combat screen flashes, then tear down combat
         yield return new WaitForSeconds(1f);
         StartCoroutine(TerminateCombatScene());
     }
     public event CombatCoroutineEventHandler OnCombatResolved;
+    public event CombatCoroutineEventHandler OnCombatWon;
+    public event CombatCoroutineEventHandler OnCombatLost;
     #endregion
 
     protected virtual IEnumerator TerminateCombatScene()
