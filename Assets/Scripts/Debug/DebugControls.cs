@@ -50,7 +50,7 @@ public partial class @DebugControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""776a8629-2cb8-43a9-b8bc-7deeed50cd2d"",
-                    ""path"": ""<Keyboard>/alt"",
+                    ""path"": ""<Keyboard>/rightShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

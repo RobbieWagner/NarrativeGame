@@ -67,7 +67,6 @@ namespace RobbieWagnerGames
         protected virtual IEnumerator Interact()
         {
             yield return null;
-
             OnUninteract();
             StopCoroutine(Interact());
         }
