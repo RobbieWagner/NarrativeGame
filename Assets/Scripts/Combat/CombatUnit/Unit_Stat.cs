@@ -47,7 +47,6 @@ public partial class Unit : MonoBehaviour
             hp = value;
             if(hp < 0) hp = 0;
             if(hp > GetMaxStatValue(UnitStat.HP)) hp = GetMaxStatValue(UnitStat.HP);
-            Debug.Log($"{UnitName}: {HP}/{GetMaxStatValue(UnitStat.HP)}");
             OnHPChanged?.Invoke(hp);
         }
     }
@@ -77,7 +76,6 @@ public partial class Unit : MonoBehaviour
             if (value == brawn) return;
             brawn = value;
             if(brawn < 0) brawn = 0;
-            Debug.Log($"brawn raised to {brawn}");
             OnBrawnChanged?.Invoke(brawn);
         }
     }
@@ -327,7 +325,6 @@ public partial class Unit : MonoBehaviour
         {
             case UnitStat.Brawn:
             OnBrawnChanged += action;
-            Debug.Log("subscribed new event to on brawn changed");
             break;
             case UnitStat.Agility:
             OnAgilityChanged += action;

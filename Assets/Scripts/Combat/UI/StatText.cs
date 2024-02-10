@@ -22,7 +22,6 @@ public class StatText : MonoBehaviour
     public void UpdateVisual(int newValue)
     {
         statText.text = $"{newValue}";
-        Debug.Log("stat value changed");
     }
 
     public void EnableUI()
@@ -30,7 +29,6 @@ public class StatText : MonoBehaviour
         statText.enabled = true;
         statIcon.enabled = true;
         statText.text = currentUnit.GetStatValue(followingStat).ToString();
-        Debug.Log("enabled stat text");
     }
 
     public void DisableUI()

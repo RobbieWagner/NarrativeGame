@@ -269,6 +269,60 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &291696315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 291696316}
+  - component: {fileID: 291696317}
+  - component: {fileID: 291696318}
+  m_Layer: 0
+  m_Name: AudioListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &291696316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291696315}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &291696317
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291696315}
+  m_Enabled: 1
+--- !u!114 &291696318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291696315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2b378fcdbf0124d95939083c4d6fab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioListener: {fileID: 291696317}
 --- !u!1 &309075623
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,8 +429,7 @@ Transform:
   m_LocalPosition: {x: -2, y: 0.5, z: -3}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1967071530}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &309075628
@@ -391,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40986f2b6bee1e14bae1f3908440fa4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combat: {fileID: 1967071531}
+  combat: {fileID: 2277921359995787072, guid: bb14fc54bbf7ed148974f1e6a335bfd5, type: 3}
 --- !u!54 &309075629
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -660,7 +713,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1293428677}
   - component: {fileID: 1293428676}
-  - component: {fileID: 1293428675}
   - component: {fileID: 1293428674}
   - component: {fileID: 1293428678}
   m_Layer: 0
@@ -714,14 +766,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &1293428675
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293428672}
-  m_Enabled: 1
 --- !u!20 &1293428676
 Camera:
   m_ObjectHideFlags: 0
@@ -801,7 +845,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1293428676}
-  audioListener: {fileID: 1293428675}
   switchToOnEnable: 0
 --- !u!1 &1479015863
 GameObject:
@@ -879,6 +922,7 @@ MonoBehaviour:
   combatManagerPrefab: {fileID: 5747694281062562861, guid: 8dbc6c788cd48844ba409ccb53236a58,
     type: 3}
   combatZone: {fileID: 815382590}
+  combatSceneName: CombatSceneTemplate
 --- !u!4 &1787806191
 Transform:
   m_ObjectHideFlags: 0
@@ -943,7 +987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1938272536}
-  audioListener: {fileID: 1938272535}
   switchToOnEnable: 1
 --- !u!114 &1938272534
 MonoBehaviour:
@@ -1276,60 +1319,6 @@ MonoBehaviour:
   animator: {fileID: 1964181304}
   states: 0000000001000000020000000300000004000000050000000600000007000000
   unitSprite: {fileID: 1964181303}
---- !u!1 &1967071529
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1967071530}
-  - component: {fileID: 1967071531}
-  m_Layer: 0
-  m_Name: CombatInfo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1967071530
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967071529}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 309075627}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1967071531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967071529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfefda06b9fb8824791d6c49dbf403a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allyPrefabs:
-  - {fileID: 2321602648661150484, guid: 650a7c0b574000648be3c9d907f3955b, type: 3}
-  - {fileID: 4597645112654448983, guid: 03f55ea162f75d24596c92cb510bac8c, type: 3}
-  - {fileID: 9126642338017572261, guid: 8115923d836b0684b8e6589da71f0b7b, type: 3}
-  enemyPrefabs:
-  - {fileID: 3309883733138662285, guid: 256ad17e10fe58f4ba6896463048df37, type: 3}
-  - {fileID: 9126642338017572261, guid: 8115923d836b0684b8e6589da71f0b7b, type: 3}
-  - {fileID: 3309883733138662285, guid: 256ad17e10fe58f4ba6896463048df37, type: 3}
-  combatUIPrefab: {fileID: 5245649321746192247, guid: f315a5e90cb6a0a41b5c9967a40340c7,
-    type: 3}
 --- !u!1 &2095080722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,3 +1559,4 @@ SceneRoots:
   - {fileID: 7820791417609926101}
   - {fileID: 2095080725}
   - {fileID: 1787806191}
+  - {fileID: 291696316}

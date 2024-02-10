@@ -13,13 +13,11 @@ public class OverworldEnemy : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log("col");
-        if(other.gameObject.CompareTag("Player") && GameManager.Instance.currentGameMode == GameMode.Exploration)
+        if(other.gameObject.CompareTag("Player") && GameManager.Instance.CurrentGameMode == GameMode.Exploration)
         {
             if(ILevel.Instance != null)
             {
-                Debug.Log("start combat!");
-                StartCoroutine(StartCombat());
+                StartCombat();
             }
             else
             {
@@ -28,9 +26,9 @@ public class OverworldEnemy : MonoBehaviour
         }
     }
 
-    protected virtual IEnumerator StartCombat()
+    protected virtual void StartCombat()
     {
-        yield return StartCoroutine(ILevel.Instance.CreateNewCombat(combat));
+        ILevel.Instance.CurrentCombat = combat;
         Destroy(this.gameObject);
     }
 }

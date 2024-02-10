@@ -1,3 +1,4 @@
+using Ink.Parsed;
 using UnityEngine;
 
 public enum GameMode
@@ -12,7 +13,21 @@ public enum GameMode
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
-    public GameMode currentGameMode;
+
+    private GameMode currentGameMode;
+    public GameMode CurrentGameMode
+    {
+        get => currentGameMode;
+
+        set
+        {
+            if(currentGameMode == value) return;
+            currentGameMode = value;
+            OnGameModeChanged?.Invoke(currentGameMode);
+        }
+    }
+    public delegate void OnGameModeChangedDelegate(GameMode gameMode);
+    public event OnGameModeChangedDelegate OnGameModeChanged;
 
     private void Awake()
     {
@@ -25,6 +40,6 @@ public class GameManager : MonoBehaviour
             Instance = this; 
         } 
 
-        currentGameMode = GameMode.None;
+        CurrentGameMode = GameMode.None;
     }
 }

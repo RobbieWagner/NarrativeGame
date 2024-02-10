@@ -54,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
             Instance = this;
         }
 
+        GameManager.Instance.OnGameModeChanged += CheckGameMode;
+
         currentWalkSpeed = defaultWalkSpeed;
         movementVector = Vector3.zero;
 
@@ -64,6 +66,14 @@ public class PlayerMovement : MonoBehaviour
         explorationControls.Movement.Move.canceled += StopPlayer;
 
         isGrounded = false;
+    }
+
+    private void CheckGameMode(GameMode gameMode)
+    {
+        if(gameMode == GameMode.Exploration) 
+            explorationControls.Enable();
+        else
+            explorationControls.Disable();
     }
 
     private void LateUpdate()
@@ -91,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
         {
             movementVector.y += GRAVITY * Time.deltaTime;
             //StartCoroutine(FootStepStopTimer(.25f));
-            //Debug.Log(movementVector);
         }
         else
         {

@@ -46,7 +46,7 @@ public class UnitAnimator : MonoBehaviour
         }
         else if(state != currentState)
         {
-            Debug.Log("Animation Clip Not Set Up For Unit");
+            Debug.LogWarning($"Animation Clip Not Set Up For Unit {state}");
         }
     }
 

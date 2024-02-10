@@ -64,16 +64,15 @@ public partial class ICombatManager : MonoBehaviour
             Instance = this; 
         } 
         //DEBUG ONLY! COMMENT OUT IF NOT USING
-        StartNewCombat(debugCombat);
+        //StartNewCombat(debugCombat);
         AwakenControls();
     }
 
     public virtual bool StartNewCombat(ICombat newCombat)
     {
-        //Debug.Log("attempting to start new combat");
         if(canStartNewCombat && currentPhase == CombatPhase.None && newCombat != null) 
         {
-            //Debug.Log("combat started");
+            Debug.Log("combat started");
             currentCombat = newCombat;
             StartCoroutine(StartCombatPhase(CombatPhase.CombatSetup));
             return true;
@@ -165,7 +164,6 @@ public partial class ICombatManager : MonoBehaviour
     {
         foreach(Unit enemy in enemies) enemy.currentSelectedAction = null;
         foreach(Unit ally in allies) ally.currentSelectedAction = null;
-        Debug.Log($"Turn {currentTurn}");
         yield return new WaitForSeconds(.2f);
         yield return StartCoroutine(InvokeCombatEvent(OnCombatTurnStarted));
     }

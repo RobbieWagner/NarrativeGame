@@ -100,7 +100,6 @@ public class ICombatUI : MonoBehaviour
 
     protected virtual void ToggleActionSelectionInfo()
     {
-        Debug.Log("toggled");
         bool enable = (ICombatManager.Instance.isSelectingAction || ICombatManager.Instance.isSelectingTargets) && alliesUI.Count > 0 && !alliesUI.FirstOrDefault().statTextParent.enabled;
         SetActionInfoActiveState(enable);
     }

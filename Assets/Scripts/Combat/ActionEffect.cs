@@ -49,7 +49,7 @@ public class HealTargetsActionEffect: ActionEffect
     public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
     {
         yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
-        Debug.Log($"{user.name} is attacking");
+        Debug.Log($"{user.name} is healing a unit");
         //TODO: Add crit chance
         foreach(Unit target in targets)
         {

@@ -82,7 +82,6 @@ public partial class ICombatManager : MonoBehaviour
 
     private void CancelPreviousSelection(InputAction.CallbackContext context)
     {
-        Debug.Log($"Going back to last action");
         if(isSelectingAction && currentUnitIndex > 0) 
         {
             currentUnit.StopBlinking();
@@ -98,7 +97,6 @@ public partial class ICombatManager : MonoBehaviour
 
     private void NavigateActions(InputAction.CallbackContext context)
     {
-        Debug.Log($"Navigating Actions");
         float direction = context.ReadValue<float>();
         if (direction > 0) ConsiderAction(consideredActionIndex + 1);
         else ConsiderAction(consideredActionIndex - 1);
@@ -109,7 +107,6 @@ public partial class ICombatManager : MonoBehaviour
         bool actionIndexIncreased = index > consideredActionIndex;
         int actionIndex = index % currentUnit.availableActions.Count; 
         if(actionIndex < 0) actionIndex = currentUnit.availableActions.Count - 1;
-        Debug.Log($"considering action {actionIndex}");
         consideredActionIndex = actionIndex;
         currentConsideredAction = currentUnit.availableActions[consideredActionIndex];
         OnConsiderAction?.Invoke(currentUnit, currentConsideredAction, actionIndexIncreased);
@@ -119,14 +116,12 @@ public partial class ICombatManager : MonoBehaviour
 
     private void SelectAction(InputAction.CallbackContext context)
     {
-        Debug.Log($"selecting action");
         currentUnit.currentSelectedAction = currentConsideredAction;
         StartTargetSelection(currentUnit.currentSelectedAction);
     }
 
     private void StartActionSelectionForNextUnit()
     {
-        Debug.Log($"start action selection for the next unit");
         currentUnitIndex++;
         if(currentUnitIndex >= allies.Count)
             EndActionSelection();
@@ -167,9 +162,7 @@ public partial class ICombatManager : MonoBehaviour
 
     private void ConsiderTarget(Unit unit)
     {
-        Debug.Log($"Target is {unit.name}");
-
-
+        //Debug.Log($"Target is {unit.name}");
         OnStopConsideringTarget?.Invoke(currentTarget);
         currentTarget = unit;
         OnConsiderTarget?.Invoke(currentUnit, currentTarget, currentUnit.currentSelectedAction);
@@ -182,7 +175,6 @@ public partial class ICombatManager : MonoBehaviour
 
     private void NavigateTargets(InputAction.CallbackContext context)
     {
-        Debug.Log($"navigating targets");
         float direction = context.ReadValue<float>();
 
         int newTarget = direction > 0 ? currentTargetIndex + 1 : currentTargetIndex - 1;
@@ -193,7 +185,6 @@ public partial class ICombatManager : MonoBehaviour
 
     private void SelectTarget(InputAction.CallbackContext context)
     {
-        Debug.Log($"Selecting Target");
         currentUnit.selectedTargets.Add(currentTarget);
         currentTarget.StopBlinking();
         StartActionSelectionForNextUnit();

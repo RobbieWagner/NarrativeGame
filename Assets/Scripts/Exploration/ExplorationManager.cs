@@ -19,5 +19,5 @@ public class ExplorationManager : MonoBehaviour
         StartExploration();
     }
 
-    public void StartExploration() => GameManager.Instance.currentGameMode = GameMode.Exploration;
+    public void StartExploration() => GameManager.Instance.CurrentGameMode = GameMode.Exploration;
 }

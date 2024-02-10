@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameCamera : MonoBehaviour
 {
     public Camera cam;
-    public AudioListener audioListener;
     public bool switchToOnEnable = false;
 
     public void ActivateCamera()
