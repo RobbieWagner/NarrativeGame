@@ -15,7 +15,7 @@ public class OverworldEnemy : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player") && GameManager.Instance.CurrentGameMode == GameMode.Exploration)
         {
-            if(ILevel.Instance != null)
+            if(ExplorationLevel.Instance != null)
             {
                 StartCombat();
             }
@@ -28,7 +28,7 @@ public class OverworldEnemy : MonoBehaviour
 
     protected virtual void StartCombat()
     {
-        ILevel.Instance.CurrentCombat = combat;
+        ExplorationLevel.Instance.CurrentCombat = combat;
         Destroy(this.gameObject);
     }
 }

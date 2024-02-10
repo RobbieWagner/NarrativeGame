@@ -82,6 +82,7 @@ public partial class ICombatManager : MonoBehaviour
 
     public virtual void EndCombat()
     {
+        StartCoroutine(ResolveCombat());
         currentPhase = CombatPhase.None;
         currentCombat = null;
     }
@@ -234,9 +235,20 @@ public partial class ICombatManager : MonoBehaviour
     {
         Debug.Log("End of Combat Reached");
         yield return StartCoroutine(InvokeCombatEvent(OnCombatResolved));
+        
+        //TODO: add end combat screen flashes, then tear down combat
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TearDownCombat());
     }
     public event CombatCoroutineEventHandler OnCombatResolved;
     #endregion
+
+    protected virtual IEnumerator TearDownCombat()
+    {
+        Debug.Log("Tearing Down Combat");
+        yield return StartCoroutine(InvokeCombatEvent(OnCombatResolved));
+    }
+    public event CombatCoroutineEventHandler OnCombatTornDown;
 
     protected virtual bool TryAddAllyToCombat(Unit ally)
     {
@@ -290,12 +302,6 @@ public partial class ICombatManager : MonoBehaviour
 
         if(targetOptions.Count == 0) return new List<Unit>();
         return new List<Unit>() { targetOptions.ElementAt(UnityEngine.Random.Range(0, targetOptions.Count)) };
-    }
-
-    private bool UnitsAllHaveSelectedActions()
-    {
-        foreach(Unit ally in allies) if(ally.currentSelectedAction == null && ally.isUnitActive) return false;
-        return true;
     }
 
     protected IEnumerator CheckForCombatInterruption()

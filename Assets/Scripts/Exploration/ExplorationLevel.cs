@@ -5,7 +5,7 @@ using RobbieWagnerGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ILevel : MonoBehaviour
+public class ExplorationLevel : MonoBehaviour
 {
     [Header("Combat")]
     [SerializeField] private ICombatManager combatManagerPrefab;
@@ -25,7 +25,7 @@ public class ILevel : MonoBehaviour
         }
     }
 
-    public static ILevel Instance { get; private set; }
+    public static ExplorationLevel Instance { get; private set; }
 
     private void Awake()
     {
@@ -50,7 +50,7 @@ public class ILevel : MonoBehaviour
     public IEnumerator StartLoadingCombatSceneCo()
     {
         string combatScenePath = $"{StaticGameStats.sceneFilePath}{combatSceneName}.unity";
-        if (GameManager.Instance.CurrentGameMode != GameMode.Combat && ICombatManager.Instance == null && SceneUtility.GetBuildIndexByScenePath(combatScenePath) != -1)
+        if (GameManager.Instance.CurrentGameMode != GameMode.Combat && ICombatManager.Instance == null && SceneUtility.GetBuildIndexByScenePath(combatScenePath) > -1)
         {
             GameManager.Instance.CurrentGameMode = GameMode.Combat;
             yield return StartCoroutine(SceneTransitionController.Instance?.FadeScreenIn());
@@ -69,9 +69,9 @@ public class ILevel : MonoBehaviour
         }
     }
 
-    public IEnumerator FinishLoadingCombatSceneCo()
+    private IEnumerator FinishLoadingCombatSceneCo()
     {
-        ICombatManager.Instance.OnCombatResolved += EndCurrentCombat;
+        ICombatManager.Instance.OnCombatTornDown += EndCurrentCombat;
         //ICombatManager.Instance.transform.localPosition = Vector3.zero;
         CameraManager.Instance.TrySwitchGameCamera(CombatCamera.Instance);
 
