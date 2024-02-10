@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canStartNewCombat: 1
+  unitParent: {fileID: 7969691030175932801}
   allies: []
   enemies: []
   currentPhase: -2

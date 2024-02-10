@@ -12,7 +12,7 @@ public partial class CombatManager : ICombatManager
     {
         yield return StartCoroutine(battleField?.SetupBattlefield());
 
-        currentUI = Instantiate(currentCombat.combatUIPrefab);
+        currentUI = Instantiate(currentCombat.combatUIPrefab, transform);
         yield return StartCoroutine(currentUI.InitializeUI());
 
         allies = new List<Unit>();

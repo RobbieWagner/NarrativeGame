@@ -33,6 +33,12 @@ public partial class ICombatManager : MonoBehaviour
         OnBeginActionSelection += BeginActionSelection;
     }
 
+    protected virtual void DisableControls()
+    {
+        actionSelectionControls.Disable();
+        targetSelectionControls.Disable();
+    }
+
     private void BeginActionSelection()
     {
         Debug.Log("Action Selection Begun");

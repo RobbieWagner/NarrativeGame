@@ -24,7 +24,6 @@ public partial class ICombatManager : MonoBehaviour
     public bool canStartNewCombat = true;
     protected ICombat currentCombat;
     protected ICombatUI currentUI;
-    protected Transform unitParent;
     [HideInInspector] public List<Unit> allies;
     [HideInInspector] public List<Unit> enemies;
     public CombatPhase currentPhase = CombatPhase.None;
@@ -80,11 +79,13 @@ public partial class ICombatManager : MonoBehaviour
         return false;
     }
 
-    public virtual void EndCombat()
+    public virtual void TerminateCombat()
     {
         StartCoroutine(ResolveCombat());
         currentPhase = CombatPhase.None;
         currentCombat = null;
+
+        DisableControls();
     }
 
     private IEnumerator RunCombatPhases()
@@ -238,23 +239,23 @@ public partial class ICombatManager : MonoBehaviour
         
         //TODO: add end combat screen flashes, then tear down combat
         yield return new WaitForSeconds(1f);
-        StartCoroutine(TearDownCombat());
+        StartCoroutine(TerminateCombatScene());
     }
     public event CombatCoroutineEventHandler OnCombatResolved;
     #endregion
 
-    protected virtual IEnumerator TearDownCombat()
+    protected virtual IEnumerator TerminateCombatScene()
     {
         Debug.Log("Tearing Down Combat");
-        yield return StartCoroutine(InvokeCombatEvent(OnCombatResolved));
+        yield return StartCoroutine(InvokeCombatEvent(OnCombatTerminated));
     }
-    public event CombatCoroutineEventHandler OnCombatTornDown;
+    public event CombatCoroutineEventHandler OnCombatTerminated;
 
     protected virtual bool TryAddAllyToCombat(Unit ally)
     {
         if(allies.Count < 3)
         {
-            Unit instantiatedUnit = Instantiate(ally, unitParent);
+            Unit instantiatedUnit = Instantiate(ally, transform);
             allies.Add(instantiatedUnit);
             instantiatedUnit.SetUnitAnimatorState(UnitAnimationState.CombatIdleRight);
             OnAddNewAlly?.Invoke(instantiatedUnit);
@@ -268,7 +269,7 @@ public partial class ICombatManager : MonoBehaviour
     {
         if(enemies.Count < 3)
         {
-            Unit instantiatedUnit = Instantiate(enemy, unitParent);
+            Unit instantiatedUnit = Instantiate(enemy, transform);
             enemies.Add(instantiatedUnit);
             instantiatedUnit.SetUnitAnimatorState(UnitAnimationState.CombatIdleLeft);
             OnAddNewEnemy?.Invoke(instantiatedUnit);

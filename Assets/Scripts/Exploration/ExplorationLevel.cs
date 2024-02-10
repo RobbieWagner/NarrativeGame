@@ -71,7 +71,7 @@ public class ExplorationLevel : MonoBehaviour
 
     private IEnumerator FinishLoadingCombatSceneCo()
     {
-        ICombatManager.Instance.OnCombatTornDown += EndCurrentCombat;
+        ICombatManager.Instance.OnCombatTerminated += EndCurrentCombat;
         //ICombatManager.Instance.transform.localPosition = Vector3.zero;
         CameraManager.Instance.TrySwitchGameCamera(CombatCamera.Instance);
 

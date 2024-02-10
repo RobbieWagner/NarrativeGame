@@ -11,11 +11,11 @@
                     "id": "241531f6-8b0d-4b9f-ae22-52197cb32dcb",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "Hold(duration=0.1)",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EndCombat",
+                    "name": "TerminateCombat",
                     "type": "Button",
                     "id": "8e6548a3-247d-4fcd-9985-235cff5142b6",
                     "expectedControlType": "Button",
@@ -43,7 +43,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EndCombat",
+                    "action": "TerminateCombat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

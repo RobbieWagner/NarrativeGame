@@ -33,11 +33,11 @@ public partial class @DebugControls: IInputActionCollection2, IDisposable
                     ""id"": ""241531f6-8b0d-4b9f-ae22-52197cb32dcb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Hold(duration=0.1)"",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EndCombat"",
+                    ""name"": ""TerminateCombat"",
                     ""type"": ""Button"",
                     ""id"": ""8e6548a3-247d-4fcd-9985-235cff5142b6"",
                     ""expectedControlType"": ""Button"",
@@ -65,7 +65,7 @@ public partial class @DebugControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EndCombat"",
+                    ""action"": ""TerminateCombat"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -77,7 +77,7 @@ public partial class @DebugControls: IInputActionCollection2, IDisposable
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_DebugHold = m_Debug.FindAction("DebugHold", throwIfNotFound: true);
-        m_Debug_EndCombat = m_Debug.FindAction("EndCombat", throwIfNotFound: true);
+        m_Debug_TerminateCombat = m_Debug.FindAction("TerminateCombat", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -140,13 +140,13 @@ public partial class @DebugControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Debug;
     private List<IDebugActions> m_DebugActionsCallbackInterfaces = new List<IDebugActions>();
     private readonly InputAction m_Debug_DebugHold;
-    private readonly InputAction m_Debug_EndCombat;
+    private readonly InputAction m_Debug_TerminateCombat;
     public struct DebugActions
     {
         private @DebugControls m_Wrapper;
         public DebugActions(@DebugControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @DebugHold => m_Wrapper.m_Debug_DebugHold;
-        public InputAction @EndCombat => m_Wrapper.m_Debug_EndCombat;
+        public InputAction @TerminateCombat => m_Wrapper.m_Debug_TerminateCombat;
         public InputActionMap Get() { return m_Wrapper.m_Debug; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -159,9 +159,9 @@ public partial class @DebugControls: IInputActionCollection2, IDisposable
             @DebugHold.started += instance.OnDebugHold;
             @DebugHold.performed += instance.OnDebugHold;
             @DebugHold.canceled += instance.OnDebugHold;
-            @EndCombat.started += instance.OnEndCombat;
-            @EndCombat.performed += instance.OnEndCombat;
-            @EndCombat.canceled += instance.OnEndCombat;
+            @TerminateCombat.started += instance.OnTerminateCombat;
+            @TerminateCombat.performed += instance.OnTerminateCombat;
+            @TerminateCombat.canceled += instance.OnTerminateCombat;
         }
 
         private void UnregisterCallbacks(IDebugActions instance)
@@ -169,9 +169,9 @@ public partial class @DebugControls: IInputActionCollection2, IDisposable
             @DebugHold.started -= instance.OnDebugHold;
             @DebugHold.performed -= instance.OnDebugHold;
             @DebugHold.canceled -= instance.OnDebugHold;
-            @EndCombat.started -= instance.OnEndCombat;
-            @EndCombat.performed -= instance.OnEndCombat;
-            @EndCombat.canceled -= instance.OnEndCombat;
+            @TerminateCombat.started -= instance.OnTerminateCombat;
+            @TerminateCombat.performed -= instance.OnTerminateCombat;
+            @TerminateCombat.canceled -= instance.OnTerminateCombat;
         }
 
         public void RemoveCallbacks(IDebugActions instance)
@@ -192,6 +192,6 @@ public partial class @DebugControls: IInputActionCollection2, IDisposable
     public interface IDebugActions
     {
         void OnDebugHold(InputAction.CallbackContext context);
-        void OnEndCombat(InputAction.CallbackContext context);
+        void OnTerminateCombat(InputAction.CallbackContext context);
     }
 }

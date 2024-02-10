@@ -13,22 +13,21 @@ public class OverworldEnemy : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player") && GameManager.Instance.CurrentGameMode == GameMode.Exploration)
+        if(other.gameObject.CompareTag("Player"))
         {
-            if(ExplorationLevel.Instance != null)
+            if(GameManager.Instance.CurrentGameMode == GameMode.Exploration)
             {
-                StartCombat();
+                if(ExplorationLevel.Instance != null)
+                    StartCombat();
+                else
+                    Debug.LogWarning("Found no level instance, could not start combat.");
             }
-            else
-            {
-                Debug.LogWarning("Found no level instance, could not start combat.");
-            }
+            Destroy(this.gameObject);
         }
     }
 
     protected virtual void StartCombat()
     {
         ExplorationLevel.Instance.CurrentCombat = combat;
-        Destroy(this.gameObject);
     }
 }
