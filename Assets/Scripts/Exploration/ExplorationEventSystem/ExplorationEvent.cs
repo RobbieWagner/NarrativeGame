@@ -8,7 +8,7 @@ using DG.Tweening;
 public class ExplorationEvent : IInteractable
 {
     [Header("Events")]
-    [SerializeField] protected List<SequenceEvent> sequenceEvents;
+    [SerializeField] protected List<SequenceEvent> eventSequence;
 
     protected override void Awake()
     {
@@ -29,7 +29,7 @@ public class ExplorationEvent : IInteractable
 
     protected override IEnumerator Interact()
     {
-        foreach(SequenceEvent sequenceEvent in sequenceEvents)
+        foreach(SequenceEvent sequenceEvent in eventSequence)
             yield return StartCoroutine(sequenceEvent.InvokeSequenceEvent());
         yield return base.Interact();
     }

@@ -30,10 +30,6 @@ public partial class ICombatManager : MonoBehaviour
     private int currentTurn;
     public int CurrentTurn => currentTurn;
 
-    private bool isInterrupted = false;
-    private Coroutine currentInterruptionCoroutine;
-    public delegate IEnumerator CombatCoroutineEventHandler();
-
     protected bool finishedSelectingActions = true;
 
     public Vector3 UNIT_OFFSET;
@@ -64,7 +60,7 @@ public partial class ICombatManager : MonoBehaviour
         } 
         //DEBUG ONLY! COMMENT OUT IF NOT USING
         //StartNewCombat(debugCombat);
-        AwakenControls();
+        InitializeControls();
     }
 
     public virtual bool StartNewCombat(ICombat newCombat)
@@ -91,7 +87,7 @@ public partial class ICombatManager : MonoBehaviour
     private IEnumerator RunCombatPhases()
     {
         Debug.Log("starting combat");
-        yield return StartCoroutine(InvokeCombatEvent(OnCombatStarted));
+        yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatStarted));
         while (currentPhase != CombatPhase.CombatEnd)
         {
             if(currentPhase == CombatPhase.TurnEnd) currentTurn++;
@@ -101,7 +97,6 @@ public partial class ICombatManager : MonoBehaviour
         }
         yield return StartCoroutine(CheckForCombatInterruption());
     }
-    public event CombatCoroutineEventHandler OnCombatStarted;
 
     protected virtual IEnumerator StartCombatPhase(CombatPhase phase)
     {
@@ -156,24 +151,22 @@ public partial class ICombatManager : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         currentTurn = 1;
 
-        yield return StartCoroutine(InvokeCombatEvent(OnCombatSetupComplete));
+        yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.SetupComplete));
         //TODO: start combat run somewhere else
         StartCoroutine(RunCombatPhases());
     }
-    public event CombatCoroutineEventHandler OnCombatSetupComplete;
 
     protected virtual IEnumerator StartTurn()
     {
         foreach(Unit enemy in enemies) enemy.currentSelectedAction = null;
         foreach(Unit ally in allies) ally.currentSelectedAction = null;
         yield return new WaitForSeconds(.2f);
-        yield return StartCoroutine(InvokeCombatEvent(OnCombatTurnStarted));
+        yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.TurnStarted));
     }
-    public event CombatCoroutineEventHandler OnCombatTurnStarted;
 
     protected virtual IEnumerator HandleActionSelection()
     {
-        yield return StartCoroutine(InvokeCombatEvent(OnActionSelectionStarted));
+        yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.SelectionPhaseStarted));
         Debug.Log("Handling Action Selection...");
         OnBeginActionSelection?.Invoke();
         foreach(Unit enemy in enemies)
@@ -185,17 +178,15 @@ public partial class ICombatManager : MonoBehaviour
         while(!finishedSelectingActions) yield return null;
 
         OnEndActionSelection?.Invoke();
-        yield return StartCoroutine(InvokeCombatEvent(OnActionSelectionComplete));
+        yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.SelectionPhaseEnded));
     }
     public delegate void OnToggleActionSelectionStateDelegate();
     public event OnToggleActionSelectionStateDelegate OnBeginActionSelection;
     public event OnToggleActionSelectionStateDelegate OnEndActionSelection;
-    public event CombatCoroutineEventHandler OnActionSelectionStarted;
-    public event CombatCoroutineEventHandler OnActionSelectionComplete;
 
     protected virtual IEnumerator ExecuteActions()
     {
-        yield return StartCoroutine(InvokeCombatEvent(OnActionExecutionStarted));
+        yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.ExecutionPhaseStarted));
 
         Debug.Log("Executing Actions...");
 
@@ -225,42 +216,38 @@ public partial class ICombatManager : MonoBehaviour
 
         //foreach(Unit unit in unitsInInitiativeOrder) Debug.Log(unit.ToString());
 
-        yield return StartCoroutine(InvokeCombatEvent(OnActionExecutionComplete));
+        yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.ExecutionPhaseEnded));
     }
-    public event CombatCoroutineEventHandler OnActionExecutionStarted;
-    public event CombatCoroutineEventHandler OnActionExecutionComplete;
 
     protected virtual IEnumerator EndTurn()
     {
         //Debug.Log("End Turn");
-       yield return StartCoroutine(InvokeCombatEvent(OnTurnEnded));
+      yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.TurnEnded));
     }
-    public event CombatCoroutineEventHandler OnTurnEnded;
 
     protected virtual IEnumerator ResolveCombat()
     {
         Debug.Log("End of Combat Reached");
-        yield return StartCoroutine(InvokeCombatEvent(OnCombatResolved));
+        yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatResolved));
         if(allies.Select(a => a.isUnitActive).Any())
-            yield return StartCoroutine(InvokeCombatEvent(OnCombatWon));
+            yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatWon));
         else
-            yield return StartCoroutine(InvokeCombatEvent(OnCombatLost));
+            yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatLost));
         
         //TODO: add end combat screen flashes, then tear down combat
         yield return new WaitForSeconds(1f);
         StartCoroutine(TerminateCombatScene());
     }
-    public event CombatCoroutineEventHandler OnCombatResolved;
-    public event CombatCoroutineEventHandler OnCombatWon;
-    public event CombatCoroutineEventHandler OnCombatLost;
     #endregion
 
     protected virtual IEnumerator TerminateCombatScene()
     {
         Debug.Log("Tearing Down Combat");
-        yield return StartCoroutine(InvokeCombatEvent(OnCombatTerminated));
+        yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatTerminated));
+        OnCombatTerminated?.Invoke();
     }
-    public event CombatCoroutineEventHandler OnCombatTerminated;
+    public delegate void OnCombatTerminatedDelegate();
+    public event OnCombatTerminatedDelegate OnCombatTerminated;
 
     protected virtual bool TryAddAllyToCombat(Unit ally)
     {
@@ -360,15 +347,6 @@ public partial class ICombatManager : MonoBehaviour
         returnValue.AddRange(allies.Where(u => u.isUnitActive));
         returnValue.AddRange(enemies.Where(u => u.isUnitActive));
         return returnValue;
-    }
-
-    protected virtual IEnumerator InvokeCombatEvent(CombatCoroutineEventHandler handler, bool yield = true)
-    {
-        if(handler != null)
-        {
-            if(yield) foreach(CombatCoroutineEventHandler invocation in handler?.GetInvocationList()) yield return StartCoroutine(invocation?.Invoke());
-            else foreach(CombatCoroutineEventHandler invocation in handler?.GetInvocationList()) StartCoroutine(invocation?.Invoke());
-        }
     }
 
     protected List<Unit> GetActiveAlliesOfUnit(Unit unit)

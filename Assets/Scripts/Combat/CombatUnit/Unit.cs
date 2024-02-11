@@ -30,6 +30,8 @@ public partial class Unit : MonoBehaviour
 
     [HideInInspector] public bool isUnitActive = true;
 
+    private Color BLINK_MIN_COLOR;
+
     // Unit animator
     //public UnitAnimator unitAnimator;
 
@@ -37,11 +39,8 @@ public partial class Unit : MonoBehaviour
     private void Awake()
     {
         InitializeUnit();
-        SetupBlinkTween();
-    }
 
-    private void SetupBlinkTween()
-    {
+        BLINK_MIN_COLOR = new Color(1,1,1,.1f);
     }
 
     // Method to initialize unit
@@ -81,9 +80,10 @@ public partial class Unit : MonoBehaviour
     {
         if(currentBlinkCo == null || !currentBlinkCo.IsPlaying())
         {
+            Debug.Log("blink");
             float halfBlinkTime = BLINK_TIME/2;
             currentBlinkCo = DOTween.Sequence();
-            currentBlinkCo.Append(unitSprite.DOColor(Color.clear, halfBlinkTime).SetEase(Ease.InCubic));
+            currentBlinkCo.Append(unitSprite.DOColor(BLINK_MIN_COLOR, halfBlinkTime).SetEase(Ease.InCubic));
             currentBlinkCo.Append(unitSprite.DOColor(Color.white, halfBlinkTime).SetEase(Ease.OutCubic));
             currentBlinkCo.SetLoops(-1, LoopType.Restart);
 

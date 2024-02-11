@@ -79,7 +79,12 @@ public class ExplorationLevel : MonoBehaviour
         ICombatManager.Instance.StartNewCombat(currentCombat);
     }
 
-    private IEnumerator EndCurrentCombat()
+    private void EndCurrentCombat()
+    {
+        StartCoroutine(EndCurrentCombatCo());
+    }
+
+    private IEnumerator EndCurrentCombatCo()
     {
         yield return StartCoroutine(SceneTransitionController.Instance?.FadeScreenIn());
         SceneManager.UnloadSceneAsync(combatSceneName);

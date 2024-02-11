@@ -33,7 +33,7 @@ public class ICombatUI : MonoBehaviour
                 ICombatManager.Instance.OnConsiderTarget += DisplayConsideredTarget;
 
                 ICombatManager.Instance.OnConsiderAction += UpdateActionUI;
-                ICombatManager.Instance.OnActionSelectionComplete += DestroyUnitActionSelectionUI;
+                ICombatManager.Instance.OnEndActionSelection += DestroyUnitActionSelectionUI;
 
                 ICombatManager.Instance.OnEndActionSelection += DisableActionInfo;
                 ICombatManager.Instance.OnEndActionSelection += DisableTargetInfo;
@@ -56,13 +56,12 @@ public class ICombatUI : MonoBehaviour
     public delegate void OnUpdateActionUIDelegate(Unit unit, CombatAction action, ICombatUI combatUI, bool actionIndexIncreased);
     public event OnUpdateActionUIDelegate OnUpdateActionUI;
 
-    private IEnumerator DestroyUnitActionSelectionUI()
+    private void DestroyUnitActionSelectionUI()
     {
         foreach(UnitUI unitUI in alliesUI)
         {
             unitUI.EndActionSelectionDisplay();
         }
-        yield return null;
     }
 
     protected virtual void AddAllyUI(Unit ally)

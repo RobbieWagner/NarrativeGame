@@ -26,14 +26,21 @@ public partial class ICombatManager : MonoBehaviour
     private List<Unit> actionTargets;
     private List<Unit> selectedTargets;
     
-    protected virtual void AwakenControls()
+    protected virtual void InitializeControls()
     {
+        Debug.Log("initialize controls");
         actionSelectionControls = new MenuControls();
         targetSelectionControls = new MenuControls();
         OnBeginActionSelection += BeginActionSelection;
     }
 
-    protected virtual void DisableControls()
+    public virtual void EnableControls()
+    {
+        actionSelectionControls.Enable();
+        targetSelectionControls.Enable();
+    }
+
+    public virtual void DisableControls()
     {
         actionSelectionControls.Disable();
         targetSelectionControls.Disable();
@@ -170,7 +177,9 @@ public partial class ICombatManager : MonoBehaviour
     {
         //Debug.Log($"Target is {unit.name}");
         OnStopConsideringTarget?.Invoke(currentTarget);
+        currentTarget?.StopBlinking();
         currentTarget = unit;
+        currentTarget.StartBlinking();
         OnConsiderTarget?.Invoke(currentUnit, currentTarget, currentUnit.currentSelectedAction);
     }
     public delegate void OnStopConsideringTargetDelegate(Unit target);
