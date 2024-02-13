@@ -32,12 +32,14 @@ public class UnitAnimator : MonoBehaviour
 
     protected virtual void Awake()
     {
+        Debug.Log("awake");
         OnAnimationStateChange += StartAnimation;
         SetAnimationState(UnitAnimationState.Idle);
     }
 
     public void SetAnimationState(UnitAnimationState state)
     {
+        Debug.Log("hello");
         if(state != currentState && states.Contains(state)) 
         {
             currentState = state;
@@ -60,6 +62,7 @@ public class UnitAnimator : MonoBehaviour
 
     protected void StartAnimation(UnitAnimationState state)
     {
+        Debug.Log($"play anim {state}");
         animator.Play(state.ToString());
     }
 }

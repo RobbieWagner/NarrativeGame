@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/ExplorationSceneTemplate.unity
+    path: Assets/Scenes/Exploration/ExplorationSceneTemplate.unity
     guid: da085450bf880294b990ed033f56a31d
   - enabled: 1
     path: Assets/Scenes/DialogueSceneTemplate.unity
     guid: f35062da86b9c404f874453b6ffd600b
   - enabled: 1
-    path: Assets/Scenes/CombatSceneTemplate.unity
+    path: Assets/Scenes/Combat/CombatSceneTemplate.unity
     guid: 92f1f5be5622f2a4eb54916da3a1e282
   m_configObjects: {}

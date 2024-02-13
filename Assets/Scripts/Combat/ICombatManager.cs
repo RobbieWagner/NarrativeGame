@@ -58,9 +58,9 @@ public partial class ICombatManager : MonoBehaviour
         { 
             Instance = this; 
         } 
-        //DEBUG ONLY! COMMENT OUT IF NOT USING
-        //StartNewCombat(debugCombat);
         InitializeControls();
+
+        StartCoroutine(StartDebugCombat());
     }
 
     public virtual bool StartNewCombat(ICombat newCombat)
@@ -362,4 +362,15 @@ public partial class ICombatManager : MonoBehaviour
     }
 
     protected void OnDestroy() => Instance = null;
+
+    #if UNITY_EDITOR
+    public IEnumerator StartDebugCombat()
+    {
+        yield return null;
+
+        //DEBUG ONLY! COMMENT OUT IF NOT USING
+        if(debugCombat != null) 
+            StartNewCombat(debugCombat);
+    }
+    #endif
 }

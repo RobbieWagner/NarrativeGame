@@ -14,6 +14,6 @@ public static class StaticGameStats
     public static string dialogueSoundEffectsFilePath = "Sounds/Dialogue/SoundEffects/";
     public static string combatMusicFilePath = "Sounds/Combat/Music/";
     public static string combatSoundEffectsFilePath = "Sounds/Combat/SoundEffects/";
-    public static string sceneFilePath = "Assets/Scenes/";
+    public static string sceneFilePath = "Assets/Scenes/Combat/";
     #endregion
 }
