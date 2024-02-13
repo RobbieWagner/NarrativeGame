@@ -36,6 +36,11 @@ public partial class Unit : MonoBehaviour
 
     public delegate void OnStatValueChangedDelegate(int value);
 
+    public delegate void OnUnitStatChangedDelegate();
+    public event OnUnitStatChangedDelegate OnMainStatChanged;
+    public event OnUnitStatChangedDelegate OnStatChanged;
+    public event OnUnitStatChangedDelegate OnNonMeteredStatChanged;
+
     #region stat properties
     private int hp;
     public int HP
@@ -48,6 +53,7 @@ public partial class Unit : MonoBehaviour
             if(hp < 0) hp = 0;
             if(hp > GetMaxStatValue(UnitStat.HP)) hp = GetMaxStatValue(UnitStat.HP);
             OnHPChanged?.Invoke(hp);
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnHPChanged;
@@ -63,6 +69,7 @@ public partial class Unit : MonoBehaviour
             if(mana < 0) mana = 0;
             if(mana > GetMaxStatValue(UnitStat.Mana)) mana = GetMaxStatValue(UnitStat.Mana);
             OnManaChanged?.Invoke(mana);
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnManaChanged;
@@ -77,6 +84,9 @@ public partial class Unit : MonoBehaviour
             brawn = value;
             if(brawn < 0) brawn = 0;
             OnBrawnChanged?.Invoke(brawn);
+            OnMainStatChanged?.Invoke();
+            OnNonMeteredStatChanged?.Invoke();
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnBrawnChanged;
@@ -91,6 +101,9 @@ public partial class Unit : MonoBehaviour
             agility = value;
             if(agility < 0) agility = 0;
             OnAgilityChanged?.Invoke(agility);
+            OnMainStatChanged?.Invoke();
+            OnNonMeteredStatChanged?.Invoke();
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnAgilityChanged;
@@ -105,6 +118,9 @@ public partial class Unit : MonoBehaviour
             defense = value;
             if(defense < 0) defense = 0;
             OnDefenseChanged?.Invoke(defense);
+            OnMainStatChanged?.Invoke();
+            OnNonMeteredStatChanged?.Invoke();
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnDefenseChanged;
@@ -119,6 +135,9 @@ public partial class Unit : MonoBehaviour
             psych = value;
             if(psych < 0) psych = 0;
             OnPsychChanged?.Invoke(psych);
+            OnMainStatChanged?.Invoke();
+            OnNonMeteredStatChanged?.Invoke();
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnPsychChanged;
@@ -133,6 +152,9 @@ public partial class Unit : MonoBehaviour
             focus = value;
             if(focus < 0) focus = 0;
             OnFocusChanged?.Invoke(focus);
+            OnMainStatChanged?.Invoke();
+            OnNonMeteredStatChanged?.Invoke();
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnFocusChanged;
@@ -147,6 +169,9 @@ public partial class Unit : MonoBehaviour
             heart = value;
             if(heart < 0) heart = 0;
             OnHeartChanged?.Invoke(heart);
+            OnMainStatChanged?.Invoke();
+            OnNonMeteredStatChanged?.Invoke();
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnHeartChanged;
@@ -166,6 +191,8 @@ public partial class Unit : MonoBehaviour
             if(pCrit < 0) pCrit = 0;
             if(pCrit > GetMaxStatValue(UnitStat.PCrit)) pCrit = GetMaxStatValue(UnitStat.PCrit);
             OnPCritChanged?.Invoke(pCrit);
+            OnNonMeteredStatChanged?.Invoke();
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnPCritChanged;
@@ -185,6 +212,8 @@ public partial class Unit : MonoBehaviour
             if(mCrit < 0) mCrit = 0;
             if(mCrit > GetMaxStatValue(UnitStat.MCrit)) mCrit = GetMaxStatValue(UnitStat.MCrit);
             OnMCritChanged?.Invoke(mCrit);
+            OnNonMeteredStatChanged?.Invoke();
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnMCritChanged;
@@ -204,6 +233,8 @@ public partial class Unit : MonoBehaviour
             if(initiative < 0) hp = 0;
             if(initiative > GetMaxStatValue(UnitStat.Initiative)) initiative = GetMaxStatValue(UnitStat.Initiative);
             OnInitiativeChanged?.Invoke(initiative);
+            OnNonMeteredStatChanged?.Invoke();
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnInitiativeChanged;
@@ -223,6 +254,8 @@ public partial class Unit : MonoBehaviour
             if(badMentRes < 0) badMentRes = 0;
             if(badMentRes > GetMaxStatValue(UnitStat.BMR)) badMentRes = GetMaxStatValue(UnitStat.BMR);
             OnBMRChanged?.Invoke(badMentRes);
+            OnNonMeteredStatChanged?.Invoke();
+            OnStatChanged?.Invoke();
         }
     }
     public event OnStatValueChangedDelegate OnBMRChanged;
