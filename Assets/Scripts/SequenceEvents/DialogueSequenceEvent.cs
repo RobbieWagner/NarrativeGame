@@ -5,10 +5,11 @@ using System.Collections;
 
 public class DialogueSequenceEvent : SequenceEvent
 {
-    [SerializeField] private Story dialogue;
+    [SerializeField] private TextAsset dialogue;
 
     public override IEnumerator InvokeSequenceEvent()
     {
-        yield return StartCoroutine(DialogueManager.Instance.EnterDialogueModeCo(dialogue));
+        base.InvokeSequenceEvent();
+        yield return StartCoroutine(DialogueManager.Instance.EnterDialogueModeCo(DialogueConfigurer.ConfigureStory(dialogue)));
     }
 }

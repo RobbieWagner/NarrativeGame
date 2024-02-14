@@ -43,12 +43,12 @@ public class GameCamera : MonoBehaviour
 
     public virtual IEnumerator ResetCameraPosition(float time = 1f)
     {
-        yield return transform.DOMove(defaultPosition, time).WaitForCompletion();
+        yield return transform.DOLocalMove(defaultPosition, time).WaitForCompletion();
     }
 
     public virtual IEnumerator ResetCameraPositionSpeed(int speed = 1)
     {
         if(speed < 1) StopCoroutine(ResetCameraPosition(speed)); 
-        yield return transform.DOMove(defaultPosition, Vector3.Distance(transform.position, defaultPosition)/speed).WaitForCompletion();
+        yield return transform.DOLocalMove(defaultPosition, Vector3.Distance(transform.position, defaultPosition)/speed).WaitForCompletion();
     }
 }

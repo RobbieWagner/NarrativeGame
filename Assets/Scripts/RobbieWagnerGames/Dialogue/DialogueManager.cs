@@ -104,7 +104,7 @@ namespace RobbieWagnerGames
         }
 
         #region core mechanics
-        public IEnumerator RunDialogue(Story story)
+        private IEnumerator RunDialogue(Story story)
         {
             yield return null;
 

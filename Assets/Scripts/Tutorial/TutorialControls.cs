@@ -42,7 +42,7 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
                     ""id"": ""c7e89d01-83fd-4d7d-8345-83078145739b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
                 },
                 {
@@ -51,7 +51,7 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
                     ""id"": ""9e37e3ce-0e1a-43be-b554-eaf1434b7b10"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
                 }
             ],
@@ -115,7 +115,7 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""21a0d4fa-b4d7-418c-8b7e-8f298ce127f1"",
                     ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Next"",
@@ -159,7 +159,7 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""71b73902-d2cd-4f96-ba6e-5337dcabf1f2"",
                     ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Previous"",

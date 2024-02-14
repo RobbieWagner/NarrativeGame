@@ -10,7 +10,7 @@ public class ExplorationLevel : MonoBehaviour
     [Header("Combat")]
     [SerializeField] private ICombatManager combatManagerPrefab;
     [SerializeField] private Transform combatZone;
-    [SerializeField] private string combatSceneName;
+    public string combatSceneName;
 
     private Scene currentCombatScene;
     private ICombat currentCombat;
@@ -21,7 +21,11 @@ public class ExplorationLevel : MonoBehaviour
         {
             if(currentCombat != null && currentCombat.Equals(value)) return;
             currentCombat = value;
-            StartLoadingCombatScene();
+            if(CombatLoadController.Instance != null) 
+            {
+                CombatLoadController.Instance?.StartLoadingCombatScene(currentCombat, combatSceneName);
+                CombatLoadController.Instance.OnCombatEnded += ResetAfterCombat;
+            }
         }
     }
 
@@ -42,55 +46,9 @@ public class ExplorationLevel : MonoBehaviour
         if (ExplorationManager.Instance == null) Debug.LogWarning("Missing Exploration Manager from scene, please create an Exploration Manager and add to this scene.");
     }
 
-    public void StartLoadingCombatScene()
+    private void ResetAfterCombat()
     {
-        StartCoroutine(StartLoadingCombatSceneCo());
-    }
-
-    public IEnumerator StartLoadingCombatSceneCo()
-    {
-        string combatScenePath = $"{StaticGameStats.sceneFilePath}{combatSceneName}.unity";
-        if (GameManager.Instance.CurrentGameMode != GameMode.Combat && ICombatManager.Instance == null && SceneUtility.GetBuildIndexByScenePath(combatScenePath) > -1)
-        {
-            GameManager.Instance.CurrentGameMode = GameMode.Combat;
-            yield return StartCoroutine(SceneTransitionController.Instance?.FadeScreenIn());
-            //Instantiate(combatManagerPrefab, combatZone);
-            SceneManager.LoadSceneAsync(combatSceneName, LoadSceneMode.Additive);
-            SceneManager.sceneLoaded += FinishLoadingCombatScene;
-        }
-    }
-
-    private void FinishLoadingCombatScene(Scene scene, LoadSceneMode sceneLoadMode)
-    {
-        if (scene.name.Trim().Equals(combatSceneName.Trim(), StringComparison.CurrentCultureIgnoreCase))
-        {
-            SceneManager.sceneLoaded -= FinishLoadingCombatScene;
-            StartCoroutine(FinishLoadingCombatSceneCo());
-        }
-    }
-
-    private IEnumerator FinishLoadingCombatSceneCo()
-    {
-        ICombatManager.Instance.OnCombatTerminated += EndCurrentCombat;
-        //ICombatManager.Instance.transform.localPosition = Vector3.zero;
-        CameraManager.Instance.TrySwitchGameCamera(CombatCamera.Instance);
-
-        yield return StartCoroutine(SceneTransitionController.Instance?.FadeScreenOut());
-        ICombatManager.Instance.StartNewCombat(currentCombat);
-    }
-
-    private void EndCurrentCombat()
-    {
-        StartCoroutine(EndCurrentCombatCo());
-    }
-
-    private IEnumerator EndCurrentCombatCo()
-    {
-        yield return StartCoroutine(SceneTransitionController.Instance?.FadeScreenIn());
-        SceneManager.UnloadSceneAsync(combatSceneName);
         GameManager.Instance.CurrentGameMode = GameMode.Exploration;
-        currentCombat = null;
-        CameraManager.Instance.TrySwitchGameCamera(ExplorationCamera.Instance);
-        yield return StartCoroutine(SceneTransitionController.Instance?.FadeScreenOut());
+        CombatLoadController.Instance.OnCombatEnded -= ResetAfterCombat;
     }
 }
