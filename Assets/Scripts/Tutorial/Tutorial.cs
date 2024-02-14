@@ -33,18 +33,20 @@ public class Tutorial : MonoBehaviour
     {
         controls.Enable();
         controls.Tutorial.Next.performed += NextPage;
+        controls.Tutorial.NextAxis.performed += NextPageAxis;
         controls.Tutorial.Previous.performed += PreviousPage;
         controls.Tutorial.CloseTutorial.started += CloseTutorial;
         checkingInitialNextState = true;
         checkingInitialPrevState = true;
-        nextInputValue = 2;
-        prevInputValue = 2;
+        nextInputValue = 1;
+        prevInputValue = 1;
     }
 
     private void UnsubscribeControls()
     {
         controls.Disable();
         controls.Tutorial.Next.performed -= NextPage;
+        controls.Tutorial.NextAxis.performed -= NextPageAxis;
         controls.Tutorial.Previous.performed -= PreviousPage;
         controls.Tutorial.CloseTutorial.started -= CloseTutorial;
         checkingInitialNextState = false;
@@ -81,6 +83,17 @@ public class Tutorial : MonoBehaviour
         nextInputValue = value;
     }
 
+    public void NextPageAxis(InputAction.CallbackContext context)
+    {
+        float value = context.ReadValue<float>();
+         if(!isOnLastPage && value != 0 && value != nextInputValue && value != 1)
+        {
+            currentPage++;
+            TutorialUI.Instance?.DisplayTutorialPage(tutorialPages[currentPage], currentPage + 1, tutorialPages.Count, tutorialTitle);
+        }
+        nextInputValue = value;
+    }
+
     public void PreviousPage(InputAction.CallbackContext context)
     {
         float value = context.ReadValue<float>();
@@ -94,7 +107,8 @@ public class Tutorial : MonoBehaviour
 
     public void CloseTutorial(InputAction.CallbackContext context)
     {
-        if(isOnLastPage)
+        float value = context.ReadValue<float>();
+        if(isOnLastPage && value >= nextInputValue)
         {
             TutorialUI.Instance.canvas.enabled = false;
             OnCompleteTutorial?.Invoke();

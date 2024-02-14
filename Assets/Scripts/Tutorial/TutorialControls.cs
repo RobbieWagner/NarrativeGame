@@ -42,7 +42,16 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
                     ""id"": ""c7e89d01-83fd-4d7d-8345-83078145739b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextAxis"",
+                    ""type"": ""Button"",
+                    ""id"": ""48e649c9-8dcc-46de-b21c-0ea41da18ec6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
@@ -104,17 +113,6 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""d1ab926e-e327-4700-8377-a2261b6f38d1"",
                     ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Next"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""21a0d4fa-b4d7-418c-8b7e-8f298ce127f1"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -187,6 +185,17 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
                     ""action"": ""Previous"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cbb5c727-2284-46d7-8d2d-6528322bdbb9"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -197,6 +206,7 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
         m_Tutorial = asset.FindActionMap("Tutorial", throwIfNotFound: true);
         m_Tutorial_CloseTutorial = m_Tutorial.FindAction("CloseTutorial", throwIfNotFound: true);
         m_Tutorial_Next = m_Tutorial.FindAction("Next", throwIfNotFound: true);
+        m_Tutorial_NextAxis = m_Tutorial.FindAction("NextAxis", throwIfNotFound: true);
         m_Tutorial_Previous = m_Tutorial.FindAction("Previous", throwIfNotFound: true);
     }
 
@@ -261,6 +271,7 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
     private List<ITutorialActions> m_TutorialActionsCallbackInterfaces = new List<ITutorialActions>();
     private readonly InputAction m_Tutorial_CloseTutorial;
     private readonly InputAction m_Tutorial_Next;
+    private readonly InputAction m_Tutorial_NextAxis;
     private readonly InputAction m_Tutorial_Previous;
     public struct TutorialActions
     {
@@ -268,6 +279,7 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
         public TutorialActions(@TutorialControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @CloseTutorial => m_Wrapper.m_Tutorial_CloseTutorial;
         public InputAction @Next => m_Wrapper.m_Tutorial_Next;
+        public InputAction @NextAxis => m_Wrapper.m_Tutorial_NextAxis;
         public InputAction @Previous => m_Wrapper.m_Tutorial_Previous;
         public InputActionMap Get() { return m_Wrapper.m_Tutorial; }
         public void Enable() { Get().Enable(); }
@@ -284,6 +296,9 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
             @Next.started += instance.OnNext;
             @Next.performed += instance.OnNext;
             @Next.canceled += instance.OnNext;
+            @NextAxis.started += instance.OnNextAxis;
+            @NextAxis.performed += instance.OnNextAxis;
+            @NextAxis.canceled += instance.OnNextAxis;
             @Previous.started += instance.OnPrevious;
             @Previous.performed += instance.OnPrevious;
             @Previous.canceled += instance.OnPrevious;
@@ -297,6 +312,9 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
             @Next.started -= instance.OnNext;
             @Next.performed -= instance.OnNext;
             @Next.canceled -= instance.OnNext;
+            @NextAxis.started -= instance.OnNextAxis;
+            @NextAxis.performed -= instance.OnNextAxis;
+            @NextAxis.canceled -= instance.OnNextAxis;
             @Previous.started -= instance.OnPrevious;
             @Previous.performed -= instance.OnPrevious;
             @Previous.canceled -= instance.OnPrevious;
@@ -321,6 +339,7 @@ public partial class @TutorialControls: IInputActionCollection2, IDisposable
     {
         void OnCloseTutorial(InputAction.CallbackContext context);
         void OnNext(InputAction.CallbackContext context);
+        void OnNextAxis(InputAction.CallbackContext context);
         void OnPrevious(InputAction.CallbackContext context);
     }
 }
