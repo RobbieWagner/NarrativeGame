@@ -28,7 +28,7 @@ public class CombatLoadController : MonoBehaviour
     {
         if(string.IsNullOrWhiteSpace(currentCombatSceneName))
         {
-            string combatSceneName = string.IsNullOrWhiteSpace(combatSceneNameIn) ? ExplorationLevel.Instance.combatSceneName : combatSceneNameIn;
+            string combatSceneName = string.IsNullOrWhiteSpace(combatSceneNameIn) ? Level.Instance.combatSceneName : combatSceneNameIn;
             currentCombat = combat;
             currentCombatSceneName = combatSceneName;
             string combatScenePath = $"{StaticGameStats.sceneFilePath}{combatSceneName}.unity";

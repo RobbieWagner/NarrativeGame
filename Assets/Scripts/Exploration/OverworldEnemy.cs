@@ -17,7 +17,7 @@ public class OverworldEnemy : MonoBehaviour
         {
             if(GameManager.Instance.CurrentGameMode == GameMode.Exploration)
             {
-                if(ExplorationLevel.Instance != null)
+                if(Level.Instance != null)
                     StartCombat();
                 else
                     Debug.LogWarning("Found no level instance, could not start combat.");
@@ -28,6 +28,6 @@ public class OverworldEnemy : MonoBehaviour
 
     protected virtual void StartCombat()
     {
-        ExplorationLevel.Instance.CurrentCombat = combat;
+        Level.Instance.CurrentCombat = combat;
     }
 }

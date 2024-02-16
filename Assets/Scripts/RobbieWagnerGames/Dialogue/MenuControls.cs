@@ -298,6 +298,17 @@ public partial class @MenuControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""101a1baa-4aae-452e-b79b-8b8201c570d4"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ef9759c6-f9b0-442c-b0ad-06f9a7c280a3"",
                     ""path"": ""<Keyboard>/backspace"",
                     ""interactions"": """",

@@ -5,32 +5,16 @@ using RobbieWagnerGames;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 
-public class ExplorationEvent : IInteractable
+public class ExplorationEvent : EventSequence
 {
-    [Header("Events")]
-    [SerializeField] protected List<SequenceEvent> eventSequence;
-
-    protected override void Awake()
-    {
-        canInteract = false;
-    }
-
-    protected override void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
-            OnInteract(new InputAction.CallbackContext());
+            StartCoroutine(InvokeEvent());
     }
 
-    protected override void OnInteract(InputAction.CallbackContext context)
+    protected override IEnumerator InvokeEvent(bool setToEventGameMode = true)
     {
-        if(PlayerMovement.Instance != null) PlayerMovement.Instance.DisablePlayerMovement();
-        StartCoroutine(Interact());
-    }
-
-    protected override IEnumerator Interact()
-    {
-        foreach(SequenceEvent sequenceEvent in eventSequence)
-            yield return StartCoroutine(sequenceEvent.InvokeSequenceEvent());
-        yield return base.Interact();
+        yield return StartCoroutine(base.InvokeEvent(setToEventGameMode));
     }
 }

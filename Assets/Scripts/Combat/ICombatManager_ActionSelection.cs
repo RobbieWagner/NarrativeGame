@@ -28,7 +28,6 @@ public partial class ICombatManager : MonoBehaviour
     
     protected virtual void InitializeControls()
     {
-        Debug.Log("initialize controls");
         actionSelectionControls = new MenuControls();
         targetSelectionControls = new MenuControls();
         OnBeginActionSelection += BeginActionSelection;
@@ -83,7 +82,9 @@ public partial class ICombatManager : MonoBehaviour
         {
             //display ui
             //unit.StartBlinking();
-            StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition, unit.transform.position, 1f)));
+            StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.transform.position, //TODO: Use transform of parent + default position instead
+                                                                                 unit.transform.position, 
+                                                                                 1f)));
 
             targetSelectionControls.Disable();
             actionSelectionControls.Enable();

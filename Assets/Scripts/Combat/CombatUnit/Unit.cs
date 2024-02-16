@@ -80,7 +80,6 @@ public partial class Unit : MonoBehaviour
     {
         if(currentBlinkCo == null || !currentBlinkCo.IsPlaying())
         {
-            Debug.Log("blink");
             float halfBlinkTime = BLINK_TIME/2;
             currentBlinkCo = DOTween.Sequence();
             currentBlinkCo.Append(unitSprite.DOColor(BLINK_MIN_COLOR, halfBlinkTime).SetEase(Ease.InCubic));

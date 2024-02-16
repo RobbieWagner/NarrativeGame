@@ -31,9 +31,7 @@ public class CombatEventHandler : MonoBehaviour
         if(events != null)
         {
             foreach(CombatEvent combatEvent in events)
-            {
-                yield return StartCoroutine(combatEvent.InvokeEvent());
-            }
+                yield return StartCoroutine(combatEvent.InvokeCombatEvent());
         }
         else
             Debug.Log("no events found");

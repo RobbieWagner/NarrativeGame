@@ -20,4 +20,6 @@ public class CombatCamera : GameCamera
         
         base.Awake(); 
     }
+
+    
 }

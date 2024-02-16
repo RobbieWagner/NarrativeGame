@@ -49,7 +49,7 @@ public class Battlefield : MonoBehaviour
         if(CombatCamera.Instance != null) 
         {
             CameraManager.Instance.TrySwitchGameCamera(CombatCamera.Instance);
-            CombatCamera.Instance.defaultPosition = transform.position + camPosition;
+            CombatCamera.Instance.defaultPosition = transform.localPosition + camPosition;
         }
         yield return StartCoroutine(CombatCamera.Instance?.ResetCameraPosition());
     }

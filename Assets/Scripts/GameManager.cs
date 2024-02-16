@@ -5,7 +5,7 @@ public enum GameMode
 {
     None = -1,
     Exploration = 0,
-    Dialogue = 1,
+    Event = 1,
     Combat = 2,
     Other = 3
 }

@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatEvent : MonoBehaviour
+public class CombatEvent : EventSequence
 {
-    [Header("Events")]
-    [SerializeField] protected List<SequenceEvent> eventSequence;
     [Space(15)]
     [Header("Settings")]
     public int priority = -1;
@@ -31,14 +29,16 @@ public class CombatEvent : MonoBehaviour
             ICombatManager.Instance.UnsubscribeEventFromCombatEventHandler(this, eventTrigger);
     }
 
-    public virtual IEnumerator InvokeEvent()
+    public IEnumerator InvokeCombatEvent()
     {
-        //Debug.Log("event invoked");
+        yield return StartCoroutine(InvokeEvent());
+    }
+
+    protected override IEnumerator InvokeEvent(bool setToEventGameMode = true)
+    {
         ICombatManager.Instance?.DisableControls();
-        foreach(SequenceEvent e in eventSequence) 
-            yield return StartCoroutine(e.InvokeSequenceEvent());
-
+        yield return StartCoroutine(base.InvokeEvent(setToEventGameMode));
         if(triggersOnce) UnsubscribeCombatEvent();
-
+        ICombatManager.Instance.EnableControls();
     }
 }

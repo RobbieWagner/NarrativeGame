@@ -5,7 +5,7 @@ using RobbieWagnerGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ExplorationLevel : MonoBehaviour
+public class Level : MonoBehaviour
 {
     [Header("Combat")]
     [SerializeField] private ICombatManager combatManagerPrefab;
@@ -29,7 +29,7 @@ public class ExplorationLevel : MonoBehaviour
         }
     }
 
-    public static ExplorationLevel Instance { get; private set; }
+    public static Level Instance { get; private set; }
 
     private void Awake()
     {
