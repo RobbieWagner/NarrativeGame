@@ -16,8 +16,7 @@ namespace RobbieWagnerGames
         protected override void Awake()
         {
             base.Awake();
-            saveDataName = SceneManager.GetActiveScene().name + "_" + npcName;
-            interactions = SaveDataManager.LoadInt(saveDataName, 0);
+            interactions = SaveDataManager.LoadObject<int>(npcName, new string[]{StaticGameStats.dialogueSavePath, gameObject.scene.name});
         }
 
         private Story ConfigureStory()

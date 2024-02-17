@@ -2,55 +2,74 @@ using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace RobbieWagnerGames
 {
     #region SaveData
+    [System.Serializable]
+    public class SaveData<SerializableObject>
+    {
+        [SerializeField] public string Key;
+        [SerializeField] public SerializableObject Value;
+
+        public SaveData(string key, SerializableObject value)
+        {
+            Key = key;
+            Value = value;
+        }
+
+        public string GetAsJson()
+        {
+            return JsonUtility.ToJson(this);
+        }
+    }
+   
     public class SaveString
     {
-        public string name;
-        public string saveString;
+        public string Key;
+        public string Value;
 
-        public SaveString(string name, string saveString)
+        public SaveString(string key, string value)
         {
-            this.name = name;
-            this.saveString = saveString;
+            this.Key = key;
+            this.Value = value;
         }
     }
 
     public class SaveFloat
     {
-        public string name;
-        public float saveFloat;
+        public string Key;
+        public float Value;
 
-        public SaveFloat(string name, float saveFloat)
+        public SaveFloat(string Key, float value)
         {
-            this.name = name;
-            this.saveFloat = saveFloat;
+            this.Key = Key;
+            this.Value = value;
         }
     }
 
     public class SaveInt
     {
-        public string name;
-        public int saveInt;
+        public string Key;
+        public int Value;
 
-        public SaveInt(string name, int saveInt)
+        public SaveInt(string Key, int value)
         {
-            this.name = name;
-            this.saveInt = saveInt;
+            this.Key = Key;
+            this.Value = value;
         }
     }
 
     public class SaveBool
     {
-        public string name;
-        public bool saveBool;
+        public string Key;
+        public bool Value;
 
-        public SaveBool(string name, bool saveBool)
+        public SaveBool(string Key, bool value)
         {
-            this.name = name;
-            this.saveBool = saveBool;
+            this.Key = Key;
+            this.Value = value;
         }
     }
     #endregion
@@ -75,33 +94,33 @@ namespace RobbieWagnerGames
         }
 
         #region AddToSaveList
-        public void AddToSaveList(SaveString saveString) 
+        public void AddToSaveList(SaveString Value) 
         {
-            saveStrings.RemoveAll(x => x.name.Equals(saveString.name));
-            saveStrings.Add(saveString);
+            saveStrings.RemoveAll(x => x.Key.Equals(Value.Key));
+            saveStrings.Add(Value);
         }
         public void AddToSaveList(SaveFloat saveFloat) 
         {
-            saveFloats.RemoveAll(x => x.name.Equals(saveFloat.name));
+            saveFloats.RemoveAll(x => x.Key.Equals(saveFloat.Key));
             saveFloats.Add(saveFloat);
         }
         public void AddToSaveList(SaveInt saveInt) 
         {
-            saveInts.RemoveAll(x => x.name.Equals(saveInt.name));
+            saveInts.RemoveAll(x => x.Key.Equals(saveInt.Key));
             saveInts.Add(saveInt);
         }
         public void AddToSaveList(SaveBool saveBool) 
         {
-            saveBools.RemoveAll(x => x.name.Equals(saveBool.name));
+            saveBools.RemoveAll(x => x.Key.Equals(saveBool.Key));
             saveBools.Add(saveBool);
         }
 
         public void SaveAllSaveLists()
         {
-            foreach(SaveString saveString in saveStrings){SaveDataManager.SaveString(saveString.name, saveString.saveString);}
-            foreach(SaveFloat saveFloat in saveFloats){SaveDataManager.SaveFloat(saveFloat.name, saveFloat.saveFloat);}
-            foreach(SaveInt saveInt in saveInts){SaveDataManager.SaveInt(saveInt.name, saveInt.saveInt);}
-            foreach(SaveBool saveBool in saveBools){SaveDataManager.SaveBool(saveBool.name, saveBool.saveBool);}
+            // foreach(SaveString Value in saveStrings){SaveDataManager.SaveString(Value.Key, Value.Value);}
+            // foreach(SaveFloat saveFloat in saveFloats){SaveDataManager.SaveFloat(saveFloat.Key, saveFloat.Value);}
+            // foreach(SaveInt saveInt in saveInts){SaveDataManager.SaveInt(saveInt.Key, saveInt.Value);}
+            // foreach(SaveBool saveBool in saveBools){SaveDataManager.SaveBool(saveBool.Key, saveBool.Value);}
         }
         #endregion
     }

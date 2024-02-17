@@ -1,6 +1,7 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
-public class SaveDataUnit : Unit
+public class PartyUnit : Unit
 {
     public SerializableUnit serializableUnit;
 
@@ -13,6 +14,7 @@ public class SaveDataUnit : Unit
     {
         if(serializableUnit != null)
         {
+            UnitName = serializableUnit.UnitName;
             maxStatValues[UnitStat.Brawn] = serializableUnit.Brawn;
             maxStatValues[UnitStat.Agility] = serializableUnit.Agility;
             maxStatValues[UnitStat.Defense] = serializableUnit.Defense;
@@ -24,6 +26,9 @@ public class SaveDataUnit : Unit
 
             HP = serializableUnit.HP;
             Mana = serializableUnit.Mana;
+
+            //Load animator/base sprite
+            SetUnitAnimatorState(UnitAnimationState.CombatIdleRight);
         }
         else
         {

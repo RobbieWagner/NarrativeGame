@@ -12,6 +12,8 @@ namespace RobbieWagnerGames.UI
         [Header("Sound")]
         [SerializeField] private AudioMixer audioMixer;
 
+        private const string settingsFilePath = "Settings";
+
         [SerializeField] private VerticalLayoutGroup sliderGroupPrefab;
         [SerializeField] private VerticalLayoutGroup sliderParentPrefab;
         [SerializeField] private Slider sliderPrefab;
@@ -101,7 +103,7 @@ namespace RobbieWagnerGames.UI
             if(volume < -40) volume = -80;
             mainVolume = volume;
             audioMixer.SetFloat("volume", mainVolume);
-            SaveDataManager.SaveFloat("main_volume", mainVolume);
+            SaveDataManager.SaveObject<float>("main_volume", mainVolume, new string[]{settingsFilePath});
         } 
 
         public void SetMusicVolume(float volume)
@@ -109,7 +111,7 @@ namespace RobbieWagnerGames.UI
             if(volume < -40) volume = -80;
             musicVolume = volume;
             audioMixer.SetFloat("music", musicVolume);
-            SaveDataManager.SaveFloat("music_volume", musicVolume);
+            SaveDataManager.SaveObject<float>("music_volume", musicVolume, new string[]{settingsFilePath});
         } 
 
         public void SetCombatVolume(float volume)
@@ -117,7 +119,7 @@ namespace RobbieWagnerGames.UI
             if(volume < -40) volume = -80;
             combatVolume = volume;
             audioMixer.SetFloat("combat", combatVolume);
-            SaveDataManager.SaveFloat("combat_volume", combatVolume);
+            SaveDataManager.SaveObject<float>("combat_volume", combatVolume, new string[]{settingsFilePath});
         } 
 
         public void SetDialogueVolume(float volume)
@@ -125,7 +127,7 @@ namespace RobbieWagnerGames.UI
             if(volume < -40) volume = -80;
             dialogueVolume = volume;
             audioMixer.SetFloat("dialogue", dialogueVolume);
-            SaveDataManager.SaveFloat("dialogue_volume", dialogueVolume);
+            SaveDataManager.SaveObject<float>("dialogue_volume", dialogueVolume, new string[]{settingsFilePath});
         } 
 
         
@@ -134,7 +136,7 @@ namespace RobbieWagnerGames.UI
             if(volume < -40) volume = -80;
             playerVolume = volume;
             audioMixer.SetFloat("player", playerVolume);
-            SaveDataManager.SaveFloat("player_volume", playerVolume);
+            SaveDataManager.SaveObject<float>("player_volume", playerVolume, new string[]{settingsFilePath});
         } 
         
         public void SetUIVolume(float volume)
@@ -142,7 +144,7 @@ namespace RobbieWagnerGames.UI
             if(volume < -40) volume = -80;
             uiVolume = volume;
             audioMixer.SetFloat("ui", uiVolume);
-            SaveDataManager.SaveFloat("ui_volume", uiVolume);
+            SaveDataManager.SaveObject<float>("ui_volume", uiVolume, new string[]{settingsFilePath});
         } 
 
         public void SetVolumeSliders()
@@ -223,12 +225,12 @@ namespace RobbieWagnerGames.UI
                 volumes.Add(x);
             }        
 
-            SaveDataManager.SaveFloat("main_volume", volumes[0]);
-            SaveDataManager.SaveFloat("music_volume", volumes[1]);
-            SaveDataManager.SaveFloat("dialogue_volume", volumes[2]);
-            SaveDataManager.SaveFloat("combat_volume", volumes[3]);
-            SaveDataManager.SaveFloat("player_volume", volumes[4]);
-            SaveDataManager.SaveFloat("ui_volume", volumes[5]);
+            SaveDataManager.SaveObject<float>("main_volume", volumes[0]);
+            SaveDataManager.SaveObject<float>("music_volume", volumes[1]);
+            SaveDataManager.SaveObject<float>("dialogue_volume", volumes[2]);
+            SaveDataManager.SaveObject<float>("combat_volume", volumes[3]);
+            SaveDataManager.SaveObject<float>("player_volume", volumes[4]);
+            SaveDataManager.SaveObject<float>("ui_volume", volumes[5]);
         }
         
         public void ResetVolumes()

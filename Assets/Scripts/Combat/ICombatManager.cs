@@ -261,6 +261,8 @@ public partial class ICombatManager : MonoBehaviour
         }
         else return false;
     }
+
+    protected void InvokeOnAddNewAlly(Unit unit) => OnAddNewAlly?.Invoke(unit);
     public event UnitEventHandler OnAddNewAlly;
 
     protected virtual bool TryAddEnemyToCombat(Unit enemy)

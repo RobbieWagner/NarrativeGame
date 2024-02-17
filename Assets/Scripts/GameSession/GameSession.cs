@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using RobbieWagnerGames;
 using UnityEngine;
 
 public partial class GameSession : MonoBehaviour
@@ -19,8 +20,8 @@ public partial class GameSession : MonoBehaviour
             Instance = this; 
         } 
 
+        SaveDataManager.persistentPath = Application.persistentDataPath; 
         LoadGameSessionData();
-        //foreach()
     }
 
     private void LoadGameSessionData()
