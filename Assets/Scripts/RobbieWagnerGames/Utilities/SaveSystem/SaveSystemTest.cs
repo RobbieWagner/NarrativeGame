@@ -17,13 +17,14 @@ public class SaveSystemTest : MonoBehaviour
     private void SaveUnit()
     {
         GameSession.Instance?.playerParty.Add(unit);
+        Debug.Log(GameSession.Instance?.playerParty.Count);
         GameSession.Instance?.SaveGameSessionData();
     }
 
     private IEnumerator TestSaveSystem()
     {
-        Debug.Log("Save System Test starting in 5 seconds");
-        yield return new WaitForSeconds(5);
+        Debug.Log("Save System Test starting in 3 seconds");
+        yield return new WaitForSeconds(3);
         Debug.Log("Testing save system");
         SaveUnit();
         Debug.Log("Saving unit...");
@@ -32,6 +33,5 @@ public class SaveSystemTest : MonoBehaviour
         GameSession.Instance?.LoadGameSessionData();
         Debug.Log("Loading...");
         yield return new WaitForSeconds(1);
-        Debug.Log(string.Join("\n", GameSession.Instance?.playerParty.Select(p => p.ToString())));
     }
 }

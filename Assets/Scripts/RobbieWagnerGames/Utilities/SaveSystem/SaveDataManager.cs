@@ -36,44 +36,44 @@ namespace RobbieWagnerGames
                 SaveData<T> saveData = new SaveData<T>(key, obj);
                 string filePath = null;
                 if(filePathStrings == null)
-                    filePath = Path.Combine(DATA_FILE_PATH, fileName);
+                    filePath = DATA_FILE_PATH;
                 else
-                    filePath = Path.Combine(Path.Combine(DATA_FILE_PATH, Path.Combine(filePathStrings)), fileName);
+                    filePath = Path.Combine(DATA_FILE_PATH, Path.Combine(filePathStrings));
 
-                if(!string.IsNullOrWhiteSpace(filePath))
-                {
-                    if(!filePath.EndsWith(".json")) filePath += ".json";
-                    Debug.Log(filePath);
+                if(!Directory.Exists(filePath))
                     Directory.CreateDirectory(filePath);
-                    if(Directory.Exists(filePath))
-                    {
-                        var currentData = new List<SaveData<string>>();
-                        if(File.Exists(filePath)) // if the file and key already exist, data to save is current data plus new data
-                        {
-                            currentData = GetAllDataFromFile(filePath);
-                            currentData.ForEach(d =>
-                            {
-                                if(d.Key.Equals(saveData.Key, StringComparison.InvariantCultureIgnoreCase)) 
-                                    d.Value = JsonUtility.ToJson(saveData.Value);
-                            } 
-                            );
 
-                            if(!currentData.Select(d => d.Key.Equals(saveData.Key, StringComparison.InvariantCultureIgnoreCase)).Any()) // if key does not exist, preserve current data and add new
-                                currentData.Add(new SaveData<string>(saveData.Key, JsonUtility.ToJson(saveData.Value)));
-                        }
-                        else 
-                            currentData.Add(new SaveData<string>(saveData.Key, JsonUtility.ToJson(saveData.Value))); // else data to save is just the object we currently have
-                        
-                        StreamWriter streamWriter = new StreamWriter(filePath);
-                        foreach(SaveData<string> data in currentData)
-                            streamWriter.WriteLine(data.GetAsJson());
+                filePath = Path.Combine(filePath, fileName);
+
+                if(!filePath.EndsWith(".json")) filePath += ".json";
+                Debug.Log(filePath);
+
+                var currentData = new SaveDataList();
+                if(File.Exists(filePath)) // if the file and key already exist, data to save is current data plus new data
+                {
+                    currentData = GetAllDataFromFile(filePath);
+                    foreach(SaveData<string> data in currentData.SaveData)
+                    {
+                        if(data.Key.Equals(saveData.Key, StringComparison.InvariantCultureIgnoreCase)) 
+                            data.Value = JsonUtility.ToJson(saveData.Value);
                     }
-                    else
-                    Debug.LogWarning($"Could not find directory for path {filePath}");
+
+                    if(!currentData.SaveData.Where(d => d.Key.Equals(saveData.Key, StringComparison.InvariantCultureIgnoreCase)).Any()) // if key does not exist, preserve current data and add new
+                    {
+                        Debug.Log("appending file");
+                        currentData.SaveData.Add(new SaveData<string>(saveData.Key, JsonUtility.ToJson(saveData.Value)));
+                    }
+                        
                 }
-                else
-                    Debug.LogWarning($"could not save object at {filePath}: file path is null");
+                else 
+                    currentData.SaveData.Add(new SaveData<string>(saveData.Key, JsonUtility.ToJson(saveData.Value))); // else data to save is just the object we currently have
+                
+                StreamWriter streamWriter = new StreamWriter(filePath);
+                streamWriter.WriteLine(JsonUtility.ToJson(currentData)); // TODO: Consider making async
+                streamWriter.Close();
             }
+            else
+                Debug.LogWarning("Cannot save an empty object");
         }
 
         public static T LoadObject<T>(string key, string fileName, string[] filePathStrings = null, T defaultReturn = default)
@@ -84,17 +84,17 @@ namespace RobbieWagnerGames
             else
                 filePath = Path.Combine(Path.Combine(DATA_FILE_PATH, Path.Combine(filePathStrings)), fileName);
 
-            Debug.Log(filePath);
             if(!filePath.ToLower().EndsWith(".json")) filePath += ".json";
-            if(Directory.Exists(filePath))
+            Debug.Log(filePath);
+            if(File.Exists(filePath))
             {
-                List<SaveData<string>> fileSaveData = GetAllDataFromFile(filePath);
-                foreach(SaveData<string> saveData in fileSaveData)
+                SaveDataList fileSaveData = GetAllDataFromFile(filePath);
+                foreach(SaveData<string> saveData in fileSaveData.SaveData)
                 {
                     if(saveData.Key.Equals(key, StringComparison.InvariantCultureIgnoreCase))
                         return JsonUtility.FromJson<T>(saveData.Value);
                 }
-                Debug.LogWarning("Could not load object: object key does not exist in file");
+                Debug.LogWarning($"Could not load object: object key {key} does not exist in file");
                 return default;
             }
             else
@@ -104,7 +104,14 @@ namespace RobbieWagnerGames
             }
         }
 
-        private static List<SaveData<string>> GetAllDataFromFile(string filePath) => JsonUtility.FromJson<List<SaveData<string>>>(File.ReadAllText(filePath));
+        private static SaveDataList GetAllDataFromFile(string filePath)
+        {
+            string fileText = File.ReadAllText(filePath);
+            Debug.Log(fileText);
+            if(!string.IsNullOrWhiteSpace(fileText))
+                return JsonUtility.FromJson<SaveDataList>(fileText);
+            return null;
+        } 
 
         public static void PurgeAllSaveData()
         {

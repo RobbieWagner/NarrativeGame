@@ -9,22 +9,36 @@ public partial class GameSession : MonoBehaviour
 {
     [Header("Player Party")]
     public PartyUnit partyUnitPrefab;
-    public List<SerializableUnit> playerParty;
+    [SerializeField] public List<SerializableUnit> playerParty;
     public const int MAX_PARTY_SIZE = 20;
     public const string UNIT_PARTY_SAVE_KEY = "CurrentParty";
     public const string UNIT_SAVE_DATA_FILE_NAME = "party_data";
 
     private void LoadPlayersParty()
     {
-        List<SerializableUnit> units = new List<SerializableUnit>();
-        playerParty = SaveDataManager.LoadObject<List<SerializableUnit>>(UNIT_PARTY_SAVE_KEY, UNIT_SAVE_DATA_FILE_NAME);
+        playerParty = new List<SerializableUnit>();
+        int i = 0;
+        while(i < MAX_PARTY_SIZE)
+        {
+            SerializableUnit unit = SaveDataManager.LoadObject<SerializableUnit>($"{UNIT_PARTY_SAVE_KEY}_{i+1}", UNIT_SAVE_DATA_FILE_NAME, null, null);
+            if(unit == null) break;
+            playerParty.Add(unit);
+            i++;
+        }
 
-        foreach(SerializableUnit unit in units) Debug.Log(unit.ToString());
+        foreach(SerializableUnit unit in playerParty) Debug.Log(unit.ToString());
+
+        if(playerParty.Count == 0) Debug.LogWarning("Player does not have any save data for current party!");
     }
 
     private void SavePlayersParty()
     {
-        SaveDataManager.SaveObject(UNIT_PARTY_SAVE_KEY, playerParty, UNIT_SAVE_DATA_FILE_NAME);
+        for(int i = 0; i < playerParty.Count; i++)
+        {
+            SaveDataManager.SaveObject($"{UNIT_PARTY_SAVE_KEY}_{i+1}", playerParty[i], UNIT_SAVE_DATA_FILE_NAME);
+            Debug.Log($"{UNIT_PARTY_SAVE_KEY}_{i+1}");
+        }
+        //SaveDataManager.SaveObject(UNIT_PARTY_SAVE_KEY, playerParty, UNIT_SAVE_DATA_FILE_NAME);
     }
 
     public SerializableUnit GetPartyMember(int unitIndex)

@@ -7,6 +7,13 @@ using UnityEngine;
 namespace RobbieWagnerGames
 {
     #region SaveData
+
+    [System.Serializable]
+    public class SaveDataList
+    {
+        [SerializeField] public List<SaveData<string>> SaveData;
+    }
+
     [System.Serializable]
     public class SaveData<SerializableObject>
     {
