@@ -38,7 +38,7 @@ namespace RobbieWagnerGames
             string configuredText = input;
 
             List<char> allowList = new List<char>() {' ', '-', '\'', ',', '.'};
-            string name = SaveDataManager.LoadObject<string>("name", new string[]{StaticGameStats.dialogueSavePath, "UserData"}, "Morgan");
+            string name = SaveDataManager.LoadObject("name", "UserData", new string[]{StaticGameStats.dialogueSavePath}, "Morgan");
 
             bool nameAllowed = true;
             foreach(char c in name)

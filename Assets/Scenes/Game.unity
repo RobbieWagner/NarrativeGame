@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &217187758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 217187760}
+  - component: {fileID: 217187759}
+  m_Layer: 0
+  m_Name: TestSaveUnit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &217187759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217187758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf76a2ab088f2d4b9289a0642f29b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit:
+    UnitName: TEST UNIT
+    HP: 1
+    Mana: 2
+    MaxHP: 3
+    MaxMana: 4
+    Brawn: 5
+    Agility: 6
+    Defense: 7
+    Psych: 8
+    Focus: 9
+    Heart: 10
+    actionFilePaths: []
+--- !u!4 &217187760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217187758}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1540026996
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,3 +446,4 @@ SceneRoots:
   - {fileID: 1648595013}
   - {fileID: 1679655347}
   - {fileID: 1540027000}
+  - {fileID: 217187760}

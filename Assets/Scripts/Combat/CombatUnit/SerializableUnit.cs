@@ -41,4 +41,9 @@ public class SerializableUnit
 
         actionFilePaths = unit.availableActions.Select(a => StaticGameStats.GetCombatActionResourcePath(a)).ToList();
     }
+
+    public override string ToString()
+    {
+        return $"-----\n{UnitName}:\nHP:{HP}\nMana:{Mana}\nBrawn:{Brawn}\nAgility:{Agility}\nDefense:{Defense}\nPsych:{Psych}\nFocus:{Focus}\nHeart:{Heart}\n-----";
+    }
 }

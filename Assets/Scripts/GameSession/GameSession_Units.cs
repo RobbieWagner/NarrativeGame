@@ -17,14 +17,14 @@ public partial class GameSession : MonoBehaviour
     private void LoadPlayersParty()
     {
         List<SerializableUnit> units = new List<SerializableUnit>();
-        playerParty = SaveDataManager.LoadObject<List<SerializableUnit>>(UNIT_PARTY_SAVE_KEY, new string[]{UNIT_SAVE_DATA_FILE_NAME});
+        playerParty = SaveDataManager.LoadObject<List<SerializableUnit>>(UNIT_PARTY_SAVE_KEY, UNIT_SAVE_DATA_FILE_NAME);
 
         foreach(SerializableUnit unit in units) Debug.Log(unit.ToString());
     }
 
     private void SavePlayersParty()
     {
-        SaveDataManager.SaveObject(UNIT_PARTY_SAVE_KEY, playerParty, new string[]{UNIT_SAVE_DATA_FILE_NAME});
+        SaveDataManager.SaveObject(UNIT_PARTY_SAVE_KEY, playerParty, UNIT_SAVE_DATA_FILE_NAME);
     }
 
     public SerializableUnit GetPartyMember(int unitIndex)

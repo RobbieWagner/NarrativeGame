@@ -24,7 +24,7 @@ public partial class GameSession : MonoBehaviour
         LoadGameSessionData();
     }
 
-    private void LoadGameSessionData()
+    public void LoadGameSessionData()
     {
         Thread fileLoader = new Thread(LoadSaveFiles);
         fileLoader.Start();
@@ -35,7 +35,7 @@ public partial class GameSession : MonoBehaviour
         LoadPlayersParty();
     }
 
-    private void SaveGameSessionData()
+    public void SaveGameSessionData()
     {
         Thread fileSaver = new Thread(UpdateSaveFiles);
         fileSaver.Start();
