@@ -31,27 +31,36 @@ public class CombatLoadController : MonoBehaviour
             string combatSceneName = string.IsNullOrWhiteSpace(combatSceneNameIn) ? Level.Instance.combatSceneName : combatSceneNameIn;
             currentCombat = combat;
             currentCombatSceneName = combatSceneName;
-            string combatScenePath = $"{StaticGameStats.sceneFilePath}{combatSceneName}.unity";
-            if (GameManager.Instance.CurrentGameMode != GameMode.Combat && ICombatManager.Instance == null && SceneUtility.GetBuildIndexByScenePath(combatScenePath) > -1)
+            if (GameManager.Instance.CurrentGameMode != GameMode.Combat && ICombatManager.Instance == null)
             {
                 GameManager.Instance.CurrentGameMode = GameMode.Combat;
                 yield return StartCoroutine(SceneTransitionController.Instance?.FadeScreenIn());
                 //Instantiate(combatManagerPrefab, combatZone);
-                SceneManager.LoadSceneAsync(combatSceneName, LoadSceneMode.Additive);
-                SceneManager.sceneLoaded += FinishLoadingCombatScene;
+                AsyncOperation op = SceneManager.LoadSceneAsync(combatSceneName, LoadSceneMode.Additive);
+                yield return StartCoroutine(WaitForSceneLoad(combatSceneName, op));
             }
         }
         else
             Debug.LogWarning("Combat load scene failed: attempted to load a new combat while in combat");
     }
 
-    private void FinishLoadingCombatScene(Scene scene, LoadSceneMode sceneLoadMode)
+    private IEnumerator WaitForSceneLoad(string combatSceneName, AsyncOperation op)
     {
-        if (scene.name.Trim().Equals(currentCombatSceneName.Trim(), StringComparison.CurrentCultureIgnoreCase))
+        while (!op.isDone)
         {
-            SceneManager.sceneLoaded -= FinishLoadingCombatScene;
-            StartCoroutine(FinishLoadingCombatSceneCo());
+            //TODO: display UI like a load screen or something.
+            yield return null;
         }
+
+        if(SceneManager.GetSceneByName(combatSceneName) != null)
+            FinishLoadingCombatScene();
+        else
+            HandleFailedCombatSceneLoad();
+    }
+
+    private void FinishLoadingCombatScene()
+    {
+        StartCoroutine(FinishLoadingCombatSceneCo());
     }
 
     private IEnumerator FinishLoadingCombatSceneCo()
@@ -79,6 +88,13 @@ public class CombatLoadController : MonoBehaviour
         
         currentCombatSceneName = "";
         currentCombat = null;
+        OnCombatEnded?.Invoke();
+    }
+
+    private void HandleFailedCombatSceneLoad()
+    {
+        StartCoroutine(SceneTransitionController.Instance?.FadeScreenOut());
+        Debug.LogWarning("CombatLoadControllerFailed to load a combat scene");
         OnCombatEnded?.Invoke();
     }
     public delegate void CombatEndedDelegate();

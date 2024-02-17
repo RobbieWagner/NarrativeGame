@@ -18,11 +18,11 @@ public partial class Unit : MonoBehaviour
     // Unit properties
     [Header("Vanity")]
     public string UnitName;
-    [SerializeField] private UnitAnimator unitAnimator;
-    [SerializeField] private SpriteRenderer unitSprite;
-    private Sequence currentBlinkCo;
+    [SerializeField] protected UnitAnimator unitAnimator;
+    [SerializeField] protected SpriteRenderer unitSprite;
+    protected Sequence currentBlinkCo;
 
-    private const float BLINK_TIME = 1f;
+    protected const float BLINK_TIME = 1f;
 
     [Header("Runtime")]
     public CombatAction currentSelectedAction;
@@ -30,23 +30,20 @@ public partial class Unit : MonoBehaviour
 
     [HideInInspector] public bool isUnitActive = true;
 
-    private Color BLINK_MIN_COLOR;
+    protected Color BLINK_MIN_COLOR;
 
     // Unit animator
     //public UnitAnimator unitAnimator;
 
     // Initialization
-    private void Awake()
+    protected virtual void Awake()
     {
-        InitializeUnit();
-
         BLINK_MIN_COLOR = new Color(1,1,1,.1f);
+        InitializeUnit();
     }
 
-    // Method to initialize unit
-    private void InitializeUnit()
+    protected virtual void InitializeUnit()
     {
-
         unitStats = new Dictionary<UnitStat, int>();
         InitializeStats();
         
@@ -60,7 +57,7 @@ public partial class Unit : MonoBehaviour
     public delegate void OnUnitInitializedDelegate();
     public event OnUnitInitializedDelegate OnUnitInitialized;
 
-    private void CheckUnitStatus(int newStatValue = -1)
+    protected void CheckUnitStatus(int newStatValue = -1)
     {
         if(HP <= 0) 
         {

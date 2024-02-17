@@ -3,10 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ActionType
+{
+    None = -1,
+    Damage,
+    Healing,
+    StatChange,
+    Condition
+}
+
 [CreateAssetMenu(menuName = "CombatAction")]
 public class CombatAction : ScriptableObject
 {
     public string actionName;
+    public ActionType actionType;
     public Sprite actionSprite;
     
     public bool targetsAllOpposition;

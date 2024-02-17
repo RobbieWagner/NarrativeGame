@@ -28,9 +28,9 @@ public partial class Unit : MonoBehaviour
 {
     [Header("Statistics")]
     public UnitClass Class;
-    private Dictionary<UnitStat, int> unitStats;
     [Space(10)]
-    [SerializeField][SerializedDictionary("Stat","Base Value")] private SerializedDictionary<UnitStat, int> maxStatValues;
+    private Dictionary<UnitStat, int> unitStats;
+    [SerializeField][SerializedDictionary("Stat","Base Value")] protected SerializedDictionary<UnitStat, int> maxStatValues;
     [Space(10)]
     public List<CombatAction> availableActions;
 
@@ -42,7 +42,7 @@ public partial class Unit : MonoBehaviour
     public event OnUnitStatChangedDelegate OnNonMeteredStatChanged;
 
     #region stat properties
-    private int hp;
+    protected int hp;
     public int HP
     {
         get => hp;
@@ -58,7 +58,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnHPChanged;
 
-    private int mana;
+    protected int mana;
     public int Mana
     {
         get => mana;
@@ -74,7 +74,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnManaChanged;
 
-    private int brawn;
+    protected int brawn;
     public int Brawn
     {
         get => brawn;
@@ -91,7 +91,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnBrawnChanged;
 
-    private int agility;
+    protected int agility;
     public int Agility
     {
         get => agility;
@@ -108,7 +108,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnAgilityChanged;
 
-    private int defense;
+    protected int defense;
     public int Defense
     {
         get => defense;
@@ -125,7 +125,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnDefenseChanged;
 
-    private int psych;
+    protected int psych;
     public int Psych
     {
         get => psych;
@@ -142,7 +142,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnPsychChanged;
 
-    private int focus;
+    protected int focus;
     public int Focus
     {
         get => focus;
@@ -159,7 +159,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnFocusChanged;
 
-    private int heart;
+    protected int heart;
     public int Heart
     {
         get => heart;
@@ -176,7 +176,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnHeartChanged;
 
-    private int pCrit;
+    protected int pCrit;
     public int PCrit
     {
         get 
@@ -197,7 +197,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnPCritChanged;
 
-    private int mCrit;
+    protected int mCrit;
     public int MCrit
     {
         get 
@@ -218,7 +218,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnMCritChanged;
 
-    private int initiative;
+    protected int initiative;
     public int Initiative
     {
         get 
@@ -239,7 +239,7 @@ public partial class Unit : MonoBehaviour
     }
     public event OnStatValueChangedDelegate OnInitiativeChanged;
 
-    private int badMentRes;
+    protected int badMentRes;
     public int BadMentRes
     {
         get 
@@ -261,8 +261,9 @@ public partial class Unit : MonoBehaviour
     public event OnStatValueChangedDelegate OnBMRChanged;
     #endregion
 
-    private void InitializeStats()
+    protected void InitializeStats()
     {
+        Debug.Log("hi");
         brawn = GetMaxStatValue(UnitStat.Brawn);
         agility = GetMaxStatValue(UnitStat.Agility);
         defense = GetMaxStatValue(UnitStat.Defense);
@@ -317,6 +318,51 @@ public partial class Unit : MonoBehaviour
             return maxStatValues[UnitStat.Defense] + maxStatValues[UnitStat.Focus] + maxStatValues[UnitStat.Heart];
         }
         return -1;
+    }
+
+    public void SetStatValue(UnitStat stat, int value)
+     {
+        switch (stat)
+        {
+            case UnitStat.Brawn:
+            Brawn = value;
+            break;
+            case UnitStat.Agility:
+            Agility = value;
+            break;
+            case UnitStat.Defense:
+            Defense = value;
+            break;
+            case UnitStat.Psych:
+            Psych = value;
+            break;
+            case UnitStat.Focus:
+            Focus = value;
+            break;
+            case UnitStat.Heart:
+            Heart = value;
+            break;
+            case UnitStat.HP:
+            HP = value;
+            break;
+            case UnitStat.Mana:
+            Mana = value;
+            break;
+            case UnitStat.Initiative:
+            Initiative = value;
+            break;
+            case UnitStat.PCrit:
+            PCrit = value;
+            break;
+            case UnitStat.MCrit:
+            MCrit = value;
+            break;
+            case UnitStat.BMR:
+            BadMentRes = value;
+            break;
+            default:
+            break;
+        }
     }
 
     public int GetStatValue(UnitStat stat)
