@@ -21,7 +21,7 @@ namespace RobbieWagnerGames
             {
                 if(string.IsNullOrWhiteSpace(persistentPath)) 
                 {
-                    Debug.LogError("An attempt was made to access the persistent data path before it was defined!");
+                    Debug.LogWarning("An attempt was made to access the persistent data path before it was defined! Data cannot be loaded until file path is defined.");
                     return null;
                 }
                 return Path.Combine(persistentPath, SAVE_DATA_LOCAL_FILE_PATH);
@@ -79,6 +79,12 @@ namespace RobbieWagnerGames
         public static T LoadObject<T>(string key, string fileName, string[] filePathStrings = null, T defaultReturn = default)
         {
             string filePath = null;
+            if(string.IsNullOrWhiteSpace(DATA_FILE_PATH))
+            {
+                Debug.LogWarning("Data file path is not defined, so save data could not be loaded");
+                return default;
+            }
+
             if(filePathStrings == null)
                 filePath = Path.Combine(DATA_FILE_PATH, fileName);
             else

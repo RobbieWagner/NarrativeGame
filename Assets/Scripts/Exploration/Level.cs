@@ -21,9 +21,11 @@ public class Level : MonoBehaviour
         set
         {
             if(currentCombat != null && currentCombat.Equals(value)) return;
+            Debug.Log("new combat");
             currentCombat = value;
             if(CombatLoadController.Instance != null) 
             {
+                Debug.Log("new combat");
                 CombatLoadController.Instance?.StartLoadingCombatScene(currentCombat, combatSceneName);
                 CombatLoadController.Instance.OnCombatEnded += ResetAfterCombat;
             }
@@ -47,8 +49,9 @@ public class Level : MonoBehaviour
                 Debug.LogWarning("Missing Exploration Manager from scene, please create an Exploration Manager and add to this scene.");
 
             explorationSceneName = gameObject.scene.name;
+
+            GameManager.Instance.CurrentGameMode = GameMode.Exploration;
         }
-       
     }
 
     private void ResetAfterCombat()

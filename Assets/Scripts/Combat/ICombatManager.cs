@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Ink.Runtime;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum CombatPhase
@@ -294,11 +293,11 @@ public partial class ICombatManager : MonoBehaviour
         if(action.canTargetSelf) targetOptions.Add(unit);
         if((action.canTargetAllies && allies.Contains(unit)) || (action.canTargetEnemies && enemies.Contains(unit))) 
         {
-            targetOptions.AddRange(allies);
+            targetOptions.UnionWith(allies);
         }
         if((action.canTargetAllies && enemies.Contains(unit)) || (action.canTargetEnemies && allies.Contains(unit))) 
         {
-            targetOptions.AddRange(enemies);
+            targetOptions.UnionWith(enemies);
         }
 
         if(targetOptions.Count == 0) return new List<Unit>();
@@ -373,6 +372,11 @@ public partial class ICombatManager : MonoBehaviour
         //DEBUG ONLY! COMMENT OUT IF NOT USING
         if(debugCombat != null) 
             StartNewCombat(debugCombat);
+    }
+
+    public IEnumerator ForceTerminateCombat()
+    {
+        yield return StartCoroutine(StartCombatPhase(CombatPhase.CombatEnd));
     }
     #endif
 }

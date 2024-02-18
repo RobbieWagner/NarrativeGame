@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LowerFocus
   m_EditorClassIdentifier: 
   actionName: Distract
+  actionType: 2
   actionSprite: {fileID: 21300000, guid: 7d927ab0430430345ac66a3c1e003867, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
@@ -20,12 +21,12 @@ MonoBehaviour:
   canTargetAllies: 0
   canTargetEnemies: 1
   effects:
-  - rid: 4231065987668770821
+  - rid: 4231066304365723656
   references:
     version: 2
     RefIds:
-    - rid: 4231065987668770821
-      type: {class: StatChangeChanceActionEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4231066304365723656
+      type: {class: StatChangeChanceActionEffect, ns: , asm: Main}
       data:
         attackAccuracy: 95
         stat: 4

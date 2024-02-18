@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2384817494aff8a488301be17228e46e, type: 3}
   m_Name: LowerDefense
   m_EditorClassIdentifier: 
-  actionName: Limber Up
+  actionName: Soothe
+  actionType: 2
   actionSprite: {fileID: 21300000, guid: dff8420e6cd350545baa616ff22b0b2c, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
@@ -20,12 +21,12 @@ MonoBehaviour:
   canTargetAllies: 0
   canTargetEnemies: 1
   effects:
-  - rid: 4231065987668770821
+  - rid: 4231066304365723653
   references:
     version: 2
     RefIds:
-    - rid: 4231065987668770821
-      type: {class: StatChangeChanceActionEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4231066304365723653
+      type: {class: StatChangeChanceActionEffect, ns: , asm: Main}
       data:
         attackAccuracy: 95
         stat: 2

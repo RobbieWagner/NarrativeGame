@@ -73,7 +73,7 @@ public class AutoHitAttackActionEffect: ActionEffect
         //TODO: Add crit chance
         foreach(Unit target in targets)
         {
-            int healthDelta = power + user.Brawn - target.Defense;;
+            int healthDelta = Math.Clamp(power + user.Brawn - target.Defense, 1, int.MaxValue);
             target.HP -= healthDelta;
             Debug.Log($"{user.name} hit {target.name} for {healthDelta} damage!");
         }
@@ -95,7 +95,7 @@ public class AttackActionEffect : ChanceActionEffect
             if(hitTarget.Value)
             {
                 //TODO: Add crit chance
-                int healthDelta = power + user.Brawn - hitTarget.Key.Defense;
+                int healthDelta = Math.Clamp(power + user.Brawn - hitTarget.Key.Defense, 1, int.MaxValue);
                 hitTarget.Key.HP -= healthDelta;
                 Debug.Log($"{user.name} hit {hitTarget.Key.name} for {healthDelta} damage!");
             }
@@ -134,7 +134,7 @@ public class StatChangeChanceActionEffect : ChanceActionEffect
     public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
     {
         int statDelta = power;
-        if(power > 0) statDelta += user.Heart / 2;
+        if(power >= 0) statDelta += user.Heart / 2;
 
         yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
         Debug.Log($"{user.name} is changing stats");

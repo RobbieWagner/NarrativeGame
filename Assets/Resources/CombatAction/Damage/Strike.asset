@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Strike
   m_EditorClassIdentifier: 
   actionName: Strike
+  actionType: 0
   actionSprite: {fileID: 21300000, guid: 3bf8c7e367adcd94d87e9d1f8439194e, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
@@ -20,12 +21,12 @@ MonoBehaviour:
   canTargetAllies: 0
   canTargetEnemies: 1
   effects:
-  - rid: 4231065968416391168
+  - rid: 4231066304365723664
   references:
     version: 2
     RefIds:
-    - rid: 4231065968416391168
-      type: {class: AttackActionEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4231066304365723664
+      type: {class: AttackActionEffect, ns: , asm: Main}
       data:
-        attackAccuracy: 100
+        attackAccuracy: 90
         power: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PassTurn
   m_EditorClassIdentifier: 
   actionName: Skip Turn
+  actionType: -1
   actionSprite: {fileID: 21300000, guid: 38564a19d4809e04e832b2c8504c8fbb, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
@@ -20,10 +21,10 @@ MonoBehaviour:
   canTargetAllies: 0
   canTargetEnemies: 0
   effects:
-  - rid: 7214812176352804865
+  - rid: 4231066304365723650
   references:
     version: 2
     RefIds:
-    - rid: 7214812176352804865
-      type: {class: PassEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4231066304365723650
+      type: {class: PassEffect, ns: , asm: Main}
       data: 

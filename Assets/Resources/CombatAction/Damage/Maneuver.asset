@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Maneuver
   m_EditorClassIdentifier: 
   actionName: Maneuver
+  actionType: 0
   actionSprite: {fileID: 21300000, guid: 3bf8c7e367adcd94d87e9d1f8439194e, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
@@ -20,11 +21,11 @@ MonoBehaviour:
   canTargetAllies: 0
   canTargetEnemies: 1
   effects:
-  - rid: 4231065968416391169
+  - rid: 4231066304365723663
   references:
     version: 2
     RefIds:
-    - rid: 4231065968416391169
-      type: {class: AutoHitAttackActionEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4231066304365723663
+      type: {class: AutoHitAttackActionEffect, ns: , asm: Main}
       data:
-        power: 1
+        power: 0

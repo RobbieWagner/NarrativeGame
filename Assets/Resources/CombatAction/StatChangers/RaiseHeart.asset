@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RaiseHeart
   m_EditorClassIdentifier: 
   actionName: Empathize
+  actionType: 2
   actionSprite: {fileID: 21300000, guid: 743929f87a86bc64c86496acecb22fd3, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
@@ -20,12 +21,12 @@ MonoBehaviour:
   canTargetAllies: 0
   canTargetEnemies: 0
   effects:
-  - rid: 4231065987668770818
+  - rid: 4231066304365723662
   references:
     version: 2
     RefIds:
-    - rid: 4231065987668770818
-      type: {class: StatChangeActionEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4231066304365723662
+      type: {class: StatChangeActionEffect, ns: , asm: Main}
       data:
         stat: 5
         power: 1

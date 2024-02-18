@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RaiseDefense
   m_EditorClassIdentifier: 
   actionName: Fortify
+  actionType: 2
   actionSprite: {fileID: 21300000, guid: 316df3cb16a08814685eeccbeed2986f, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
@@ -20,12 +21,12 @@ MonoBehaviour:
   canTargetAllies: 0
   canTargetEnemies: 0
   effects:
-  - rid: 4231065987668770818
+  - rid: 4231066304365723659
   references:
     version: 2
     RefIds:
-    - rid: 4231065987668770818
-      type: {class: StatChangeActionEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4231066304365723659
+      type: {class: StatChangeActionEffect, ns: , asm: Main}
       data:
         stat: 2
         power: 1

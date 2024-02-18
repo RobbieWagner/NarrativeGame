@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Rest
   m_EditorClassIdentifier: 
   actionName: Rest
+  actionType: -1
   actionSprite: {fileID: 21300000, guid: 0e9119c9712bcca47ac552115eaca9a5, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
@@ -20,12 +21,12 @@ MonoBehaviour:
   canTargetAllies: 0
   canTargetEnemies: 0
   effects:
-  - rid: 4231065987668770822
+  - rid: 4231066304365723649
   references:
     version: 2
     RefIds:
-    - rid: 4231065987668770822
-      type: {class: Replenish, ns: , asm: Assembly-CSharp}
+    - rid: 4231066304365723649
+      type: {class: Replenish, ns: , asm: Main}
       data:
-        manaRegenPercent: 33
-        hpRegenPercent: 33
+        manaRegenPercent: 30
+        hpRegenPercent: 30

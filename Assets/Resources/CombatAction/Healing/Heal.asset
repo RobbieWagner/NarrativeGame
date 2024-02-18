@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   actionName: Heal
+  actionType: 1
   actionSprite: {fileID: 21300000, guid: d9a1d5929d2cf21459496a161e323e31, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
@@ -20,11 +21,11 @@ MonoBehaviour:
   canTargetAllies: 1
   canTargetEnemies: 0
   effects:
-  - rid: 4231065987668770816
+  - rid: 4231066304365723665
   references:
     version: 2
     RefIds:
-    - rid: 4231065987668770816
-      type: {class: HealTargetsActionEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4231066304365723665
+      type: {class: HealTargetsActionEffect, ns: , asm: Main}
       data:
-        power: 0
+        power: 1

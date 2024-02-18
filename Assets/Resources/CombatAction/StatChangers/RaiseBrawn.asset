@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RaiseBrawn
   m_EditorClassIdentifier: 
   actionName: Stretch
+  actionType: 2
   actionSprite: {fileID: 21300000, guid: 464c330a701586d4e86cf578735258bf, type: 3}
   targetsAllOpposition: 0
   targetsAllAllies: 0
@@ -20,12 +21,12 @@ MonoBehaviour:
   canTargetAllies: 0
   canTargetEnemies: 0
   effects:
-  - rid: 4231065987668770818
+  - rid: 4231066304365723660
   references:
     version: 2
     RefIds:
-    - rid: 4231065987668770818
-      type: {class: StatChangeActionEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4231066304365723660
+      type: {class: StatChangeActionEffect, ns: , asm: Main}
       data:
         stat: 0
         power: 1
