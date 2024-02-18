@@ -11,6 +11,7 @@ public class Level : MonoBehaviour
     [SerializeField] private ICombatManager combatManagerPrefab;
     [SerializeField] private Transform combatZone;
     public string combatSceneName;
+    [HideInInspector] public string explorationSceneName;
 
     private Scene currentCombatScene;
     private ICombat currentCombat;
@@ -33,17 +34,21 @@ public class Level : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
+        if(Instance == null)
         {
             Instance = this;
         }
 
-        if (DialogueManager.Instance == null) Debug.LogWarning("Missing Dialogue Manager from scene, please create a Dialogue Manager and add to this scene.");
-        if (ExplorationManager.Instance == null) Debug.LogWarning("Missing Exploration Manager from scene, please create an Exploration Manager and add to this scene.");
+        if(Instance == this)
+        {
+            if(DialogueManager.Instance == null) 
+                Debug.LogWarning("Missing Dialogue Manager from scene, please create a Dialogue Manager and add to this scene.");
+            if(ExplorationManager.Instance == null) 
+                Debug.LogWarning("Missing Exploration Manager from scene, please create an Exploration Manager and add to this scene.");
+
+            explorationSceneName = gameObject.scene.name;
+        }
+       
     }
 
     private void ResetAfterCombat()

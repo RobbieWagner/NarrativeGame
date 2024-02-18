@@ -30,7 +30,7 @@ public class SaveSystemTest : MonoBehaviour
         Debug.Log("Saving unit...");
         yield return new WaitForSeconds(1);
         Debug.Log("Loading saved unit. Are they identical?");
-        GameSession.Instance?.LoadGameSessionData();
+        GameSession.Instance?.LoadSaveFiles();
         Debug.Log("Loading...");
         yield return new WaitForSeconds(1);
     }

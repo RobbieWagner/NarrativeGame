@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using RobbieWagnerGames;
 using UnityEngine;
 
@@ -21,28 +22,54 @@ public partial class GameSession : MonoBehaviour
         } 
 
         SaveDataManager.persistentPath = Application.persistentDataPath; 
-        LoadGameSessionData();
+        LoadSaveFiles();
     }
 
-    public void LoadGameSessionData()
+    public void LoadSaveFiles()
     {
-        Thread fileLoader = new Thread(LoadSaveFiles);
-        fileLoader.Start();
+        StartCoroutine(LoadSaveFilesAsync());
     }
 
-    private void LoadSaveFiles()
+    private IEnumerator LoadSaveFilesAsync()
     {
-        LoadPlayersParty();
+        yield return new WaitForEndOfFrame();
+        Task loadTask = Task.Run(() =>
+        {
+            // Background thread work
+            LoadPlayersParty();
+            LoadExplorationData();
+            //LoadSavedGameSessionData();
+        });
+
+        yield return new WaitUntil(() => loadTask.IsCompleted);
+        OnLoadComplete?.Invoke();
     }
+    public delegate void OnLoadCompleteDelegate();
+    public event OnLoadCompleteDelegate OnLoadComplete; 
+
+    // private void LoadSavedGameSessionData()
+    // {
+       
+    // }
 
     public void SaveGameSessionData()
     {
-        Thread fileSaver = new Thread(UpdateSaveFiles);
-        fileSaver.Start();
+        StartCoroutine(SaveGameSessionDataAsync());
     }
 
-    private void UpdateSaveFiles()
+    private IEnumerator SaveGameSessionDataAsync()
     {
-        SavePlayersParty();
+        yield return new WaitForEndOfFrame();
+        Task saveTask = Task.Run(() =>
+        {
+            // Background thread work
+            SavePlayersParty();
+            SaveExplorationData();
+        });
+
+        yield return new WaitUntil(() => saveTask.IsCompleted);
+        OnSaveComplete?.Invoke();
     }
+    public delegate void OnSaveCompleteDelegate();
+    public event OnSaveCompleteDelegate OnSaveComplete; 
 }

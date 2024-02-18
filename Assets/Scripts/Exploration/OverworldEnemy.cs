@@ -8,7 +8,8 @@ public class OverworldEnemy : MonoBehaviour
 
     protected virtual void Awake()
     {
-        
+        if(Vector3.Distance(PlayerMovement.Instance.transform.position, transform.position) < 5)
+            Destroy(gameObject);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
