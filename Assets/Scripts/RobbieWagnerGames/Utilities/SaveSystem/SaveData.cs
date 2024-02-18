@@ -11,6 +11,11 @@ namespace RobbieWagnerGames
     [System.Serializable]
     public class SaveDataList
     {
+        public SaveDataList()
+        {
+            SaveData = new List<SaveData<string>>();
+        }
+
         [SerializeField] public List<SaveData<string>> SaveData;
     }
 

@@ -115,11 +115,10 @@ namespace RobbieWagnerGames
 
         public static void PurgeAllSaveData()
         {
-            Thread fileLoader = new Thread(PurgeAllSaveDataAsync);
-            fileLoader.Start();
+            PurgeAllSaveDataAsync();
         }
 
-        private static void PurgeAllSaveDataAsync()
+        private static async void PurgeAllSaveDataAsync() //TODO: make process async once deletion becomes expensive
         {
             Debug.LogWarning("Deleting all saved data! ");
             if(!string.IsNullOrWhiteSpace(persistentPath) && Directory.Exists(persistentPath))
