@@ -84,7 +84,7 @@ namespace PsychOutDestined
             {
                 //display ui
                 //unit.StartBlinking();
-                StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.transform.position, //TODO: Use transform of parent + default position instead
+                StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position, //TODO: Use transform of parent + default position instead
                                                                                      unit.transform.position,
                                                                                      1f)));
 

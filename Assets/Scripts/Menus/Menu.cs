@@ -31,7 +31,7 @@ namespace PsychOutDestined
         {
             canvas.enabled = false;
             menuControls = new MenuControls();
-            menuControls.UIInput.Navigate.performed += NavigateMenu;
+            menuControls.UIInput.Navigate.started += NavigateMenu;
             menuControls.UIInput.Select.performed += SelectMenuItem;
 
             if (OnByDefault) SetupMenu();

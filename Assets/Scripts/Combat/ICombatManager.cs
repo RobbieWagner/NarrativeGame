@@ -61,7 +61,9 @@ namespace PsychOutDestined
             }
             InitializeControls();
 
-            StartCoroutine(StartDebugCombat());
+            #if UNITY_EDITOR
+            if(Level.Instance != null && Level.Instance.CurrentCombat != null) StartCoroutine(StartDebugCombat());
+            #endif
         }
 
         public virtual bool StartNewCombat(ICombat newCombat)
@@ -187,6 +189,7 @@ namespace PsychOutDestined
 
         protected virtual IEnumerator ExecuteActions()
         {
+            //TODO: Don't have things like combat camera be controlled by this. Instead, create a Coroutine Event Handler that some other script uses (or create a partial class)
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.ExecutionPhaseStarted));
 
             Debug.Log("Executing Actions...");
@@ -203,7 +206,10 @@ namespace PsychOutDestined
                 if (unit.isUnitActive && unit.currentSelectedAction != null)
                 {
                     yield return StartCoroutine(CombatCamera.Instance?.MoveCamera
-                                                            (Vector3.MoveTowards(CombatCamera.Instance.transform.position, unit.transform.position + UNIT_OFFSET, 1.75f), 1.2f));
+                                                            (Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position, 
+                                                            unit.transform.position + UNIT_OFFSET, 
+                                                            1.75f), 
+                                                            1.2f));
                     //show UI for action
                     yield return StartCoroutine(CombatCamera.Instance?.ResetCameraPosition(.9f));
                     yield return StartCoroutine(unit.currentSelectedAction?.ExecuteAction(

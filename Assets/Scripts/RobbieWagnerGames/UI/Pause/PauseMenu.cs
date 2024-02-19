@@ -28,7 +28,7 @@ namespace RobbieWagnerGames.UI
 
         public static PauseMenu Instance {get; private set;}
 
-        private void Awake()
+        protected override void Awake()
         {
             if (Instance != null && Instance != this) 
             { 

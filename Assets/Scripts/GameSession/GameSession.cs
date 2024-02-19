@@ -36,15 +36,13 @@ namespace PsychOutDestined
             Task loadTask = Task.Run(() =>
             {
                 // Background thread work
-                Debug.Log("loading");
                 LoadPlayersParty();
                 LoadExplorationData();
-                Debug.Log($"data loaded: {currentPlayerPosition}");
             });
 
             yield return new WaitUntil(() => loadTask.IsCompleted);
 
-            Debug.Log($"loading scene: {currentSceneName}");
+            //Debug.Log($"loading scene: {currentSceneName}");
             AsyncOperation asyncSceneLoad = SceneManager.LoadSceneAsync(currentSceneName, LoadSceneMode.Additive);
 
             while (!asyncSceneLoad.isDone)
@@ -53,7 +51,6 @@ namespace PsychOutDestined
             }
             yield return null;
 
-            Debug.Log("done loading");
             InitializePlayerPosition();
 
             OnLoadComplete?.Invoke();
