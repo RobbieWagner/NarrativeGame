@@ -34,8 +34,8 @@ public class ActionSelectionUI : MonoBehaviour
         if(!originPosition.Equals(Vector3.positiveInfinity)) curActionImage.transform.position = originPosition;
         originPosition = curActionImage.transform.position;
 
-        Vector3 leaveToPos = actionIndexIncreased ? originPosition + Vector3.down/2 : originPosition + Vector3.up/2;
-        Vector3 returnFromPos = actionIndexIncreased ? originPosition + Vector3.up/2 : originPosition + Vector3.down/2;
+        Vector3 leaveToPos = actionIndexIncreased ? originPosition + Vector3.up/2 : originPosition + Vector3.down/2;
+        Vector3 returnFromPos = actionIndexIncreased ? originPosition + Vector3.down/2 : originPosition + Vector3.up/2; 
 
         currentSpriteCo = DOTween.Sequence();
         currentSpriteCo.Append(curActionImage.DOColor(Color.clear, .3f).OnComplete(() => curActionImage.sprite = actionSprite).SetEase(Ease.InQuint));
