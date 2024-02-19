@@ -26,7 +26,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 4231066304365723649
-      type: {class: Replenish, ns: , asm: Main}
+      type: {class: Replenish, ns: PsychOutDestined, asm: Main}
       data:
         manaRegenPercent: 30
         hpRegenPercent: 30

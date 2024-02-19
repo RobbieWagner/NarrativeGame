@@ -26,7 +26,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 4231066304365723652
-      type: {class: StatChangeChanceActionEffect, ns: , asm: Main}
+      type: {class: StatChangeChanceActionEffect, ns: PsychOutDestined, asm: Main}
       data:
         attackAccuracy: 95
         stat: 0

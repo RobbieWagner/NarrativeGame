@@ -26,5 +26,5 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 4231066304365723650
-      type: {class: PassEffect, ns: , asm: Main}
+      type: {class: PassEffect, ns: PsychOutDestined, asm: Main}
       data: 

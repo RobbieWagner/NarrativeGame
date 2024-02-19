@@ -26,7 +26,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 4231066304365723658
-      type: {class: StatChangeActionEffect, ns: , asm: Main}
+      type: {class: StatChangeActionEffect, ns: PsychOutDestined, asm: Main}
       data:
         stat: 4
         power: 1
