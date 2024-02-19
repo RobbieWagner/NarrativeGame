@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace RobbieWagnerGames
+namespace PsychOutDestined
 {
 
     //Manages data from different events in game. 
@@ -29,16 +29,16 @@ namespace RobbieWagnerGames
         }
 
         //Saves any object as a json file
-        public static void SaveObject<T>(string key, T obj, string fileName = "SaveData", string[] filePathStrings = null)
+        public static void SaveObject<T>(string key, T obj, string fileName = "SaveData", string[] extraFileStrings = null)
         {
             if(obj != null)
             {
                 SaveData<T> saveData = new SaveData<T>(key, obj);
                 string filePath = null;
-                if(filePathStrings == null)
+                if(extraFileStrings == null)
                     filePath = DATA_FILE_PATH;
                 else
-                    filePath = Path.Combine(DATA_FILE_PATH, Path.Combine(filePathStrings));
+                    filePath = Path.Combine(DATA_FILE_PATH, Path.Combine(extraFileStrings));
 
                 if(!Directory.Exists(filePath))
                     Directory.CreateDirectory(filePath);
@@ -76,19 +76,26 @@ namespace RobbieWagnerGames
                 Debug.LogWarning("Cannot save an empty object");
         }
 
-        public static T LoadObject<T>(string key, string fileName, string[] filePathStrings = null, T defaultReturn = default)
+        public static T LoadObject<T>(string key, string fileName, T defaultValue, string[] extraFileStrings = null)
+        {
+            T returnObject;
+            return LoadObject(key, fileName, out returnObject, extraFileStrings) ? returnObject : defaultValue ;
+        }
+
+        private static bool LoadObject<T>(string key, string fileName, out T loadedData, string[] extraFileStrings = null)
         {
             string filePath = null;
             if(string.IsNullOrWhiteSpace(DATA_FILE_PATH))
             {
                 Debug.LogWarning("Data file path is not defined, so save data could not be loaded");
-                return default;
+                loadedData = default;
+                return false;
             }
 
-            if(filePathStrings == null)
+            if(extraFileStrings == null)
                 filePath = Path.Combine(DATA_FILE_PATH, fileName);
             else
-                filePath = Path.Combine(Path.Combine(DATA_FILE_PATH, Path.Combine(filePathStrings)), fileName);
+                filePath = Path.Combine(Path.Combine(DATA_FILE_PATH, Path.Combine(extraFileStrings)), fileName);
 
             if(!filePath.ToLower().EndsWith(".json")) filePath += ".json";
             Debug.Log(filePath);
@@ -98,15 +105,20 @@ namespace RobbieWagnerGames
                 foreach(SaveData<string> saveData in fileSaveData.SaveData)
                 {
                     if(saveData.Key.Equals(key, StringComparison.InvariantCultureIgnoreCase))
-                        return JsonUtility.FromJson<T>(saveData.Value);
+                    {
+                        loadedData = JsonUtility.FromJson<T>(saveData.Value);
+                        return true;
+                    }
                 }
                 Debug.LogWarning($"Could not load object: object key {key} does not exist in file");
-                return default;
+                loadedData = default;
+                return false;
             }
             else
             {
                 Debug.LogWarning("Could not load object: file path not found");
-                return default;
+                loadedData = default;
+                return false;
             }
         }
 

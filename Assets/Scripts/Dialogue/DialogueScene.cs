@@ -6,45 +6,48 @@ using RobbieWagnerGames;
 using UnityEditor.PackageManager;
 using System.Linq;
 
-public class DialogueScene : MonoBehaviour
+namespace PsychOutDestined
 {
-    public static DialogueScene Instance {get; private set;}
-    [SerializeField] private List<SceneEvent> sceneEvents;
-    [SerializeField] private Transform dialogueEventParent;
-
-    private void Awake()
+    public class DialogueScene : MonoBehaviour
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(gameObject); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        } 
+        public static DialogueScene Instance { get; private set; }
+        [SerializeField] private List<SceneEvent> sceneEvents;
+        [SerializeField] private Transform dialogueEventParent;
 
-        StartCoroutine(PlayDialogueScene());
-    }
-
-    private IEnumerator PlayDialogueScene()
-    {
-        if(sceneEvents != null && sceneEvents.Count > 0)
+        private void Awake()
         {
-            foreach(SceneEvent sceneEvent in sceneEvents)
+            if (Instance != null && Instance != this)
             {
-                yield return StartCoroutine(sceneEvent.RunSceneEvent());
+                Destroy(gameObject);
             }
-        }
-        else if(dialogueEventParent.childCount > 0)
-        {
-            sceneEvents = dialogueEventParent.GetComponentsInChildren<SceneEvent>().ToList();
+            else
+            {
+                Instance = this;
+            }
 
-            foreach(SceneEvent sceneEvent in sceneEvents)
-            {
-                yield return StartCoroutine(sceneEvent.RunSceneEvent());
-            }
+            StartCoroutine(PlayDialogueScene());
         }
 
-        StopCoroutine(PlayDialogueScene()); 
+        private IEnumerator PlayDialogueScene()
+        {
+            if (sceneEvents != null && sceneEvents.Count > 0)
+            {
+                foreach (SceneEvent sceneEvent in sceneEvents)
+                {
+                    yield return StartCoroutine(sceneEvent.RunSceneEvent());
+                }
+            }
+            else if (dialogueEventParent.childCount > 0)
+            {
+                sceneEvents = dialogueEventParent.GetComponentsInChildren<SceneEvent>().ToList();
+
+                foreach (SceneEvent sceneEvent in sceneEvents)
+                {
+                    yield return StartCoroutine(sceneEvent.RunSceneEvent());
+                }
+            }
+
+            StopCoroutine(PlayDialogueScene());
+        }
     }
 }

@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &217187759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54a7e30ae45c4b43ba480557de13f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSceneName: 
+  currentPlayerPosition: {x: 0, y: 0, z: 0}
   partyUnitPrefab: {fileID: 2786838274304173138, guid: 86e6e6cef3323194f938993911fe7be9,
     type: 3}
   playerParty: []

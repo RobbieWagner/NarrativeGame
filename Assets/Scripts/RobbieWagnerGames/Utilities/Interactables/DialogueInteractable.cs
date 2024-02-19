@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Ink.Runtime;
 
-namespace RobbieWagnerGames
+namespace PsychOutDestined
 {
     public class DialogueInteractable : IInteractable
     {
@@ -16,7 +16,7 @@ namespace RobbieWagnerGames
         protected override void Awake()
         {
             base.Awake();
-            interactions = SaveDataManager.LoadObject<int>(npcName, gameObject.scene.name, new string[]{StaticGameStats.dialogueSavePath});
+            interactions = SaveDataManager.LoadObject(npcName, gameObject.scene.name, 0, new string[]{StaticGameStats.dialogueSavePath});
         }
 
         private Story ConfigureStory()

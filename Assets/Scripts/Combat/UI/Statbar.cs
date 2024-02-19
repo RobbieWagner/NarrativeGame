@@ -5,37 +5,40 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Statbar : MonoBehaviour
+namespace PsychOutDestined
 {
-    [SerializeField] private Slider statSlider;
-    [SerializeField] private Slider bgSlider;
-    [SerializeField] private TextMeshProUGUI statText; 
-    [SerializeField] private TextMeshProUGUI statNameText;
-    public Image statIcon;
-    public Image sliderFill;
-
-    private Sequence currentValueChangeCo;
-
-    public void Initialize(Unit unit, int maxValue, int curValue, UnitStat stat)
+    public class Statbar : MonoBehaviour
     {
-        unit.SubscribeToStatChangeEvent(UpdateVisual, stat);
-        statSlider.maxValue = maxValue;
-        bgSlider.maxValue = maxValue;
-        statSlider.value = curValue;
-        bgSlider.value = curValue;
-        statText.text = $"{statSlider.value}/{statSlider.maxValue}";
-        statNameText.text = stat.ToString().ToUpper();
-    }
+        [SerializeField] private Slider statSlider;
+        [SerializeField] private Slider bgSlider;
+        [SerializeField] private TextMeshProUGUI statText;
+        [SerializeField] private TextMeshProUGUI statNameText;
+        public Image statIcon;
+        public Image sliderFill;
 
-    public void UpdateVisual(int newValue)
-    {
-        statSlider.value = newValue;
-        statText.text = $"{statSlider.value}/{statSlider.maxValue}";
+        private Sequence currentValueChangeCo;
 
-        if(currentValueChangeCo != null && currentValueChangeCo.IsPlaying())
-            currentValueChangeCo.Kill();
-        currentValueChangeCo = DOTween.Sequence();
+        public void Initialize(Unit unit, int maxValue, int curValue, UnitStat stat)
+        {
+            unit.SubscribeToStatChangeEvent(UpdateVisual, stat);
+            statSlider.maxValue = maxValue;
+            bgSlider.maxValue = maxValue;
+            statSlider.value = curValue;
+            bgSlider.value = curValue;
+            statText.text = $"{statSlider.value}/{statSlider.maxValue}";
+            statNameText.text = stat.ToString().ToUpper();
+        }
 
-        currentValueChangeCo.Append(bgSlider.DOValue(newValue, 1f));
+        public void UpdateVisual(int newValue)
+        {
+            statSlider.value = newValue;
+            statText.text = $"{statSlider.value}/{statSlider.maxValue}";
+
+            if (currentValueChangeCo != null && currentValueChangeCo.IsPlaying())
+                currentValueChangeCo.Kill();
+            currentValueChangeCo = DOTween.Sequence();
+
+            currentValueChangeCo.Append(bgSlider.DOValue(newValue, 1f));
+        }
     }
 }

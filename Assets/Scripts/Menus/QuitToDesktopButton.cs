@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class QuitToDesktopButton : MenuButton
+namespace PsychOutDestined
 {
-    public override IEnumerator SelectButton(Menu menu)
+    public class QuitToDesktopButton : MenuButton
     {
-        yield return StartCoroutine(base.SelectButton(menu));
+        public override IEnumerator SelectButton(Menu menu)
+        {
+            yield return StartCoroutine(base.SelectButton(menu));
 
-        Application.Quit();
+            Application.Quit();
+        }
     }
 }

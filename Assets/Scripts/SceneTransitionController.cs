@@ -3,38 +3,41 @@ using DG.Tweening;
 using UnityEngine.UI;
 using System.Collections;
 
-public class SceneTransitionController : MonoBehaviour
+namespace PsychOutDestined
 {
-    [SerializeField] private Canvas transitionScreen;
-    [SerializeField] private Image transitionImage;
-
-    public static SceneTransitionController Instance {get; private set;}
-
-    private void Awake()
+    public class SceneTransitionController : MonoBehaviour
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(gameObject); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        }     
+        [SerializeField] private Canvas transitionScreen;
+        [SerializeField] private Image transitionImage;
 
-        transitionScreen.enabled = false;
-    }
+        public static SceneTransitionController Instance { get; private set; }
 
-    public IEnumerator FadeScreenIn()
-    {
-        transitionImage.color = Color.clear;
-        transitionScreen.enabled = true;
-        yield return transitionImage.DOColor(Color.white, 1f).WaitForCompletion();
-    }
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
 
-    public IEnumerator FadeScreenOut()
-    {
-        yield return transitionImage.DOColor(Color.clear, 1f).WaitForCompletion();
-        transitionImage.color = Color.clear;
-        transitionScreen.enabled = false;
+            transitionScreen.enabled = false;
+        }
+
+        public IEnumerator FadeScreenIn()
+        {
+            transitionImage.color = Color.clear;
+            transitionScreen.enabled = true;
+            yield return transitionImage.DOColor(Color.white, 1f).WaitForCompletion();
+        }
+
+        public IEnumerator FadeScreenOut()
+        {
+            yield return transitionImage.DOColor(Color.clear, 1f).WaitForCompletion();
+            transitionImage.color = Color.clear;
+            transitionScreen.enabled = false;
+        }
     }
 }

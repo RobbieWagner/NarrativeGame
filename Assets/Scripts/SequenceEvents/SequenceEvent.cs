@@ -1,10 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class SequenceEvent : MonoBehaviour
+namespace PsychOutDestined
 {
-    public virtual IEnumerator InvokeSequenceEvent()
+    public class SequenceEvent : MonoBehaviour
     {
-        yield return null;
+        public virtual IEnumerator InvokeSequenceEvent()
+        {
+            yield return null;
+        }
     }
 }

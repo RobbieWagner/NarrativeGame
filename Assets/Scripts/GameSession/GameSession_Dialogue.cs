@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public partial class GameSession : MonoBehaviour
+namespace PsychOutDestined
 {
-    
+    public partial class GameSession : MonoBehaviour
+    {
+
+    }
 }

@@ -3,38 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CombatEventHandler : MonoBehaviour
+namespace PsychOutDestined
 {
-    private Dictionary<CombatEvent, int> combatEvents;
-
-    private void Awake()
+    public class CombatEventHandler : MonoBehaviour
     {
-        combatEvents = new Dictionary<CombatEvent, int>();
-    } 
+        private Dictionary<CombatEvent, int> combatEvents;
 
-    public void Subscribe(CombatEvent combatEvent, int priority = -1)
-    {
-        bool succeeded = combatEvents.TryAdd(combatEvent, priority);
-        if(!succeeded) Debug.LogWarning($"Could not add event: {combatEvent.gameObject.name}");
-    }
-
-    public void Unsubscribe(CombatEvent combatEvent)
-    {
-        combatEvents.Remove(combatEvent);
-    }
-
-    public IEnumerator Invoke()
-    {
-        //Debug.Log($"Invoking combat event: {combatEvents.Count}");
-        List<CombatEvent> events = combatEvents.OrderByDescending(x => x.Value).Select(e => e.Key).ToList();
-
-        if(events != null)
+        private void Awake()
         {
-            foreach(CombatEvent combatEvent in events)
-                yield return StartCoroutine(combatEvent.InvokeCombatEvent());
+            combatEvents = new Dictionary<CombatEvent, int>();
         }
-        else
-            Debug.Log("no events found");
-    
+
+        public void Subscribe(CombatEvent combatEvent, int priority = -1)
+        {
+            bool succeeded = combatEvents.TryAdd(combatEvent, priority);
+            if (!succeeded) Debug.LogWarning($"Could not add event: {combatEvent.gameObject.name}");
+        }
+
+        public void Unsubscribe(CombatEvent combatEvent)
+        {
+            combatEvents.Remove(combatEvent);
+        }
+
+        public IEnumerator Invoke()
+        {
+            //Debug.Log($"Invoking combat event: {combatEvents.Count}");
+            List<CombatEvent> events = combatEvents.OrderByDescending(x => x.Value).Select(e => e.Key).ToList();
+
+            if (events != null)
+            {
+                foreach (CombatEvent combatEvent in events)
+                    yield return StartCoroutine(combatEvent.InvokeCombatEvent());
+            }
+            else
+                Debug.Log("no events found");
+
+        }
     }
 }

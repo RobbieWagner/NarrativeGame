@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
+using PsychOutDestined;
 
 namespace RobbieWagnerGames.UI
 {

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaitSequenceEvent : SequenceEvent
+namespace PsychOutDestined
 {
-    [SerializeField] private float timeToWait = 1;
-    public override IEnumerator InvokeSequenceEvent()
+    public class WaitSequenceEvent : SequenceEvent
     {
-        Debug.Log($"Waiting for {timeToWait} seconds");
-        yield return new WaitForSeconds(timeToWait);
+        [SerializeField] private float timeToWait = 1;
+        public override IEnumerator InvokeSequenceEvent()
+        {
+            Debug.Log($"Waiting for {timeToWait} seconds");
+            yield return new WaitForSeconds(timeToWait);
+        }
     }
 }

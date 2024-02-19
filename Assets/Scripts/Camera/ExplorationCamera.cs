@@ -1,20 +1,23 @@
 using UnityEngine;
 
-public class ExplorationCamera : GameCamera
+namespace PsychOutDestined
 {
-    public static ExplorationCamera Instance {get; private set;}
-
-    protected override void Awake()
+    public class ExplorationCamera : GameCamera
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(gameObject); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        } 
+        public static ExplorationCamera Instance { get; private set; }
 
-        base.Awake();
+        protected override void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+
+            base.Awake();
+        }
     }
 }

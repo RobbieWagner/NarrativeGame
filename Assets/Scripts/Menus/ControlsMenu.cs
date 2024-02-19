@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class ControlsMenu : Menu
+namespace PsychOutDestined
 {
-    
+    public class ControlsMenu : Menu
+    {
+
+    }
 }

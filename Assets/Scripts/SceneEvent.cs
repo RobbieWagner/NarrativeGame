@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneEvent : MonoBehaviour
+namespace PsychOutDestined
 {
-    public virtual IEnumerator RunSceneEvent()
+    public class SceneEvent : MonoBehaviour
     {
-        yield return null;
+        public virtual IEnumerator RunSceneEvent()
+        {
+            yield return null;
+        }
     }
 }

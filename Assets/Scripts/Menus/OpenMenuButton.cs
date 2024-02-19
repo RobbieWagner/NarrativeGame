@@ -1,26 +1,29 @@
 using System.Collections;
 using UnityEngine;
 
-public class OpenMenuButton : MenuButton
+namespace PsychOutDestined
 {
-    [SerializeField] private Menu thisMenu;
-    [SerializeField] private Menu previousMenu;
-
-    protected override void Awake()
+    public class OpenMenuButton : MenuButton
     {
-        base.Awake();
-        thisMenu.OnEnablePreviousMenu += ReturnToPreviousMenu;
+        [SerializeField] private Menu thisMenu;
+        [SerializeField] private Menu previousMenu;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            thisMenu.OnEnablePreviousMenu += ReturnToPreviousMenu;
+        }
+
+        public override IEnumerator SelectButton(Menu menu)
+        {
+            previousMenu = menu;
+            yield return StartCoroutine(base.SelectButton(menu));
+            thisMenu.SetupMenu();
+        }
+
+        protected virtual void ReturnToPreviousMenu()
+        {
+            previousMenu.SetupMenu();
+        }
     }
-
-    public override IEnumerator SelectButton(Menu menu)
-    {
-        previousMenu = menu;
-        yield return StartCoroutine(base.SelectButton(menu));
-        thisMenu.SetupMenu();
-    }
-
-    protected virtual void ReturnToPreviousMenu()
-    {
-        previousMenu.SetupMenu();
-    } 
 }

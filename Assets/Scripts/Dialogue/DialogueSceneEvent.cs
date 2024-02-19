@@ -4,16 +4,19 @@ using UnityEngine;
 using Ink.Runtime;
 using RobbieWagnerGames;
 
-public class DialogueSceneEvent : SceneEvent
+namespace PsychOutDestined
 {
-    [SerializeField] private TextAsset storyTextAsset;
-
-    public override IEnumerator RunSceneEvent()
+    public class DialogueSceneEvent : SceneEvent
     {
-        Story story = new Story(storyTextAsset.text);
-        yield return DialogueManager.Instance?.EnterDialogueModeCo(story);
+        [SerializeField] private TextAsset storyTextAsset;
 
-        yield return StartCoroutine(base.RunSceneEvent());
-        StopCoroutine(RunSceneEvent());
+        public override IEnumerator RunSceneEvent()
+        {
+            Story story = new Story(storyTextAsset.text);
+            yield return DialogueManager.Instance?.EnterDialogueModeCo(story);
+
+            yield return StartCoroutine(base.RunSceneEvent());
+            StopCoroutine(RunSceneEvent());
+        }
     }
 }

@@ -2,33 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCameraSequenceEvent : SequenceEvent
+namespace PsychOutDestined
 {
-    [SerializeField] private bool resetCamera = false;
-    [SerializeField] private Vector3 camPosition = Vector3.zero;
-    [SerializeField] private int movement = 1;
-    [SerializeField] private bool isMovementValueCameraSpeed = false;
-
-    public override IEnumerator InvokeSequenceEvent()
+    public class MoveCameraSequenceEvent : SequenceEvent
     {
-        if(CameraManager.Instance != null)
+        [SerializeField] private bool resetCamera = false;
+        [SerializeField] private Vector3 camPosition = Vector3.zero;
+        [SerializeField] private int movement = 1;
+        [SerializeField] private bool isMovementValueCameraSpeed = false;
+
+        public override IEnumerator InvokeSequenceEvent()
         {
-            if(isMovementValueCameraSpeed)
+            if (CameraManager.Instance != null)
             {
-                if(resetCamera)
-                    yield return StartCoroutine(CameraManager.Instance.ActiveGameCamera.ResetCameraPositionSpeed(movement));
+                if (isMovementValueCameraSpeed)
+                {
+                    if (resetCamera)
+                        yield return StartCoroutine(CameraManager.Instance.ActiveGameCamera.ResetCameraPositionSpeed(movement));
+                    else
+                        yield return StartCoroutine(CameraManager.Instance.ActiveGameCamera.MoveCameraSpeed(camPosition, movement));
+                }
                 else
-                    yield return StartCoroutine(CameraManager.Instance.ActiveGameCamera.MoveCameraSpeed(camPosition, movement));
+                {
+                    if (resetCamera)
+                        yield return StartCoroutine(CameraManager.Instance.ActiveGameCamera.ResetCameraPosition(movement));
+                    else
+                        yield return StartCoroutine(CameraManager.Instance.ActiveGameCamera.MoveCamera(camPosition, movement));
+                }
             }
             else
-            {
-                if(resetCamera)
-                    yield return StartCoroutine(CameraManager.Instance.ActiveGameCamera.ResetCameraPosition(movement));
-                else
-                    yield return StartCoroutine(CameraManager.Instance.ActiveGameCamera.MoveCamera(camPosition, movement));
-            }
+                Debug.LogWarning("Could not move camera: no camera manager was found!");
         }
-        else
-            Debug.LogWarning("Could not move camera: no camera manager was found!");
     }
 }

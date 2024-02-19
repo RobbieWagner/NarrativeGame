@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 
-namespace RobbieWagnerGames
+namespace PsychOutDestined
 {
    public static class DialogueConfigurer
    {

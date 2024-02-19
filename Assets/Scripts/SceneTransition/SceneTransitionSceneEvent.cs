@@ -4,16 +4,19 @@ using UnityEngine;
 using Ink.Runtime;
 using RobbieWagnerGames;
 
-public class SceneTransitionSceneEvent : SceneEvent
+namespace PsychOutDestined
 {
-    [SerializeField] private bool fadeIn; 
-
-    public override IEnumerator RunSceneEvent()
+    public class SceneTransitionSceneEvent : SceneEvent
     {
-        if(fadeIn) yield return SceneTransition.Instance?.FadeInScreen();
-        else yield return SceneTransition.Instance?.FadeOutScreen();
+        [SerializeField] private bool fadeIn;
 
-        yield return base.RunSceneEvent();
-        StopCoroutine(RunSceneEvent());
+        public override IEnumerator RunSceneEvent()
+        {
+            if (fadeIn) yield return SceneTransition.Instance?.FadeInScreen();
+            else yield return SceneTransition.Instance?.FadeOutScreen();
+
+            yield return base.RunSceneEvent();
+            StopCoroutine(RunSceneEvent());
+        }
     }
 }

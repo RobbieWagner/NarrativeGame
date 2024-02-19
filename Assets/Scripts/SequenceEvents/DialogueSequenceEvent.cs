@@ -3,13 +3,16 @@ using UnityEngine;
 using Ink.Runtime;
 using System.Collections;
 
-public class DialogueSequenceEvent : SequenceEvent
+namespace PsychOutDestined
 {
-    [SerializeField] private TextAsset dialogue;
-
-    public override IEnumerator InvokeSequenceEvent()
+    public class DialogueSequenceEvent : SequenceEvent
     {
-        base.InvokeSequenceEvent();
-        yield return StartCoroutine(DialogueManager.Instance.EnterDialogueModeCo(DialogueConfigurer.ConfigureStory(dialogue)));
+        [SerializeField] private TextAsset dialogue;
+
+        public override IEnumerator InvokeSequenceEvent()
+        {
+            base.InvokeSequenceEvent();
+            yield return StartCoroutine(DialogueManager.Instance.EnterDialogueModeCo(DialogueConfigurer.ConfigureStory(dialogue)));
+        }
     }
 }

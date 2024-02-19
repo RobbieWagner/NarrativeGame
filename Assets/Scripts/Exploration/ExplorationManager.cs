@@ -1,23 +1,26 @@
 using UnityEngine;
 
-public class ExplorationManager : MonoBehaviour
+namespace PsychOutDestined
 {
-    public static ExplorationManager Instance {get; private set;}
-
-    private void Awake()
+    public class ExplorationManager : MonoBehaviour
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(gameObject); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        } 
+        public static ExplorationManager Instance { get; private set; }
 
-        //TODO: NOT HARDCODE THIS CALL
-        StartExploration();
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+
+            //TODO: NOT HARDCODE THIS CALL
+            StartExploration();
+        }
+
+        public void StartExploration() => GameManager.Instance.CurrentGameMode = GameMode.Exploration;
     }
-
-    public void StartExploration() => GameManager.Instance.CurrentGameMode = GameMode.Exploration;
 }

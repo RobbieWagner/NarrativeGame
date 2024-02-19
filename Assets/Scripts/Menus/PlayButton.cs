@@ -3,23 +3,26 @@ using RobbieWagnerGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayButton : MenuButton
+namespace PsychOutDestined
 {
-    [SerializeField] private bool deleteCurrentProgress = false;
-    public override IEnumerator SelectButton(Menu menu)
+    public class PlayButton : MenuButton
     {
-        yield return StartCoroutine(base.SelectButton(menu));
-        if(deleteCurrentProgress)
+        [SerializeField] private bool deleteCurrentProgress = false;
+        public override IEnumerator SelectButton(Menu menu)
         {
-            SaveDataManager.persistentPath = Application.persistentDataPath;
-            SaveDataManager.PurgeAllSaveData();
-        }
-        
-        StartGame();
-    }
+            yield return StartCoroutine(base.SelectButton(menu));
+            if (deleteCurrentProgress)
+            {
+                SaveDataManager.persistentPath = Application.persistentDataPath;
+                SaveDataManager.PurgeAllSaveData();
+            }
 
-    public void StartGame()
-    {
-        SceneManager.LoadScene("Game");
+            StartGame();
+        }
+
+        public void StartGame()
+        {
+            SceneManager.LoadScene("Game");
+        }
     }
 }

@@ -9,7 +9,7 @@ using TMPro;
 using Ink.Runtime;
 using System.Text.RegularExpressions;
 
-namespace RobbieWagnerGames
+namespace PsychOutDestined
 {
     public partial class DialogueManager : MonoBehaviour
     {

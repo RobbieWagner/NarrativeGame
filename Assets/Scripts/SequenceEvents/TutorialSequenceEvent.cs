@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialSequenceEvent : SequenceEvent
+namespace PsychOutDestined
 {
-    [SerializeField] private Tutorial tutorial;
-    private bool isTutorialPlaying = false;
-
-    public override IEnumerator InvokeSequenceEvent()
+    public class TutorialSequenceEvent : SequenceEvent
     {
-        yield return StartCoroutine(base.InvokeSequenceEvent());
-        isTutorialPlaying = true;
-        tutorial.OpenTutorial();
-        tutorial.OnCompleteTutorial += CompleteTutorialEvent;
+        [SerializeField] private Tutorial tutorial;
+        private bool isTutorialPlaying = false;
 
-        while(isTutorialPlaying)
-            yield return null;
+        public override IEnumerator InvokeSequenceEvent()
+        {
+            yield return StartCoroutine(base.InvokeSequenceEvent());
+            isTutorialPlaying = true;
+            tutorial.OpenTutorial();
+            tutorial.OnCompleteTutorial += CompleteTutorialEvent;
+
+            while (isTutorialPlaying)
+                yield return null;
+        }
+
+        private void CompleteTutorialEvent() => isTutorialPlaying = false;
     }
-
-    private void CompleteTutorialEvent() => isTutorialPlaying = false;
 }

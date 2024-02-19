@@ -1,45 +1,48 @@
 using Ink.Parsed;
 using UnityEngine;
 
-public enum GameMode
+namespace PsychOutDestined
 {
-    None = -1,
-    Exploration = 0,
-    Event = 1,
-    Combat = 2,
-    Other = 3
-}
-
-public class GameManager : MonoBehaviour
-{
-    public static GameManager Instance {get; private set;}
-
-    private GameMode currentGameMode;
-    public GameMode CurrentGameMode
+    public enum GameMode
     {
-        get => currentGameMode;
-
-        set
-        {
-            if(currentGameMode == value) return;
-            currentGameMode = value;
-            OnGameModeChanged?.Invoke(currentGameMode);
-        }
+        None = -1,
+        Exploration = 0,
+        Event = 1,
+        Combat = 2,
+        Other = 3
     }
-    public delegate void OnGameModeChangedDelegate(GameMode gameMode);
-    public event OnGameModeChangedDelegate OnGameModeChanged;
 
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(gameObject); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        } 
+        public static GameManager Instance { get; private set; }
 
-        CurrentGameMode = GameMode.None;
+        private GameMode currentGameMode;
+        public GameMode CurrentGameMode
+        {
+            get => currentGameMode;
+
+            set
+            {
+                if (currentGameMode == value) return;
+                currentGameMode = value;
+                OnGameModeChanged?.Invoke(currentGameMode);
+            }
+        }
+        public delegate void OnGameModeChangedDelegate(GameMode gameMode);
+        public event OnGameModeChangedDelegate OnGameModeChanged;
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+
+            CurrentGameMode = GameMode.None;
+        }
     }
 }

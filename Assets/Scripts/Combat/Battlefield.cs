@@ -3,54 +3,57 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class Battlefield : MonoBehaviour
+namespace PsychOutDestined
 {
-    public Vector3 alliesPosition;
-    public Vector3 enemiesPosition;
-
-    public Vector3 distanceBetweenAllies;
-    public Vector3 distanceBetweenEnemies;
-
-    public Vector3 camPosition;
-
-    public void PlaceUnits(List<Unit> units, bool unitsAreAllies = true)
+    public class Battlefield : MonoBehaviour
     {
-        Vector3 unitPosition;
+        public Vector3 alliesPosition;
+        public Vector3 enemiesPosition;
 
-        if(unitsAreAllies)
+        public Vector3 distanceBetweenAllies;
+        public Vector3 distanceBetweenEnemies;
+
+        public Vector3 camPosition;
+
+        public void PlaceUnits(List<Unit> units, bool unitsAreAllies = true)
         {
-            unitPosition = alliesPosition - (distanceBetweenAllies * (units.Count - 1)/2);
+            Vector3 unitPosition;
 
-            for(int i = 0; i < units.Count; i++)
+            if (unitsAreAllies)
             {
-                units[i].MoveUnit(unitPosition + transform.position);
-                unitPosition += distanceBetweenAllies;
+                unitPosition = alliesPosition - (distanceBetweenAllies * (units.Count - 1) / 2);
+
+                for (int i = 0; i < units.Count; i++)
+                {
+                    units[i].MoveUnit(unitPosition + transform.position);
+                    unitPosition += distanceBetweenAllies;
+                }
+            }
+            else
+            {
+                unitPosition = enemiesPosition + (distanceBetweenEnemies * (units.Count - 1) / 2);
+
+                for (int i = 0; i < units.Count; i++)
+                {
+                    units[i].MoveUnit(unitPosition + transform.position);
+                    unitPosition -= distanceBetweenEnemies;
+                }
             }
         }
-        else
-        {
-            unitPosition = enemiesPosition + (distanceBetweenEnemies * (units.Count - 1)/2);
 
-            for(int i = 0; i < units.Count; i++)
+        public void PlaceUnit(Transform unit, Vector3 position)
+        {
+            Debug.LogWarning("Place Unit not implemented!");
+        }
+
+        public IEnumerator SetupBattlefield()
+        {
+            if (CombatCamera.Instance != null)
             {
-                units[i].MoveUnit(unitPosition + transform.position);
-                unitPosition -= distanceBetweenEnemies;
+                CameraManager.Instance.TrySwitchGameCamera(CombatCamera.Instance);
+                CombatCamera.Instance.defaultPosition = transform.localPosition + camPosition;
             }
+            yield return StartCoroutine(CombatCamera.Instance?.ResetCameraPosition());
         }
-    }
-
-    public void PlaceUnit(Transform unit, Vector3 position)
-    {
-        Debug.LogWarning("Place Unit not implemented!");
-    }
-
-    public IEnumerator SetupBattlefield()
-    {
-        if(CombatCamera.Instance != null) 
-        {
-            CameraManager.Instance.TrySwitchGameCamera(CombatCamera.Instance);
-            CombatCamera.Instance.defaultPosition = transform.localPosition + camPosition;
-        }
-        yield return StartCoroutine(CombatCamera.Instance?.ResetCameraPosition());
     }
 }

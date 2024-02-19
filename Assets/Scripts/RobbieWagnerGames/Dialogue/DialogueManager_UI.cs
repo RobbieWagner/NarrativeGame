@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using DG.Tweening;
 using Unity.Mathematics;
 
-namespace RobbieWagnerGames
+namespace PsychOutDestined
 {
     public partial class DialogueManager : MonoBehaviour
     {
@@ -38,7 +38,7 @@ namespace RobbieWagnerGames
             string configuredText = input;
 
             List<char> allowList = new List<char>() {' ', '-', '\'', ',', '.'};
-            string name = SaveDataManager.LoadObject("name", "UserData", new string[]{StaticGameStats.dialogueSavePath}, "Morgan");
+            string name = SaveDataManager.LoadObject("name", "UserData", "Morgan", new string[]{StaticGameStats.dialogueSavePath});
 
             bool nameAllowed = true;
             foreach(char c in name)

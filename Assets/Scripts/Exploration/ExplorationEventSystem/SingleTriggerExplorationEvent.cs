@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleTriggerExplorationEvent : ExplorationEvent
+namespace PsychOutDestined
 {
-    private bool hasBeenTriggered = false;
-
-    private void Awake()
+    public class SingleTriggerExplorationEvent : ExplorationEvent
     {
-        //TODO: Add handling to see if event has been triggered
-        hasBeenTriggered = false;
+        private bool hasBeenTriggered = false;
 
-        OnCompleteEventInvocation += MarkTriggered;
+        private void Awake()
+        {
+            //TODO: Add handling to see if event has been triggered
+            hasBeenTriggered = false;
+
+            OnCompleteEventInvocation += MarkTriggered;
+        }
+
+        private void MarkTriggered() => hasBeenTriggered = true;
     }
-
-    private void MarkTriggered() => hasBeenTriggered = true;
 }

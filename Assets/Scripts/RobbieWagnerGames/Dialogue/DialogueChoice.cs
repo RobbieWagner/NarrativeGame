@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
 
-namespace RobbieWagnerGames
+namespace PsychOutDestined
 {
     public class DialogueChoice : MonoBehaviour
     {

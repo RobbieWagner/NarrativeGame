@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class CombatCamera : GameCamera
+namespace PsychOutDestined
 {
-    public static CombatCamera Instance {get; private set;}
-
-    protected override void Awake()
+    public class CombatCamera : GameCamera
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(gameObject); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        }
-        
-        base.Awake(); 
-    }
+        public static CombatCamera Instance { get; private set; }
 
-    
+        protected override void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+
+            base.Awake();
+        }
+
+
+    }
 }

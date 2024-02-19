@@ -5,71 +5,80 @@ using System.Threading;
 using System.Threading.Tasks;
 using RobbieWagnerGames;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public partial class GameSession : MonoBehaviour
+namespace PsychOutDestined
 {
-    public static GameSession Instance {get; private set;}
-
-    private void Awake()
+    public partial class GameSession : MonoBehaviour
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(gameObject); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        } 
+        public static GameSession Instance { get; private set; }
 
-        SaveDataManager.persistentPath = Application.persistentDataPath; 
-        LoadSaveFiles();
-    }
-
-    public void LoadSaveFiles()
-    {
-        StartCoroutine(LoadSaveFilesAsync());
-    }
-
-    private IEnumerator LoadSaveFilesAsync()
-    {
-        yield return new WaitForEndOfFrame();
-        Task loadTask = Task.Run(() =>
+        private void Awake()
         {
-            // Background thread work
-            LoadPlayersParty();
-            LoadExplorationData();
-            //LoadSavedGameSessionData();
-        });
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
 
-        yield return new WaitUntil(() => loadTask.IsCompleted);
-        OnLoadComplete?.Invoke();
-    }
-    public delegate void OnLoadCompleteDelegate();
-    public event OnLoadCompleteDelegate OnLoadComplete; 
+            SaveDataManager.persistentPath = Application.persistentDataPath;
+            LoadSaveFiles();
+        }
 
-    // private void LoadSavedGameSessionData()
-    // {
-       
-    // }
+        public void LoadSaveFiles() => StartCoroutine(LoadSaveFilesAsync());
 
-    public void SaveGameSessionData()
-    {
-        StartCoroutine(SaveGameSessionDataAsync());
-    }
-
-    private IEnumerator SaveGameSessionDataAsync()
-    {
-        yield return new WaitForEndOfFrame();
-        Task saveTask = Task.Run(() =>
+        private IEnumerator LoadSaveFilesAsync()
         {
-            // Background thread work
-            SavePlayersParty();
-            SaveExplorationData();
-        });
+            yield return new WaitForEndOfFrame();
+            Task loadTask = Task.Run(() =>
+            {
+                // Background thread work
+                Debug.Log("loading");
+                LoadPlayersParty();
+                LoadExplorationData();
+                Debug.Log($"data loaded: {currentPlayerPosition}");
+            });
 
-        yield return new WaitUntil(() => saveTask.IsCompleted);
-        OnSaveComplete?.Invoke();
+            yield return new WaitUntil(() => loadTask.IsCompleted);
+
+            Debug.Log($"loading scene: {currentSceneName}");
+            AsyncOperation asyncSceneLoad = SceneManager.LoadSceneAsync(currentSceneName, LoadSceneMode.Additive);
+
+            while (!asyncSceneLoad.isDone)
+            {
+                yield return null;
+            }
+            yield return null;
+
+            Debug.Log("done loading");
+            InitializePlayerPosition();
+
+            OnLoadComplete?.Invoke();
+        }
+        public delegate void OnLoadCompleteDelegate();
+        public event OnLoadCompleteDelegate OnLoadComplete;
+
+        private void InitializePlayerPosition() {PlayerMovement.Instance.SetPosition(currentPlayerPosition);Debug.Log($"pos{currentPlayerPosition}");}
+
+        public void SaveGameSessionData() => StartCoroutine(SaveGameSessionDataAsync());
+
+        private IEnumerator SaveGameSessionDataAsync()
+        {
+            yield return new WaitForEndOfFrame();
+            Task saveTask = Task.Run(() =>
+            {
+                // Background thread work
+                SavePlayersParty();
+                SaveExplorationData();
+            });
+
+            yield return new WaitUntil(() => saveTask.IsCompleted);
+            OnSaveComplete?.Invoke();
+        }
+        public delegate void OnSaveCompleteDelegate();
+        public event OnSaveCompleteDelegate OnSaveComplete;
     }
-    public delegate void OnSaveCompleteDelegate();
-    public event OnSaveCompleteDelegate OnSaveComplete; 
 }

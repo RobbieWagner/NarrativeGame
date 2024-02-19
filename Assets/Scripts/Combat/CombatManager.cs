@@ -3,68 +3,71 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public partial class CombatManager : ICombatManager
+namespace PsychOutDestined
 {
-    [SerializeField] private Battlefield battleField;
-
-    #region Combat Phases
-    protected override IEnumerator SetupCombat()
+    public partial class CombatManager : ICombatManager
     {
-        yield return StartCoroutine(battleField?.SetupBattlefield());
+        [SerializeField] private Battlefield battleField;
 
-        currentUI = Instantiate(currentCombat.combatUIPrefab, transform);
-        yield return StartCoroutine(currentUI.InitializeUI());
+        #region Combat Phases
+        protected override IEnumerator SetupCombat()
+        {
+            yield return StartCoroutine(battleField?.SetupBattlefield());
 
-        allies = new List<Unit>();
-        enemies = new List<Unit>();
+            currentUI = Instantiate(currentCombat.combatUIPrefab, transform);
+            yield return StartCoroutine(currentUI.InitializeUI());
 
-        foreach(Unit ally in currentCombat.allyPrefabs)
-            TryAddAllyToCombat(ally);
-        foreach(Unit enemy in currentCombat.enemyPrefabs)
-            TryAddEnemyToCombat(enemy);
+            allies = new List<Unit>();
+            enemies = new List<Unit>();
 
-        battleField?.PlaceUnits(allies, true);
-        battleField?.PlaceUnits(enemies, false);
+            foreach (Unit ally in currentCombat.allyPrefabs)
+                TryAddAllyToCombat(ally);
+            foreach (Unit enemy in currentCombat.enemyPrefabs)
+                TryAddEnemyToCombat(enemy);
 
-        yield return StartCoroutine(base.SetupCombat());
-    }
+            battleField?.PlaceUnits(allies, true);
+            battleField?.PlaceUnits(enemies, false);
 
-    protected override IEnumerator StartTurn()
-    {
-        yield return StartCoroutine(base.StartTurn());
-    }
+            yield return StartCoroutine(base.SetupCombat());
+        }
 
-    protected override IEnumerator HandleActionSelection()
-    {
-        yield return StartCoroutine(base.HandleActionSelection());
-    }
+        protected override IEnumerator StartTurn()
+        {
+            yield return StartCoroutine(base.StartTurn());
+        }
 
-    protected override IEnumerator ExecuteActions()
-    {
+        protected override IEnumerator HandleActionSelection()
+        {
+            yield return StartCoroutine(base.HandleActionSelection());
+        }
 
-        yield return StartCoroutine(base.ExecuteActions());
-    }
+        protected override IEnumerator ExecuteActions()
+        {
 
-    protected override IEnumerator EndTurn()
-    {
+            yield return StartCoroutine(base.ExecuteActions());
+        }
 
-        yield return StartCoroutine(base.EndTurn());
-    }
+        protected override IEnumerator EndTurn()
+        {
 
-    protected override IEnumerator ResolveCombat()
-    {
+            yield return StartCoroutine(base.EndTurn());
+        }
 
-        yield return StartCoroutine(base.ResolveCombat());
-    }
-    #endregion
+        protected override IEnumerator ResolveCombat()
+        {
 
-    protected override bool TryAddAllyToCombat(Unit ally)
-    {
-        return base.TryAddAllyToCombat(ally);
-    }
+            yield return StartCoroutine(base.ResolveCombat());
+        }
+        #endregion
 
-    protected override bool TryAddEnemyToCombat(Unit enemy)
-    {
-        return base.TryAddEnemyToCombat(enemy);
+        protected override bool TryAddAllyToCombat(Unit ally)
+        {
+            return base.TryAddAllyToCombat(ally);
+        }
+
+        protected override bool TryAddEnemyToCombat(Unit enemy)
+        {
+            return base.TryAddEnemyToCombat(enemy);
+        }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace RobbieWagnerGames
+namespace PsychOutDestined
 {
     public class IInteractable : MonoBehaviour
     {

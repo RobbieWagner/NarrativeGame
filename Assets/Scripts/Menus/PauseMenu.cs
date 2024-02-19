@@ -1,20 +1,23 @@
 using UnityEngine;
 
-public class PauseMenu : Menu
+namespace PsychOutDestined
 {
-    public static PauseMenu Instance {get; private set;}
-
-    protected override void Awake()
+    public class PauseMenu : Menu
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(gameObject); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        } 
+        public static PauseMenu Instance { get; private set; }
 
-        base.Awake();
+        protected override void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+
+            base.Awake();
+        }
     }
 }

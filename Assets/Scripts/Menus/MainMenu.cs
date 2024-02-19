@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenu : Menu
+namespace PsychOutDestined
 {
-    public static MainMenu Instance {get; private set;}
-
-    protected override void Awake()
+    public class MainMenu : Menu
     {
-        if (Instance != null && Instance != this) 
-        { 
-            Destroy(gameObject); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        } 
+        public static MainMenu Instance { get; private set; }
 
-        CurButton = 1;
-        base.Awake();
+        protected override void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+
+            CurButton = 1;
+            base.Awake();
+        }
     }
 }

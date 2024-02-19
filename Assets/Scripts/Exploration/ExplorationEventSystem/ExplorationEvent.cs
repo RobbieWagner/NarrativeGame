@@ -5,16 +5,19 @@ using RobbieWagnerGames;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 
-public class ExplorationEvent : EventSequence
+namespace PsychOutDestined
 {
-    protected virtual void OnTriggerEnter(Collider other)
+    public class ExplorationEvent : EventSequence
     {
-        if(other.gameObject.CompareTag("Player"))
-            StartCoroutine(InvokeEvent());
-    }
+        protected virtual void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+                StartCoroutine(InvokeEvent());
+        }
 
-    protected override IEnumerator InvokeEvent(bool setToEventGameMode = true)
-    {
-        yield return StartCoroutine(base.InvokeEvent(setToEventGameMode));
+        protected override IEnumerator InvokeEvent(bool setToEventGameMode = true)
+        {
+            yield return StartCoroutine(base.InvokeEvent(setToEventGameMode));
+        }
     }
 }
