@@ -84,9 +84,9 @@ namespace PsychOutDestined
             {
                 //display ui
                 //unit.StartBlinking();
-                StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position, //TODO: Use transform of parent + default position instead
+                StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position,
                                                                                      unit.transform.position,
-                                                                                     1f)));
+                                                                                     1.5f)));
 
                 targetSelectionControls.Disable();
                 actionSelectionControls.Enable();

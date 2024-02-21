@@ -205,16 +205,16 @@ namespace PsychOutDestined
                 //Debug.Log($"{unit.name} is acting");
                 if (unit.isUnitActive && unit.currentSelectedAction != null)
                 {
-                    yield return StartCoroutine(CombatCamera.Instance?.MoveCamera
-                                                            (Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position, 
-                                                            unit.transform.position + UNIT_OFFSET, 
-                                                            1.75f), 
-                                                            1.2f));
+                    List<Unit> intendedTargets = unit.currentSelectedAction.GetTargetUnits(unit.selectedTargets);
+                    OnStartActionExecution?.Invoke(unit, intendedTargets);
+                    yield return StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position,
+                                                                                     unit.transform.position,
+                                                                                     1f)));
                     //show UI for action
-                    yield return StartCoroutine(CombatCamera.Instance?.ResetCameraPosition(.9f));
-                    yield return StartCoroutine(unit.currentSelectedAction?.ExecuteAction(
-                        unit,
-                        unit.currentSelectedAction.GetTargetUnits(unit.selectedTargets)));
+                    StartCoroutine(CombatCamera.Instance?.ResetCameraPosition(.5f));
+                    yield return StartCoroutine(unit.currentSelectedAction?.ExecuteAction(unit,intendedTargets));
+                    OnEndActionExecution?.Invoke(unit, intendedTargets);
+                    yield return new WaitForSeconds(.25f);
                     if (CheckForCombatEnd()) break;
                 }
                 else if (!unit.isUnitActive) Debug.Log($"{unit.name} defeated, action cancelled");
@@ -225,6 +225,10 @@ namespace PsychOutDestined
 
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.ExecutionPhaseEnded));
         }
+
+        public delegate void ActionExecutionDelegate(Unit user, List<Unit> targets);
+        public event ActionExecutionDelegate OnStartActionExecution;
+        public event ActionExecutionDelegate OnEndActionExecution;
 
         protected virtual IEnumerator EndTurn()
         {
