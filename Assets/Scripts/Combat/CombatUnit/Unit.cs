@@ -32,6 +32,9 @@ namespace PsychOutDestined
 
         [HideInInspector] public bool isUnitActive = true;
 
+        [HideInInspector] public int lastSelectedTurnMenuOptionIndex = 0;
+        [HideInInspector] public int lastSelectedActionMenuOptionIndex = 0;
+
         protected Color BLINK_MIN_COLOR;
 
         // Unit animator

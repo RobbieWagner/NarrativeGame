@@ -10,7 +10,7 @@ namespace PsychOutDestined
 {
     public partial class ICombatManager : MonoBehaviour
     {
-        private MenuControls actionSelectionControls;
+        [SerializeField] private TurnMenu turnMenu;
         private MenuControls targetSelectionControls;
         [HideInInspector] public bool isSelectingAction = false;
         [HideInInspector] public bool isSelectingTargets = false;
@@ -19,31 +19,25 @@ namespace PsychOutDestined
         private Unit currentUnit;
         private int currentUnitIndex;
 
-        private CombatAction currentConsideredAction;
-        private int consideredActionIndex;
-
         private Unit currentTarget;
         private int currentTargetIndex;
 
         private List<Unit> actionTargets;
-        private List<Unit> selectedTargets;
+        private List<Unit> selectedTargets; //TODO: Allow for multi target selection
 
         protected virtual void InitializeControls()
         {
-            actionSelectionControls = new MenuControls();
             targetSelectionControls = new MenuControls();
             OnBeginActionSelection += BeginActionSelection;
         }
 
         public virtual void EnableControls()
         {
-            actionSelectionControls.Enable();
             targetSelectionControls.Enable();
         }
 
         public virtual void DisableControls()
         {
-            actionSelectionControls.Disable();
             targetSelectionControls.Disable();
         }
 
@@ -51,25 +45,20 @@ namespace PsychOutDestined
         {
             Debug.Log("Action Selection Begun");
             finishedSelectingActions = false;
-            actionSelectionControls.Enable();
             currentUnitIndex = 0;
             if (allies?.Count > 0)
             {
-                actionSelectionControls.UIInput.Navigate.performed += NavigateActions;
-                actionSelectionControls.UIInput.Select.performed += SelectAction;
-                actionSelectionControls.UIInput.Cancel.performed += CancelPreviousSelection;
-                actionSelectionControls.UIInput.Info.performed += ToggleActionSelectionInfo;
                 targetSelectionControls.UIInput.Navigate.performed += NavigateTargets;
                 targetSelectionControls.UIInput.Select.performed += SelectTarget;
                 targetSelectionControls.UIInput.Cancel.performed += CancelPreviousSelection;
                 targetSelectionControls.UIInput.Info.performed += ToggleTargetSelectionInfo;
 
-                OpenActionSelectionForUnit(allies[currentUnitIndex]);
+                StartActionSelectionForUnit(allies[currentUnitIndex]);
             }
             else EndActionSelection();
         }
 
-        private void OpenActionSelectionForUnit(Unit unit)
+        private void StartActionSelectionForUnit(Unit unit)
         {
             Debug.Log($"Action Selection Begun for unit: {unit.name}");
             isSelectingAction = true;
@@ -82,57 +71,62 @@ namespace PsychOutDestined
             }
             else
             {
-                //display ui
-                //unit.StartBlinking();
                 StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position,
                                                                                      unit.transform.position,
-                                                                                     1.5f)));
+                                                                                     1f)));
 
                 targetSelectionControls.Disable();
-                actionSelectionControls.Enable();
-
+                
                 currentUnit = unit;
-                ConsiderAction(0);
+                OnStartActionSelectionForUnit?.Invoke(currentUnit);
             }
         }
+        public delegate void OnStartActionSelectionForUnitDelegate(Unit unit);
+        public event OnStartActionSelectionForUnitDelegate OnStartActionSelectionForUnit;
 
         private void CancelPreviousSelection(InputAction.CallbackContext context)
         {
-            if (isSelectingAction && currentUnitIndex > 0)
+            if (isSelectingAction && currentUnitIndex > 0) //TODO: find out how to incorporate new menu into this functionality
             {
                 currentUnit.StopBlinking();
                 currentUnitIndex--;
-                OpenActionSelectionForUnit(allies[currentUnitIndex]);
+                StartActionSelectionForUnit(allies[currentUnitIndex]);
             }
             else if (isSelectingTargets)
             {
                 currentTarget.StopBlinking();
-                OpenActionSelectionForUnit(currentUnit);
+                StartActionSelectionForUnit(currentUnit);
             }
         }
 
-        private void NavigateActions(InputAction.CallbackContext context)
-        {
-            float direction = context.ReadValue<float>();
-            if (direction > 0) ConsiderAction(consideredActionIndex + 1);
-            else ConsiderAction(consideredActionIndex - 1);
-        }
+        // private void NavigateActions(InputAction.CallbackContext context)
+        // {
+        //     float direction = context.ReadValue<float>();
+        //     if (direction > 0) ConsiderAction(consideredActionIndex + 1);
+        //     else ConsiderAction(consideredActionIndex - 1);
+        // }
 
-        private void ConsiderAction(int index)
-        {
-            bool actionIndexIncreased = index > consideredActionIndex;
-            int actionIndex = index % currentUnit.availableActions.Count;
-            if (actionIndex < 0) actionIndex = currentUnit.availableActions.Count - 1;
-            consideredActionIndex = actionIndex;
-            currentConsideredAction = currentUnit.availableActions[consideredActionIndex];
-            OnConsiderAction?.Invoke(currentUnit, currentConsideredAction, actionIndexIncreased);
-        }
-        public delegate void OnConsiderActionDelegate(Unit unit, CombatAction action, bool actionIndexIncreased);
-        public event OnConsiderActionDelegate OnConsiderAction;
+        // private void ConsiderAction(int index)
+        // {
+        //     bool actionIndexIncreased = index > consideredActionIndex;
+        //     int actionIndex = index % currentUnit.availableActions.Count;
+        //     if (actionIndex < 0) actionIndex = currentUnit.availableActions.Count - 1;
+        //     consideredActionIndex = actionIndex;
+        //     currentConsideredAction = currentUnit.availableActions[consideredActionIndex];
+        //     OnConsiderAction?.Invoke(currentUnit, currentConsideredAction, actionIndexIncreased);
+        // }
+        // public delegate void OnConsiderActionDelegate(Unit unit, CombatAction action, bool actionIndexIncreased);
+        // public event OnConsiderActionDelegate OnConsiderAction;
 
-        private void SelectAction(InputAction.CallbackContext context)
+        // private void SelectAction(InputAction.CallbackContext context)
+        // {
+        //     currentUnit.currentSelectedAction = currentConsideredAction;
+        //     StartTargetSelection(currentUnit.currentSelectedAction);
+        // }
+
+        public void SelectActionForCurrentUnit(CombatAction action)
         {
-            currentUnit.currentSelectedAction = currentConsideredAction;
+            currentUnit.currentSelectedAction = action;
             StartTargetSelection(currentUnit.currentSelectedAction);
         }
 
@@ -142,7 +136,7 @@ namespace PsychOutDestined
             if (currentUnitIndex >= allies.Count)
                 EndActionSelection();
             else
-                OpenActionSelectionForUnit(allies[currentUnitIndex]);
+                StartActionSelectionForUnit(allies[currentUnitIndex]);
         }
 
         private void StartTargetSelection(CombatAction currentSelectedAction)
@@ -165,7 +159,6 @@ namespace PsychOutDestined
             else
             {
                 targetSelectionControls.UIInput.Enable();
-                actionSelectionControls.UIInput.Disable();
 
                 currentTargetIndex = 0;
                 ConsiderTarget(actionTargets[0]);
@@ -211,7 +204,6 @@ namespace PsychOutDestined
         private void EndActionSelection()
         {
             Debug.Log($"Action selection complete");
-            actionSelectionControls.Disable();
             targetSelectionControls.Disable();
 
             finishedSelectingActions = true;

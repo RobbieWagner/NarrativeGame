@@ -6,7 +6,7 @@ namespace PsychOutDestined
     public class OpenMenuButton : MenuButton
     {
         [SerializeField] private Menu thisMenu;
-        [SerializeField] private Menu previousMenu;
+        private Menu previousMenu;
 
         protected override void Awake()
         {

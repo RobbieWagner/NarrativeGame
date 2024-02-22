@@ -34,7 +34,7 @@ namespace PsychOutDestined
                     ICombatManager.Instance.OnStopConsideringTarget += StopConsideringTarget;
                     ICombatManager.Instance.OnConsiderTarget += DisplayConsideredTarget;
 
-                    ICombatManager.Instance.OnConsiderAction += UpdateActionUI;
+                    //ICombatManager.Instance.OnConsiderAction += UpdateActionUI;
                     ICombatManager.Instance.OnEndActionSelection += DestroyUnitActionSelectionUI;
 
                     ICombatManager.Instance.OnEndActionSelection += DisableActionInfo;

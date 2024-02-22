@@ -61,7 +61,7 @@ namespace PsychOutDestined
         public delegate void OnEnablePreviousMenuDelegate();
         public event OnEnablePreviousMenuDelegate OnEnablePreviousMenu;
 
-        private void ConsiderMenuButton(int activeButtonIndex)
+        protected void ConsiderMenuButton(int activeButtonIndex)
         {
             foreach (MenuButton button in menuButtons)
                 button.NavigateAway();
@@ -80,7 +80,7 @@ namespace PsychOutDestined
             ConsiderMenuButton(CurButton);
         }
 
-        private void SelectMenuItem(InputAction.CallbackContext context)
+        protected virtual void SelectMenuItem(InputAction.CallbackContext context)
         {
             DisableMenu();
             StartCoroutine(menuButtons[CurButton].SelectButton(this));
