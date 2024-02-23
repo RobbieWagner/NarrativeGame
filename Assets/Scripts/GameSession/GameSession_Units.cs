@@ -40,6 +40,8 @@ namespace PsychOutDestined
                 SaveDataManager.SaveObject($"{UNIT_PARTY_SAVE_KEY}_{i + 1}", playerParty[i], UNIT_SAVE_DATA_FILE_NAME);
                 Debug.Log($"{UNIT_PARTY_SAVE_KEY}_{i + 1}");
             }
+
+            dataService.SaveData("/party", playerParty);
             //SaveDataManager.SaveObject(UNIT_PARTY_SAVE_KEY, playerParty, UNIT_SAVE_DATA_FILE_NAME);
         }
 

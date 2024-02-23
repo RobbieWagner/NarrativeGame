@@ -11,7 +11,7 @@ namespace PsychOutDestined
         public override IEnumerator SelectButton(Menu menu)
         {
             Debug.Log($"action selected {buttonAction.actionName}");
-            ICombatManager.Instance?.SelectActionForCurrentUnit(buttonAction);
+            CombatManagerBase.Instance?.SelectActionForCurrentUnit(buttonAction);
             yield return StartCoroutine(base.SelectButton(menu));
         }
 

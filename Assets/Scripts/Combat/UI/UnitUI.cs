@@ -17,7 +17,7 @@ namespace PsychOutDestined
         public Image backgroundImage;
 
         private Unit unit;
-        [HideInInspector] public ICombatUI combatUI;
+        [HideInInspector] public CombatUIBase combatUI;
 
         [SerializeField] Vector3 actionSelectionUIOffset;
 
@@ -41,7 +41,7 @@ namespace PsychOutDestined
         {
             combatUI.OnUpdateActionUI += UpdateActionsUI;
 
-            if (ICombatManager.Instance != null)
+            if (CombatManagerBase.Instance != null)
             {
                 //ICombatManager.Instance.OnConsiderAction += UpdateActionsUI;
                 //ICombatManager.Instance.OnBeginTargetSelection += DisableActionUI; 
@@ -68,7 +68,7 @@ namespace PsychOutDestined
             }
         }
 
-        public void UpdateActionsUI(Unit user, CombatAction action, ICombatUI combatUI, bool actionIndexIncreased = true)
+        public void UpdateActionsUI(Unit user, CombatAction action, CombatUIBase combatUI, bool actionIndexIncreased = true)
         {
             if (user.Equals(Unit))
             {

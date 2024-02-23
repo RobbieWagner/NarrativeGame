@@ -43,7 +43,7 @@ namespace PsychOutDestined
             if(menuButtons.Count == 0)
             {
                 Debug.LogWarning("No Actions found, passing units turn");
-                ICombatManager.Instance.SelectActionForCurrentUnit(ICombatManager.Instance.passTurn);
+                CombatManagerBase.Instance.SelectActionForCurrentUnit(CombatManagerBase.Instance.passTurn);
                 DisableMenu(false);
             } 
             else

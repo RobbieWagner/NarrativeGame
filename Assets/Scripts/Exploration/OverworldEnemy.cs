@@ -6,7 +6,7 @@ namespace PsychOutDestined
 {
     public class OverworldEnemy : MonoBehaviour
     {
-        [SerializeField] ICombat combat;
+        [SerializeField] CombatBase combat;
 
         protected virtual void Awake()
         {

@@ -19,16 +19,16 @@ namespace PsychOutDestined
 
         public virtual void SubscribeCombatEvent()
         {
-            if (ICombatManager.Instance != null)
+            if (CombatManagerBase.Instance != null)
             {
-                ICombatManager.Instance.SubscribeEventToCombatEventHandler(this, eventTrigger);
+                CombatManagerBase.Instance.SubscribeEventToCombatEventHandler(this, eventTrigger);
             }
         }
 
         protected virtual void UnsubscribeCombatEvent()
         {
-            if (ICombatManager.Instance != null)
-                ICombatManager.Instance.UnsubscribeEventFromCombatEventHandler(this, eventTrigger);
+            if (CombatManagerBase.Instance != null)
+                CombatManagerBase.Instance.UnsubscribeEventFromCombatEventHandler(this, eventTrigger);
         }
 
         public IEnumerator InvokeCombatEvent()
@@ -38,10 +38,10 @@ namespace PsychOutDestined
 
         protected override IEnumerator InvokeEvent(bool setToEventGameMode = true)
         {
-            ICombatManager.Instance?.DisableControls();
+            CombatManagerBase.Instance?.DisableControls();
             yield return StartCoroutine(base.InvokeEvent(setToEventGameMode));
             if (triggersOnce) UnsubscribeCombatEvent();
-            ICombatManager.Instance.EnableControls();
+            CombatManagerBase.Instance.EnableControls();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace PsychOutDestined
     public partial class GameSession : MonoBehaviour
     {
         public static GameSession Instance { get; private set; }
+        public IDataService dataService;
 
         private void Awake()
         {
@@ -24,6 +25,7 @@ namespace PsychOutDestined
                 Instance = this;
             }
 
+            dataService = new JsonDataService();
             SaveDataManager.persistentPath = Application.persistentDataPath;
             LoadSaveFiles();
         }

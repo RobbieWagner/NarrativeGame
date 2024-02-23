@@ -48,7 +48,7 @@ namespace PsychOutDestined
         {
             if (holdingDebugButtonDown)
             {
-                ICombatManager.Instance?.TerminateCombat();
+                CombatManagerBase.Instance?.TerminateCombat();
             }
         }
 #endif

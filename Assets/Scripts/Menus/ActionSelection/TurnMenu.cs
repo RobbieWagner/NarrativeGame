@@ -20,10 +20,10 @@ namespace PsychOutDestined
         {
             base.Awake();
 
-            if (ICombatManager.Instance != null)
+            if (CombatManagerBase.Instance != null)
             {
-                ICombatManager.Instance.OnStartActionSelectionForUnit += SetupMenu;
-                ICombatManager.Instance.OnReturnToUnitsActionSelectionMenu += ReturnToUnitsLastSelection;
+                CombatManagerBase.Instance.OnStartActionSelectionForUnit += SetupMenu;
+                CombatManagerBase.Instance.OnReturnToUnitsActionSelectionMenu += ReturnToUnitsLastSelection;
             }
         }
 

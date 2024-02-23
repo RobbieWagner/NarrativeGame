@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace PsychOutDestined
 {
-    public partial class ICombatManager : MonoBehaviour
+    public partial class CombatManagerBase : MonoBehaviour
     {
         [SerializeField] private TurnMenu turnMenu;
         private MenuControls targetSelectionControls;

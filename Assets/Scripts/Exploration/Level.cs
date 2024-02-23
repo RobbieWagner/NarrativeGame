@@ -10,14 +10,14 @@ namespace PsychOutDestined
     public class Level : MonoBehaviour
     {
         [Header("Combat")]
-        [SerializeField] private ICombatManager combatManagerPrefab;
+        [SerializeField] private CombatManagerBase combatManagerPrefab;
         [SerializeField] private Transform combatZone;
         public string combatSceneName;
         [HideInInspector] public string explorationSceneName;
 
         private Scene currentCombatScene;
-        private ICombat currentCombat;
-        public ICombat CurrentCombat
+        private CombatBase currentCombat;
+        public CombatBase CurrentCombat
         {
             get => currentCombat;
             set

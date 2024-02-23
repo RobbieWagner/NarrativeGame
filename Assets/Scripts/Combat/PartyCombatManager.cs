@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PsychOutDestined
 {
-    public class PartyCombatManager : ICombatManager
+    public class PartyCombatManager : CombatManagerBase
     {
         [SerializeField] private Battlefield battleField;
         [SerializeField] private bool saveDataAfterwards = false;

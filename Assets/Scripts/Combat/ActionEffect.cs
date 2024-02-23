@@ -49,7 +49,7 @@ namespace PsychOutDestined
 
         public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
         {
-            yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
+            yield return CombatManagerBase.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
             Debug.Log($"{user.name} is healing a unit");
             //TODO: Add crit chance
             foreach (Unit target in targets)
@@ -69,7 +69,7 @@ namespace PsychOutDestined
 
         public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
         {
-            yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
+            yield return CombatManagerBase.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
             Debug.Log($"{user.name} is attacking");
             //TODO: Add crit chance
             foreach (Unit target in targets)
@@ -89,7 +89,7 @@ namespace PsychOutDestined
 
         public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
         {
-            yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
+            yield return CombatManagerBase.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
             Debug.Log($"{user.name} is attacking");
             foreach (KeyValuePair<Unit, bool> hitTarget in hitTargets)
             {
@@ -115,7 +115,7 @@ namespace PsychOutDestined
         {
             int statDelta = power;
             if (power > 0) statDelta += user.Heart / 2;
-            yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
+            yield return CombatManagerBase.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
             Debug.Log($"{user.name} is changing stats");
             foreach (Unit target in targets)
             {
@@ -137,7 +137,7 @@ namespace PsychOutDestined
             int statDelta = power;
             if (power >= 0) statDelta += user.Heart / 2;
 
-            yield return ICombatManager.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
+            yield return CombatManagerBase.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
             Debug.Log($"{user.name} is changing stats");
             foreach (KeyValuePair<Unit, bool> hitTarget in hitTargets)
             {

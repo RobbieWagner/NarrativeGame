@@ -20,11 +20,11 @@ namespace PsychOutDestined
     }
 
     // Base class for the combat system manager
-    public partial class ICombatManager : MonoBehaviour
+    public partial class CombatManagerBase : MonoBehaviour
     {
         public bool canStartNewCombat = true;
-        protected ICombat currentCombat;
-        protected ICombatUI currentUI;
+        protected CombatBase currentCombat;
+        protected CombatUIBase currentUI;
         [HideInInspector] public List<Unit> allies;
         [HideInInspector] public List<Unit> enemies;
         public CombatPhase currentPhase = CombatPhase.None;
@@ -35,7 +35,7 @@ namespace PsychOutDestined
 
         public Vector3 UNIT_OFFSET;
 
-        [SerializeField] private ICombat debugCombat;
+        [SerializeField] private CombatBase debugCombat;
 
         public List<Unit> AllUnitsInCombat
         {
@@ -47,7 +47,7 @@ namespace PsychOutDestined
             get { return GetActiveUnits(); }
         }
 
-        public static ICombatManager Instance { get; private set; }
+        public static CombatManagerBase Instance { get; private set; }
 
         protected virtual void Awake()
         {
@@ -66,7 +66,7 @@ namespace PsychOutDestined
             #endif
         }
 
-        public virtual bool StartNewCombat(ICombat newCombat)
+        public virtual bool StartNewCombat(CombatBase newCombat)
         {
             if (canStartNewCombat && currentPhase == CombatPhase.None && newCombat != null)
             {

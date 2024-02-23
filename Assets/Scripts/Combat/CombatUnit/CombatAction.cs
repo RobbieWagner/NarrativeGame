@@ -41,7 +41,7 @@ namespace PsychOutDestined
 
         public IEnumerator ExecuteAction(Unit user, List<Unit> targets)
         {
-            foreach (var effect in effects) yield return ICombatManager.Instance?.StartCoroutine(effect.ExecuteActionEffect(user, targets));
+            foreach (var effect in effects) yield return CombatManagerBase.Instance?.StartCoroutine(effect.ExecuteActionEffect(user, targets));
             yield return null;
         }
 

@@ -24,7 +24,7 @@ namespace PsychOutDestined
         CombatTerminated = 11,
     }
 
-    public partial class ICombatManager : MonoBehaviour
+    public partial class CombatManagerBase : MonoBehaviour
     {
         [Space(10)]
         [Header("Combat Events")]

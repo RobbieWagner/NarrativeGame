@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace PsychOutDestined
 {
-    public class ICombatUI : MonoBehaviour
+    public class CombatUIBase : MonoBehaviour
     {
         [SerializeField] protected UnitUI unitUIPrefab;
         [SerializeField] protected WorldSpaceStatbar worldSpaceStatbarPrefab;
@@ -26,23 +26,23 @@ namespace PsychOutDestined
 
             try
             {
-                if (ICombatManager.Instance != null)
+                if (CombatManagerBase.Instance != null)
                 {
-                    ICombatManager.Instance.OnAddNewAlly += AddAllyUI;
-                    ICombatManager.Instance.OnAddNewEnemy += AddEnemyUI;
+                    CombatManagerBase.Instance.OnAddNewAlly += AddAllyUI;
+                    CombatManagerBase.Instance.OnAddNewEnemy += AddEnemyUI;
 
-                    ICombatManager.Instance.OnStopConsideringTarget += StopConsideringTarget;
-                    ICombatManager.Instance.OnConsiderTarget += DisplayConsideredTarget;
+                    CombatManagerBase.Instance.OnStopConsideringTarget += StopConsideringTarget;
+                    CombatManagerBase.Instance.OnConsiderTarget += DisplayConsideredTarget;
 
-                    //ICombatManager.Instance.OnConsiderAction += UpdateActionUI;
-                    ICombatManager.Instance.OnEndActionSelection += DestroyUnitActionSelectionUI;
+                    //CombatManagerBase.Instance.OnConsiderAction += UpdateActionUI;
+                    CombatManagerBase.Instance.OnEndActionSelection += DestroyUnitActionSelectionUI;
 
-                    ICombatManager.Instance.OnEndActionSelection += DisableActionInfo;
-                    ICombatManager.Instance.OnEndActionSelection += DisableTargetInfo;
-                    ICombatManager.Instance.OnBeginTargetSelection += CheckToEnableTargetInfo;
+                    CombatManagerBase.Instance.OnEndActionSelection += DisableActionInfo;
+                    CombatManagerBase.Instance.OnEndActionSelection += DisableTargetInfo;
+                    CombatManagerBase.Instance.OnBeginTargetSelection += CheckToEnableTargetInfo;
 
-                    ICombatManager.Instance.OnToggleActionSelectionInfo += ToggleActionSelectionInfo;
-                    ICombatManager.Instance.OnToggleTargetSelectionInfo += ToggleTargetSelectionInfo;
+                    CombatManagerBase.Instance.OnToggleActionSelectionInfo += ToggleActionSelectionInfo;
+                    CombatManagerBase.Instance.OnToggleTargetSelectionInfo += ToggleTargetSelectionInfo;
                 }
             }
             catch (NullReferenceException e)
@@ -55,7 +55,7 @@ namespace PsychOutDestined
         {
             OnUpdateActionUI?.Invoke(unit, action, this, actionIndexIncreased);
         }
-        public delegate void OnUpdateActionUIDelegate(Unit unit, CombatAction action, ICombatUI combatUI, bool actionIndexIncreased);
+        public delegate void OnUpdateActionUIDelegate(Unit unit, CombatAction action, CombatUIBase combatUI, bool actionIndexIncreased);
         public event OnUpdateActionUIDelegate OnUpdateActionUI;
 
         private void DestroyUnitActionSelectionUI()
@@ -101,7 +101,7 @@ namespace PsychOutDestined
 
         protected virtual void ToggleActionSelectionInfo()
         {
-            bool enable = (ICombatManager.Instance.isSelectingAction || ICombatManager.Instance.isSelectingTargets) && alliesUI.Count > 0 && !alliesUI.FirstOrDefault().statTextParent.enabled;
+            bool enable = (CombatManagerBase.Instance.isSelectingAction || CombatManagerBase.Instance.isSelectingTargets) && alliesUI.Count > 0 && !alliesUI.FirstOrDefault().statTextParent.enabled;
             SetActionInfoActiveState(enable);
         }
 

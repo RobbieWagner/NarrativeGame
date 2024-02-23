@@ -8,7 +8,7 @@ namespace PsychOutDestined
     public class CombatLoadController : MonoBehaviour
     {
         private string currentCombatSceneName = "";
-        private ICombat currentCombat = null;
+        private CombatBase currentCombat = null;
 
         public static CombatLoadController Instance { get; private set; }
 
@@ -24,16 +24,16 @@ namespace PsychOutDestined
             }
         }
 
-        public void StartLoadingCombatScene(ICombat combat, string combatSceneName) => StartCoroutine(StartLoadingCombatSceneCo(combat, combatSceneName));
+        public void StartLoadingCombatScene(CombatBase combat, string combatSceneName) => StartCoroutine(StartLoadingCombatSceneCo(combat, combatSceneName));
 
-        public IEnumerator StartLoadingCombatSceneCo(ICombat combat, string combatSceneNameIn)
+        public IEnumerator StartLoadingCombatSceneCo(CombatBase combat, string combatSceneNameIn)
         {
             if (string.IsNullOrWhiteSpace(currentCombatSceneName))
             {
                 string combatSceneName = string.IsNullOrWhiteSpace(combatSceneNameIn) ? Level.Instance.combatSceneName : combatSceneNameIn;
                 currentCombat = combat;
                 currentCombatSceneName = combatSceneName;
-                if (GameManager.Instance.CurrentGameMode != GameMode.Combat && ICombatManager.Instance == null)
+                if (GameManager.Instance.CurrentGameMode != GameMode.Combat && CombatManagerBase.Instance == null)
                 {
                     GameManager.Instance.CurrentGameMode = GameMode.Combat;
                     yield return StartCoroutine(SceneTransitionController.Instance?.FadeScreenIn());
@@ -67,12 +67,12 @@ namespace PsychOutDestined
 
         private IEnumerator FinishLoadingCombatSceneCo()
         {
-            ICombatManager.Instance.OnCombatTerminated += EndCurrentCombat;
-            //ICombatManager.Instance.transform.localPosition = Vector3.zero;
+            CombatManagerBase.Instance.OnCombatTerminated += EndCurrentCombat;
+            //CombatManagerBase.Instance.transform.localPosition = Vector3.zero;
             CameraManager.Instance.TrySwitchGameCamera(CombatCamera.Instance);
 
             yield return StartCoroutine(SceneTransitionController.Instance?.FadeScreenOut());
-            ICombatManager.Instance.StartNewCombat(currentCombat);
+            CombatManagerBase.Instance.StartNewCombat(currentCombat);
         }
 
         private void EndCurrentCombat()

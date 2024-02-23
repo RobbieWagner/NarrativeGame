@@ -7,7 +7,7 @@ namespace PsychOutDestined
 {
     public class CombatSequenceEvent : SequenceEvent
     {
-        [SerializeField] private ICombat combat;
+        [SerializeField] private CombatBase combat;
         [SerializeField] private string combatSceneName;
         private bool combatIsPlaying = false;
         private GameMode? previousGameMode = null;

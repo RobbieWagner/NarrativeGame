@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace PsychOutDestined
 {
-    public class ICombat : MonoBehaviour
+    public class CombatBase : MonoBehaviour
     {
         public List<Unit> allyPrefabs;
         public List<Unit> enemyPrefabs;
-        public ICombatUI combatUIPrefab;
+        public CombatUIBase combatUIPrefab;
     }
 }
