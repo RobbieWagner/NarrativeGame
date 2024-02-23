@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -56,10 +57,10 @@ namespace PsychOutDestined
             canvas.enabled = false;
             menuControls.Disable();
             if (returnToPreviousMenu)
-                OnEnablePreviousMenu?.Invoke();
+                ReturnToPreviousMenu?.Invoke();
         }
         public delegate void OnEnablePreviousMenuDelegate();
-        public event OnEnablePreviousMenuDelegate OnEnablePreviousMenu;
+        public event OnEnablePreviousMenuDelegate ReturnToPreviousMenu;
 
         protected void ConsiderMenuButton(int activeButtonIndex)
         {
@@ -84,6 +85,12 @@ namespace PsychOutDestined
         {
             DisableMenu();
             StartCoroutine(menuButtons[CurButton].SelectButton(this));
+        }
+
+        protected virtual void GoToPreviousMenu(InputAction.CallbackContext context)
+        {
+            if(ReturnToPreviousMenu.GetInvocationList().Count() > 0) 
+                DisableMenu(true);
         }
     }
 }

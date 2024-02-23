@@ -15,11 +15,13 @@ namespace PsychOutDestined
         protected override void Awake()
         {
             base.Awake();
-            OnEnablePreviousMenu += ReturnToTurnMenu;
+            ReturnToPreviousMenu += ReturnToTurnMenu;
+            menuControls.UIInput.Cancel.performed += GoToPreviousMenu;
         }
 
         public override void SetupMenu()
         {
+            Debug.Log("opening action menu");
             if(menuButtons != null)
             {
                 foreach(MenuButton button in menuButtons)
@@ -27,25 +29,44 @@ namespace PsychOutDestined
                 menuButtons.Clear();
             }
 
+            transform.position = turnMenu.unit.transform.position + turnMenu.WORLDSPACE_UNIT_OFFSET;
+            menuButtons = new List<MenuButton>();
+
             foreach(CombatAction action in turnMenu.unit.availableActions)
             {
                 UseActionButton newActionButton = Instantiate(actionButtonPrefab, buttonParent);
                 newActionButton.SetNameText(action.actionName);
+                newActionButton.buttonAction = action;
+                menuButtons.Add(newActionButton);
             }
-            curButton = turnMenu.unit.lastSelectedActionMenuOptionIndex;
-            base.SetupMenu();
+
+            if(menuButtons.Count == 0)
+            {
+                Debug.LogWarning("No Actions found, passing units turn");
+                ICombatManager.Instance.SelectActionForCurrentUnit(ICombatManager.Instance.passTurn);
+                DisableMenu(false);
+            } 
+            else
+            {
+                curButton = turnMenu.unit.lastSelectedActionMenuOptionIndex;
+                if(curButton < 0 || curButton >= menuButtons.Count)
+                    curButton = 0;
+                base.SetupMenu();
+            }            
         }
 
         private void ReturnToTurnMenu()
         {
-            OnEnablePreviousMenu -= ReturnToTurnMenu;
+            ReturnToPreviousMenu -= ReturnToTurnMenu;
             turnMenu.SetupMenu();
         }
 
         protected override void SelectMenuItem(InputAction.CallbackContext context)
         {
+            Debug.Log($"{gameObject.name} selected action {curButton + 1}");
             turnMenu.unit.lastSelectedActionMenuOptionIndex = CurButton;
-            base.SelectMenuItem(context);
+            StartCoroutine(menuButtons[CurButton].SelectButton(this));
+            DisableMenu(false);
         }
     }
 }

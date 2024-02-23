@@ -9,12 +9,13 @@ namespace PsychOutDestined
         protected override void Awake()
         {
             base.Awake();
-            OnEnablePreviousMenu += ReturnToTurnMenu;
+            ReturnToPreviousMenu += ReturnToTurnMenu;
+            menuControls.UIInput.Cancel.performed += GoToPreviousMenu;
         }
 
         private void ReturnToTurnMenu()
         {
-            OnEnablePreviousMenu -= ReturnToTurnMenu;
+            ReturnToPreviousMenu -= ReturnToTurnMenu;
             turnMenu.SetupMenu();
         } 
     }

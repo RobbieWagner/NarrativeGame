@@ -11,11 +11,12 @@ namespace PsychOutDestined
         protected override void Awake()
         {
             base.Awake();
-            thisMenu.OnEnablePreviousMenu += ReturnToPreviousMenu;
+            thisMenu.ReturnToPreviousMenu += ReturnToPreviousMenu;
         }
 
         public override IEnumerator SelectButton(Menu menu)
         {
+            Debug.Log("selected a menu button");
             previousMenu = menu;
             yield return StartCoroutine(base.SelectButton(menu));
             thisMenu.SetupMenu();

@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198440822420916876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -330,9 +330,10 @@ MonoBehaviour:
   canFlee: 1
   canUseItems: 1
   unit: {fileID: 0}
-  actionButton: {fileID: 0}
-  itemsButton: {fileID: 0}
-  fleeButton: {fileID: 0}
+  actionButton: {fileID: 4569825781782189174}
+  itemsButton: {fileID: 8807807499057971681}
+  fleeButton: {fileID: 383596888044303806}
+  WORLDSPACE_UNIT_OFFSET: {x: 1.5, y: 1, z: 0}
 --- !u!1 &3415678817034323240
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +405,6 @@ GameObject:
   - component: {fileID: 6911567191933757565}
   - component: {fileID: 4457993123635599231}
   - component: {fileID: 7530376840484433915}
-  - component: {fileID: 7719685563043603434}
   m_Layer: 0
   m_Name: ActionMenuCanvas
   m_TagString: Untagged
@@ -495,24 +495,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7719685563043603434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3807763765907851242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13bcac53bb46034b9a65e7bc06f38af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 6911567191933757565}
-  OnByDefault: 0
-  menuButtons: []
-  turnMenu: {fileID: 912380828202612440}
-  actionButtonPrefab: {fileID: 0}
-  buttonParent: {fileID: 0}
 --- !u!1 &4179739693774542719
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentMenu: {fileID: 0}
   nameText: {fileID: 2946350569986363112}
-  thisMenu: {fileID: 7719685563043603434}
+  thisMenu: {fileID: 9021603708055614534}
 --- !u!1 &4485075108308857149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1107,6 @@ GameObject:
   - component: {fileID: 2348410272456224642}
   - component: {fileID: 1264906655631828939}
   - component: {fileID: 5993620969186522844}
-  - component: {fileID: 3889171001466341676}
   m_Layer: 0
   m_Name: ItemMenuCanvas
   m_TagString: Untagged
@@ -1216,22 +1197,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3889171001466341676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6955635876940844008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0155aa959dd7744b80594c205ca9f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  OnByDefault: 0
-  menuButtons: []
-  turnMenu: {fileID: 0}
 --- !u!1 &7219804077475296666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1208,7 @@ GameObject:
   - component: {fileID: 3837800887513883600}
   - component: {fileID: 3568874648356616986}
   - component: {fileID: 6777602315457541719}
-  - component: {fileID: 89434743772348154}
+  - component: {fileID: 383596888044303806}
   m_Layer: 0
   m_Name: FleeButton
   m_TagString: Untagged
@@ -1309,7 +1274,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &89434743772348154
+--- !u!114 &383596888044303806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1318,12 +1283,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7219804077475296666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c11af3d55194af4e9c3b6f8d782b663, type: 3}
+  m_Script: {fileID: 11500000, guid: 92ad0fd9544b93746a7283314da605f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentMenu: {fileID: 0}
   nameText: {fileID: 4273478979697181639}
-  thisMenu: {fileID: 0}
 --- !u!1 &7549411811388748719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,7 +1379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentMenu: {fileID: 0}
   nameText: {fileID: 5459190796832748056}
-  thisMenu: {fileID: 0}
+  thisMenu: {fileID: 4160840031836337188}
 --- !u!1 &7857760477185422800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1405,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7857760477185422800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

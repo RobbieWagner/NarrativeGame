@@ -10,8 +10,9 @@ namespace PsychOutDestined
         
         public override IEnumerator SelectButton(Menu menu)
         {
+            Debug.Log($"action selected {buttonAction.actionName}");
             ICombatManager.Instance?.SelectActionForCurrentUnit(buttonAction);
-            yield return null;
+            yield return StartCoroutine(base.SelectButton(menu));
         }
 
         public void SetNameText(string text) => nameText.text = text;

@@ -14,7 +14,7 @@ namespace PsychOutDestined
         private MenuControls targetSelectionControls;
         [HideInInspector] public bool isSelectingAction = false;
         [HideInInspector] public bool isSelectingTargets = false;
-        [SerializeField] private CombatAction passTurn;
+        public CombatAction passTurn;
 
         private Unit currentUnit;
         private int currentUnitIndex;
@@ -31,15 +31,9 @@ namespace PsychOutDestined
             OnBeginActionSelection += BeginActionSelection;
         }
 
-        public virtual void EnableControls()
-        {
-            targetSelectionControls.Enable();
-        }
+        public virtual void EnableControls() => targetSelectionControls.Enable();
 
-        public virtual void DisableControls()
-        {
-            targetSelectionControls.Disable();
-        }
+        public virtual void DisableControls() => targetSelectionControls.Disable();
 
         private void BeginActionSelection()
         {
@@ -76,23 +70,24 @@ namespace PsychOutDestined
                                                                                      1f)));
 
                 targetSelectionControls.Disable();
-                
-                currentUnit = unit;
-                OnStartActionSelectionForUnit?.Invoke(currentUnit);
+
+                if (currentUnit != unit && unit != null)
+                {
+                    currentUnit = unit;
+                    OnStartActionSelectionForUnit?.Invoke(currentUnit);
+                }
+                else if (unit != null)
+                    OnReturnToUnitsActionSelectionMenu(currentUnit);
             }
         }
         public delegate void OnStartActionSelectionForUnitDelegate(Unit unit);
         public event OnStartActionSelectionForUnitDelegate OnStartActionSelectionForUnit;
+        public delegate void OnReturnToUnitsActionSelectionMenuDelegate(Unit unit);
+        public event OnReturnToUnitsActionSelectionMenuDelegate OnReturnToUnitsActionSelectionMenu;
 
         private void CancelPreviousSelection(InputAction.CallbackContext context)
         {
-            if (isSelectingAction && currentUnitIndex > 0) //TODO: find out how to incorporate new menu into this functionality
-            {
-                currentUnit.StopBlinking();
-                currentUnitIndex--;
-                StartActionSelectionForUnit(allies[currentUnitIndex]);
-            }
-            else if (isSelectingTargets)
+            if (isSelectingTargets)
             {
                 currentTarget.StopBlinking();
                 StartActionSelectionForUnit(currentUnit);
