@@ -16,7 +16,7 @@ namespace PsychOutDestined
         [HideInInspector] public bool isSelectingTargets = false;
         public CombatAction passTurn;
 
-        private Unit currentUnit;
+        private Unit currentSelectingUnit;
         private int currentUnitIndex;
 
         private Unit currentTarget;
@@ -58,7 +58,7 @@ namespace PsychOutDestined
             isSelectingAction = true;
             isSelectingTargets = false;
 
-            if (unit.availableActions.Count < 1)
+            if (unit.availableActions.Count == 0)
             {
                 unit.currentSelectedAction = passTurn;
                 StartActionSelectionForNextUnit();
@@ -71,13 +71,14 @@ namespace PsychOutDestined
 
                 targetSelectionControls.Disable();
 
-                if (currentUnit != unit && unit != null)
+                if (currentSelectingUnit != unit && unit != null)
                 {
-                    currentUnit = unit;
-                    OnStartActionSelectionForUnit?.Invoke(currentUnit);
+                    currentSelectingUnit = unit;
+                    OnStartActionSelectionForUnit?.Invoke(currentSelectingUnit);
                 }
                 else if (unit != null)
-                    OnReturnToUnitsActionSelectionMenu(currentUnit);
+                    OnReturnToUnitsActionSelectionMenu(currentSelectingUnit);
+                else currentSelectingUnit = null;
             }
         }
         public delegate void OnStartActionSelectionForUnitDelegate(Unit unit);
@@ -90,39 +91,14 @@ namespace PsychOutDestined
             if (isSelectingTargets)
             {
                 currentTarget.StopBlinking();
-                StartActionSelectionForUnit(currentUnit);
+                StartActionSelectionForUnit(currentSelectingUnit);
             }
         }
 
-        // private void NavigateActions(InputAction.CallbackContext context)
-        // {
-        //     float direction = context.ReadValue<float>();
-        //     if (direction > 0) ConsiderAction(consideredActionIndex + 1);
-        //     else ConsiderAction(consideredActionIndex - 1);
-        // }
-
-        // private void ConsiderAction(int index)
-        // {
-        //     bool actionIndexIncreased = index > consideredActionIndex;
-        //     int actionIndex = index % currentUnit.availableActions.Count;
-        //     if (actionIndex < 0) actionIndex = currentUnit.availableActions.Count - 1;
-        //     consideredActionIndex = actionIndex;
-        //     currentConsideredAction = currentUnit.availableActions[consideredActionIndex];
-        //     OnConsiderAction?.Invoke(currentUnit, currentConsideredAction, actionIndexIncreased);
-        // }
-        // public delegate void OnConsiderActionDelegate(Unit unit, CombatAction action, bool actionIndexIncreased);
-        // public event OnConsiderActionDelegate OnConsiderAction;
-
-        // private void SelectAction(InputAction.CallbackContext context)
-        // {
-        //     currentUnit.currentSelectedAction = currentConsideredAction;
-        //     StartTargetSelection(currentUnit.currentSelectedAction);
-        // }
-
         public void SelectActionForCurrentUnit(CombatAction action)
         {
-            currentUnit.currentSelectedAction = action;
-            StartTargetSelection(currentUnit.currentSelectedAction);
+            currentSelectingUnit.currentSelectedAction = action;
+            StartTargetSelection(currentSelectingUnit.currentSelectedAction);
         }
 
         private void StartActionSelectionForNextUnit()
@@ -138,16 +114,16 @@ namespace PsychOutDestined
         {
             Debug.Log($"start target selection for {currentSelectedAction.name}");
             actionTargets = new List<Unit>();
-            currentUnit.selectedTargets = new List<Unit>();
+            currentSelectingUnit.selectedTargets = new List<Unit>();
             isSelectingAction = false;
             isSelectingTargets = true;
 
-            //currentUnit.StopBlinking();
+            //currentSelectingUnit.StopBlinking();
             StartCoroutine(CombatCamera.Instance?.ResetCameraPosition());
 
-            if (currentSelectedAction.canTargetSelf) actionTargets.Add(currentUnit);
-            if (currentSelectedAction.canTargetAllies) actionTargets.AddRange(GetActiveAlliesOfUnit(currentUnit));
-            if (currentSelectedAction.canTargetEnemies) actionTargets.AddRange(GetActiveEnemiesOfUnit(currentUnit));
+            if (currentSelectedAction.canTargetSelf) actionTargets.Add(currentSelectingUnit);
+            if (currentSelectedAction.canTargetAllies) actionTargets.AddRange(GetActiveAlliesOfUnit(currentSelectingUnit));
+            if (currentSelectedAction.canTargetEnemies) actionTargets.AddRange(GetActiveEnemiesOfUnit(currentSelectingUnit));
 
             if (actionTargets.Count == 0) StartActionSelectionForNextUnit();
 
@@ -171,7 +147,7 @@ namespace PsychOutDestined
             currentTarget?.StopBlinking();
             currentTarget = unit;
             currentTarget.StartBlinking();
-            OnConsiderTarget?.Invoke(currentUnit, currentTarget, currentUnit.currentSelectedAction);
+            OnConsiderTarget?.Invoke(currentSelectingUnit, currentTarget, currentSelectingUnit.currentSelectedAction);
         }
         public delegate void OnStopConsideringTargetDelegate(Unit target);
         public event OnStopConsideringTargetDelegate OnStopConsideringTarget;
@@ -191,7 +167,7 @@ namespace PsychOutDestined
 
         private void SelectTarget(InputAction.CallbackContext context)
         {
-            currentUnit.selectedTargets.Add(currentTarget);
+            currentSelectingUnit.selectedTargets.Add(currentTarget);
             currentTarget.StopBlinking();
             StartActionSelectionForNextUnit();
         }
@@ -202,6 +178,7 @@ namespace PsychOutDestined
             targetSelectionControls.Disable();
 
             finishedSelectingActions = true;
+            currentSelectingUnit = null;
         }
 
         private void ToggleActionSelectionInfo(InputAction.CallbackContext context)

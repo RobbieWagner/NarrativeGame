@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -5,29 +6,50 @@ namespace PsychOutDestined
 {
     public class PartyUnit : Unit
     {
-        public SerializableUnit serializableUnit;
+        [HideInInspector] protected SerializableUnit unitSaveData;
 
         protected override void Awake()
         {
             base.Awake();
+        } 
+
+        public SerializableUnit GetUnitSaveData()
+        {
+            unitSaveData = new SerializableUnit(this);
+            return unitSaveData;
+        }
+
+        public void InitializeUnit(SerializableUnit unitData)
+        {
+            unitSaveData = unitData;
+            InitializeUnit();
         }
 
         protected override void InitializeUnit()
         {
-            if (serializableUnit != null)
+            if (unitSaveData != null)
             {
-                UnitName = serializableUnit.UnitName;
-                maxStatValues[UnitStat.Brawn] = serializableUnit.Brawn;
-                maxStatValues[UnitStat.Agility] = serializableUnit.Agility;
-                maxStatValues[UnitStat.Defense] = serializableUnit.Defense;
-                maxStatValues[UnitStat.Psych] = serializableUnit.Psych;
-                maxStatValues[UnitStat.Focus] = serializableUnit.Focus;
-                maxStatValues[UnitStat.Heart] = serializableUnit.Heart;
+                UnitName = unitSaveData.UnitName;
+                maxStatValues[UnitStat.Brawn] = unitSaveData.Brawn;
+                maxStatValues[UnitStat.Agility] = unitSaveData.Agility;
+                maxStatValues[UnitStat.Defense] = unitSaveData.Defense;
+                maxStatValues[UnitStat.Psych] = unitSaveData.Psych;
+                maxStatValues[UnitStat.Focus] = unitSaveData.Focus;
+                maxStatValues[UnitStat.Heart] = unitSaveData.Heart;
+
+                availableActions = new List<CombatAction>();
+
+                foreach(string combatActionPath in unitSaveData.actionFilePaths)
+                {
+                    CombatAction action = Resources.Load<CombatAction>(combatActionPath);
+                    if(action != null) 
+                        availableActions.Add(action);
+                }
 
                 InitializeStats();
 
-                HP = serializableUnit.HP;
-                Mana = serializableUnit.Mana;
+                HP = unitSaveData.HP;
+                Mana = unitSaveData.Mana;
 
                 //Load animator/base sprite
                 SetUnitAnimatorState(UnitAnimationState.CombatIdleRight);
@@ -37,6 +59,8 @@ namespace PsychOutDestined
                 Debug.LogWarning($"Could not find save data for unit {UnitName}");
                 base.InitializeUnit();
             }
+
+            HandleOnUnitInitialized();
         }
     }
 }

@@ -153,17 +153,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit:
-    UnitName: TEST UNIT
-    HP: 20000
-    Mana: 2
-    MaxHP: 3
-    MaxMana: 4
-    Brawn: 5
-    Agility: 6
-    Defense: 7
-    Psych: 8
-    Focus: 9
-    Heart: 10
+    UnitName: 
+    HP: 0
+    Mana: 0
+    MaxHP: 0
+    MaxMana: 0
+    Brawn: 0
+    Agility: 0
+    Defense: 0
+    Psych: 0
+    Focus: 0
+    Heart: 0
     actionFilePaths: []
   testUnit: {fileID: 0}
 --- !u!4 &217187760
@@ -442,7 +442,6 @@ MonoBehaviour:
   partyUnitPrefab: {fileID: 2786838274304173138, guid: 86e6e6cef3323194f938993911fe7be9,
     type: 3}
   playerParty: []
-  units: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -23,6 +23,8 @@ namespace PsychOutDestined
     public partial class CombatManagerBase : MonoBehaviour
     {
         public bool canStartNewCombat = true;
+        public bool usePartyUnits = true;
+        public int unitLimit = 3;
         protected CombatBase currentCombat;
         protected CombatUIBase currentUI;
         [HideInInspector] public List<Unit> allies;

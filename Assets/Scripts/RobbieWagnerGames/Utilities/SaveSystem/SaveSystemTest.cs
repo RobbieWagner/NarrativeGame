@@ -8,7 +8,7 @@ namespace PsychOutDestined
     public class SaveSystemTest : MonoBehaviour
     {
         [SerializeField] private SerializableUnit unit;
-        [SerializeField] private Unit testUnit;
+        [SerializeField] private PartyUnit testUnit;
 
         private void Awake()
         {
@@ -20,7 +20,6 @@ namespace PsychOutDestined
         private void SaveUnit()
         {
             GameSession.Instance?.playerParty.Add(unit);
-            GameSession.Instance?.units.Add(testUnit);
             GameSession.Instance?.SaveGameSessionData();
         }
 
@@ -31,6 +30,7 @@ namespace PsychOutDestined
             Debug.Log("Testing save system");
             SaveUnit();
             Debug.Log("Saving unit...");
+            yield return new WaitForSeconds(.5f);
             GameSession.Instance?.LoadSaveFiles();
             Debug.Log("Loading...");
             yield return new WaitForSeconds(1);

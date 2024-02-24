@@ -42,6 +42,7 @@ namespace PsychOutDestined
                     File.Delete(FullPath);
                 }
                 Debug.Log($"Creating new file at path {FullPath}");
+                Directory.CreateDirectory(Path.GetDirectoryName(FullPath));
                 FileStream stream = File.Create(FullPath);
                 stream.Close();
                 File.WriteAllText(FullPath, JsonConvert.SerializeObject(Data));

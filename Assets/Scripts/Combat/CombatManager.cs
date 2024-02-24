@@ -20,8 +20,24 @@ namespace PsychOutDestined
             allies = new List<Unit>();
             enemies = new List<Unit>();
 
-            foreach (Unit ally in currentCombat.allyPrefabs)
-                TryAddAllyToCombat(ally);
+            List<SerializableUnit> playerParty = GameSession.Instance != null ? GameSession.Instance.playerParty : null;
+            if(playerParty != null && usePartyUnits)
+            {
+                for(int i = 0; i < unitLimit; i++)
+                {
+                    if(playerParty.Count == i) break;
+                    if(TryAddAllyToCombat(GameSession.Instance.partyUnitPrefab));
+                    {
+                        PartyUnit ally = allies[i] as PartyUnit;
+                        ally.InitializeUnit(GameSession.Instance.GetPartyMember(i));
+                    }
+                }
+            }
+            else
+            {
+                foreach (Unit ally in currentCombat.allyPrefabs)
+                    TryAddAllyToCombat(ally);
+            }
             foreach (Unit enemy in currentCombat.enemyPrefabs)
                 TryAddEnemyToCombat(enemy);
 

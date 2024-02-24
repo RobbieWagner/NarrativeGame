@@ -11,23 +11,24 @@ namespace PsychOutDestined
     {
         [Header("Player Party")]
         public PartyUnit partyUnitPrefab;
+        //[SerializeField] public List<SerializableUnit> playerParty;
         [SerializeField] public List<SerializableUnit> playerParty;
-        [SerializeField] public List<Unit> units;
         public const int MAX_PARTY_SIZE = 20;
         public const string PARTY_SAVE_DATA_FILE_PATH = "/Combat/party";
 
         private void LoadPlayersParty()
         {
-            units = JsonDataService.Instance.LoadData(PARTY_SAVE_DATA_FILE_PATH + "_units", new List<Unit>(), false);
-            foreach (Unit unit in units) 
+            playerParty = JsonDataService.Instance.LoadData(PARTY_SAVE_DATA_FILE_PATH + "_units", new List<SerializableUnit>(), false);
+            foreach (SerializableUnit unit in playerParty) 
                 Debug.Log(unit?.ToString());
             if (playerParty.Count == 0) Debug.LogWarning("Player does not have any save data for current party!");
         }
 
         private void SavePlayersParty()
         {
-            JsonDataService.Instance.SaveData(PARTY_SAVE_DATA_FILE_PATH, playerParty);
-            JsonDataService.Instance.SaveData(PARTY_SAVE_DATA_FILE_PATH + "_units", units);
+            Debug.Log("saving party");
+            foreach(SerializableUnit unit in playerParty) Debug.Log(unit.ToString());
+            JsonDataService.Instance.SaveData(PARTY_SAVE_DATA_FILE_PATH + "_units", playerParty);
         }
 
         public SerializableUnit GetPartyMember(int unitIndex)
@@ -38,14 +39,14 @@ namespace PsychOutDestined
             return null;
         }
 
-        public void UpdatePartyData(Dictionary<int, SerializableUnit> units)
+        public void UpdatePartyData(Dictionary<int, PartyUnit> playerParty)
         {
-            foreach (KeyValuePair<int, SerializableUnit> unit in units)
+            foreach (KeyValuePair<int, PartyUnit> unit in playerParty)
             {
                 if (unit.Key >= 0 && unit.Key < playerParty.Count)
                     playerParty[unit.Key] = unit.Value;
                 else if (unit.Key >= playerParty.Count && playerParty.Count < MAX_PARTY_SIZE)
-                    playerParty.Add(unit.Value);
+                    playerParty.Add(unit.Key, unit.Value);
                 else
                     Debug.LogWarning($"Could not add unit {unit.Value.UnitName} to party: Either party is too full, or the index provided {unit.Key} was negative");
             }

@@ -47,17 +47,11 @@ namespace PsychOutDestined
                 if (GameSession.Instance != null)
                 {
                     instantiatedUnit = Instantiate(GameSession.Instance.partyUnitPrefab);
-                    instantiatedUnit.serializableUnit = GameSession.Instance.GetPartyMember(allies.Count);
+                    instantiatedUnit.InitializeUnit(GameSession.Instance.GetPartyMember(allies.Count));
                 }
                 if (instantiatedUnit == null)
                 {
                     Debug.LogWarning("Could not instantiate party unit: GameSession instance is not active in heirrarchy");
-                    return false;
-                }
-                if (instantiatedUnit.serializableUnit == null)
-                {
-                    Debug.LogWarning("Could not instantiate party unit: Unit Serializable found null");
-                    Destroy(instantiatedUnit.gameObject);
                     return false;
                 }
 
@@ -71,11 +65,11 @@ namespace PsychOutDestined
 
         private void UpdateGameSessionDataPostFight()
         {
-            Dictionary<int, SerializableUnit> activeParty = new Dictionary<int, SerializableUnit>();
+            Dictionary<int, PartyUnit> activeParty = new Dictionary<int, PartyUnit>();
 
             for (int i = 0; i < allies.Count; i++)
             {
-                activeParty.Add(0, new SerializableUnit(allies[i]));
+                activeParty.Add(0, allies[i] as PartyUnit);
             }
 
             UpdateGameSessionData(activeParty);
@@ -87,7 +81,7 @@ namespace PsychOutDestined
             throw new NotImplementedException();
         }
 
-        private void UpdateGameSessionData(Dictionary<int, SerializableUnit> units)
+        private void UpdateGameSessionData(Dictionary<int, PartyUnit> units)
         {
             if (GameSession.Instance != null)
                 GameSession.Instance.UpdatePartyData(units);

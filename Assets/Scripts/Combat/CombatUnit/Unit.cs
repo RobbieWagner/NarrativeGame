@@ -110,5 +110,10 @@ namespace PsychOutDestined
         }
         public delegate void OnUnitMovedDelegate();
         public event OnUnitMovedDelegate OnUnitMoved;
+
+        protected void HandleOnUnitInitialized()
+        {
+            OnUnitInitialized?.Invoke();
+        }
     }
 }

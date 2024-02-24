@@ -26,7 +26,6 @@ namespace PsychOutDestined
             }
 
             new JsonDataService(); //Initialize for singleton
-            SaveDataManager.persistentPath = Application.persistentDataPath;
             StaticGameStats.persistentDataPath = Application.persistentDataPath;
             LoadSaveFiles();
         }
