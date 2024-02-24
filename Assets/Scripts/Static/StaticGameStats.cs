@@ -16,11 +16,12 @@ namespace PsychOutDestined
         public static string soundFilePath = "Sounds/";
         public static string dialogueMusicFilePath = "Sounds/Dialogue/Music/";
         public static string dialogueSoundEffectsFilePath = "Sounds/Dialogue/SoundEffects/";
-        public static string dialogueSavePath = "Dialogue/SaveData/";
+        public static string dialogueSavePath = "Exploration/DialogueInteractions/";
         public static string combatMusicFilePath = "Sounds/Combat/Music/";
         public static string combatSoundEffectsFilePath = "Sounds/Combat/SoundEffects/";
         //TODO: find way to load scene in build!!
         public static string sceneFilePath = "Assets/Scenes/Combat/";
+        public static string persistentDataPath;
 
         public static string GetCombatActionResourcePath(CombatAction action)
         {

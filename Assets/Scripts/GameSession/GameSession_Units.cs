@@ -12,37 +12,22 @@ namespace PsychOutDestined
         [Header("Player Party")]
         public PartyUnit partyUnitPrefab;
         [SerializeField] public List<SerializableUnit> playerParty;
+        [SerializeField] public List<Unit> units;
         public const int MAX_PARTY_SIZE = 20;
-        public const string UNIT_PARTY_SAVE_KEY = "CurrentParty";
-        public const string UNIT_SAVE_DATA_FILE_NAME = "party_data";
+        public const string PARTY_SAVE_DATA_FILE_PATH = "/Combat/party";
 
         private void LoadPlayersParty()
         {
-            playerParty = new List<SerializableUnit>();
-            int i = 0;
-            while (i < MAX_PARTY_SIZE)
-            {
-                SerializableUnit unit = SaveDataManager.LoadObject<SerializableUnit>($"{UNIT_PARTY_SAVE_KEY}_{i + 1}", UNIT_SAVE_DATA_FILE_NAME, null, null);
-                if (unit == null) break;
-                playerParty.Add(unit);
-                i++;
-            }
-
-            foreach (SerializableUnit unit in playerParty) Debug.Log(unit.ToString());
-
+            units = JsonDataService.Instance.LoadData(PARTY_SAVE_DATA_FILE_PATH + "_units", new List<Unit>(), false);
+            foreach (Unit unit in units) 
+                Debug.Log(unit?.ToString());
             if (playerParty.Count == 0) Debug.LogWarning("Player does not have any save data for current party!");
         }
 
         private void SavePlayersParty()
         {
-            for (int i = 0; i < playerParty.Count; i++)
-            {
-                SaveDataManager.SaveObject($"{UNIT_PARTY_SAVE_KEY}_{i + 1}", playerParty[i], UNIT_SAVE_DATA_FILE_NAME);
-                Debug.Log($"{UNIT_PARTY_SAVE_KEY}_{i + 1}");
-            }
-
-            dataService.SaveData("/party", playerParty);
-            //SaveDataManager.SaveObject(UNIT_PARTY_SAVE_KEY, playerParty, UNIT_SAVE_DATA_FILE_NAME);
+            JsonDataService.Instance.SaveData(PARTY_SAVE_DATA_FILE_PATH, playerParty);
+            JsonDataService.Instance.SaveData(PARTY_SAVE_DATA_FILE_PATH + "_units", units);
         }
 
         public SerializableUnit GetPartyMember(int unitIndex)

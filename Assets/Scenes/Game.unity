@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &217187759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +165,7 @@ MonoBehaviour:
     Focus: 9
     Heart: 10
     actionFilePaths: []
+  testUnit: {fileID: 0}
 --- !u!4 &217187760
 Transform:
   m_ObjectHideFlags: 0
@@ -441,6 +442,7 @@ MonoBehaviour:
   partyUnitPrefab: {fileID: 2786838274304173138, guid: 86e6e6cef3323194f938993911fe7be9,
     type: 3}
   playerParty: []
+  units: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

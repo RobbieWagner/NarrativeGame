@@ -38,7 +38,7 @@ namespace PsychOutDestined
             string configuredText = input;
 
             List<char> allowList = new List<char>() {' ', '-', '\'', ',', '.'};
-            string name = SaveDataManager.LoadObject("name", "UserData", "Morgan", new string[]{StaticGameStats.dialogueSavePath});
+            string name = JsonDataService.Instance.LoadData(PLAYER_NAME_PATH, "Morgan", false);
 
             bool nameAllowed = true;
             foreach(char c in name)
@@ -52,8 +52,7 @@ namespace PsychOutDestined
 
             if(!nameAllowed)
             {
-                name = "Lux";
-                //SaveDataManager.SaveString("name", "Lux");
+                name = "Morgan";
             } 
 
             configuredText = configuredText.Replace("^NAME^", name);

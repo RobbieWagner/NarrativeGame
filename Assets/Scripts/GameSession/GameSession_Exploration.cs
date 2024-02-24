@@ -23,16 +23,16 @@ namespace PsychOutDestined
 
     public partial class GameSession : MonoBehaviour
     {
-        private const string EXPLORATION_SAVE_DATA_FILE_NAME = "exploration_data";
-        private const string EXPLORATION_SAVE_KEY = "ExplorationData";
+        private const string EXPLORATION_SAVED_SCENE_PATH = "/Exploration/currentScene";
+        private const string PLAYER_SAVED_POSITION_PATH = "/Exploration/playerPosition";
         private const string DEFAULT_EXPLORATION_SCENE = "ExplorationSceneTemplate";
         [HideInInspector] public string currentSceneName = "";
         [HideInInspector] public Vector3 currentPlayerPosition = Vector3.zero;
 
         private void LoadExplorationData()
         {
-            currentPlayerPosition = SaveDataManager.LoadObject(EXPLORATION_SAVE_KEY, EXPLORATION_SAVE_DATA_FILE_NAME, Vector3.zero);
-            currentSceneName = SaveDataManager.LoadObject(EXPLORATION_SAVE_KEY, EXPLORATION_SAVE_DATA_FILE_NAME, DEFAULT_EXPLORATION_SCENE);
+            currentPlayerPosition =  JsonDataService.Instance.LoadData(PLAYER_SAVED_POSITION_PATH, Vector3.zero, false);
+            currentSceneName = JsonDataService.Instance.LoadData(EXPLORATION_SAVED_SCENE_PATH, DEFAULT_EXPLORATION_SCENE, false);
             if(string.IsNullOrWhiteSpace(currentSceneName))
                 currentSceneName = DEFAULT_EXPLORATION_SCENE;
             Debug.Log(currentPlayerPosition);
@@ -50,7 +50,8 @@ namespace PsychOutDestined
             if (string.IsNullOrWhiteSpace(currentSceneName))
                 Debug.LogWarning("Scene name found empty, will not be saved.");
 
-            SaveDataManager.SaveObject(EXPLORATION_SAVE_KEY, new ExplorationData(), EXPLORATION_SAVE_DATA_FILE_NAME);
+            JsonDataService.Instance.SaveData(PLAYER_SAVED_POSITION_PATH, currentPlayerPosition, false);
+            JsonDataService.Instance.SaveData(EXPLORATION_SAVED_SCENE_PATH, currentSceneName, false);
         }
     }
 }

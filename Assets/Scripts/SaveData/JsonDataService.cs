@@ -8,14 +8,25 @@ namespace PsychOutDestined
 {
     public class JsonDataService : IDataService
     {
+        public static JsonDataService Instance {get; private set;}
+        public JsonDataService()
+        {
+            if (Instance != null && Instance != this) 
+            { 
+                return;
+            } 
+            else 
+            { 
+                Instance = this; 
+            } 
+        }
+
+        public void ResetInstance() => Instance = null;
+
         public bool SaveData<T>(string RelativePath, T Data, bool Encrypt = false)
         {
             Debug.Log("saving data");
-            string path = Application.persistentDataPath + RelativePath;
-            Debug.Log($"saving at path {path}");
-            if(!path.EndsWith(".json")) path += ".json";
-
-            Debug.Log($"saving at path {path}");
+            string path = CreateValidDataPath(RelativePath);
             bool result = SaveDataInternal(path, Data, Encrypt);
             return result;
         }
@@ -42,51 +53,50 @@ namespace PsychOutDestined
             }
         }
 
-        public async Task<bool> SaveDataAsync<T>(string FullPath, T Data, bool Encrypt = false)
+        public async Task<bool> SaveDataAsync<T>(string RelativePath, T Data, bool Encrypt = false)
         {
-            if(!FullPath.EndsWith(".json")) FullPath += ".json";
-            bool result = await Task.Run(() => SaveDataInternal(FullPath, Data, Encrypt));
+            string path = CreateValidDataPath(RelativePath);
+            bool result = await Task.Run(() => SaveDataInternal(RelativePath, Data, Encrypt));
             return result;
         }
 
         public T LoadData<T>(string RelativePath, T DefaultData, bool isEncrypted = false)
         {
-            string path = Application.persistentDataPath + RelativePath;
-            if(!path.EndsWith(".json")) path += ".json";
-
+            string path = CreateValidDataPath(RelativePath);
             return LoadDataInternal(path, DefaultData, isEncrypted);
         }
 
-        public T LoadDataInternal<T>(string FullPath, T DefaultData, bool isEncrypted = false)
+        public T LoadDataInternal<T>(string RelativePath, T DefaultData, bool isEncrypted = false)
         {
-            if(!File.Exists(FullPath))
+            if(!File.Exists(RelativePath))
             {
-                Debug.LogWarning($"File at path {FullPath} not found, returning default data...");
+                Debug.LogWarning($"File at path {RelativePath} not found, returning default data...");
                 return DefaultData;
             }
 
             try
             {
-                T data = JsonConvert.DeserializeObject<T>(File.ReadAllText(FullPath));
+                T data = JsonConvert.DeserializeObject<T>(File.ReadAllText(RelativePath));
                 return data;
             }
-            catch
+            catch(Exception e)
             {
-                Debug.LogWarning($"Data at file path {FullPath} was not of the correct type, returning default data...");
+                Debug.LogError($"Error loading data: {e}");
+                Debug.LogWarning($"Data at file path {RelativePath} was not of the correct type, returning default data...");
                 return DefaultData;
             }
         }
 
-        public async Task<T> LoadDataAsync<T>(string FullPath, T DefaultData, bool isEncrypted = false)
+        public async Task<T> LoadDataAsync<T>(string RelativePath, T DefaultData, bool isEncrypted = false)
         {
-            if(!FullPath.EndsWith(".json")) FullPath += ".json";
-            T result = await Task.Run(() => LoadDataInternal(FullPath, DefaultData, isEncrypted));
+            string path = CreateValidDataPath(RelativePath);
+            T result = await Task.Run(() => LoadDataInternal(RelativePath, DefaultData, isEncrypted));
             return result;
         }
 
         public bool PurgeData()
         {
-            string path = Application.persistentDataPath;
+            string path = StaticGameStats.persistentDataPath;
             Debug.LogWarning("File purge begun. Deleting all save data...");
             try
             {
@@ -105,11 +115,22 @@ namespace PsychOutDestined
 
                 return true;
             }
-            catch
+            catch(Exception e)
             {
-                Debug.LogWarning("Data could not be purged, aborting purge process.");
+                Debug.LogWarning($"Data could not be purged due to exception\n({e})\n, aborting purge process.");
                 return false;
             }
+        }
+
+        private string CreateValidDataPath(string relativePath)
+        {
+            string result = relativePath;
+            if(!result.StartsWith('/')) 
+                result = '/' + relativePath;
+            if(!result.EndsWith(".json"))
+                result += ".json";
+
+            return StaticGameStats.persistentDataPath + result;
         }
     }
 }

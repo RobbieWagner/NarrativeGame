@@ -16,7 +16,7 @@ namespace PsychOutDestined
         protected override void Awake()
         {
             base.Awake();
-            interactions = SaveDataManager.LoadObject(npcName, gameObject.scene.name, 0, new string[]{StaticGameStats.dialogueSavePath});
+            interactions = JsonDataService.Instance.LoadData(StaticGameStats.dialogueSavePath + npcName + gameObject.scene.name, 0, false);
         }
 
         private Story ConfigureStory()

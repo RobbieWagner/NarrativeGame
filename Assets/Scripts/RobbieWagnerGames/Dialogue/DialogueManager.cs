@@ -27,6 +27,8 @@ namespace PsychOutDestined
 
         [SerializeField] private AudioSource dialogueSound;
 
+        private const string PLAYER_NAME_PATH = "/Player/name";
+
         [Header("Choices")]
         [SerializeField] private DialogueChoice choicePrefab;
         [SerializeField] private LayoutGroup choiceParent;

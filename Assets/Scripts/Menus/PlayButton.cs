@@ -13,8 +13,9 @@ namespace PsychOutDestined
             yield return StartCoroutine(base.SelectButton(menu));
             if (deleteCurrentProgress)
             {
-                SaveDataManager.persistentPath = Application.persistentDataPath;
-                SaveDataManager.PurgeAllSaveData();
+                new JsonDataService();
+                JsonDataService.Instance.PurgeData();
+                JsonDataService.Instance.ResetInstance();
             }
 
             StartGame();
