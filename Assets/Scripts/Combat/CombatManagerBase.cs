@@ -33,7 +33,9 @@ namespace PsychOutDestined
         private int currentTurn;
         public int CurrentTurn => currentTurn;
 
-        protected bool finishedSelectingActions = true;
+        protected bool finishedSelectingAction = true;
+
+        List<Unit> unitsInInitiativeOrder;
 
         public Vector3 UNIT_OFFSET;
 
@@ -120,12 +122,12 @@ namespace PsychOutDestined
 
                 case CombatPhase.ActionSelection:
                     Debug.Log("Action Selection Phase");
-                    yield return StartCoroutine(HandleActionSelection());
+                    yield return StartCoroutine(HandleActionSelectionPhase());
                     break;
 
                 case CombatPhase.ActionExecution:
                     Debug.Log("Action Execution Phase");
-                    yield return StartCoroutine(ExecuteActions());
+                    yield return StartCoroutine(ExecuteUnitAction());
                     break;
 
                 case CombatPhase.TurnEnd:
@@ -147,6 +149,7 @@ namespace PsychOutDestined
         protected virtual CombatPhase GetNextPhase()
         {
             if (CheckForCombatEnd()) return CombatPhase.CombatEnd;
+            if (currentPhase == CombatPhase.ActionExecution && unitsInInitiativeOrder.Count > 0) return CombatPhase.ActionSelection;
             return (CombatPhase)(((int)currentPhase + 1) % 4);
         }
 
@@ -163,68 +166,43 @@ namespace PsychOutDestined
 
         protected virtual IEnumerator StartTurn()
         {
-            foreach (Unit enemy in enemies) enemy.currentSelectedAction = null;
-            foreach (Unit ally in allies) ally.currentSelectedAction = null;
+            unitsInInitiativeOrder = new List<Unit>();
+            unitsInInitiativeOrder.AddRange(allies);
+            unitsInInitiativeOrder.AddRange(enemies);
+
+            unitsInInitiativeOrder = unitsInInitiativeOrder.OrderBy(u => u.Initiative).Where(u => u.isUnitActive).ToList();
+
+            foreach (Unit enemy in enemies) enemy.selectedAction = null;
+            foreach (Unit ally in allies) ally.selectedAction = null;
             yield return new WaitForSeconds(.2f);
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.TurnStarted));
         }
 
-        protected virtual IEnumerator HandleActionSelection()
+        protected virtual IEnumerator ExecuteUnitAction()
         {
-            yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.SelectionPhaseStarted));
-            Debug.Log("Handling Action Selection...");
-            OnBeginActionSelection?.Invoke();
-            foreach (Unit enemy in enemies)
-            {
-                if (enemy.isUnitActive) enemy.currentSelectedAction = SelectAnAction(enemy, enemy.availableActions);
-                if (enemy.currentSelectedAction != null) enemy.selectedTargets = SelectTargetsForSelectedAction(enemy);
-            }
-
-            while (!finishedSelectingActions) yield return null;
-
-            OnEndActionSelection?.Invoke();
-            yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.SelectionPhaseEnded));
-        }
-        public delegate void OnToggleActionSelectionStateDelegate();
-        public event OnToggleActionSelectionStateDelegate OnBeginActionSelection;
-        public event OnToggleActionSelectionStateDelegate OnEndActionSelection;
-
-        protected virtual IEnumerator ExecuteActions()
-        {
-            //TODO: Don't have things like combat camera be controlled by this. Instead, create a Coroutine Event Handler that some other script uses (or create a partial class)
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.ExecutionPhaseStarted));
-
             Debug.Log("Executing Actions...");
 
-            List<Unit> unitsInInitiativeOrder = new List<Unit>();
-            unitsInInitiativeOrder.AddRange(allies);
-            unitsInInitiativeOrder.AddRange(enemies);
-
-            unitsInInitiativeOrder = unitsInInitiativeOrder.OrderBy(u => u.Initiative).ToList();
-
-            foreach (Unit unit in unitsInInitiativeOrder)
+            Debug.Log($"{currentActingUnit.name} is acting");
+            if (currentActingUnit.isUnitActive && currentActingUnit.selectedAction != null)
             {
-                //Debug.Log($"{unit.name} is acting");
-                if (unit.isUnitActive && unit.currentSelectedAction != null)
-                {
-                    List<Unit> intendedTargets = unit.currentSelectedAction.GetTargetUnits(unit.selectedTargets);
-                    OnStartActionExecution?.Invoke(unit, intendedTargets);
-                    yield return StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position,
-                                                                                     unit.transform.position,
-                                                                                     1f)));
-                    //show UI for action
-                    StartCoroutine(CombatCamera.Instance?.ResetCameraPosition(.5f));
-                    yield return StartCoroutine(unit.currentSelectedAction?.ExecuteAction(unit,intendedTargets));
-                    OnEndActionExecution?.Invoke(unit, intendedTargets);
-                    yield return new WaitForSeconds(.25f);
-                    if (CheckForCombatEnd()) break;
-                }
-                else if (!unit.isUnitActive) Debug.Log($"{unit.name} defeated, action cancelled");
-                unit.currentSelectedAction = null;
+                List<Unit> intendedTargets = currentActingUnit.selectedAction.GetTargetUnits(currentActingUnit.selectedTargets);
+                OnStartActionExecution?.Invoke(currentActingUnit, intendedTargets);
+                yield return StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position,
+                                                                                    currentActingUnit.transform.position,
+                                                                                    1f)));
+                //show UI for action
+                StartCoroutine(CombatCamera.Instance?.ResetCameraPosition(.75f));
+                yield return StartCoroutine(currentActingUnit.selectedAction?.ExecuteAction(currentActingUnit,intendedTargets));
+                OnEndActionExecution?.Invoke(currentActingUnit, intendedTargets);
+                yield return new WaitForSeconds(.25f);
             }
+            else if (!currentActingUnit.isUnitActive) Debug.Log($"{currentActingUnit.name} defeated, action cancelled");
+            currentActingUnit.selectedAction = null;
 
             //foreach(Unit unit in unitsInInitiativeOrder) Debug.Log(unit.ToString());
 
+            unitsInInitiativeOrder.Remove(currentActingUnit);
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.ExecutionPhaseEnded));
         }
 
@@ -302,7 +280,7 @@ namespace PsychOutDestined
 
         protected virtual List<Unit> SelectTargetsForSelectedAction(Unit unit)
         {
-            CombatAction action = unit.currentSelectedAction;
+            CombatAction action = unit.selectedAction;
             HashSet<Unit> targetOptions = new HashSet<Unit>();
             if (action.canTargetSelf) targetOptions.Add(unit);
             if ((action.canTargetAllies && allies.Contains(unit)) || (action.canTargetEnemies && enemies.Contains(unit)))

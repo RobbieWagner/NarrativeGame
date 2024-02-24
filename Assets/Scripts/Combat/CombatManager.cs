@@ -26,7 +26,7 @@ namespace PsychOutDestined
                 for(int i = 0; i < unitLimit; i++)
                 {
                     if(playerParty.Count == i) break;
-                    if(TryAddAllyToCombat(GameSession.Instance.partyUnitPrefab));
+                    if(TryAddAllyToCombat(GameSession.Instance.partyUnitPrefab))
                     {
                         PartyUnit ally = allies[i] as PartyUnit;
                         ally.InitializeUnit(GameSession.Instance.GetPartyMember(i));
@@ -52,15 +52,15 @@ namespace PsychOutDestined
             yield return StartCoroutine(base.StartTurn());
         }
 
-        protected override IEnumerator HandleActionSelection()
+        protected override IEnumerator HandleActionSelectionPhase()
         {
-            yield return StartCoroutine(base.HandleActionSelection());
+            yield return StartCoroutine(base.HandleActionSelectionPhase());
         }
 
-        protected override IEnumerator ExecuteActions()
+        protected override IEnumerator ExecuteUnitAction()
         {
 
-            yield return StartCoroutine(base.ExecuteActions());
+            yield return StartCoroutine(base.ExecuteUnitAction());
         }
 
         protected override IEnumerator EndTurn()

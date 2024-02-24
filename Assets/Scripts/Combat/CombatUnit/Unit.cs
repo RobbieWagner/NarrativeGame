@@ -27,13 +27,14 @@ namespace PsychOutDestined
         protected const float BLINK_TIME = 1f;
 
         [Header("Runtime")]
-        public CombatAction currentSelectedAction;
+        public CombatAction selectedAction;
         public List<Unit> selectedTargets;
 
         [HideInInspector] public bool isUnitActive = true;
 
         [HideInInspector] public int lastSelectedTurnMenuOptionIndex = 0;
         [HideInInspector] public int lastSelectedActionMenuOptionIndex = 0;
+        [HideInInspector] public List<int> lastSelectedTargetIndexes;
 
         protected Color BLINK_MIN_COLOR;
 
@@ -114,6 +115,13 @@ namespace PsychOutDestined
         protected void HandleOnUnitInitialized()
         {
             OnUnitInitialized?.Invoke();
+        }
+
+        public void SetLastTarget(int listIndex, int target)
+        {
+            if(lastSelectedTargetIndexes == null) lastSelectedTargetIndexes = new List<int>();
+            if(lastSelectedTargetIndexes.Count > listIndex) lastSelectedTargetIndexes[listIndex] = target;
+            else lastSelectedTargetIndexes.Add(target);
         }
     }
 }
