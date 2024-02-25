@@ -4,31 +4,62 @@ using NUnit.Framework;
 using PsychOutDestined;
 using UnityEngine;
 using UnityEngine.TestTools;
-//using Moq;
+using Moq;
 
 public class GameSession_Test
 {
     GameSession gameSession;
     SerializableUnit blankUnit;
 
-    List<SerializableUnit> testParty2;
-    //Mock<JsonDataService> mockDataService;
+    List<SerializableUnit> blankUnitParty;
+    Mock<IDataService> mockDataService;
 
     public GameSession_Test()
     {
         gameSession = new GameSession();
+        //gameSession.dataService
 
         blankUnit = new SerializableUnit();
 
-        testParty2 = new List<SerializableUnit>();
+        blankUnitParty = new List<SerializableUnit>() {blankUnit, blankUnit, blankUnit};
+
+        mockDataService = new Mock<IDataService>();
+        SetupDataServiceMock();
     }
 
-    [Test]
-    public void GameSession_TestSimplePasses()
+    public void SetupDataServiceMock()
     {
-        List<SerializableUnit> partyOverSizeLimit = new List<SerializableUnit>();
-        for(int i = 0; i < GameSession.MAX_PARTY_SIZE; i++) 
-            partyOverSizeLimit.Add(blankUnit);
+        mockDataService.Setup(x => x.LoadData(
+                            It.IsAny<string>(), 
+                            It.IsAny<List<SerializableUnit>>(), 
+                            It.IsAny<bool>())).Returns(blankUnitParty);
+
+        mockDataService.Setup(x => x.LoadData(
+                            It.IsAny<string>(), 
+                            It.IsAny<Vector3>(), 
+                            It.IsAny<bool>())).Returns(Vector3.zero);
         
+        mockDataService.Setup(x => x.LoadData(
+                            It.IsAny<string>(), 
+                            It.IsAny<string>(), 
+                            It.IsAny<bool>())).Returns("");
     }
+
+    // [Test]
+    // public void GameSession_TestPartyLimitSize()
+    // {
+    //     SetupDataServiceMock();
+
+    //     List<SerializableUnit> partyOverSizeLimit = new List<SerializableUnit>();
+    //     for(int i = 0; i < GameSession.MAX_PARTY_SIZE + 5; i++) 
+    //         partyOverSizeLimit.Add(blankUnit);
+        
+    //     mockDataService.Setup(x => x.LoadData(
+    //                         It.IsAny<string>(), 
+    //                         It.IsAny<List<SerializableUnit>>(), 
+    //                         It.IsAny<bool>())).Returns(partyOverSizeLimit);
+        
+    //     gameSession.LoadSaveFiles();
+    //     Assert.IsTrue(gameSession.playerParty.Count == GameSession.MAX_PARTY_SIZE);
+    // }
 }

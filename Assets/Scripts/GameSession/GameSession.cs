@@ -61,8 +61,8 @@ namespace PsychOutDestined
             Task saveTask = Task.Run(() =>
             {
                 SavePlayersParty();
+                SaveExplorationData();
                 taskComplete = true;
-                //SaveExplorationData();
             });
 
             while(!taskComplete) 
