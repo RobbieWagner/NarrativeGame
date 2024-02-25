@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 3475272268470523186, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
       propertyPath: m_Name
-      value: PartyUnitPrefab
+      value: PartyUnitPrefab3
       objectReference: {fileID: 0}
     - target: {fileID: 8345805114331548310, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee5236808be02743ab2d5948c2b2d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: Lyle
-  animatorControllerPath: 
+  UnitName: PARTY
+  animatorControllerPath: Animation/CombatAnimation/Wes/Wes
   unitAnimator: {fileID: 538194338219372390}
   unitSprite: {fileID: 7124778955553435709}
   selectedAction: {fileID: 0}

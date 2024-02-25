@@ -23,6 +23,7 @@ namespace PsychOutDestined
         public int Heart;
 
         public List<string> actionFilePaths;
+        public string animatorFilePath;
 
         //TODO: add refs for unitanimator.
 
@@ -42,12 +43,13 @@ namespace PsychOutDestined
             Heart = unit.GetMaxStatValue(UnitStat.Heart);
 
             actionFilePaths = unit.availableActions.Select(a => StaticGameStats.GetCombatActionResourcePath(a)).ToList();
+            animatorFilePath = unit.GetAnimatorResourcePath();
         }
 
         public SerializableUnit() {}
         public override string ToString()
         {
-            return $"-----\n{UnitName}:\nHP:{HP}\nMana:{Stress}\nBrawn:{Brawn}\nAgility:{Agility}\nDefense:{Defense}\nPsych:{Psych}\nFocus:{Focus}\nHeart:{Heart}\n-----";
+            return $"-----\n{UnitName}:\nHP:{HP}\nMana:{Stress}\nBrawn:{Brawn}\nAgility:{Agility}\nDefense:{Defense}\nPsych:{Psych}\nFocus:{Focus}\nHeart:{Heart}\nActions:{string.Join(",", actionFilePaths)}\nAnimator:{animatorFilePath}\n-----";
         }
     }
 }

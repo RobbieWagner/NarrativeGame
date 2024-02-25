@@ -11,7 +11,6 @@ namespace PsychOutDestined
     {
         [Header("Player Party")]
         public PartyUnit partyUnitPrefab;
-        //[SerializeField] public List<SerializableUnit> playerParty;
         [SerializeField] public List<SerializableUnit> playerParty;
         public const int MAX_PARTY_SIZE = 20;
         public const string PARTY_SAVE_DATA_FILE_PATH = "/Combat/party";

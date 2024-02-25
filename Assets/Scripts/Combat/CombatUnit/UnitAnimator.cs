@@ -61,5 +61,16 @@ namespace PsychOutDestined
         {
             animator.Play(state.ToString());
         }
+
+        public bool SetAnimator(RuntimeAnimatorController animatorController)
+        {
+            if(animatorController == null) 
+            {
+                Debug.LogWarning("Could not set RuntimeAnimatorController for unit: animatorController found null");
+                return false;
+            }
+            animator.runtimeAnimatorController = animatorController;
+            return true;
+        }
     }
 }

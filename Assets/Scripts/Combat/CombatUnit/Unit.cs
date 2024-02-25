@@ -5,6 +5,8 @@ using AYellowpaper.SerializedCollections;
 using System;
 using System.Linq;
 using DG.Tweening;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Globalization;
 
 namespace PsychOutDestined
 {
@@ -19,7 +21,10 @@ namespace PsychOutDestined
     {
         // Unit properties
         [Header("Vanity")]
+        [Tooltip("If no animator controller path is specified, UnitName/UnitName will be used instead")]
         public string UnitName;
+        [Tooltip("The path of the animator controller inside the CombatAnimation Resource folder.\nInclude the file name, but not the extension")]
+        public string animatorControllerPath;
         [SerializeField] protected UnitAnimator unitAnimator;
         [SerializeField] protected SpriteRenderer unitSprite;
         protected Sequence currentBlinkCo;
@@ -37,9 +42,6 @@ namespace PsychOutDestined
         [HideInInspector] public List<int> lastSelectedTargetIndexes;
 
         protected Color BLINK_MIN_COLOR;
-
-        // Unit animator
-        //public UnitAnimator unitAnimator;
 
         // Initialization
         protected virtual void Awake()
@@ -122,6 +124,13 @@ namespace PsychOutDestined
             if(lastSelectedTargetIndexes == null) lastSelectedTargetIndexes = new List<int>();
             if(lastSelectedTargetIndexes.Count > listIndex) lastSelectedTargetIndexes[listIndex] = target;
             else lastSelectedTargetIndexes.Add(target);
+        }
+
+        public virtual string GetAnimatorResourcePath()
+        {
+            return string.IsNullOrWhiteSpace(animatorControllerPath) 
+                ? $"{StaticGameStats.combatAnimatorFilePath}/{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(UnitName)}/{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(UnitName)}"
+                : $"{StaticGameStats.combatAnimatorFilePath}/{animatorControllerPath}";
         }
     }
 }

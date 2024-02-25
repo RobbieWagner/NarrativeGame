@@ -265,7 +265,6 @@ namespace PsychOutDestined
 
         protected void InitializeStats()
         {
-            Debug.Log("hi");
             brawn = GetMaxStatValue(UnitStat.Brawn);
             agility = GetMaxStatValue(UnitStat.Agility);
             defense = GetMaxStatValue(UnitStat.Defense);

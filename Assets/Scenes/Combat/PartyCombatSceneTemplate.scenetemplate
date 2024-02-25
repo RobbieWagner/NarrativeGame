@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13966, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: CombatSceneTemplate
+  m_Name: PartyCombatSceneTemplate
   m_EditorClassIdentifier: 
-  templateScene: {fileID: 102900000, guid: 92f1f5be5622f2a4eb54916da3a1e282, type: 3}
+  templateScene: {fileID: 102900000, guid: 8dd70840f9608ec4d83fc3c65b2e899e, type: 3}
   templateName: 
   description: 
   preview: {fileID: 0}
@@ -133,11 +133,11 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: 622e6ef2aa699194384f7285e28ce95d, type: 2}
     instantiationMode: 1
-  - dependency: {fileID: 2800000, guid: 988cc7118706f664daf6c0eb8b460727, type: 3}
-    instantiationMode: 1
   - dependency: {fileID: 2100000, guid: 64224f2e49244734da813fe33cfaa167, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: 34da0077244565b4fad3eca6d8edc48a, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: 988cc7118706f664daf6c0eb8b460727, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 4efc803f0fc1092489d82cbeaaacfa6a, type: 3}
     instantiationMode: 1

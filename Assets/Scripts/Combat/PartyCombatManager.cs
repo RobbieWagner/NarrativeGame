@@ -28,7 +28,7 @@ namespace PsychOutDestined
             allies = new List<Unit>();
             enemies = new List<Unit>();
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < unitLimit && i < GameSession.Instance.playerParty.Count; i++)
                 TryAddAllyToCombat(null);
             foreach (Unit enemy in currentCombat.enemyPrefabs)
                 TryAddEnemyToCombat(enemy);

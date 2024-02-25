@@ -21,6 +21,7 @@ namespace PsychOutDestined
 
         public void InitializeUnit(SerializableUnit unitData)
         {
+            if(unitData == null) return;
             unitSaveData = unitData;
             Debug.Log(unitSaveData.ToString());
             InitializeUnit();
@@ -38,8 +39,17 @@ namespace PsychOutDestined
                 maxStatValues[UnitStat.Focus] = unitSaveData.Focus;
                 maxStatValues[UnitStat.Heart] = unitSaveData.Heart;
 
-                availableActions = new List<CombatAction>();
+                animatorControllerPath = unitSaveData.animatorFilePath;
+                if(!string.IsNullOrWhiteSpace(animatorControllerPath))
+                    animatorControllerPath = animatorControllerPath.Replace(StaticGameStats.combatAnimatorFilePath + "/", "");
 
+                RuntimeAnimatorController animatorController = Resources.Load<RuntimeAnimatorController>(GetAnimatorResourcePath());
+                if(animatorController == null) 
+                    animatorController = Resources.Load<RuntimeAnimatorController>(StaticGameStats.defaultCombatAnimatorFilePath);
+                if(!unitAnimator.SetAnimator(animatorController))
+                    Debug.LogWarning($"Failed to set Animator Controller on unit: {UnitName}");
+
+                availableActions = new List<CombatAction>();
                 foreach(string combatActionPath in unitSaveData.actionFilePaths)
                 {
                     CombatAction action = Resources.Load<CombatAction>(combatActionPath);

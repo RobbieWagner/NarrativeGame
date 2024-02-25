@@ -2346,10 +2346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab10ef9268e2a246b4f3320b4b423cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatManagerPrefab: {fileID: 5747694281062562861, guid: 8dbc6c788cd48844ba409ccb53236a58,
-    type: 3}
-  combatZone: {fileID: 815382590}
-  combatSceneName: CombatSceneTemplate
+  combatSceneName: PartyCombatSceneTemplate
   explorationSceneName: 
 --- !u!1 &1831429923
 GameObject:
