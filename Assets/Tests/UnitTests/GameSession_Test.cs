@@ -1,25 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
+using PsychOutDestined;
 using UnityEngine;
 using UnityEngine.TestTools;
+//using Moq;
 
 public class GameSession_Test
 {
-    // A Test behaves as an ordinary method
+    GameSession gameSession;
+    SerializableUnit blankUnit;
+
+    List<SerializableUnit> testParty2;
+    //Mock<JsonDataService> mockDataService;
+
+    public GameSession_Test()
+    {
+        gameSession = new GameSession();
+
+        blankUnit = new SerializableUnit();
+
+        testParty2 = new List<SerializableUnit>();
+    }
+
     [Test]
     public void GameSession_TestSimplePasses()
     {
-        // Use the Assert class to test conditions
-    }
-
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator GameSession_TestWithEnumeratorPasses()
-    {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        List<SerializableUnit> partyOverSizeLimit = new List<SerializableUnit>();
+        for(int i = 0; i < GameSession.MAX_PARTY_SIZE; i++) 
+            partyOverSizeLimit.Add(blankUnit);
+        
     }
 }

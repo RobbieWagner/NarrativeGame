@@ -22,6 +22,7 @@ namespace PsychOutDestined
             foreach (SerializableUnit unit in playerParty) 
                 Debug.Log(unit?.ToString());
             if (playerParty.Count == 0) Debug.LogWarning("Player does not have any save data for current party!");
+            if (playerParty.Count > MAX_PARTY_SIZE) playerParty.RemoveRange(MAX_PARTY_SIZE, playerParty.Count);
         }
 
         private void SavePlayersParty()
