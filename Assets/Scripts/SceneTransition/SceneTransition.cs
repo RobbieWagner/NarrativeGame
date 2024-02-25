@@ -30,7 +30,8 @@ namespace PsychOutDestined
             }
 
             screenCover.color = activeColor;
-            if (screenCoveredOnStart) screenCover.enabled = true;
+            if (screenCoveredOnStart) 
+                screenCover.enabled = true;
         }
 
         public IEnumerator FadeOutScreen(float fadeTime = -1f)
@@ -41,7 +42,8 @@ namespace PsychOutDestined
             float waitTime = .25f;
             float fadeOutTime = fadeTime - waitTime;
 
-            if (fadeTime < 0f) fadeOutTime = defaultFadeTime - waitTime;
+            if (fadeTime < 0f) 
+                fadeOutTime = defaultFadeTime - waitTime;
             yield return new WaitForSeconds(waitTime);
             yield return screenCover.DOColor(Color.clear, fadeOutTime).SetEase(ease).WaitForCompletion();
 
@@ -57,7 +59,8 @@ namespace PsychOutDestined
 
             float fadeInTime = fadeTime;
 
-            if (fadeTime < 0f) fadeInTime = defaultFadeTime;
+            if (fadeTime < 0f) 
+                fadeInTime = defaultFadeTime;
             yield return screenCover.DOColor(Color.clear, fadeInTime).SetEase(ease).WaitForCompletion();
 
             StopCoroutine(FadeInScreen(fadeTime));

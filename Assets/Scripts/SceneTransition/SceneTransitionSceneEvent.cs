@@ -12,8 +12,10 @@ namespace PsychOutDestined
 
         public override IEnumerator RunSceneEvent()
         {
-            if (fadeIn) yield return SceneTransition.Instance?.FadeInScreen();
-            else yield return SceneTransition.Instance?.FadeOutScreen();
+            if (fadeIn) 
+                yield return SceneTransition.Instance?.FadeInScreen();
+            else 
+                yield return SceneTransition.Instance?.FadeOutScreen();
 
             yield return base.RunSceneEvent();
             StopCoroutine(RunSceneEvent());

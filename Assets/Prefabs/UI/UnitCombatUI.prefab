@@ -450,9 +450,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitNameText: {fileID: 0}
-  selectionUIPrefab: {fileID: 4823422762504923665, guid: ce570d0b1157b5b4fa4c7c97c0612b92,
-    type: 3}
-  selectionUIInstace: {fileID: 0}
   backgroundImage: {fileID: 4086050618800378392}
   combatUI: {fileID: 0}
   actionSelectionUIOffset: {x: 0, y: 0, z: 0}
@@ -462,9 +459,9 @@ MonoBehaviour:
   HPBar: {fileID: 0}
   hpColor: {r: 0, g: 0.8, b: 0, a: 1}
   hpIcon: {fileID: 21300000, guid: c7498a2e642858e4a9495874f3d82b92, type: 3}
-  ManaBar: {fileID: 0}
-  manaColor: {r: 0, g: 0, b: 0.8, a: 1}
-  manaIcon: {fileID: 21300000, guid: 97c4595cae4170e4584abda651674c29, type: 3}
+  StressBar: {fileID: 0}
+  stressColor: {r: 0.35299397, g: 0, b: 1, a: 1}
+  stressIcon: {fileID: 21300000, guid: 97c4595cae4170e4584abda651674c29, type: 3}
   statTextParent: {fileID: 7642519140093678325}
   statTextPrefab: {fileID: 4038216661787839072, guid: d7ce35c558088c84e9c18377be5e5d28,
     type: 3}

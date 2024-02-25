@@ -172,10 +172,10 @@ namespace PsychOutDestined
             Debug.Log($"{user.name} is resting");
             yield return null;
 
-            int manaRegained = ((int)(manaRegenPercent / 100 * user.GetMaxStatValue(UnitStat.Mana))) + user.Psych;
+            int stressRelieved = ((int)(manaRegenPercent / 100 * user.GetMaxStatValue(UnitStat.Stress))) + user.Psych;
             int hpRegained = ((int)(hpRegenPercent / 100 * user.GetMaxStatValue(UnitStat.HP))) + (user.Defense / 3 * 2);
 
-            user.Mana += manaRegained;
+            user.Stress -= stressRelieved;
             user.HP += hpRegained;
         }
     }

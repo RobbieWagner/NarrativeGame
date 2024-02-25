@@ -32,18 +32,14 @@ namespace PsychOutDestined
             if (sceneEvents != null && sceneEvents.Count > 0)
             {
                 foreach (SceneEvent sceneEvent in sceneEvents)
-                {
                     yield return StartCoroutine(sceneEvent.RunSceneEvent());
-                }
             }
             else if (dialogueEventParent.childCount > 0)
             {
                 sceneEvents = dialogueEventParent.GetComponentsInChildren<SceneEvent>().ToList();
 
                 foreach (SceneEvent sceneEvent in sceneEvents)
-                {
                     yield return StartCoroutine(sceneEvent.RunSceneEvent());
-                }
             }
 
             StopCoroutine(PlayDialogueScene());

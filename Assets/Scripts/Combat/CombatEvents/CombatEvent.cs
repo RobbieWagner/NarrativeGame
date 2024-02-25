@@ -20,9 +20,7 @@ namespace PsychOutDestined
         public virtual void SubscribeCombatEvent()
         {
             if (CombatManagerBase.Instance != null)
-            {
                 CombatManagerBase.Instance.SubscribeEventToCombatEventHandler(this, eventTrigger);
-            }
         }
 
         protected virtual void UnsubscribeCombatEvent()

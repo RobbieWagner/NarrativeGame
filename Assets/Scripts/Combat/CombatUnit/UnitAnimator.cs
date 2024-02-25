@@ -55,10 +55,7 @@ namespace PsychOutDestined
         public delegate void OnAnimationStateChangeDelegate(UnitAnimationState state);
         public event OnAnimationStateChangeDelegate OnAnimationStateChange;
 
-        public UnitAnimationState GetAnimationState()
-        {
-            return currentState;
-        }
+        public UnitAnimationState GetAnimationState() => currentState;
 
         protected void StartAnimation(UnitAnimationState state)
         {

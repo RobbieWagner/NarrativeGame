@@ -17,7 +17,7 @@ namespace PsychOutDestined
                 Instance = this;
             }
 
-            //TODO: NOT HARDCODE THIS CALL
+            //TODO: Consider not hardcoding this call.
             StartExploration();
         }
 

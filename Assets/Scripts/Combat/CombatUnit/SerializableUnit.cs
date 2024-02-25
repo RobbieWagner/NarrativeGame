@@ -10,11 +10,11 @@ namespace PsychOutDestined
     {
         public string UnitName;
         public int HP;
-        public int Mana;
+        public int Stress;
 
 
         public int MaxHP;
-        public int MaxMana;
+        public int MaxStress;
         public int Brawn;
         public int Agility;
         public int Defense;
@@ -30,10 +30,10 @@ namespace PsychOutDestined
         {
             UnitName = unit.UnitName;
             HP = unit.HP;
-            Mana = unit.Mana;
+            Stress = unit.Stress;
 
             MaxHP = unit.GetMaxStatValue(UnitStat.HP);
-            MaxMana = unit.GetMaxStatValue(UnitStat.Mana);
+            MaxStress = unit.GetMaxStatValue(UnitStat.Stress);
             Brawn = unit.GetMaxStatValue(UnitStat.Brawn);
             Agility = unit.GetMaxStatValue(UnitStat.Agility);
             Defense = unit.GetMaxStatValue(UnitStat.Defense);
@@ -44,14 +44,10 @@ namespace PsychOutDestined
             actionFilePaths = unit.availableActions.Select(a => StaticGameStats.GetCombatActionResourcePath(a)).ToList();
         }
 
-        public SerializableUnit()
-        {
-            
-        }
-
+        public SerializableUnit() {}
         public override string ToString()
         {
-            return $"-----\n{UnitName}:\nHP:{HP}\nMana:{Mana}\nBrawn:{Brawn}\nAgility:{Agility}\nDefense:{Defense}\nPsych:{Psych}\nFocus:{Focus}\nHeart:{Heart}\n-----";
+            return $"-----\n{UnitName}:\nHP:{HP}\nMana:{Stress}\nBrawn:{Brawn}\nAgility:{Agility}\nDefense:{Defense}\nPsych:{Psych}\nFocus:{Focus}\nHeart:{Heart}\n-----";
         }
     }
 }

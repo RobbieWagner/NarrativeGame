@@ -40,7 +40,8 @@ namespace PsychOutDestined
                 LoadExplorationData();
             });
 
-            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(currentSceneName, LoadSceneMode.Additive); //TODO: Get this back on the main thread
+            //TODO: Get this scene load back on the main thread if worried about memory usage
+            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(currentSceneName, LoadSceneMode.Additive); 
             while(!sceneLoad.isDone) await Task.Yield();
 
             InitializePlayerPosition();

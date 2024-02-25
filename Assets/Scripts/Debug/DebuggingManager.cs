@@ -28,11 +28,6 @@ namespace PsychOutDestined
             SubscribeControls();
         }
 
-        // private void Update()
-        // {
-        //     if(holdingDebugButtonDown) Debug.Log("awaiting debug input");
-        // }
-
         private void SubscribeControls()
         {
             controls.Debug.DebugHold.performed += StartDebugHold;
@@ -47,9 +42,7 @@ namespace PsychOutDestined
         private void TerminateCombat(InputAction.CallbackContext context)
         {
             if (holdingDebugButtonDown)
-            {
                 CombatManagerBase.Instance?.TerminateCombat();
-            }
         }
 #endif
     }

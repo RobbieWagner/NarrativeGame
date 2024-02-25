@@ -28,7 +28,8 @@ namespace PsychOutDestined
                 combatIsPlaying = false;
             }
 
-            while (combatIsPlaying) yield return null;
+            while (combatIsPlaying) 
+                yield return null;
         }
 
         private void OnCombatEnded()

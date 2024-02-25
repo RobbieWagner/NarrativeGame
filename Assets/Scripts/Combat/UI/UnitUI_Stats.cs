@@ -12,9 +12,9 @@ namespace PsychOutDestined
         [HideInInspector] public Statbar HPBar;
         public Color hpColor;
         public Sprite hpIcon;
-        [HideInInspector] public Statbar ManaBar;
-        public Color manaColor;
-        public Sprite manaIcon;
+        [HideInInspector] public Statbar StressBar;
+        public Color stressColor;
+        public Sprite stressIcon;
 
         [Space(10)]
         public Image statTextParent;
@@ -36,8 +36,8 @@ namespace PsychOutDestined
         {
             HPBar = Instantiate(statbarPrefab, statbarParent);
             SetupNewStatbar(HPBar, hpColor, hpIcon, UnitStat.HP);
-            ManaBar = Instantiate(statbarPrefab, statbarParent);
-            SetupNewStatbar(ManaBar, manaColor, manaIcon, UnitStat.Mana);
+            StressBar = Instantiate(statbarPrefab, statbarParent);
+            SetupNewStatbar(StressBar, stressColor, stressIcon, UnitStat.Stress);
 
             brawnStatUI = Instantiate(statTextPrefab, statTextParent.transform);
             SetupNewStatText(brawnStatUI, brawnIcon, UnitStat.Brawn);

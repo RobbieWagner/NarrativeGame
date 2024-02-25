@@ -34,9 +34,6 @@ namespace PsychOutDestined
                     CombatManagerBase.Instance.OnStopConsideringTarget += StopConsideringTarget;
                     CombatManagerBase.Instance.OnConsiderTarget += DisplayConsideredTarget;
 
-                    //CombatManagerBase.Instance.OnConsiderAction += UpdateActionUI;
-                    CombatManagerBase.Instance.OnEndActionSelection += DestroyUnitActionSelectionUI;
-
                     CombatManagerBase.Instance.OnEndActionSelection += DisableActionInfo;
                     CombatManagerBase.Instance.OnEndActionSelection += DisableTargetInfo;
                     CombatManagerBase.Instance.OnBeginTargetSelection += CheckToEnableTargetInfo;
@@ -48,21 +45,6 @@ namespace PsychOutDestined
             catch (NullReferenceException e)
             {
                 Debug.LogError("Combat Manager Found Null in Combat UI, Please define a Combat Manager before calling InitializeUI.");
-            }
-        }
-
-        private void UpdateActionUI(Unit unit, CombatAction action, bool actionIndexIncreased)
-        {
-            OnUpdateActionUI?.Invoke(unit, action, this, actionIndexIncreased);
-        }
-        public delegate void OnUpdateActionUIDelegate(Unit unit, CombatAction action, CombatUIBase combatUI, bool actionIndexIncreased);
-        public event OnUpdateActionUIDelegate OnUpdateActionUI;
-
-        private void DestroyUnitActionSelectionUI()
-        {
-            foreach (UnitUI unitUI in alliesUI)
-            {
-                unitUI.EndActionSelectionDisplay();
             }
         }
 
@@ -81,12 +63,6 @@ namespace PsychOutDestined
             newStatbar.Initialize(enemy, enemy.GetMaxStatValue(UnitStat.HP), enemy.HP, UnitStat.HP);
             newStatbar.transform.position = enemy.transform.position;
             enemiesUI.Add(newStatbar);
-
-            // UnitUI newUnitUI = Instantiate(unitUIPrefab, enemyUnits.transform);
-            // newUnitUI.Unit = enemy;
-            // newUnitUI.combatUI = this;
-            // newUnitUI.InitializeUnitUI();
-            // enemiesUI.Add(newUnitUI);
         }
 
         protected virtual void StopConsideringTarget(Unit target)
@@ -134,7 +110,6 @@ namespace PsychOutDestined
                 EnableTargetInfo();
             else
                 DisableTargetInfo();
-
         }
     }
 }

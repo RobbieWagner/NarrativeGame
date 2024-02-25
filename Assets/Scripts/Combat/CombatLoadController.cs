@@ -37,7 +37,6 @@ namespace PsychOutDestined
                 {
                     GameManager.Instance.CurrentGameMode = GameMode.Combat;
                     yield return StartCoroutine(SceneTransitionController.Instance?.FadeScreenIn());
-                    //Instantiate(combatManagerPrefab, combatZone);
                     AsyncOperation op = SceneManager.LoadSceneAsync(combatSceneName, LoadSceneMode.Additive);
                     yield return StartCoroutine(WaitForSceneLoad(combatSceneName, op));
                 }

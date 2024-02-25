@@ -21,10 +21,15 @@ namespace PsychOutDestined
             get => curButton;
             set
             {
-                if (value == curButton) return;
+                if (value == curButton) 
+                    return;
+
                 curButton = value;
-                if (curButton >= menuButtons.Count) curButton = 0;
-                if (curButton < 0) curButton = menuButtons.Count - 1;
+
+                if (curButton >= menuButtons.Count) 
+                    curButton = 0;
+                if (curButton < 0) 
+                    curButton = menuButtons.Count - 1;
             }
         }
 
@@ -35,7 +40,8 @@ namespace PsychOutDestined
             menuControls.UIInput.Navigate.started += NavigateMenu;
             menuControls.UIInput.Select.performed += SelectMenuItem;
 
-            if (OnByDefault) SetupMenu();
+            if (OnByDefault) 
+                SetupMenu();
         }
 
         public virtual void SetupMenu()
@@ -43,7 +49,8 @@ namespace PsychOutDestined
             canvas.enabled = true;
             menuControls.Enable();
             ConsiderMenuButton(CurButton);
-            foreach (MenuButton button in menuButtons) button.parentMenu = this;
+            foreach (MenuButton button in menuButtons) 
+                button.parentMenu = this;
         }
 
         public void DisableMenu(bool returnToPreviousMenu = true)

@@ -45,9 +45,6 @@ namespace PsychOutDestined
             yield return null;
         }
 
-        internal List<Unit> GetTargetUnits(List<Unit> selectedUnits)
-        {
-            return selectedUnits;
-        }
+        public List<Unit> GetTargetUnits(List<Unit> selectedUnits) => selectedUnits;
     }
 }

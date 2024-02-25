@@ -89,39 +89,27 @@ namespace PsychOutDestined
                 if (groundInfo != null && footstepSoundClips.Any())
                 {
                     if ((int)groundInfo.groundType < footstepSoundClips.Length)
-                    {
                         CurrentGroundType = (int)groundInfo.groundType;
-                    }
                 }
                 else
-                {
                     CurrentGroundType = 0;
-                }
             }
 
             if (!isGrounded)
-            {
                 movementVector.y += GRAVITY * Time.deltaTime;
-                //StartCoroutine(FootStepStopTimer(.25f));
-            }
             else
-            {
                 movementVector.y = 0f;
-            }
 
-            if (characterController.enabled) characterController.Move(movementVector * currentWalkSpeed * Time.deltaTime);
+            if (characterController.enabled) 
+                characterController.Move(movementVector * currentWalkSpeed * Time.deltaTime);
 
             lastFramePos = transform.position;
 
             if (movingForcibly)
-            {
                 Animate();
-            }
 
             if (moving && footstepAudioSource != null && !footstepAudioSource.isPlaying)
-            {
                 PlayMovementSounds();
-            }
         }
 
         private void HandleMovementInput(InputAction.CallbackContext context)
@@ -130,22 +118,30 @@ namespace PsychOutDestined
 
             if (movementVector.x != input.x && input.x != 0f)
             {
-                if (input.x > 0) movementAnimator.SetAnimationState(UnitAnimationState.WalkRight);
-                else movementAnimator.SetAnimationState(UnitAnimationState.WalkLeft);
+                if (input.x > 0) 
+                    movementAnimator.SetAnimationState(UnitAnimationState.WalkRight);
+                else 
+                    movementAnimator.SetAnimationState(UnitAnimationState.WalkLeft);
                 moving = true;
             }
             else if (input.x == 0 && movementVector.z != input.y && input.y != 0f)
             {
-                if (input.y > 0) movementAnimator.SetAnimationState(UnitAnimationState.WalkForward);
-                else movementAnimator.SetAnimationState(UnitAnimationState.WalkBack);
+                if (input.y > 0) 
+                    movementAnimator.SetAnimationState(UnitAnimationState.WalkForward);
+                else 
+                    movementAnimator.SetAnimationState(UnitAnimationState.WalkBack);
                 moving = true;
             }
             else if (input.x == 0 && input.y == 0)
             {
-                if (movementVector.x > 0) movementAnimator.SetAnimationState(UnitAnimationState.IdleRight);
-                else if (movementVector.x < 0) movementAnimator.SetAnimationState(UnitAnimationState.IdleLeft);
-                else if (movementVector.z > 0) movementAnimator.SetAnimationState(UnitAnimationState.IdleForward);
-                else movementAnimator.SetAnimationState(UnitAnimationState.Idle);
+                if (movementVector.x > 0) 
+                    movementAnimator.SetAnimationState(UnitAnimationState.IdleRight);
+                else if (movementVector.x < 0) 
+                    movementAnimator.SetAnimationState(UnitAnimationState.IdleLeft);
+                else if (movementVector.z > 0) 
+                    movementAnimator.SetAnimationState(UnitAnimationState.IdleForward);
+                else 
+                    movementAnimator.SetAnimationState(UnitAnimationState.Idle);
                 moving = false;
                 StopMovementSounds();
             }
@@ -163,10 +159,14 @@ namespace PsychOutDestined
 
         public void StopPlayer()
         {
-            if (movementVector.x > 0) movementAnimator.SetAnimationState(UnitAnimationState.IdleRight);
-            else if (movementVector.x < 0) movementAnimator.SetAnimationState(UnitAnimationState.IdleLeft);
-            else if (movementVector.z > 0) movementAnimator.SetAnimationState(UnitAnimationState.IdleForward);
-            else if (movementVector != Vector3.zero) movementAnimator.SetAnimationState(UnitAnimationState.Idle);
+            if (movementVector.x > 0) 
+                movementAnimator.SetAnimationState(UnitAnimationState.IdleRight);
+            else if (movementVector.x < 0) 
+                movementAnimator.SetAnimationState(UnitAnimationState.IdleLeft);
+            else if (movementVector.z > 0) 
+                movementAnimator.SetAnimationState(UnitAnimationState.IdleForward);
+            else if (movementVector != Vector3.zero) 
+                movementAnimator.SetAnimationState(UnitAnimationState.Idle);
 
             movementVector = Vector3.zero;
             moving = false;
@@ -191,7 +191,8 @@ namespace PsychOutDestined
             characterController.enabled = false;
 
             lastPosition = transform.position;
-            if (unitsPerSecond < 0) unitsPerSecond = currentWalkSpeed;
+            if (unitsPerSecond < 0) 
+                unitsPerSecond = currentWalkSpeed;
             movingForcibly = true;
             yield return transform.DOMove(position, Vector3.Distance(position, transform.position) / unitsPerSecond)
                                             .SetEase(Ease.Linear).WaitForCompletion();
@@ -207,13 +208,17 @@ namespace PsychOutDestined
 
             if (Math.Abs(positionDelta.x) > Math.Abs(positionDelta.z))
             {
-                if (positionDelta.x > 0) movementAnimator.SetAnimationState(UnitAnimationState.WalkRight);
-                else movementAnimator.SetAnimationState(UnitAnimationState.WalkLeft);
+                if (positionDelta.x > 0) 
+                    movementAnimator.SetAnimationState(UnitAnimationState.WalkRight);
+                else
+                    movementAnimator.SetAnimationState(UnitAnimationState.WalkLeft);
             }
             else
             {
-                if (positionDelta.z > 0) movementAnimator.SetAnimationState(UnitAnimationState.WalkForward);
-                else movementAnimator.SetAnimationState(UnitAnimationState.WalkBack);
+                if (positionDelta.z > 0) 
+                    movementAnimator.SetAnimationState(UnitAnimationState.WalkForward);
+                else 
+                    movementAnimator.SetAnimationState(UnitAnimationState.WalkBack);
             }
 
             lastPosition = transform.position;
@@ -222,17 +227,20 @@ namespace PsychOutDestined
         private void ChangeFootstepSounds(AudioClip clip)
         {
             StopMovementSounds();
-            if (footstepAudioSource != null) footstepAudioSource.clip = clip;
+            if (footstepAudioSource != null) 
+                footstepAudioSource.clip = clip;
         }
 
         public void PlayMovementSounds()
         {
-            if (footstepAudioSource != null) footstepAudioSource.Play();
+            if (footstepAudioSource != null) 
+                footstepAudioSource.Play();
         }
 
         public void StopMovementSounds()
         {
-            if (footstepAudioSource != null) footstepAudioSource.Stop();
+            if (footstepAudioSource != null) 
+                footstepAudioSource.Stop();
         }
 
         private IEnumerator FootStepStopTimer(float timeToTurnOff)
@@ -244,7 +252,8 @@ namespace PsychOutDestined
                 if (isGrounded) break;
                 timerValue = Time.deltaTime;
             }
-            if (timerValue >= timeToTurnOff) StopMovementSounds();
+            if (timerValue >= timeToTurnOff) 
+                StopMovementSounds();
 
             StopCoroutine(FootStepStopTimer(timeToTurnOff));
         }

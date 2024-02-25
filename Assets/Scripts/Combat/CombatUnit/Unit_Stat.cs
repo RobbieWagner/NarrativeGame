@@ -19,7 +19,7 @@ namespace PsychOutDestined
 
         //Computed stats
         HP, // Health (10 +  HalfStrength + HalfDefense)
-        Mana, // Spell Stamina (5 + Psych + HalfHeart)
+        Stress, // Spell Stamina (5 + Psych + HalfHeart)
         Initiative, // Order in Combat (1d6 + HalfAgility)
         PCrit, // Physical Crit Chance (.001 * (HalfStrength + Agility))
         MCrit, // Mental Crit Chance (.001 * (HalfPsych + Focus))
@@ -60,21 +60,21 @@ namespace PsychOutDestined
         }
         public event OnStatValueChangedDelegate OnHPChanged;
 
-        protected int mana;
-        public int Mana
+        protected int stress;
+        public int Stress
         {
-            get => mana;
+            get => stress;
             set
             {
-                if (value == mana) return;
-                mana = value;
-                if (mana < 0) mana = 0;
-                if (mana > GetMaxStatValue(UnitStat.Mana)) mana = GetMaxStatValue(UnitStat.Mana);
-                OnManaChanged?.Invoke(mana);
+                if (value == stress) return;
+                stress = value;
+                if (stress < 0) stress = 0;
+                if (stress > GetMaxStatValue(UnitStat.Stress)) stress = GetMaxStatValue(UnitStat.Stress);
+                OnStressChanged?.Invoke(stress);
                 OnStatChanged?.Invoke();
             }
         }
-        public event OnStatValueChangedDelegate OnManaChanged;
+        public event OnStatValueChangedDelegate OnStressChanged;
 
         protected int brawn;
         public int Brawn
@@ -274,7 +274,7 @@ namespace PsychOutDestined
             heart = GetMaxStatValue(UnitStat.Heart);
 
             hp = GetMaxStatValue(UnitStat.HP);
-            mana = GetMaxStatValue(UnitStat.Mana);
+            stress = 0;
             pCrit = GetMaxStatValue(UnitStat.PCrit);
             mCrit = GetMaxStatValue(UnitStat.MCrit);
             initiative = GetMaxStatValue(UnitStat.Initiative);
@@ -306,7 +306,7 @@ namespace PsychOutDestined
                     returnValue = 10 + maxStatValues[UnitStat.Brawn] / 2 + maxStatValues[UnitStat.Defense] / 2;
                     if (!maxStatValues.ContainsKey(stat)) maxStatValues.Add(stat, returnValue);
                     return returnValue;
-                case UnitStat.Mana:
+                case UnitStat.Stress:
                     returnValue = 5 + maxStatValues[UnitStat.Psych] + maxStatValues[UnitStat.Heart] / 2;
                     if (!maxStatValues.ContainsKey(stat)) maxStatValues.Add(stat, returnValue);
                     return returnValue;
@@ -347,8 +347,8 @@ namespace PsychOutDestined
                 case UnitStat.HP:
                     HP = value;
                     break;
-                case UnitStat.Mana:
-                    Mana = value;
+                case UnitStat.Stress:
+                    Stress = value;
                     break;
                 case UnitStat.Initiative:
                     Initiative = value;
@@ -385,8 +385,8 @@ namespace PsychOutDestined
                     return Heart;
                 case UnitStat.HP:
                     return HP;
-                case UnitStat.Mana:
-                    return Mana;
+                case UnitStat.Stress:
+                    return Stress;
                 case UnitStat.Initiative:
                     return Initiative;
                 case UnitStat.PCrit:
@@ -426,8 +426,8 @@ namespace PsychOutDestined
                 case UnitStat.HP:
                     OnHPChanged += action;
                     break;
-                case UnitStat.Mana:
-                    OnManaChanged += action;
+                case UnitStat.Stress:
+                    OnStressChanged += action;
                     break;
                 case UnitStat.Initiative:
                     OnInitiativeChanged += action;
@@ -473,8 +473,8 @@ namespace PsychOutDestined
                 case UnitStat.HP:
                     OnHPChanged -= action;
                     break;
-                case UnitStat.Mana:
-                    OnManaChanged -= action;
+                case UnitStat.Stress:
+                    OnStressChanged -= action;
                     break;
                 case UnitStat.Initiative:
                     OnInitiativeChanged -= action;
@@ -523,8 +523,8 @@ namespace PsychOutDestined
                     HP += delta;
                     Debug.LogWarning("HP was effected using EffectStatValue. Consider accessing HP directly if possible.");
                     break;
-                case UnitStat.Mana:
-                    Mana += delta;
+                case UnitStat.Stress:
+                    Stress += delta;
                     break;
                 case UnitStat.Initiative:
                     Initiative += delta;

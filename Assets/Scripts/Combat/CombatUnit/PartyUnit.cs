@@ -22,6 +22,7 @@ namespace PsychOutDestined
         public void InitializeUnit(SerializableUnit unitData)
         {
             unitSaveData = unitData;
+            Debug.Log(unitSaveData.ToString());
             InitializeUnit();
         }
 
@@ -49,7 +50,7 @@ namespace PsychOutDestined
                 InitializeStats();
 
                 HP = unitSaveData.HP;
-                Mana = unitSaveData.Mana;
+                Stress = unitSaveData.Stress;
 
                 //Load animator/base sprite
                 SetUnitAnimatorState(UnitAnimationState.CombatIdleRight);

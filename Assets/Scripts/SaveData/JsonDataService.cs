@@ -105,13 +105,9 @@ namespace PsychOutDestined
                 if(pathInfo != null)
                 {
                     foreach (FileInfo file in pathInfo.EnumerateFiles())
-                    {
                         file.Delete(); 
-                    }
                     foreach (DirectoryInfo dir in pathInfo.EnumerateDirectories())
-                    {
                         dir.Delete(true); 
-                    }
                 }
 
                 return true;
