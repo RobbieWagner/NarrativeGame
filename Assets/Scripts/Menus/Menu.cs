@@ -53,12 +53,12 @@ namespace PsychOutDestined
                 button.parentMenu = this;
         }
 
-        public void DisableMenu(bool returnToPreviousMenu = true)
+        public virtual void DisableMenu(bool returnToPreviousMenu = true)
         {
             StartCoroutine(DisableMenuCo(returnToPreviousMenu));
         }
 
-        public IEnumerator DisableMenuCo(bool returnToPreviousMenu = true)
+        public virtual IEnumerator DisableMenuCo(bool returnToPreviousMenu = true)
         {
             yield return null;
             canvas.enabled = false;

@@ -44,5 +44,22 @@ namespace PsychOutDestined
 
             CurrentGameMode = GameMode.None;
         }
+
+        public bool PauseGame()
+        {
+            Time.timeScale = 0;
+            return true;
+            // Get enabled control schemes and disable them
+            // Only pause the game if certain kinds of control schemes are not active.
+        }
+
+        public void ResumeGame()
+        {
+            Time.timeScale = 1;
+            // Get previously enabled control schemes and reenable them
+            OnResumeGame?.Invoke();
+        }
+        public delegate void OnResumeGameDelegate();
+        public event OnResumeGameDelegate OnResumeGame;
     }
 }

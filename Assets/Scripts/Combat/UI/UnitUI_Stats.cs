@@ -56,7 +56,7 @@ namespace PsychOutDestined
         public void SetupNewStatbar(Statbar statbar, Color sliderFillColor, Sprite icon, UnitStat stat)
         {
             statbar.sliderFill.color = sliderFillColor;
-            statbar.statIcon.sprite = icon;
+            //statbar.statIcon.sprite = icon;
             statbar.Initialize(Unit, Unit.GetMaxStatValue(stat), Unit.GetStatValue(stat), stat);
         }
 

@@ -57,7 +57,7 @@ namespace PsychOutDestined
 
         private IEnumerator SaveGameSessionDataAsync()
         {
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSecondsRealtime(.1f);
             bool taskComplete = false;
             Task saveTask = Task.Run(() =>
             {
@@ -67,7 +67,7 @@ namespace PsychOutDestined
             });
 
             while(!taskComplete) 
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForSecondsRealtime(.1f);
             
             OnSaveComplete?.Invoke();
         }
