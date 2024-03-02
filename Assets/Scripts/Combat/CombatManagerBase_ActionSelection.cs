@@ -30,9 +30,9 @@ namespace PsychOutDestined
             selectionControls = new MenuControls();
         }
 
-        public virtual void EnableSelectionControls() => InputManager.Instance.RegisterActionCollection(selectionControls);
+        public virtual void EnableSelectionControls() => IInputManager.Instance.RegisterActionCollection(selectionControls);
 
-        public virtual void DisableSelectionControls() => InputManager.Instance.DeregisterActionCollection(selectionControls);
+        public virtual void DisableSelectionControls() => IInputManager.Instance.DeregisterActionCollection(selectionControls);
 
         protected virtual IEnumerator HandleActionSelectionPhase()
         {
@@ -138,7 +138,7 @@ namespace PsychOutDestined
 
             else
             {
-                InputManager.Instance.RegisterActionCollection(selectionControls);
+                IInputManager.Instance.RegisterActionCollection(selectionControls);
                 
                 if(currentActingUnit.lastSelectedTargetIndexes.Any())
                     currentTargetIndex = currentActingUnit.lastSelectedTargetIndexes[0] % Math.Clamp(actionTargets.Count, 1, int.MaxValue); 
@@ -189,7 +189,7 @@ namespace PsychOutDestined
         protected void EndActionSelection()
         {
             Debug.Log($"Action selection complete");
-            //InputManager.Instance.DeregisterActionMap(selectionControls.UIInput);
+            //IInputManager.Instance.DeregisterActionMap(selectionControls.UIInput);
             DisableSelectionControls();
 
             finishedSelectingAction = true;
