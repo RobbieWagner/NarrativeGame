@@ -29,7 +29,7 @@ namespace PsychOutDestined
                     if(TryAddAllyToCombat(GameSession.Instance.partyUnitPrefab))
                     {
                         PartyUnit ally = allies[i] as PartyUnit;
-                        //ally.InitializeUnit(GameSession.Instance.GetPartyMember(i));
+                        ally.InitializeUnit(GameSession.Instance.GetPartyMember(i));
                     }
                 }
             }
