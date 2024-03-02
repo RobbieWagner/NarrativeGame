@@ -14,8 +14,9 @@ namespace PsychOutDestined
 
     public class GameManager : MonoBehaviour
     {
+        [Header("Pausing")]
         public bool canPause = false;
-        public bool paused = false;
+        public bool paused = false; 
 
         public static GameManager Instance { get; private set; }
 
@@ -55,18 +56,20 @@ namespace PsychOutDestined
                 Time.timeScale = 0;
                 AudioListener.pause = true;
                 paused = true;
+                IInputManager.Instance.DisableActions();
+                OnPauseGame?.Invoke();
                 return true;
-                // Get enabled control schemes and disable them
-                // Only pause the game if certain kinds of control schemes are not active.
             }
             return false;
         }
+        public delegate void OnPauseGameDelegate();
+        public event OnPauseGameDelegate OnPauseGame;
 
         public void ResumeGame()
         {
             Time.timeScale = 1;
             AudioListener.pause = false;
-            // Get previously enabled control schemes and reenable them
+            IInputManager.Instance.ReenableActions();
             OnResumeGame?.Invoke();
             paused = false;
         }

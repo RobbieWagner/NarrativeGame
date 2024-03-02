@@ -62,7 +62,7 @@ namespace PsychOutDestined
             movementVector = Vector3.zero;
 
             explorationControls = new ExplorationControls();
-            InputManager.Instance.RegisterActionCollection(explorationControls);
+            IInputManager.Instance.RegisterActionCollection(explorationControls);
 
             explorationControls.Movement.Move.performed += HandleMovementInput;
             explorationControls.Movement.Move.canceled += StopPlayer;
@@ -73,9 +73,9 @@ namespace PsychOutDestined
         private void CheckGameMode(GameMode gameMode)
         {
             if (gameMode == GameMode.Exploration)
-                InputManager.Instance.RegisterActionCollection(explorationControls);
+                IInputManager.Instance.RegisterActionCollection(explorationControls);
             else
-                InputManager.Instance.DeregisterActionCollection(explorationControls);
+                IInputManager.Instance.DeregisterActionCollection(explorationControls);
         }
 
         private void LateUpdate()
@@ -175,13 +175,13 @@ namespace PsychOutDestined
 
         public void DisablePlayerMovement()
         {
-            InputManager.Instance.DeregisterActionCollection(explorationControls);
+            IInputManager.Instance.DeregisterActionCollection(explorationControls);
             StopPlayer();
         }
 
         public void EnablePlayerMovement()
         {
-            InputManager.Instance.RegisterActionCollection(explorationControls);
+            IInputManager.Instance.RegisterActionCollection(explorationControls);
         }
 
         public IEnumerator MoveUnitToSpot(Vector3 position, float unitsPerSecond = -1)

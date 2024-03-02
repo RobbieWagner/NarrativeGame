@@ -20,13 +20,18 @@ namespace PsychOutDestined
             }
 
             base.Awake();
+            GameManager.Instance.OnPauseGame += SetupMenuHandler;
             GameManager.Instance.OnResumeGame += DisableMenu;
         }
 
-        public override void SetupMenu()
+        public void SetupMenuHandler()
         {
-            if(GameManager.Instance.PauseGame())
-                base.SetupMenu();
+            SetupMenu(false);
+        }
+
+        public override void SetupMenu(bool registerActionCollection = false)
+        {
+            base.SetupMenu(registerActionCollection);
         }
 
         private void DisableMenu()

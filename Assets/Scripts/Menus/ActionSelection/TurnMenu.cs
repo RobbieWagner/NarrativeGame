@@ -60,7 +60,7 @@ namespace PsychOutDestined
             SetupMenu();
         }
 
-        public override void SetupMenu()
+        public override void SetupMenu(bool registerActionCollection = true)
         {
             Debug.Log("opening turn menu");
             base.SetupMenu();

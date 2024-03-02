@@ -50,14 +50,6 @@ namespace RobbieWagnerGames.UI
                 paused = true;
                 Time.timeScale = 0;
 
-                foreach(string actionMapName in actionMapsToDisable)
-                {
-                    if(!string.IsNullOrEmpty(actionMapName))
-                    {
-                        InputManager.Instance.DeregisterActionCollection(playerInput.actions.FindActionMap(actionMapName));
-                    } 
-                }
-
                 resumeButton.onClick.AddListener(ResumeGame);
                 settingsButton.onClick.AddListener(OpenSettings);
                 controlsButton.onClick.AddListener(OpenControls);

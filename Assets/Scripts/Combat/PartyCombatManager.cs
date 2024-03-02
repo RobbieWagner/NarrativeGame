@@ -46,7 +46,7 @@ namespace PsychOutDestined
             {
                 if (GameSession.Instance != null)
                 {
-                    instantiatedUnit = Instantiate(GameSession.Instance.partyUnitPrefab);
+                    instantiatedUnit = Instantiate(GameSession.Instance.partyUnitPrefab, transform);
                     instantiatedUnit.InitializeUnit(GameSession.Instance.GetPartyMember(allies.Count));
                 }
                 if (instantiatedUnit == null)

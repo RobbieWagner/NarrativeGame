@@ -33,7 +33,7 @@ namespace PsychOutDestined
 
         private void SubscribeControls()
         {
-            InputManager.Instance.RegisterActionCollection(controls);
+            IInputManager.Instance.RegisterActionCollection(controls);
             controls.Tutorial.Next.performed += NextPage;
             controls.Tutorial.NextAxis.performed += NextPageAxis;
             controls.Tutorial.Previous.performed += PreviousPage;
@@ -46,7 +46,7 @@ namespace PsychOutDestined
 
         private void UnsubscribeControls()
         {
-            InputManager.Instance.DeregisterActionCollection(controls);
+            IInputManager.Instance.DeregisterActionCollection(controls);
             controls.Tutorial.Next.performed -= NextPage;
             controls.Tutorial.NextAxis.performed -= NextPageAxis;
             controls.Tutorial.Previous.performed -= PreviousPage;

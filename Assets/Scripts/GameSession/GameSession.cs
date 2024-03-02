@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using Ink.Runtime;
 using RobbieWagnerGames;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace PsychOutDestined
 {
     public partial class GameSession : MonoBehaviour
     {
+        private GameSessionControls controls;
         public static GameSession Instance { get; private set; }
 
         private void Awake()
@@ -28,6 +30,11 @@ namespace PsychOutDestined
             new JsonDataService(); //Initialize for singleton
             StaticGameStats.persistentDataPath = Application.persistentDataPath;
             LoadSaveFiles();
+
+            controls = new GameSessionControls();
+            controls.Enable();
+            controls.Pause.Pause.performed += TogglePause;
+            OnLoadComplete += CompleteGameSetup;
         }
 
         public void LoadSaveFiles() => LoadSaveFilesAsync();
@@ -53,6 +60,11 @@ namespace PsychOutDestined
 
         private void InitializePlayerPosition() => PlayerMovement.Instance.SetPosition(currentPlayerPosition);
 
+        private void CompleteGameSetup()
+        {
+            GameManager.Instance.canPause = true;
+        }
+
         public void SaveGameSessionData() => StartCoroutine(SaveGameSessionDataAsync());
 
         private IEnumerator SaveGameSessionDataAsync()
@@ -73,5 +85,17 @@ namespace PsychOutDestined
         }
         public delegate void OnSaveCompleteDelegate();
         public event OnSaveCompleteDelegate OnSaveComplete;
+
+        private void TogglePause(InputAction.CallbackContext context)
+        {
+            Debug.Log("pause toggled");
+            if(GameManager.Instance != null)
+            {
+                if(!GameManager.Instance.paused)
+                    GameManager.Instance.PauseGame();
+                else
+                    GameManager.Instance.ResumeGame();
+            }
+        }
     }
 }

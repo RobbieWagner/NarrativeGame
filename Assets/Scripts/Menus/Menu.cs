@@ -44,13 +44,17 @@ namespace PsychOutDestined
                 SetupMenu();
         }
 
-        public virtual void SetupMenu()
+        public virtual void SetupMenu(bool registerActionCollection = true)
         {
             canvas.enabled = true;
-            InputManager.Instance.RegisterActionCollection(menuControls);
             ConsiderMenuButton(CurButton);
             foreach (MenuButton button in menuButtons) 
                 button.parentMenu = this;
+
+            if(registerActionCollection)
+                IInputManager.Instance.RegisterActionCollection(menuControls);
+            else
+                menuControls.Enable();
         }
 
         public virtual void DisableMenu(bool returnToPreviousMenu = true)
@@ -62,9 +66,11 @@ namespace PsychOutDestined
         {
             yield return null;
             canvas.enabled = false;
-            InputManager.Instance.DeregisterActionCollection(menuControls);
             if (returnToPreviousMenu)
                 ReturnToPreviousMenu?.Invoke();
+            
+            if(!IInputManager.Instance.DeregisterActionCollection(menuControls))
+                menuControls.Disable();
         }
         public delegate void OnEnablePreviousMenuDelegate();
         public event OnEnablePreviousMenuDelegate ReturnToPreviousMenu;

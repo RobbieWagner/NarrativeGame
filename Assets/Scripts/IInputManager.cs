@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public interface IInputManager
+namespace PsychOutDestined
 {
-    void RegisterActionCollection(IInputActionCollection actionCollection);
-    void DeregisterActionCollection(IInputActionCollection actionCollection);
-    void RegisterActionMap(InputActionMap map);
-    void DeregisterActionMap(InputActionMap map);
-    void DisableActions();
-    void ReenableActions();
+    public interface IInputManager
+    {
+        static IInputManager Instance;
+        bool RegisterActionCollection(IInputActionCollection actionCollection);
+        bool DeregisterActionCollection(IInputActionCollection actionCollection);
+        bool RegisterActionMap(InputActionMap map);
+        bool DeregisterActionMap(InputActionMap map);
+        void DisableActions();
+        void ReenableActions();
+    }
 }

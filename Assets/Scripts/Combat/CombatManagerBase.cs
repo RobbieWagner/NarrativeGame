@@ -41,6 +41,8 @@ namespace PsychOutDestined
 
         [SerializeField] private CombatBase debugCombat;
 
+        public virtual bool CanFlee => true;
+
         public List<Unit> AllUnitsInCombat
         {
             get { return GetAllUnits(); }
@@ -355,6 +357,16 @@ namespace PsychOutDestined
         }
 
         protected void OnDestroy() => Instance = null;
+
+        public virtual bool AttemptToFlee()
+        {
+            if(CanFlee)
+            {
+                StartCoroutine(TerminateCombatScene());
+                return true;
+            }
+            return false;
+        }
 
 #if UNITY_EDITOR
         public IEnumerator StartDebugCombat()

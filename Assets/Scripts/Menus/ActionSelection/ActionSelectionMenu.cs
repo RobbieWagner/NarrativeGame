@@ -19,7 +19,7 @@ namespace PsychOutDestined
             menuControls.UIInput.Cancel.performed += GoToPreviousMenu;
         }
 
-        public override void SetupMenu()
+        public override void SetupMenu(bool registerActionCollection = true)
         {
             Debug.Log("opening action menu");
             if(menuButtons != null)

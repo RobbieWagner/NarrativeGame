@@ -24,7 +24,7 @@ namespace PsychOutDestined
             }
 
             controls = new DebugControls();
-            InputManager.Instance.RegisterActionCollection(controls);
+            IInputManager.Instance.RegisterActionCollection(controls);
             SubscribeControls();
         }
 

@@ -10,7 +10,7 @@ namespace PsychOutDestined
 
         private void Awake()
         {
-            //TODO: Add handling to see if event has been triggered
+            //TODO: Add handling to see if event has been triggered (save system)
             hasBeenTriggered = false;
 
             OnCompleteEventInvocation += MarkTriggered;
