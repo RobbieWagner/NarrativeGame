@@ -102,7 +102,7 @@ namespace PsychOutDestined
 
         private void ConfigureDialogueControls()
         {
-            controls.Enable();
+            InputManager.Instance.RegisterActionCollection(controls);
         }
 
         #region core mechanics

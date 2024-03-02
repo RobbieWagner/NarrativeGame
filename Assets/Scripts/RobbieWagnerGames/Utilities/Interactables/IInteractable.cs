@@ -20,7 +20,7 @@ namespace PsychOutDestined
         {
             canInteract = false;
             explorationControls = new ExplorationControls();
-            explorationControls.Enable();
+            InputManager.Instance.RegisterActionCollection(explorationControls);
             explorationControls.Exploration.Interact.performed += OnInteract;
         }
 

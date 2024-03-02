@@ -155,9 +155,9 @@ MonoBehaviour:
   unit:
     UnitName: 
     HP: 0
-    Mana: 0
+    Stress: 0
     MaxHP: 0
-    MaxMana: 0
+    MaxStress: 0
     Brawn: 0
     Agility: 0
     Defense: 0
@@ -165,6 +165,7 @@ MonoBehaviour:
     Focus: 0
     Heart: 0
     actionFilePaths: []
+    animatorFilePath: 
   testUnit: {fileID: 0}
 --- !u!4 &217187760
 Transform:

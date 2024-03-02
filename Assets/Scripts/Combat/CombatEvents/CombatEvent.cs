@@ -36,10 +36,10 @@ namespace PsychOutDestined
 
         protected override IEnumerator InvokeEvent(bool setToEventGameMode = true)
         {
-            CombatManagerBase.Instance?.DisableControls();
+            //CombatManagerBase.Instance?.DisableSelectionControls();
             yield return StartCoroutine(base.InvokeEvent(setToEventGameMode));
             if (triggersOnce) UnsubscribeCombatEvent();
-            CombatManagerBase.Instance.EnableControls();
+            //CombatManagerBase.Instance?.EnableSelectionControls(); //TODO won't always want to reenable
         }
     }
 }

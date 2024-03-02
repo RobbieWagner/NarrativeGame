@@ -47,7 +47,7 @@ namespace PsychOutDestined
         public virtual void SetupMenu()
         {
             canvas.enabled = true;
-            menuControls.Enable();
+            InputManager.Instance.RegisterActionCollection(menuControls);
             ConsiderMenuButton(CurButton);
             foreach (MenuButton button in menuButtons) 
                 button.parentMenu = this;
@@ -62,7 +62,7 @@ namespace PsychOutDestined
         {
             yield return null;
             canvas.enabled = false;
-            menuControls.Disable();
+            InputManager.Instance.DeregisterActionCollection(menuControls);
             if (returnToPreviousMenu)
                 ReturnToPreviousMenu?.Invoke();
         }

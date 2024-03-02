@@ -11,7 +11,7 @@ namespace PsychOutDestined
     public partial class CombatManagerBase : MonoBehaviour
     {
         [SerializeField] private TurnMenu turnMenu;
-        private MenuControls targetSelectionControls;
+        private MenuControls selectionControls;
         [HideInInspector] public bool isSelectingAction = false;
         [HideInInspector] public bool isSelectingTargets = false;
         public CombatAction passTurn;
@@ -27,12 +27,12 @@ namespace PsychOutDestined
 
         protected virtual void InitializeControls()
         {
-            targetSelectionControls = new MenuControls();
+            selectionControls = new MenuControls();
         }
 
-        public virtual void EnableControls() => targetSelectionControls.Enable();
+        public virtual void EnableSelectionControls() => InputManager.Instance.RegisterActionCollection(selectionControls);
 
-        public virtual void DisableControls() => targetSelectionControls.Disable();
+        public virtual void DisableSelectionControls() => InputManager.Instance.DeregisterActionCollection(selectionControls);
 
         protected virtual IEnumerator HandleActionSelectionPhase()
         {
@@ -67,10 +67,10 @@ namespace PsychOutDestined
             Debug.Log("Action Selection Begun");
             finishedSelectingAction = false;
 
-            targetSelectionControls.UIInput.Navigate.performed += NavigateTargets;
-            targetSelectionControls.UIInput.Select.performed += SelectTarget;
-            targetSelectionControls.UIInput.Cancel.performed += CancelPreviousSelection;
-            targetSelectionControls.UIInput.Info.performed += ToggleTargetSelectionInfo;
+            selectionControls.UIInput.Navigate.performed += NavigateTargets;
+            selectionControls.UIInput.Select.performed += SelectTarget;
+            selectionControls.UIInput.Cancel.performed += CancelPreviousSelection;
+            selectionControls.UIInput.Info.performed += ToggleTargetSelectionInfo;
         }
 
         protected void StartActionSelection(bool loadLastSelection = false)
@@ -91,7 +91,7 @@ namespace PsychOutDestined
                                                                                      currentActingUnit.transform.position,
                                                                                      1f)));
 
-                targetSelectionControls.Disable();
+                selectionControls.Disable();
 
                 if(loadLastSelection)
                     OnReturnToUnitsActionSelectionMenu(currentActingUnit);
@@ -138,8 +138,7 @@ namespace PsychOutDestined
 
             else
             {
-                targetSelectionControls.UIInput.Enable();
-
+                InputManager.Instance.RegisterActionCollection(selectionControls);
                 
                 if(currentActingUnit.lastSelectedTargetIndexes.Any())
                     currentTargetIndex = currentActingUnit.lastSelectedTargetIndexes[0] % Math.Clamp(actionTargets.Count, 1, int.MaxValue); 
@@ -190,7 +189,8 @@ namespace PsychOutDestined
         protected void EndActionSelection()
         {
             Debug.Log($"Action selection complete");
-            targetSelectionControls.Disable();
+            //InputManager.Instance.DeregisterActionMap(selectionControls.UIInput);
+            DisableSelectionControls();
 
             finishedSelectingAction = true;
         }

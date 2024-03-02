@@ -88,7 +88,7 @@ namespace PsychOutDestined
             currentPhase = CombatPhase.None;
             currentCombat = null;
 
-            DisableControls();
+            DisableSelectionControls();
         }
 
         private IEnumerator RunCombatPhases()

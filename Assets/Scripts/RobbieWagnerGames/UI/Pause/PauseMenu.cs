@@ -54,7 +54,7 @@ namespace RobbieWagnerGames.UI
                 {
                     if(!string.IsNullOrEmpty(actionMapName))
                     {
-                        playerInput.actions.FindActionMap(actionMapName).Disable();
+                        InputManager.Instance.DeregisterActionCollection(playerInput.actions.FindActionMap(actionMapName));
                     } 
                 }
 
