@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 05b2a72ed88ca2a438c5df2c92193980
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 201027
+  packageName: TilePlus Painter and TilePlus Toolkit
+  packageVersion: 2.0.0
+  assetPath: Assets/TilePlus Extras/Demos/TopDownDemo/Palette/Tileset/arinoid_master_266.asset
+  uploadId: 609826

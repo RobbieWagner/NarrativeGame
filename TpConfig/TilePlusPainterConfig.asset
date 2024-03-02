@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1203dfe56cc393d4c84afb941419aa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PainterListItemHeight: 16
+  m_TpPainterMarqueeColor: {r: 1, g: 1, b: 1, a: 1}
+  m_TpPainterSceneTextColor: {r: 1, g: 1, b: 1, a: 1}
+  m_TpPainterUsedOnce: 0
+  m_TpPainterShowTilefabs: 0
+  m_TpPainterShowCombinedTiles: 0
+  m_TpPainterShowPalettes: 1
+  m_TpPainterShowIid: 0
+  m_TpPainterPickToPaint: 1
+  m_TpPainterSyncSelection: 0
+  m_TpPainterTilemapSorting: 0
+  m_TpPainterTileSorting: 1
+  m_MaxTilesForViewers: 200
+  m_PainterAutoRefresh: 1
+  m_PainterFabAuthoringMode: 0
+  m_PainterFabAuthoringChunkSize: 16
+  m_FabAuthWorldOrigin: {x: 0, y: 0, z: 0}
+  m_PainterShowOnlyIcons: 0

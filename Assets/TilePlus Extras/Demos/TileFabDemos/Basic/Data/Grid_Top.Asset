@@ -1,0 +1,4725 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9093625873636672183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 0376ce89c4bab74786cc5dfc991db8ed
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 32
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-9031058669656845532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 1913a63df733eb44a8a7ce428d380d53
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 22
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-9023735575618386145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 1e05feb49f16634ca2b061826daab2f6
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 52
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-8753664286911557187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: f38510f97570e24e8d3dae298d2263fa
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 43
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-8672901863367169608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 983152c85d64984e804b31a69b3a0ca6
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 61
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-8221600567328705257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: TpAnimatedTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 6350742798375269310, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  m_TileGuid: e70808d977a6814382b10f765ebc9cb5
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: 
+  m_LockName: 1
+  m_Version: 8
+  m_SourceAssetName: TpAnimatedTile
+  m_TileName: TpAnimatedTile
+  m_PaintMask: []
+  m_CustomTileInfo: 
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 5.84
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 6350742798375269310, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -6753522110925528360, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -8647165750776858384, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 3217266853867530856, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2452604990505849721, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -4223751147529651347, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-7838121000017528601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 6559734120165a40aaf0690ea5b12c5d
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 17
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-7715316343099215423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: e16c96834a9f6148b6f5a89c355473ad
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 13
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-7677218219360958024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: f041af8d3b94554fb3c2edaec843782c
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 24
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-7353385036663112861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 71ebda96854a064594671a1c71ae7841
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 53
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-7137598584984729288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 7c1028979f5baf4b94b0666e5b692953
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 66
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-7069254137182958194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: faf00d11bb7d3546b95614c784454d29
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 58
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-7003396344542302044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 9addfad2def3684bbe074de620d04427
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 7
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-6781156248396608158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: df05748df5bfd3469d9d62c93c96a279
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 42
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-6718789049279674762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: TpAnimatedTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 6350742798375269310, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  m_TileGuid: 1b7b41fb9a185442ae70910ad0503922
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: 
+  m_LockName: 1
+  m_Version: 9
+  m_SourceAssetName: TpAnimatedTile
+  m_TileName: TpAnimatedTile
+  m_PaintMask: []
+  m_CustomTileInfo: 
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 3.53
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 6350742798375269310, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -6753522110925528360, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -8647165750776858384, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 3217266853867530856, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2452604990505849721, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -4223751147529651347, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-6315094370044372100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 99c1c8078121794cb0bca763767d2080
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 10
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-6175726933702098131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: e3b449585cd3c0418ac66f4ceb8d4219
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 55
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-5540119752464156527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: a46a2808bd6ec64c83919c852f3a97d2
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 19
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-5497910402384063137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 0bf48fc92e52914bbdcc6942c7fc8a81
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 60
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-5437591801474827311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 42763bfb01f58e44ad01277bfb106e2d
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 26
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-4992000086171627155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: eae05c6b70227f4ea7bfec5e2c9d58b2
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 54
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-4583407457536979181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 5d5b5f9137fcb1479ddb9b37f2b377a5
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 15
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-4271404981399743997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 7e9398cd5de71f4aabfa02322e5b4d88
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 28
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-4059918285607126990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 5b5ccb9e71a94f4f87fbdd96f07501ef
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 57
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-3717049434627609248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91547320ee58d0498f2728a99e89cf8, type: 3}
+  m_Name: TpFlexAnimatedTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: -395779533339769526, guid: 934357d2bda4303419af7dc1c2dc8f7e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  m_TileGuid: 4b0440d27c54764a9545dbd849f9b8c8
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: 
+  m_LockName: 1
+  m_Version: 24
+  m_SourceAssetName: TpFlexAnimatedTile
+  m_TileName: TpFlexAnimatedTile
+  m_PaintMask: []
+  m_CustomTileInfo: 
+  m_PlayOnStart: 1
+  m_DefaultSprite: {fileID: -395779533339769526, guid: 934357d2bda4303419af7dc1c2dc8f7e, type: 3}
+  m_ClipSet: {fileID: 11400000, guid: aed7ad2deea18e34b9fbd7f67609b426, type: 2}
+  m_UseAnimationSpeedOverride: 0
+  m_AnimationSpeedOverride: 1
+  m_ForceOneShot: 0
+  m_RewindAfterForcedOneShot: 0
+  m_UpdatePhysics: 0
+  m_ActiveAnimationClipName: centipede1
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+--- !u!114 &-3639486783605820510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: c8681c3032e4c846b97744160c02a885
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 33
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-3405286568022745039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: ba423aa99613af4d82b6b26e63f85306
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 37
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-3382808570095546033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 5e74547badfd1249930d51360d327cb2
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 48
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-3022726776115370982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 60c10cfb695c82418e9fc0cd520e17da
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 69
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-2860081826375818993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: c2f874df98ef784db7b1eefb0f3b963f
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 63
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-2711072900018463633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 9e352e8973e91e47a039d39cf7fb22e9
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 68
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-2433225600093346334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: a68619c7d31e4c4a92df17b141e20b3b
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 11
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-2033187772451187067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 4cd4bd4f072c2d49abd0a5c1b9efbae3
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 50
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-2024523824470191846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: b90cc696f2773d4a9ae15832fc160a1b
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 27
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-1488606995607097922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 7edc3a8b0186854d82fe80b2b32b4fd6
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 35
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-1369662838050308881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: cc9ce4ee92f7a642bcd2565ad460c4de
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 14
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-1328640086028525788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: TpAnimatedTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 6350742798375269310, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  m_TileGuid: e15141fe7d6d7e489177c963c81d5420
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: 
+  m_LockName: 1
+  m_Version: 10
+  m_SourceAssetName: TpAnimatedTile
+  m_TileName: TpAnimatedTile
+  m_PaintMask: []
+  m_CustomTileInfo: 
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 4.96
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 6350742798375269310, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -6753522110925528360, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -8647165750776858384, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 3217266853867530856, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2452604990505849721, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -4223751147529651347, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-980341428227131609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 81defef55f57d44c849dff75f9217cd5
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 44
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-713192615354639379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 79d9b30f3d8c23449fa5955752effb89
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 49
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-657077730441884783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: ddd2a35a8114f74f9ac8deed6561fa0a
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 41
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &-553622249470196439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 33053ab678cbad47b5663c928bfe8a52
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 56
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f633ffa326a359d4cbba298e8793be94, type: 3}
+  m_Name: Grid_Top
+  m_EditorClassIdentifier: 
+  m_TimeStamp: 4/4/2023 03:11:24 PM UTC
+  m_ScenePath: Top.Grid
+  m_OriginalScene: TwoLayerMap
+  m_FromGridSelection: 1
+  m_IgnoreInPainter: 1
+  m_UserFlag: 0
+  m_UserString: 
+  m_TilemapBoundsInt:
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Size: {x: 17, y: 17, z: 1}
+  m_TilePlusTiles:
+  - m_Tile: {fileID: -9031058669656845532}
+    m_TilePosition:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 3515381911659296588}
+    m_TilePosition:
+      m_Position: {x: 1, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -7677218219360958024}
+    m_TilePosition:
+      m_Position: {x: 2, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 7182732434121446581}
+    m_TilePosition:
+      m_Position: {x: 3, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -5437591801474827311}
+    m_TilePosition:
+      m_Position: {x: 4, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -2024523824470191846}
+    m_TilePosition:
+      m_Position: {x: 5, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -4271404981399743997}
+    m_TilePosition:
+      m_Position: {x: 6, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 4846662713311964483}
+    m_TilePosition:
+      m_Position: {x: 7, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 4922022713072988586}
+    m_TilePosition:
+      m_Position: {x: 8, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 8707613317893151978}
+    m_TilePosition:
+      m_Position: {x: 9, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -9093625873636672183}
+    m_TilePosition:
+      m_Position: {x: 10, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -3639486783605820510}
+    m_TilePosition:
+      m_Position: {x: 11, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 8830862794022344373}
+    m_TilePosition:
+      m_Position: {x: 12, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -1488606995607097922}
+    m_TilePosition:
+      m_Position: {x: 13, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 8650164344505620946}
+    m_TilePosition:
+      m_Position: {x: 14, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -3405286568022745039}
+    m_TilePosition:
+      m_Position: {x: 15, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 3436943797709748702}
+    m_TilePosition:
+      m_Position: {x: 16, y: 0, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 6218508555700000375}
+    m_TilePosition:
+      m_Position: {x: 0, y: 1, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 2454414599657095811}
+    m_TilePosition:
+      m_Position: {x: 16, y: 1, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -5540119752464156527}
+    m_TilePosition:
+      m_Position: {x: 0, y: 2, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 1524467844028062553}
+    m_TilePosition:
+      m_Position: {x: 16, y: 2, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 1446970319260029037}
+    m_TilePosition:
+      m_Position: {x: 0, y: 3, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -657077730441884783}
+    m_TilePosition:
+      m_Position: {x: 16, y: 3, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 8926356091186931036}
+    m_TilePosition:
+      m_Position: {x: 0, y: 4, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -6781156248396608158}
+    m_TilePosition:
+      m_Position: {x: 16, y: 4, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 8558647738850368247}
+    m_TilePosition:
+      m_Position: {x: 0, y: 5, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 7394304617482803161}
+    m_TilePosition:
+      m_Position: {x: 4, y: 5, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 1
+  - m_Tile: {fileID: -1328640086028525788}
+    m_TilePosition:
+      m_Position: {x: 9, y: 5, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 1
+  - m_Tile: {fileID: -8753664286911557187}
+    m_TilePosition:
+      m_Position: {x: 16, y: 5, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -4583407457536979181}
+    m_TilePosition:
+      m_Position: {x: 0, y: 6, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -980341428227131609}
+    m_TilePosition:
+      m_Position: {x: 16, y: 6, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -1369662838050308881}
+    m_TilePosition:
+      m_Position: {x: 0, y: 7, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 5501739847452495643}
+    m_TilePosition:
+      m_Position: {x: 16, y: 7, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -7838121000017528601}
+    m_TilePosition:
+      m_Position: {x: 0, y: 8, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -6718789049279674762}
+    m_TilePosition:
+      m_Position: {x: 9, y: 8, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 1
+  - m_Tile: {fileID: 2421892337184684562}
+    m_TilePosition:
+      m_Position: {x: 16, y: 8, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -7715316343099215423}
+    m_TilePosition:
+      m_Position: {x: 0, y: 9, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 3283204978197987692}
+    m_TilePosition:
+      m_Position: {x: 7, y: 9, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 1
+  - m_Tile: {fileID: 942876844417045090}
+    m_TilePosition:
+      m_Position: {x: 16, y: 9, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 7346575486040612399}
+    m_TilePosition:
+      m_Position: {x: 0, y: 10, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 4631113156116379947}
+    m_TilePosition:
+      m_Position: {x: 14, y: 10, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 1
+  - m_Tile: {fileID: -3382808570095546033}
+    m_TilePosition:
+      m_Position: {x: 16, y: 10, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -2433225600093346334}
+    m_TilePosition:
+      m_Position: {x: 0, y: 11, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -713192615354639379}
+    m_TilePosition:
+      m_Position: {x: 16, y: 11, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -6315094370044372100}
+    m_TilePosition:
+      m_Position: {x: 0, y: 12, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -2033187772451187067}
+    m_TilePosition:
+      m_Position: {x: 16, y: 12, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 1403882982708438399}
+    m_TilePosition:
+      m_Position: {x: 0, y: 13, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 2514969056230522889}
+    m_TilePosition:
+      m_Position: {x: 16, y: 13, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 2383450434413543934}
+    m_TilePosition:
+      m_Position: {x: 0, y: 14, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -9023735575618386145}
+    m_TilePosition:
+      m_Position: {x: 16, y: 14, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -7003396344542302044}
+    m_TilePosition:
+      m_Position: {x: 0, y: 15, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -8221600567328705257}
+    m_TilePosition:
+      m_Position: {x: 4, y: 15, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 1
+  - m_Tile: {fileID: -3717049434627609248}
+    m_TilePosition:
+      m_Position: {x: 10, y: 15, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 1
+  - m_Tile: {fileID: -7353385036663112861}
+    m_TilePosition:
+      m_Position: {x: 16, y: 15, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 4223910056312547303}
+    m_TilePosition:
+      m_Position: {x: 0, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -2711072900018463633}
+    m_TilePosition:
+      m_Position: {x: 1, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 5919332040109456040}
+    m_TilePosition:
+      m_Position: {x: 2, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -7137598584984729288}
+    m_TilePosition:
+      m_Position: {x: 3, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -3022726776115370982}
+    m_TilePosition:
+      m_Position: {x: 4, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 2509075419430267732}
+    m_TilePosition:
+      m_Position: {x: 5, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 3196177458505177069}
+    m_TilePosition:
+      m_Position: {x: 6, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -2860081826375818993}
+    m_TilePosition:
+      m_Position: {x: 7, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 2154800855018892432}
+    m_TilePosition:
+      m_Position: {x: 8, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -8672901863367169608}
+    m_TilePosition:
+      m_Position: {x: 9, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -5497910402384063137}
+    m_TilePosition:
+      m_Position: {x: 10, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: 5057314670431845072}
+    m_TilePosition:
+      m_Position: {x: 11, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -7069254137182958194}
+    m_TilePosition:
+      m_Position: {x: 12, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -4059918285607126990}
+    m_TilePosition:
+      m_Position: {x: 13, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -553622249470196439}
+    m_TilePosition:
+      m_Position: {x: 14, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -6175726933702098131}
+    m_TilePosition:
+      m_Position: {x: 15, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  - m_Tile: {fileID: -4992000086171627155}
+    m_TilePosition:
+      m_Position: {x: 16, y: 16, z: 0}
+      m_TransformIndex: 0
+      m_ColorIndex: 0
+      m_FlagsIndex: 0
+  m_UnityTiles: []
+  m_Prefabs: []
+  m_TileFlags: 0300000001000000
+  m_TileTransforms:
+  - e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_TileColors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  m_Guid: def41502654f7f47b5887503d07dc2bd
+--- !u!114 &942876844417045090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: dccf75ee31ee894da9751532e8f32854
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 47
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &1403882982708438399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 5c36eec8667d284a836e47bcbdebbddf
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 9
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &1446970319260029037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: f4241a18f7bb45458193795e85031b0b
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 18
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &1524467844028062553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: af1ed857ef031a43b0cc5de4c9b867fc
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 40
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &2154800855018892432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: b37f90ca7ceb534b8edd684f338d0f69
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 62
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &2383450434413543934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: cc105e2bf1a92941b4723516e9a38f67
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 8
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &2421892337184684562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 14ddf88197f09240a0c4238b3513ba3c
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 46
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &2454414599657095811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 66d41866e529244983ca2fc2e9e90698
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 39
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &2509075419430267732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 03ca60fc3e76b54089de3109cc4e5b09
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 65
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &2514969056230522889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 5f8f927d5c42a34e925890aaf89a4aab
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 51
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &3196177458505177069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: f4db915822dd0048ba5de244e598ed0f
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 64
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &3283204978197987692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91547320ee58d0498f2728a99e89cf8, type: 3}
+  m_Name: TpFlexAnimatedTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: -395779533339769526, guid: 934357d2bda4303419af7dc1c2dc8f7e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  m_TileGuid: b654426ff07f0e4287a0f098390aaf15
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: 
+  m_LockName: 1
+  m_Version: 21
+  m_SourceAssetName: TpFlexAnimatedTile
+  m_TileName: TpFlexAnimatedTile
+  m_PaintMask: []
+  m_CustomTileInfo: 
+  m_PlayOnStart: 1
+  m_DefaultSprite: {fileID: -395779533339769526, guid: 934357d2bda4303419af7dc1c2dc8f7e, type: 3}
+  m_ClipSet: {fileID: 11400000, guid: aed7ad2deea18e34b9fbd7f67609b426, type: 2}
+  m_UseAnimationSpeedOverride: 0
+  m_AnimationSpeedOverride: 1
+  m_ForceOneShot: 0
+  m_RewindAfterForcedOneShot: 0
+  m_UpdatePhysics: 0
+  m_ActiveAnimationClipName: centipede1
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+--- !u!114 &3436943797709748702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 3344f5d76b61f541836c76dc7f3476e5
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 38
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &3515381911659296588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: e37b6fed046c474c9e6e9e2a98451f89
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 23
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &4223910056312547303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: b425b7757fd4f241a5930b4382b09a20
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 6
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &4631113156116379947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91547320ee58d0498f2728a99e89cf8, type: 3}
+  m_Name: TpFlexAnimatedTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: -395779533339769526, guid: 934357d2bda4303419af7dc1c2dc8f7e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  m_TileGuid: 147c65cf496a664bb6d282c3a273892d
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: 
+  m_LockName: 1
+  m_Version: 23
+  m_SourceAssetName: TpFlexAnimatedTile
+  m_TileName: TpFlexAnimatedTile
+  m_PaintMask: []
+  m_CustomTileInfo: 
+  m_PlayOnStart: 1
+  m_DefaultSprite: {fileID: -395779533339769526, guid: 934357d2bda4303419af7dc1c2dc8f7e, type: 3}
+  m_ClipSet: {fileID: 11400000, guid: aed7ad2deea18e34b9fbd7f67609b426, type: 2}
+  m_UseAnimationSpeedOverride: 0
+  m_AnimationSpeedOverride: 1
+  m_ForceOneShot: 0
+  m_RewindAfterForcedOneShot: 0
+  m_UpdatePhysics: 0
+  m_ActiveAnimationClipName: centipede1
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+--- !u!114 &4846662713311964483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: f4e8bbfb5baea247a16134c8e0b1b5c6
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 29
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &4922022713072988586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 1ce049872a930a4cb0ea779c4aa807cf
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 30
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &5057314670431845072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: e85e734d92e44c4e94b4b0eac5452706
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 59
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &5501739847452495643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 5e0dda51835f7f49b5becf3208759d37
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 45
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &5919332040109456040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 71c82f3eed6fce41b3152a443f0b8d76
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 67
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &6218508555700000375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 6ba7166690b55f428f6b5283a5a4e662
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 21
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &7182732434121446581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 3d47cc62e9b03a4fa6e9dd9e569c786b
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 25
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &7346575486040612399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 31f6edb678a5a841b5e8067449e28b31
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 12
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &7394304617482803161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91547320ee58d0498f2728a99e89cf8, type: 3}
+  m_Name: TpFlexAnimatedTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: -395779533339769526, guid: 934357d2bda4303419af7dc1c2dc8f7e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  m_TileGuid: dc7f48a40635ba44b085c09c9097a86b
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: 
+  m_LockName: 1
+  m_Version: 22
+  m_SourceAssetName: TpFlexAnimatedTile
+  m_TileName: TpFlexAnimatedTile
+  m_PaintMask: []
+  m_CustomTileInfo: 
+  m_PlayOnStart: 1
+  m_DefaultSprite: {fileID: -395779533339769526, guid: 934357d2bda4303419af7dc1c2dc8f7e, type: 3}
+  m_ClipSet: {fileID: 11400000, guid: aed7ad2deea18e34b9fbd7f67609b426, type: 2}
+  m_UseAnimationSpeedOverride: 0
+  m_AnimationSpeedOverride: 1
+  m_ForceOneShot: 0
+  m_RewindAfterForcedOneShot: 0
+  m_UpdatePhysics: 0
+  m_ActiveAnimationClipName: centipede1
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+--- !u!114 &8558647738850368247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: d2fae0561bd5944b915555d747134b14
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 16
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &8650164344505620946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 21e69bce2b67da42a0e3662362691043
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 36
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &8707613317893151978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: 64521ec3506075439851a8387560c865
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 31
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &8830862794022344373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: f8be63bd8048d149b4c893ec0818f551
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 34
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}
+--- !u!114 &8926356091186931036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4859b11451cb84faee1c71388740a9, type: 3}
+  m_Name: BlueThing
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 0
+  m_TileGuid: ab87de75c15f774faf8ee926bcd17361
+  m_State: 2
+  m_CachedGuidString: 
+  m_ColliderMode: 3
+  m_TileSpriteClear: 0
+  m_Tag: blueThing
+  m_LockName: 1
+  m_Version: 20
+  m_SourceAssetName: BlueThing
+  m_TileName: BlueThing
+  m_PaintMask: []
+  m_CustomTileInfo: Sample animated tile for TilePlus demos
+  m_PlayOnStart: 1
+  m_AnimationSpeed: 2
+  m_OneShot: 0
+  m_RewindAfterOneShot: 0
+  m_AnimatedSprites:
+  - {fileID: 4025399918244721652, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -2655062069046143468, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: -7359064327162848349, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 6469323411742574664, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  - {fileID: 8079377417595029960, guid: 5b284a1b1fca3924a9bb8f9b9d8f32da, type: 3}
+  m_UpdatePhysics: 0
+  m_SimulationSpeed: 2
+  m_SimulationTimeout: 1000
+  m_PreviewIcon: {fileID: 0}

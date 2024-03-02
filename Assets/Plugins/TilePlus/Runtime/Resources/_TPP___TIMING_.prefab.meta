@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 790c898ce7b2fea4487d5beab433ef48
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 201027
+  packageName: TilePlus Painter and TilePlus Toolkit
+  packageVersion: 2.0.0
+  assetPath: Assets/Plugins/TilePlus/Runtime/Resources/_TPP___TIMING_.prefab
+  uploadId: 609826

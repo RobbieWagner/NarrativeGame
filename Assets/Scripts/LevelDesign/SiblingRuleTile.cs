@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TilePlus.Editor;
+using TilePlus;
 
 namespace PsychOutDestined
 {
@@ -19,7 +21,7 @@ namespace PsychOutDestined
         }
 
         public SiblingGroup siblingGroup;
-        public bool hideSprite = true;
+        public bool hideSpriteInGame = true;
 
         public override bool RuleMatch(int neighbor, TileBase other)
         {
@@ -46,7 +48,8 @@ namespace PsychOutDestined
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
             base.GetTileData(position, tilemap, ref tileData);
-            if(hideSprite) tileData.sprite = null;
+            if(!TpLib.IsTilemapFromPalette(tilemap) && hideSpriteInGame)
+                tileData.sprite = null;
         }
     }
 }
