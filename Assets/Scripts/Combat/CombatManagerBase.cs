@@ -41,7 +41,14 @@ namespace PsychOutDestined
 
         [SerializeField] private CombatBase debugCombat;
 
-        public virtual bool CanFlee => true;
+        public int baseFleeChance = 100;
+        public virtual bool CanFlee =>  baseFleeChance >= 100 
+                                        ? true
+                                        : baseFleeChance > 0 
+                                        ? UnityEngine.Random.Range(0, 100) - currentActingUnit.Agility * 2 + 
+                                            (enemies.Any() ? enemies.Select(e => e.Agility).Sum() / enemies.Count * 2 : 0) 
+                                            < baseFleeChance
+                                        : false;
 
         public List<Unit> AllUnitsInCombat
         {
