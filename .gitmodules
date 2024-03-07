@@ -1,3 +1,3 @@
-[submodule "Assets/restricted"]
-	path = Assets/restricted
+[submodule "PsychOutDestined/Assets/restricted"]
+	path = PsychOutDestined/Assets/restricted
 	url = https://github.com/RobbieWagner/PsychOutDestinedRestricted.git
