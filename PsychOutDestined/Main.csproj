@@ -1118,6 +1118,10 @@
     <ProjectReference Include="TilePlus.csproj" />
     <ProjectReference Include="TilePlus.Editor.csproj" />
     <ProjectReference Include="TilePlusExtras.csproj" />
+    <ProjectReference Include="FMODUnity.csproj" />
+    <ProjectReference Include="FMODUnityResonance.csproj" />
+    <ProjectReference Include="FMODUnityEditor.csproj" />
+    <ProjectReference Include="FMODUnityResonanceEditor.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

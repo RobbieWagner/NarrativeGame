@@ -932,12 +932,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
@@ -990,13 +990,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="FMODUnityEditor.csproj" />
     <ProjectReference Include="TilePlusExtras.csproj" />
     <ProjectReference Include="Unity.Burst.Editor.csproj" />
     <ProjectReference Include="Unity.ProBuilder.AddOns.Editor.csproj" />
     <ProjectReference Include="Unity.Rider.Editor.csproj" />
+    <ProjectReference Include="FMODUnityResonance.csproj" />
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj" />
     <ProjectReference Include="Unity.Mathematics.Editor.csproj" />
     <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj" />
+    <ProjectReference Include="FMODUnity.csproj" />
     <ProjectReference Include="Unity.TextMeshPro.csproj" />
     <ProjectReference Include="Ink-Libraries.csproj" />
     <ProjectReference Include="Unity.ProBuilder.AssetIdRemapUtility.csproj" />
@@ -1023,6 +1026,7 @@
     <ProjectReference Include="AYellowpaper.SerializedCollections.Editor.csproj" />
     <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
     <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj" />
+    <ProjectReference Include="FMODUnityResonanceEditor.csproj" />
     <ProjectReference Include="Unity.Mathematics.csproj" />
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj" />
     <ProjectReference Include="Unity.Searcher.Editor.csproj" />
