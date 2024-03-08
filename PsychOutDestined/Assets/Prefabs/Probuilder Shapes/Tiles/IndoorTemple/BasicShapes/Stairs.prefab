@@ -65,8 +65,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1358475992786874164}
+  m_Children: []
   m_Father: {fileID: 3398062877770344257}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5099325368493214315
@@ -2197,97 +2196,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!1001 &5292883973393492150
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6542891130685275046}
-    m_Modifications:
-    - target: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7851914588329599236, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_Name
-      value: CameraClipPreventionTrigger
-      objectReference: {fileID: 0}
-    - target: {fileID: 7907452823884907943, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7907452823884907943, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7907452823884907943, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: m_Center.z
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8173985774133734890, guid: e9f8f83f6e1478d42914e541df25a4a7,
-        type: 3}
-      propertyPath: yPosOffset
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e9f8f83f6e1478d42914e541df25a4a7, type: 3}
---- !u!4 &1358475992786874164 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6606322541513344898, guid: e9f8f83f6e1478d42914e541df25a4a7,
-    type: 3}
-  m_PrefabInstance: {fileID: 5292883973393492150}
-  m_PrefabAsset: {fileID: 0}
