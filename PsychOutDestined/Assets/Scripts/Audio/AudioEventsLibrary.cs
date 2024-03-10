@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using AYellowpaper.SerializedCollections;
 using FMODUnity;
 using UnityEngine;
 
@@ -42,6 +44,10 @@ namespace PsychOutDestined
         [field: SerializeField] public EventReference DefaultFootsteps {get; private set;}
         [field: SerializeField] public EventReference StoneFootsteps {get; private set;}
         private Dictionary<GroundType, EventReference> footstepSounds = null;
+
+        [field: Header("Exploration Objects")] // Objects in exploration scenes
+        [SerializeField][SerializedDictionary("Name", "Sound Event")] private SerializedDictionary<string, EventReference> explorationObjectSounds;
+        [field: SerializeField] public EventReference defaultObjectSound {get; private set;}
 
         public Dictionary<GroundType, EventReference> FootstepSounds
         {
@@ -86,6 +92,12 @@ namespace PsychOutDestined
             { 
                 Instance = this; 
             }     
+        }
+
+        public EventReference FindExplorationObjectSound(string soundName)
+        {
+            var result = explorationObjectSounds.Where(s => s.Key.Equals(soundName, System.StringComparison.CurrentCultureIgnoreCase));
+            return result.Any() ? result.First().Value: defaultObjectSound;
         }
     }
 }

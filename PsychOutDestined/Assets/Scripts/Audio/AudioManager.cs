@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMOD.Studio;
 using FMODUnity;
-using FMOD;
 using AYellowpaper;
 using AYellowpaper.SerializedCollections;
 using Ink.Runtime;

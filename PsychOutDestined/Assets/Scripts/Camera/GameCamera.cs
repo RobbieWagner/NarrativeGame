@@ -26,7 +26,7 @@ namespace PsychOutDestined
                 CameraManager.Instance?.TrySwitchGameCamera(this);
         }
 
-        protected void OnEnable()
+        protected virtual void OnEnable()
         {
             if (switchToOnEnable)
                 CameraManager.Instance?.TrySwitchGameCamera(this);

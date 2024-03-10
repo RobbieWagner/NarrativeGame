@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638456083900000000
+  lastModified: 638456820500000000
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -37,17 +37,19 @@ MonoBehaviour:
   - {fileID: -1525922700896306820}
   - {fileID: 5661069590675217680}
   - {fileID: 3128076229902818520}
+  - {fileID: 1915420130328134700}
   EditorEvents:
-  - {fileID: 1760575848630502349}
-  - {fileID: 3420468084930052886}
+  - {fileID: 3420037021660104499}
+  - {fileID: 9102094338112223454}
+  - {fileID: 3830629068449991139}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1525922700896306820}
   StringsBanks:
   - {fileID: 7718977972539771095}
-  cacheTime: 638456083900000000
+  cacheTime: 638456820500000000
   cacheVersion: 131616
---- !u!114 &1760575848630502349
+--- !u!114 &1915420130328134700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,24 +58,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/UINavigation
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Exploration_Interactables.bank
   m_EditorClassIdentifier: 
-  Path: event:/UINavigation
-  Guid:
-    Data1: 31134472
-    Data2: 1090150672
-    Data3: -1394688065
-    Data4: 1931677989
-  Banks:
-  - {fileID: 5661069590675217680}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
+  Path: ../PsychOutDestinedFMOD/Build/Desktop/Exploration_Interactables.bank
+  Name: Exploration_Interactables
+  StudioPath: bank:/Exploration_Interactables
+  lastModified: 638456820500000000
+  FileSizes:
+  - Name: Desktop
+    Value: 110656
+  Exists: 1
 --- !u!114 &3128076229902818520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,12 +84,12 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Exploration_Creatures.bank
   Name: Exploration_Creatures
   StudioPath: bank:/Exploration_Creatures
-  lastModified: 638456083900000000
+  lastModified: 638456819140000000
   FileSizes:
   - Name: Desktop
     Value: 8032
   Exists: 1
---- !u!114 &3420468084930052886
+--- !u!114 &3420037021660104499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,23 +99,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/StoneFootsteps
+  m_Name: event:/SFX/UI/UINavigation
   m_EditorClassIdentifier: 
-  Path: event:/StoneFootsteps
+  Path: event:/SFX/UI/UINavigation
   Guid:
-    Data1: -661674836
-    Data2: 1174318682
-    Data3: -816639355
-    Data4: -253537918
+    Data1: 31134472
+    Data2: 1090150672
+    Data3: -1394688065
+    Data4: 1931677989
   Banks:
-  - {fileID: 3128076229902818520}
+  - {fileID: 5661069590675217680}
   IsStream: 0
   Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &3830629068449991139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Exploration/Items/TheOrb
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Exploration/Items/TheOrb
+  Guid:
+    Data1: 1274676077
+    Data2: 1216245829
+    Data3: -1279127882
+    Data4: -805809444
+  Banks:
+  - {fileID: 1915420130328134700}
+  IsStream: 0
+  Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2000
+  Length: 2700
 --- !u!114 &5661069590675217680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +158,7 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638456083900000000
+  lastModified: 638456819140000000
   FileSizes:
   - Name: Desktop
     Value: 3680
@@ -156,8 +178,35 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638456083900000000
+  lastModified: 638456820500000000
   FileSizes:
   - Name: Desktop
-    Value: 916
+    Value: 1060
   Exists: 1
+--- !u!114 &9102094338112223454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Exploration/FootstepSounds/StoneFootsteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Exploration/FootstepSounds/StoneFootsteps
+  Guid:
+    Data1: -661674836
+    Data2: 1174318682
+    Data3: -816639355
+    Data4: -253537918
+  Banks:
+  - {fileID: 3128076229902818520}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000

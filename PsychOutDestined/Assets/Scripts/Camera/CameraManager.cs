@@ -38,7 +38,7 @@ namespace PsychOutDestined
             gameCameras.Remove(camera);
         }
 
-        public bool TrySwitchGameCamera(GameCamera camera)
+        public bool TrySwitchGameCamera(GameCamera camera, GameObject attenuationObject = null)
         {
             if(gameCameras.Contains(camera))
             {
@@ -48,8 +48,11 @@ namespace PsychOutDestined
                 }
                 activeGameCamera = camera;
                 camera.cam.enabled = true;
-                AudioListenerInstance.Instance.transform.position = camera.transform.position;
-                AudioListenerInstance.Instance.audioListener.attenuationObject = camera.gameObject;
+                //AudioListenerInstance.Instance.transform.position = camera.transform.position;
+                if(attenuationObject != null)
+                    AudioListenerInstance.Instance.audioListener.attenuationObject = attenuationObject;
+                else 
+                    AudioListenerInstance.Instance.audioListener.attenuationObject = camera.gameObject;
                 return true;
             }
             Debug.LogWarning("Could not switch game cameras (game camera was never added to the manager)");

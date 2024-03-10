@@ -30,6 +30,7 @@ namespace PsychOutDestined
         private bool movingForcibly = false;
         [SerializeField] private CharacterController characterController;
 
+        private bool playingFootstepSounds = false;
         private GroundType currentGroundType = GroundType.None;
         public GroundType CurrentGroundType
         {
@@ -40,11 +41,10 @@ namespace PsychOutDestined
                     return;
 
                 currentGroundType = value;
-
                 if (AudioEventsLibrary.Instance.FootstepSounds.ContainsKey(currentGroundType)) 
-                    ChangeFootstepSounds(currentGroundType);
+                    StartCoroutine(ChangeFootstepSounds(currentGroundType));
                 else 
-                    ChangeFootstepSounds();
+                    StartCoroutine(ChangeFootstepSounds());
             }
         }
         public EventInstance footstepSounds;
@@ -74,6 +74,7 @@ namespace PsychOutDestined
             explorationControls.Movement.Move.canceled += StopPlayer;
 
             isGrounded = false;
+            UpdateGroundCheck();
         }
 
         private void CheckGameMode(GameMode gameMode)
@@ -86,24 +87,7 @@ namespace PsychOutDestined
 
         private void LateUpdate()
         {
-            RaycastHit hit;
-            isGrounded = Physics.Raycast(transform.position + new Vector3(0, .01f, 0), Vector3.down, out hit, .05f, groundMask);
-
-            if (hit.collider != null)
-            {
-                GroundInfo groundInfo = hit.collider.gameObject.GetComponent<GroundInfo>();
-                if (groundInfo != null)
-                {
-                    CurrentGroundType = groundInfo.groundType;  
-                }
-                else
-                    CurrentGroundType = GroundType.None;
-            }
-
-            if (!isGrounded)
-                movementVector.y += GRAVITY * Time.deltaTime;
-            else
-                movementVector.y = 0f;
+            UpdateGroundCheck();
 
             if (characterController.enabled) 
                 characterController.Move(movementVector * currentWalkSpeed * Time.deltaTime);
@@ -115,6 +99,26 @@ namespace PsychOutDestined
 
             if (moving)
                 PlayMovementSounds();
+        }
+
+        private void UpdateGroundCheck()
+        {
+            RaycastHit hit;
+            isGrounded = Physics.Raycast(transform.position + new Vector3(0, .01f, 0), Vector3.down, out hit, .05f, groundMask);
+
+            if (hit.collider != null)
+            {
+                GroundInfo groundInfo = hit.collider.gameObject.GetComponent<GroundInfo>();
+                if (groundInfo != null)
+                    CurrentGroundType = groundInfo.groundType;  
+                else
+                    CurrentGroundType = GroundType.None;
+            }
+
+            if (!isGrounded)
+                movementVector.y += GRAVITY * Time.deltaTime;
+            else
+                movementVector.y = 0f;
         }
 
         private void HandleMovementInput(InputAction.CallbackContext context)
@@ -231,27 +235,29 @@ namespace PsychOutDestined
 
         public void PlayMovementSounds()
         {
-            PLAYBACK_STATE playbackState;
-            footstepSounds.getPlaybackState(out playbackState);
-            if(!IsFootstepSoundPlaying())
+            if(!playingFootstepSounds)
             {
-                Debug.Log("starting footstep sound");
                 footstepSounds.start();
+                playingFootstepSounds = true;
             }
         }
 
         public void StopMovementSounds()
         {
-            if(IsFootstepSoundPlaying())
+            if(playingFootstepSounds)
+            {
                 footstepSounds.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                playingFootstepSounds = false;
+            }
         }
 
         public IEnumerator ChangeFootstepSounds(GroundType groundType = GroundType.None)
         {
-            if(IsFootstepSoundPlaying())
+            if(playingFootstepSounds)
             {
                 StopMovementSounds();
                 yield return null;
+                footstepSounds.release();
                 footstepSounds = AudioManager.CreateSoundEventInstance(AudioEventsLibrary.Instance.FootstepSounds[groundType]);
                 PlayMovementSounds();
             }

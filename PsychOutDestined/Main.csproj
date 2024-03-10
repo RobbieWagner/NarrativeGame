@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Exploration\OverworldEnemy.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialControls.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\UI\Settings\SettingsMenu.cs" />
+    <Compile Include="Assets\Scripts\Audio\AudioEventEmitter.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\UI\Pause\PauseMenuInput.cs" />
     <Compile Include="Assets\Scripts\Tutorial\Tutorial.cs" />
     <Compile Include="Assets\Scripts\Camera\GameCamera.cs" />

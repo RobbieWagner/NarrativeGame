@@ -5,6 +5,7 @@ namespace PsychOutDestined
     public class ExplorationCamera : GameCamera
     {
         public static ExplorationCamera Instance { get; private set; }
+        public GameObject followObject;
 
         protected override void Awake()
         {
@@ -18,6 +19,12 @@ namespace PsychOutDestined
             }
 
             base.Awake();
+        }
+
+        protected override void OnEnable()
+        {
+            if(switchToOnEnable)
+                CameraManager.Instance?.TrySwitchGameCamera(this, followObject);
         }
     }
 }

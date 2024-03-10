@@ -50,7 +50,7 @@ MonoBehaviour:
       Data2: 1090150672
       Data3: -1394688065
       Data4: 1931677989
-    Path: event:/UINavigation
+    Path: event:/SFX/UI/UINavigation
   <NextDialogueLine>k__BackingField:
     Guid:
       Data1: 0
@@ -99,14 +99,31 @@ MonoBehaviour:
       Data2: 1174318682
       Data3: -816639355
       Data4: -253537918
-    Path: event:/StoneFootsteps
+    Path: event:/SFX/Exploration/FootstepSounds/StoneFootsteps
   <StoneFootsteps>k__BackingField:
     Guid:
       Data1: -661674836
       Data2: 1174318682
       Data3: -816639355
       Data4: -253537918
-    Path: event:/StoneFootsteps
+    Path: event:/SFX/Exploration/FootstepSounds/StoneFootsteps
+  explorationObjectSounds:
+    _serializedList:
+    - Key: orb
+      Value:
+        Guid:
+          Data1: 1274676077
+          Data2: 1216245829
+          Data3: -1279127882
+          Data4: -805809444
+        Path: event:/SFX/Exploration/Items/TheOrb
+  <defaultObjectSound>k__BackingField:
+    Guid:
+      Data1: 1274676077
+      Data2: 1216245829
+      Data3: -1279127882
+      Data4: -805809444
+    Path: event:/SFX/Exploration/Items/TheOrb
   <PullLever>k__BackingField:
     Guid:
       Data1: 0
