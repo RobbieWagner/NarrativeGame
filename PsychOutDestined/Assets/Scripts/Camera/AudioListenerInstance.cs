@@ -21,5 +21,7 @@ namespace PsychOutDestined
                 Instance = this; 
             } 
         }
+
+        public Vector3 GetAttenuationObjectPosition() => audioListener.attenuationObject.transform.position;
     }
 }

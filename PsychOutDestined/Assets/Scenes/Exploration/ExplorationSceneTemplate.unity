@@ -1377,8 +1377,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   characterController: {fileID: 931088886}
-  footstepAudioSource: {fileID: 0}
-  footstepSoundClips: []
 --- !u!1 &1061133495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2857,6 +2855,7 @@ GameObject:
   - component: {fileID: 1942823927}
   - component: {fileID: 1942823926}
   - component: {fileID: 1942823925}
+  - component: {fileID: 1942823929}
   m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
@@ -2951,6 +2950,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1942823929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942823924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515c22dc106f61946a907afe7f38b6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundType: 1
 --- !u!1 &1950044236
 GameObject:
   m_ObjectHideFlags: 0

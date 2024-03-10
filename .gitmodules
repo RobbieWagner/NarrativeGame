@@ -1,3 +1,6 @@
 [submodule "PsychOutDestined/Assets/restricted"]
 	path = PsychOutDestined/Assets/restricted
 	url = https://github.com/RobbieWagner/PsychOutDestinedRestricted.git
+[submodule "PsychOutDestinedFMOD/Assets/SoundFiles"]
+	path = PsychOutDestinedFMOD/Assets/SoundFiles
+	url = https://github.com/RobbieWagner/PsychOutDestinedFMODRestricted.git

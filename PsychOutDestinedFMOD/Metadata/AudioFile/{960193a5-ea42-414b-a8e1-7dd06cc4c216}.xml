@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{960193a5-ea42-414b-a8e1-7dd06cc4c216}">
+		<property name="assetPath">
+			<value>SoundFiles/Exploration_Footsteps/stone-steps-6748.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>7.8959999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8c623570-0d76-41f5-b6f1-e12e729d119e}</destination>
+		</relationship>
+	</object>
+</objects>

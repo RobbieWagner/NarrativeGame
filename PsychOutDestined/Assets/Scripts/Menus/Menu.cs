@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 namespace PsychOutDestined
 {
@@ -91,6 +92,9 @@ namespace PsychOutDestined
             else
                 CurButton--;
 
+            AudioManager.PlayOneShot(
+                AudioEventsLibrary.Instance.MenuNavigation, 
+                AudioListenerInstance.Instance != null? AudioListenerInstance.Instance.GetAttenuationObjectPosition() : transform.position);
             ConsiderMenuButton(CurButton);
         }
 

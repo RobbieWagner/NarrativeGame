@@ -108,7 +108,6 @@
     <Compile Include="Assets\Scripts\Exploration\Level.cs" />
     <Compile Include="Assets\Scripts\Menus\ActionSelection\TurnMenu.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\FirstPersonController\SimpleFirstPersonMouseLook.cs" />
-    <Compile Include="Assets\Scripts\Audio\FMODEvents.cs" />
     <Compile Include="Assets\Scripts\GameSessionControls.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatUnit\UnitAnimator.cs" />
     <Compile Include="Assets\Scripts\Menus\PlayButton.cs" />
@@ -173,6 +172,7 @@
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Utilities\ControlsLibrary.cs" />
     <Compile Include="Assets\Scripts\Camera\CombatCamera.cs" />
     <Compile Include="Assets\Scripts\Menus\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Audio\AudioEventsLibrary.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatUnit\CombatAction.cs" />
     <Compile Include="Assets\Scripts\Menus\ActionSelection\ItemsMenu.cs" />
     <Compile Include="Assets\Scripts\SequenceEvents\DialogueSequenceEvent.cs" />

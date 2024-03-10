@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using FMODUnity;
+using FMOD.Studio;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,20 +30,24 @@ namespace PsychOutDestined
         private bool movingForcibly = false;
         [SerializeField] private CharacterController characterController;
 
-        [Header("Footstep Sounds")]
-        [SerializeField] private AudioSource footstepAudioSource;
-        [SerializeField] private AudioClip[] footstepSoundClips;
-        private int currentGroundType;
-        public int CurrentGroundType
+        private GroundType currentGroundType = GroundType.None;
+        public GroundType CurrentGroundType
         {
             get { return currentGroundType; }
             set
             {
-                if (currentGroundType == value) return;
+                if (currentGroundType == value) 
+                    return;
+
                 currentGroundType = value;
-                if (footstepSoundClips.Any()) ChangeFootstepSounds(footstepSoundClips[currentGroundType]);
+
+                if (AudioEventsLibrary.Instance.FootstepSounds.ContainsKey(currentGroundType)) 
+                    ChangeFootstepSounds(currentGroundType);
+                else 
+                    ChangeFootstepSounds();
             }
         }
+        public EventInstance footstepSounds;
 
         public static PlayerMovement Instance { get; private set; }
 
@@ -86,13 +92,12 @@ namespace PsychOutDestined
             if (hit.collider != null)
             {
                 GroundInfo groundInfo = hit.collider.gameObject.GetComponent<GroundInfo>();
-                if (groundInfo != null && footstepSoundClips.Any())
+                if (groundInfo != null)
                 {
-                    if ((int)groundInfo.groundType < footstepSoundClips.Length)
-                        CurrentGroundType = (int)groundInfo.groundType;
+                    CurrentGroundType = groundInfo.groundType;  
                 }
                 else
-                    CurrentGroundType = 0;
+                    CurrentGroundType = GroundType.None;
             }
 
             if (!isGrounded)
@@ -108,7 +113,7 @@ namespace PsychOutDestined
             if (movingForcibly)
                 Animate();
 
-            if (moving && footstepAudioSource != null && !footstepAudioSource.isPlaying)
+            if (moving)
                 PlayMovementSounds();
         }
 
@@ -224,23 +229,42 @@ namespace PsychOutDestined
             lastPosition = transform.position;
         }
 
-        private void ChangeFootstepSounds(AudioClip clip)
-        {
-            StopMovementSounds();
-            if (footstepAudioSource != null) 
-                footstepAudioSource.clip = clip;
-        }
-
         public void PlayMovementSounds()
         {
-            if (footstepAudioSource != null) 
-                footstepAudioSource.Play();
+            PLAYBACK_STATE playbackState;
+            footstepSounds.getPlaybackState(out playbackState);
+            if(!IsFootstepSoundPlaying())
+            {
+                Debug.Log("starting footstep sound");
+                footstepSounds.start();
+            }
         }
 
         public void StopMovementSounds()
         {
-            if (footstepAudioSource != null) 
-                footstepAudioSource.Stop();
+            if(IsFootstepSoundPlaying())
+                footstepSounds.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+
+        public IEnumerator ChangeFootstepSounds(GroundType groundType = GroundType.None)
+        {
+            if(IsFootstepSoundPlaying())
+            {
+                StopMovementSounds();
+                yield return null;
+                footstepSounds = AudioManager.CreateSoundEventInstance(AudioEventsLibrary.Instance.FootstepSounds[groundType]);
+                PlayMovementSounds();
+            }
+            else
+                footstepSounds = AudioManager.CreateSoundEventInstance(AudioEventsLibrary.Instance.DefaultFootsteps);
+        }
+
+        public bool IsFootstepSoundPlaying()
+        {
+            PLAYBACK_STATE playbackState;
+            footstepSounds.getPlaybackState(out playbackState);
+            Debug.Log(playbackState);
+            return playbackState.Equals(PLAYBACK_STATE.PLAYING) || playbackState.Equals(PLAYBACK_STATE.SUSTAINING) || playbackState.Equals(PLAYBACK_STATE.STARTING);
         }
 
         private IEnumerator FootStepStopTimer(float timeToTurnOff)

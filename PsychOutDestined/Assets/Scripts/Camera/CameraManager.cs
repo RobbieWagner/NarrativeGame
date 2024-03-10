@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Ink.Parsed;
 using UnityEngine;
+using FMODUnity;
+
 namespace PsychOutDestined
 {
     public class CameraManager : MonoBehaviour
@@ -47,6 +49,7 @@ namespace PsychOutDestined
                 activeGameCamera = camera;
                 camera.cam.enabled = true;
                 AudioListenerInstance.Instance.transform.position = camera.transform.position;
+                AudioListenerInstance.Instance.audioListener.attenuationObject = camera.gameObject;
                 return true;
             }
             Debug.LogWarning("Could not switch game cameras (game camera was never added to the manager)");
