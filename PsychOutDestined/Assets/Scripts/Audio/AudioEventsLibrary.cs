@@ -7,17 +7,21 @@ using UnityEngine;
 
 namespace PsychOutDestined
 {
-    public enum GroundType
+    #region Action Impact Sounds
+    public enum ImpactSoundType
     {
-        None,
-        Stone,
-        Wood,
-        Dirt,
-        Grass,
-        Water,
-        Sand,
-        Gravel
+        Default,
+        Miss,
+        Dodged,
+        PhysAttack,
+        IneffectivePhysAttack,
+        ResistedPhysAttack,
+        VulnerablePhysAttack,
+        Heal,
+        StatChange,
+        MagicAttack
     }
+    #endregion
     public class AudioEventsLibrary : MonoBehaviour
     {
 
@@ -34,36 +38,18 @@ namespace PsychOutDestined
         [field: Header("Combat Action Effects")]
         [field: SerializeField] public EventReference MagicalFire {get; private set;}
 
-        [field: Header("Combat Impact")]
-        [field: SerializeField] public EventReference UnitBludgeoned {get; private set;}
+        [field: Header("Combat Action Impact")]
+        [SerializeField][SerializedDictionary("Name", "Sound Event")] private SerializedDictionary<ImpactSoundType, EventReference> actionImpactSounds;
 
         [field: Header("Exploration Ambience")]
         [field: SerializeField] public EventReference DungeonExplorationAmbience {get; private set;}
 
         [field: Header("Exploration Footstep Sounds")]
-        [field: SerializeField] public EventReference DefaultFootsteps {get; private set;}
-        [field: SerializeField] public EventReference StoneFootsteps {get; private set;}
-        private Dictionary<GroundType, EventReference> footstepSounds = null;
+        [SerializedDictionary("Name", "Sound Event")] public SerializedDictionary<GroundType, EventReference> groundTypeSounds;
 
         [field: Header("Exploration Objects")] // Objects in exploration scenes
-        [SerializeField][SerializedDictionary("Name", "Sound Event")] private SerializedDictionary<string, EventReference> explorationObjectSounds;
+        [SerializedDictionary("Name", "Sound Event")] public SerializedDictionary<string, EventReference> explorationObjectSounds;
         [field: SerializeField] public EventReference defaultObjectSound {get; private set;}
-
-        public Dictionary<GroundType, EventReference> FootstepSounds
-        {
-            get
-            {
-                if (footstepSounds == null)
-                {
-                    footstepSounds = new Dictionary<GroundType, EventReference>()
-                    {
-                        {GroundType.None, DefaultFootsteps},
-                        {GroundType.Stone, StoneFootsteps}
-                    };
-                }
-                return footstepSounds;
-            }
-        }
 
         [field: Header("Exploration Interactions")]
         [field: SerializeField] public EventReference PullLever {get; private set;}
@@ -99,5 +85,12 @@ namespace PsychOutDestined
             var result = explorationObjectSounds.Where(s => s.Key.Equals(soundName, System.StringComparison.CurrentCultureIgnoreCase));
             return result.Any() ? result.First().Value: defaultObjectSound;
         }
+
+        public EventReference FindActionImpactSound(ImpactSoundType soundType)
+        {
+            if(actionImpactSounds.ContainsKey(soundType))
+                return actionImpactSounds[soundType];
+            return actionImpactSounds[ImpactSoundType.Default];
+        }    
     }
 }

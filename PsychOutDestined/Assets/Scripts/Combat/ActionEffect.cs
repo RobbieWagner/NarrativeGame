@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using FMODUnity;
+using System.Linq;
 
 namespace PsychOutDestined
 {
     [Serializable]
     public class ActionEffect
     {
+        [SerializeField] protected ImpactSoundType impactSound;
+
         public virtual IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
         {
             yield return null;
@@ -58,6 +62,7 @@ namespace PsychOutDestined
                 target.HP += healthDelta;
                 Debug.Log($"{user.name} hit {target.name} for {healthDelta} damage!");
             }
+            AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), user.transform.position);
         }
     }
 
@@ -78,6 +83,8 @@ namespace PsychOutDestined
                 target.HP -= healthDelta;
                 Debug.Log($"{user.name} hit {target.name} for {healthDelta} damage!");
             }
+            if(targets.Any()) 
+                AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), targets[0].transform.position);
         }
     }
 
@@ -101,6 +108,8 @@ namespace PsychOutDestined
                     Debug.Log($"{user.name} hit {hitTarget.Key.name} for {healthDelta} damage!");
                 }
             }
+            if(hitTargets.Any()) 
+                AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), hitTargets.First().Key.transform.position);
         }
     }
 
@@ -122,6 +131,8 @@ namespace PsychOutDestined
                 target.EffectStatValue(stat, statDelta);
                 Debug.Log($"{user.name} {(statDelta > 0 ? "raised" : "lowered")} {target}'s {stat} by {Math.Abs(statDelta)}");
             }
+            if(targets.Any()) 
+                AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), targets[0].transform.position);
         }
     }
 
@@ -147,6 +158,8 @@ namespace PsychOutDestined
                     Debug.Log($"{user.name} {(statDelta > 0 ? "raised" : "lowered")} {hitTarget.Value}'s {stat} by {Math.Abs(statDelta)}");
                 }
             }
+            if(hitTargets.Any()) 
+                AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), hitTargets.First().Key.transform.position);
         }
     }
 

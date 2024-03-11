@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7962216221189863590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Combat/Actions/DefaultHealing
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Combat/Actions/DefaultHealing
+  Guid:
+    Data1: -423657318
+    Data2: 1107593618
+    Data3: 1358373008
+    Data4: 1239072366
+  Banks:
+  - {fileID: -2511685643563895680}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2511685643563895680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Combat_Actions.bank
+  m_EditorClassIdentifier: 
+  Path: ../PsychOutDestinedFMOD/Build/Desktop/Combat_Actions.bank
+  Name: Combat_Actions
+  StudioPath: bank:/Combat_Actions
+  lastModified: 638457762320000000
+  FileSizes:
+  - Name: Desktop
+    Value: 42048
+  Exists: 1
 --- !u!114 &-1525922700896306820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,11 +62,38 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638456820500000000
+  lastModified: 638457762320000000
   FileSizes:
   - Name: Desktop
     Value: 1036
   Exists: 1
+--- !u!114 &-44752500477179081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Combat/Actions/DefaultStatChange
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Combat/Actions/DefaultStatChange
+  Guid:
+    Data1: -1905902167
+    Data2: 1159527421
+    Data3: -478643807
+    Data4: -2011666660
+  Banks:
+  - {fileID: -2511685643563895680}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,16 +112,20 @@ MonoBehaviour:
   - {fileID: 5661069590675217680}
   - {fileID: 3128076229902818520}
   - {fileID: 1915420130328134700}
+  - {fileID: -2511685643563895680}
   EditorEvents:
   - {fileID: 3420037021660104499}
   - {fileID: 9102094338112223454}
   - {fileID: 3830629068449991139}
+  - {fileID: -7962216221189863590}
+  - {fileID: -44752500477179081}
+  - {fileID: 2119163510750777729}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1525922700896306820}
   StringsBanks:
   - {fileID: 7718977972539771095}
-  cacheTime: 638456820500000000
+  cacheTime: 638457762320000000
   cacheVersion: 131616
 --- !u!114 &1915420130328134700
 MonoBehaviour:
@@ -69,6 +147,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 110656
   Exists: 1
+--- !u!114 &2119163510750777729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Combat/Actions/DefaultAttackImpact
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Combat/Actions/DefaultAttackImpact
+  Guid:
+    Data1: 108168887
+    Data2: 1088695158
+    Data3: -1885442126
+    Data4: -346452233
+  Banks:
+  - {fileID: -2511685643563895680}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &3128076229902818520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,10 +283,10 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638456820500000000
+  lastModified: 638457762320000000
   FileSizes:
   - Name: Desktop
-    Value: 1060
+    Value: 1262
   Exists: 1
 --- !u!114 &9102094338112223454
 MonoBehaviour:

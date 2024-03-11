@@ -41,7 +41,7 @@ namespace PsychOutDestined
                     return;
 
                 currentGroundType = value;
-                if (AudioEventsLibrary.Instance.FootstepSounds.ContainsKey(currentGroundType)) 
+                if (AudioEventsLibrary.Instance.groundTypeSounds.ContainsKey(currentGroundType)) 
                     StartCoroutine(ChangeFootstepSounds(currentGroundType));
                 else 
                     StartCoroutine(ChangeFootstepSounds());
@@ -258,11 +258,11 @@ namespace PsychOutDestined
                 StopMovementSounds();
                 yield return null;
                 footstepSounds.release();
-                footstepSounds = AudioManager.CreateSoundEventInstance(AudioEventsLibrary.Instance.FootstepSounds[groundType]);
+                footstepSounds = AudioManager.CreateSoundEventInstance(AudioEventsLibrary.Instance.groundTypeSounds[groundType]);
                 PlayMovementSounds();
             }
             else
-                footstepSounds = AudioManager.CreateSoundEventInstance(AudioEventsLibrary.Instance.DefaultFootsteps);
+                footstepSounds = AudioManager.CreateSoundEventInstance(AudioEventsLibrary.Instance.groundTypeSounds[GroundType.None]);
         }
 
         public bool IsFootstepSoundPlaying()

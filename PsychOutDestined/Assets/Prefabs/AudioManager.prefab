@@ -79,13 +79,40 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  <UnitBludgeoned>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+  actionImpactSounds:
+    _serializedList:
+    - Key: 0
+      Value:
+        Guid:
+          Data1: 108168887
+          Data2: 1088695158
+          Data3: -1885442126
+          Data4: -346452233
+        Path: event:/SFX/Combat/Actions/DefaultAttackImpact
+    - Key: 3
+      Value:
+        Guid:
+          Data1: 108168887
+          Data2: 1088695158
+          Data3: -1885442126
+          Data4: -346452233
+        Path: event:/SFX/Combat/Actions/DefaultAttackImpact
+    - Key: 7
+      Value:
+        Guid:
+          Data1: -423657318
+          Data2: 1107593618
+          Data3: 1358373008
+          Data4: 1239072366
+        Path: event:/SFX/Combat/Actions/DefaultHealing
+    - Key: 8
+      Value:
+        Guid:
+          Data1: -1905902167
+          Data2: 1159527421
+          Data3: -478643807
+          Data4: -2011666660
+        Path: event:/SFX/Combat/Actions/DefaultStatChange
   <DungeonExplorationAmbience>k__BackingField:
     Guid:
       Data1: 0
@@ -93,20 +120,24 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  <DefaultFootsteps>k__BackingField:
-    Guid:
-      Data1: -661674836
-      Data2: 1174318682
-      Data3: -816639355
-      Data4: -253537918
-    Path: event:/SFX/Exploration/FootstepSounds/StoneFootsteps
-  <StoneFootsteps>k__BackingField:
-    Guid:
-      Data1: -661674836
-      Data2: 1174318682
-      Data3: -816639355
-      Data4: -253537918
-    Path: event:/SFX/Exploration/FootstepSounds/StoneFootsteps
+  groundTypeSounds:
+    _serializedList:
+    - Key: 0
+      Value:
+        Guid:
+          Data1: -661674836
+          Data2: 1174318682
+          Data3: -816639355
+          Data4: -253537918
+        Path: event:/SFX/Exploration/FootstepSounds/StoneFootsteps
+    - Key: 1
+      Value:
+        Guid:
+          Data1: -661674836
+          Data2: 1174318682
+          Data3: -816639355
+          Data4: -253537918
+        Path: event:/SFX/Exploration/FootstepSounds/StoneFootsteps
   explorationObjectSounds:
     _serializedList:
     - Key: orb

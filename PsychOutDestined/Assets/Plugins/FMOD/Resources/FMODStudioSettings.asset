@@ -560,6 +560,7 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Combat_Actions
   - Exploration_Creatures
   - Exploration_Interactables
   - UI
