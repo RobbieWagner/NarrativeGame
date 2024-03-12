@@ -85,6 +85,8 @@ namespace PsychOutDestined
             }
             if(targets.Any()) 
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), targets[0].transform.position);
+            else
+                AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(ImpactSoundType.Miss), user.transform.position);
         }
     }
 
@@ -110,6 +112,8 @@ namespace PsychOutDestined
             }
             if(hitTargets.Any()) 
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), hitTargets.First().Key.transform.position);
+            else
+                AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(ImpactSoundType.Miss), user.transform.position);
         }
     }
 
@@ -133,6 +137,8 @@ namespace PsychOutDestined
             }
             if(targets.Any()) 
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), targets[0].transform.position);
+            else
+                AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(ImpactSoundType.Miss), user.transform.position);
         }
     }
 
@@ -160,6 +166,8 @@ namespace PsychOutDestined
             }
             if(hitTargets.Any()) 
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), hitTargets.First().Key.transform.position);
+            else
+                AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(ImpactSoundType.Miss), user.transform.position);
         }
     }
 

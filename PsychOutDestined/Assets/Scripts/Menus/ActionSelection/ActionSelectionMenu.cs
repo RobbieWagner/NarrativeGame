@@ -66,6 +66,7 @@ namespace PsychOutDestined
             Debug.Log($"{gameObject.name} selected action {curButton + 1}");
             turnMenu.unit.lastSelectedActionMenuOptionIndex = CurButton;
             StartCoroutine(menuButtons[CurButton].SelectButton(this));
+            InvokeOnSelectMenuItem();
             DisableMenu(false);
         }
     }

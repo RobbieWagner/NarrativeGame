@@ -28,4 +28,5 @@ MonoBehaviour:
     - rid: 4231066304365723663
       type: {class: AutoHitAttackActionEffect, ns: PsychOutDestined, asm: Main}
       data:
+        impactSound: 3
         power: 0

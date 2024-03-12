@@ -48,6 +48,7 @@ namespace PsychOutDestined
         protected override void SelectMenuItem(InputAction.CallbackContext context)
         {
             StartCoroutine(menuButtons[CurButton].SelectButton(this));
+            InvokeOnSelectMenuItem();
         }
     }
 }

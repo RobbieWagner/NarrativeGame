@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5956607014317452855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/UISelect
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI/UISelect
+  Guid:
+    Data1: -152789143
+    Data2: 1129438355
+    Data3: -784466798
+    Data4: 821120074
+  Banks:
+  - {fileID: 5661069590675217680}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2511685643563895680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +89,7 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638457762320000000
+  lastModified: 638458447200000000
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -120,12 +147,13 @@ MonoBehaviour:
   - {fileID: -7962216221189863590}
   - {fileID: -44752500477179081}
   - {fileID: 2119163510750777729}
+  - {fileID: -5956607014317452855}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1525922700896306820}
   StringsBanks:
   - {fileID: 7718977972539771095}
-  cacheTime: 638457762320000000
+  cacheTime: 638458447200000000
   cacheVersion: 131616
 --- !u!114 &1915420130328134700
 MonoBehaviour:
@@ -263,10 +291,10 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638456819140000000
+  lastModified: 638458447200000000
   FileSizes:
   - Name: Desktop
-    Value: 3680
+    Value: 10080
   Exists: 1
 --- !u!114 &7718977972539771095
 MonoBehaviour:
@@ -283,10 +311,10 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638457762320000000
+  lastModified: 638458447200000000
   FileSizes:
   - Name: Desktop
-    Value: 1262
+    Value: 1310
   Exists: 1
 --- !u!114 &9102094338112223454
 MonoBehaviour:

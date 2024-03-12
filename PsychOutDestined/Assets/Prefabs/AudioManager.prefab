@@ -51,6 +51,13 @@ MonoBehaviour:
       Data3: -1394688065
       Data4: 1931677989
     Path: event:/SFX/UI/UINavigation
+  <MenuSelection>k__BackingField:
+    Guid:
+      Data1: -152789143
+      Data2: 1129438355
+      Data3: -784466798
+      Data4: 821120074
+    Path: event:/SFX/UI/UISelect
   <NextDialogueLine>k__BackingField:
     Guid:
       Data1: 0

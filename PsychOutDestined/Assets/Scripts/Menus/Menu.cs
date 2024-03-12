@@ -40,6 +40,7 @@ namespace PsychOutDestined
             menuControls = new MenuControls();
             menuControls.UIInput.Navigate.started += NavigateMenu;
             menuControls.UIInput.Select.performed += SelectMenuItem;
+            OnSelectMenuItem += PlayMenuSelectionSound;
 
             if (OnByDefault) 
                 SetupMenu();
@@ -102,6 +103,21 @@ namespace PsychOutDestined
         {
             DisableMenu();
             StartCoroutine(menuButtons[CurButton].SelectButton(this));
+            InvokeOnSelectMenuItem();
+        }
+
+        public delegate void OnSelectMenuItemDelegate();
+        public event OnSelectMenuItemDelegate OnSelectMenuItem;
+        protected void InvokeOnSelectMenuItem()
+        {
+            OnSelectMenuItem?.Invoke();
+        }
+
+        protected void PlayMenuSelectionSound()
+        {
+            AudioManager.PlayOneShot(
+                AudioEventsLibrary.Instance.MenuSelection,
+                AudioListenerInstance.Instance != null? AudioListenerInstance.Instance.GetAttenuationObjectPosition() : transform.position);
         }
 
         protected virtual void GoToPreviousMenu(InputAction.CallbackContext context)

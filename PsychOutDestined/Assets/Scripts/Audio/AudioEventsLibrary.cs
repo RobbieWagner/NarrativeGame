@@ -27,6 +27,7 @@ namespace PsychOutDestined
 
         [field: Header("UI")]
         [field: SerializeField] public EventReference MenuNavigation {get; private set;}
+        [field: SerializeField] public EventReference MenuSelection {get; private set;}
 
         [field: Header("Dialogue")]
         [field: SerializeField] public EventReference NextDialogueLine {get; private set;}
