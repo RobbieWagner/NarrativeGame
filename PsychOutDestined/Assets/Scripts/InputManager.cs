@@ -35,7 +35,7 @@ namespace PsychOutDestined
         public bool DeregisterActionCollection(IInputActionCollection actionCollection)
         {
             bool removed = activeActionCollections.Remove(actionCollection);
-            Debug.Log("removed " + removed);
+            //Debug.Log("removed " + removed);
             if (removed)
                 actionCollection.Disable();
             return removed;

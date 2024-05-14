@@ -21,7 +21,7 @@ namespace PsychOutDestined
 
         public override void SetupMenu(bool registerActionCollection = true)
         {
-            Debug.Log("opening action menu");
+            //Debug.Log("opening action menu");
             if(menuButtons != null)
             {
                 foreach(MenuButton button in menuButtons)
@@ -63,7 +63,7 @@ namespace PsychOutDestined
 
         protected override void SelectMenuItem(InputAction.CallbackContext context)
         {
-            Debug.Log($"{gameObject.name} selected action {curButton + 1}");
+            //Debug.Log($"{gameObject.name} selected action {curButton + 1}");
             turnMenu.unit.lastSelectedActionMenuOptionIndex = CurButton;
             StartCoroutine(menuButtons[CurButton].SelectButton(this));
             InvokeOnSelectMenuItem();

@@ -83,7 +83,7 @@ namespace PsychOutDestined
         {
             if (canStartNewCombat && currentPhase == CombatPhase.None && newCombat != null)
             {
-                Debug.Log("combat started");
+                //Debug.Log("combat started");
                 currentCombat = newCombat;
                 StartCoroutine(StartCombatPhase(CombatPhase.CombatSetup));
                 return true;
@@ -102,7 +102,7 @@ namespace PsychOutDestined
 
         private IEnumerator RunCombatPhases()
         {
-            Debug.Log("starting combat");
+            //Debug.Log("starting combat");
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatStarted));
             while (currentPhase != CombatPhase.CombatEnd)
             {
@@ -130,12 +130,12 @@ namespace PsychOutDestined
                     break;
 
                 case CombatPhase.ActionSelection:
-                    Debug.Log("Action Selection Phase");
+                    //Debug.Log("Action Selection Phase");
                     yield return StartCoroutine(HandleActionSelectionPhase());
                     break;
 
                 case CombatPhase.ActionExecution:
-                    Debug.Log("Action Execution Phase");
+                    //Debug.Log("Action Execution Phase");
                     yield return StartCoroutine(ExecuteUnitAction());
                     break;
 
@@ -190,9 +190,9 @@ namespace PsychOutDestined
         protected virtual IEnumerator ExecuteUnitAction()
         {
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.ExecutionPhaseStarted));
-            Debug.Log("Executing Actions...");
+            //Debug.Log("Executing Actions...");
 
-            Debug.Log($"{currentActingUnit.name} is acting");
+            //Debug.Log($"{currentActingUnit.name} is acting");
             if (currentActingUnit.isUnitActive && currentActingUnit.selectedAction != null)
             {
                 List<Unit> intendedTargets = currentActingUnit.selectedAction.GetTargetUnits(currentActingUnit.selectedTargets);
@@ -206,7 +206,8 @@ namespace PsychOutDestined
                 OnEndActionExecution?.Invoke(currentActingUnit, intendedTargets);
                 yield return new WaitForSeconds(.25f);
             }
-            else if (!currentActingUnit.isUnitActive) Debug.Log($"{currentActingUnit.name} defeated, action cancelled");
+            else if (!currentActingUnit.isUnitActive) 
+                Debug.Log($"{currentActingUnit.name} defeated, action cancelled");
             currentActingUnit.selectedAction = null;
 
             //foreach(Unit unit in unitsInInitiativeOrder) Debug.Log(unit.ToString());
@@ -242,7 +243,7 @@ namespace PsychOutDestined
 
         protected virtual IEnumerator TerminateCombatScene()
         {
-            Debug.Log("Tearing Down Combat");
+            //Debug.Log("Tearing Down Combat");
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatTerminated));
             OnCombatTerminated?.Invoke();
         }
@@ -309,7 +310,7 @@ namespace PsychOutDestined
         {
             if (UnityEngine.Random.Range(0, 50) == 0)
             {
-                Debug.Log("combat interrupted");
+                //Debug.Log("combat interrupted");
                 isInterrupted = true;
                 yield return new WaitForSeconds(.5f);
             }

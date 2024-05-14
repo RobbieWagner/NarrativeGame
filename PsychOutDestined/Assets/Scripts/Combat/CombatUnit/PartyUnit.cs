@@ -23,7 +23,7 @@ namespace PsychOutDestined
         {
             if(unitData == null) return;
             unitSaveData = unitData;
-            Debug.Log(unitSaveData.ToString());
+            //Debug.Log(unitSaveData.ToString());
             InitializeUnit();
         }
 
@@ -52,7 +52,7 @@ namespace PsychOutDestined
                 availableActions = new List<CombatAction>();
                 foreach(string combatActionPath in unitSaveData.actionFilePaths)
                 {
-                    CombatAction action = Resources.Load<CombatAction>(combatActionPath);
+                    CombatAction action = Resources.Load<CombatAction>($"{StaticGameStats.combatActionFilePath}/{combatActionPath}");
                     if(action != null) 
                         availableActions.Add(action);
                 }

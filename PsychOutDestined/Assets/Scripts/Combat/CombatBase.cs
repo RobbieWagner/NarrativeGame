@@ -9,5 +9,6 @@ namespace PsychOutDestined
         public List<Unit> allyPrefabs;
         public List<Unit> enemyPrefabs;
         public CombatUIBase combatUIPrefab;
+        //public bool usePartyUnits = true;
     }
 }

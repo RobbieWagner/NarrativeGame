@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using FMODUnity;
+using RobbieWagnerGames.Common;
 
 namespace PsychOutDestined
 {

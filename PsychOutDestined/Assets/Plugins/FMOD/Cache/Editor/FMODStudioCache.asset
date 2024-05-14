@@ -69,7 +69,7 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Combat_Actions.bank
   Name: Combat_Actions
   StudioPath: bank:/Combat_Actions
-  lastModified: 638457762320000000
+  lastModified: 638494929375761995
   FileSizes:
   - Name: Desktop
     Value: 42048
@@ -89,7 +89,7 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638458447200000000
+  lastModified: 638494929375772033
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -153,7 +153,7 @@ MonoBehaviour:
   - {fileID: -1525922700896306820}
   StringsBanks:
   - {fileID: 7718977972539771095}
-  cacheTime: 638458447200000000
+  cacheTime: 638494929375772033
   cacheVersion: 131616
 --- !u!114 &1915420130328134700
 MonoBehaviour:
@@ -170,7 +170,7 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Exploration_Interactables.bank
   Name: Exploration_Interactables
   StudioPath: bank:/Exploration_Interactables
-  lastModified: 638456820500000000
+  lastModified: 638494929375761995
   FileSizes:
   - Name: Desktop
     Value: 110656
@@ -217,7 +217,7 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Exploration_Creatures.bank
   Name: Exploration_Creatures
   StudioPath: bank:/Exploration_Creatures
-  lastModified: 638456819140000000
+  lastModified: 638494929375761995
   FileSizes:
   - Name: Desktop
     Value: 8032
@@ -291,7 +291,7 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638458447200000000
+  lastModified: 638494929375772033
   FileSizes:
   - Name: Desktop
     Value: 10080
@@ -311,7 +311,7 @@ MonoBehaviour:
   Path: ../PsychOutDestinedFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638458447200000000
+  lastModified: 638494929375772033
   FileSizes:
   - Name: Desktop
     Value: 1310

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using RobbieWagnerGames;
 using UnityEngine;
@@ -12,16 +13,21 @@ namespace PsychOutDestined
         [Header("Player Party")]
         public PartyUnit partyUnitPrefab;
         [SerializeField] public List<SerializableUnit> playerParty;
+        [SerializeField] public List<SerializableUnit> defaultParty;
         public const int MAX_PARTY_SIZE = 20;
         public const string PARTY_SAVE_DATA_FILE_PATH = "/Combat/party";
 
         private void LoadPlayersParty()
         {
             playerParty = JsonDataService.Instance.LoadData(PARTY_SAVE_DATA_FILE_PATH + "_units", new List<SerializableUnit>(), false);
-            foreach (SerializableUnit unit in playerParty) 
-                Debug.Log(unit?.ToString());
-            if (playerParty.Count == 0) Debug.LogWarning("Player does not have any save data for current party!");
-            if (playerParty.Count > MAX_PARTY_SIZE) playerParty.RemoveRange(MAX_PARTY_SIZE, playerParty.Count);
+            if (!playerParty.Any()) 
+            {
+                Debug.LogWarning("Player does not have any save data for current party (loading default party)");
+                playerParty = defaultParty;
+            }
+            if (playerParty.Count > MAX_PARTY_SIZE)    
+                playerParty.RemoveRange(MAX_PARTY_SIZE, playerParty.Count);
+            Debug.Log("party loaded");
         }
 
         private void SavePlayersParty()

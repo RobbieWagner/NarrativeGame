@@ -28,6 +28,7 @@ MonoBehaviour:
     - rid: 4231066304365723652
       type: {class: StatChangeChanceActionEffect, ns: PsychOutDestined, asm: Main}
       data:
+        impactSound: 8
         attackAccuracy: 95
         stat: 0
         power: -1

@@ -4,8 +4,9 @@ using System.Linq;
 using AYellowpaper.SerializedCollections;
 using FMODUnity;
 using UnityEngine;
+using PsychOutDestined;
 
-namespace PsychOutDestined
+namespace RobbieWagnerGames.Common
 {
     #region Action Impact Sounds
     public enum ImpactSoundType

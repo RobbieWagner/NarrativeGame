@@ -9,7 +9,7 @@ namespace PsychOutDestined
     {
         #region Asset File Paths
         //All file paths are local to Resources folder.
-        public static string combatActionFilePath = "CombatAction/";
+        public static string combatActionFilePath = "CombatAction";
         public static string spritesFilePath = "Sprites/";
         public static string combatAnimatorFilePath = "Animation/CombatAnimation";
         public static string defaultCombatAnimatorFilePath = "Animation/CombatAnimation/Player/Player";

@@ -37,22 +37,25 @@ namespace PsychOutDestined
         protected virtual IEnumerator HandleActionSelectionPhase()
         {
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.SelectionPhaseStarted));
-            Debug.Log("Handling Action Selection...");
+            //Debug.Log("Handling Action Selection...");
             OnBeginActionSelection?.Invoke();
 
-            currentActingUnit = unitsInInitiativeOrder[0];
+            currentActingUnit = unitsInInitiativeOrder[currentUnitIndex];
             if(currentActingUnit.isUnitActive)
             {
                 if(enemies.Contains(currentActingUnit))
                 {
                     currentActingUnit.selectedAction = SelectAnAction(currentActingUnit, currentActingUnit.availableActions);
-                    if (currentActingUnit.selectedAction != null) currentActingUnit.selectedTargets = SelectTargetsForSelectedAction(currentActingUnit);
-                    else currentActingUnit.selectedAction = passTurn;
+                    if (currentActingUnit.selectedAction != null) 
+                        currentActingUnit.selectedTargets = SelectTargetsForSelectedAction(currentActingUnit);
+                    else 
+                        currentActingUnit.selectedAction = passTurn;
                     finishedSelectingAction = true;
                 }
                 else StartActionSelection();
 
-                while (!finishedSelectingAction) yield return null;
+                while (!finishedSelectingAction) 
+                    yield return null;
 
                 OnEndActionSelection?.Invoke();
                 yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.SelectionPhaseEnded));
@@ -64,7 +67,7 @@ namespace PsychOutDestined
 
         protected void BeginActionSelection()
         {
-            Debug.Log("Action Selection Begun");
+            //Debug.Log("Action Selection Begun");
             finishedSelectingAction = false;
 
             selectionControls.UIInput.Navigate.performed += NavigateTargets;
@@ -76,7 +79,7 @@ namespace PsychOutDestined
         protected void StartActionSelection(bool loadLastSelection = false)
         {
             BeginActionSelection();
-            Debug.Log($"Action Selection Begun for unit: {currentActingUnit.name}");
+            //Debug.Log($"Action Selection Begun for unit: {currentActingUnit.name}");
             isSelectingAction = true;
             isSelectingTargets = false;
 
@@ -122,7 +125,7 @@ namespace PsychOutDestined
 
         protected void StartTargetSelection(CombatAction selectedAction)
         {
-            Debug.Log($"start target selection for {selectedAction.name}");
+            //Debug.Log($"start target selection for {selectedAction.name}");
             actionTargets = new List<Unit>();
             currentActingUnit.selectedTargets = new List<Unit>();
             isSelectingAction = false;
@@ -188,7 +191,7 @@ namespace PsychOutDestined
 
         protected void EndActionSelection()
         {
-            Debug.Log($"Action selection complete");
+            //Debug.Log($"Action selection complete");
             //IInputManager.Instance.DeregisterActionMap(selectionControls.UIInput);
             DisableSelectionControls();
 

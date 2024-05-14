@@ -28,5 +28,6 @@ MonoBehaviour:
     - rid: 4231066304365723659
       type: {class: StatChangeActionEffect, ns: PsychOutDestined, asm: Main}
       data:
+        impactSound: 8
         stat: 2
         power: 1
