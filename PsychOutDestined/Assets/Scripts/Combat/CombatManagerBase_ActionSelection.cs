@@ -40,7 +40,7 @@ namespace PsychOutDestined
             //Debug.Log("Handling Action Selection...");
             OnBeginActionSelection?.Invoke();
 
-            currentActingUnit = unitsInInitiativeOrder[currentUnitIndex];
+            currentActingUnit = unitsInInitiativeOrder[currentUnitIndex % unitsInInitiativeOrder.Count];
             if(currentActingUnit.isUnitActive)
             {
                 if(enemies.Contains(currentActingUnit))

@@ -20,6 +20,8 @@ namespace PsychOutDestined
         [SerializeField] public Canvas ScreenSpaceCanvas;
         [SerializeField] public Canvas WorldSpaceCanvas;
 
+        [SerializeField] private InitiativeBar initiativeBar;
+
         public virtual IEnumerator InitializeUI()
         {
             yield return null;
@@ -40,12 +42,19 @@ namespace PsychOutDestined
 
                     CombatManagerBase.Instance.OnToggleActionSelectionInfo += ToggleActionSelectionInfo;
                     CombatManagerBase.Instance.OnToggleTargetSelectionInfo += ToggleTargetSelectionInfo;
+                
+                    CombatManagerBase.Instance.OnUpdateInitiativeOrder += UpdateInitiativeOrder;
                 }
             }
             catch (NullReferenceException e)
             {
                 Debug.LogError("Combat Manager Found Null in Combat UI, Please define a Combat Manager before calling InitializeUI.");
             }
+        }
+
+        private void UpdateInitiativeOrder(List<Unit> initiativeOrder, List<Unit> inactiveUnits)
+        {
+            initiativeBar.SetBarImages(initiativeOrder, inactiveUnits);
         }
 
         protected virtual void AddAllyUI(Unit ally)

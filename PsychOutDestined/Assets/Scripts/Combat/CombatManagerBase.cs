@@ -137,6 +137,7 @@ namespace PsychOutDestined
                 case CombatPhase.ActionExecution:
                     //Debug.Log("Action Execution Phase");
                     yield return StartCoroutine(ExecuteUnitAction());
+                    currentUnitIndex++;
                     break;
 
                 case CombatPhase.TurnEnd:
@@ -158,7 +159,12 @@ namespace PsychOutDestined
         protected virtual CombatPhase GetNextPhase()
         {
             if (CheckForCombatEnd()) return CombatPhase.CombatEnd;
-            if (currentPhase == CombatPhase.ActionExecution && unitsInInitiativeOrder.Count > 0) return CombatPhase.ActionSelection;
+            if (currentPhase == CombatPhase.ActionExecution && unitsInInitiativeOrder.Count > 0) 
+            {
+                if(currentUnitIndex % unitsInInitiativeOrder.Count == 0)
+                    return CombatPhase.TurnStart;
+                return CombatPhase.ActionSelection;
+            }
             return (CombatPhase)(((int)currentPhase + 1) % 4);
         }
 
@@ -178,14 +184,21 @@ namespace PsychOutDestined
             unitsInInitiativeOrder = new List<Unit>();
             unitsInInitiativeOrder.AddRange(allies);
             unitsInInitiativeOrder.AddRange(enemies);
-
+            
+            List<Unit> currentInactiveUnits = unitsInInitiativeOrder.Where(u => !u.isUnitActive).ToList();
             unitsInInitiativeOrder = unitsInInitiativeOrder.OrderBy(u => u.Initiative).Where(u => u.isUnitActive).ToList();
+            
+            OnUpdateInitiativeOrder?.Invoke(unitsInInitiativeOrder, currentInactiveUnits);
+
+            currentUnitIndex = 0;
 
             foreach (Unit enemy in enemies) enemy.selectedAction = null;
             foreach (Unit ally in allies) ally.selectedAction = null;
             yield return new WaitForSeconds(.2f);
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.TurnStarted));
         }
+        public delegate void OnUpdateInitiativeOrderDelegate(List<Unit> initiativeOrder, List<Unit> inactiveUnits);
+        public event OnUpdateInitiativeOrderDelegate OnUpdateInitiativeOrder;
 
         protected virtual IEnumerator ExecuteUnitAction()
         {
@@ -212,7 +225,7 @@ namespace PsychOutDestined
 
             //foreach(Unit unit in unitsInInitiativeOrder) Debug.Log(unit.ToString());
 
-            unitsInInitiativeOrder.Remove(currentActingUnit);
+            //unitsInInitiativeOrder.Remove(currentActingUnit);
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.ExecutionPhaseEnded));
         }
 

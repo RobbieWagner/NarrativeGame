@@ -41,6 +41,8 @@ namespace PsychOutDestined
         [HideInInspector] public int lastSelectedActionMenuOptionIndex = 0;
         [HideInInspector] public List<int> lastSelectedTargetIndexes;
 
+        public Sprite headSprite; 
+
         protected Color BLINK_MIN_COLOR;
 
         // Initialization

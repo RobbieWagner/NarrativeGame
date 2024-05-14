@@ -56,6 +56,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
+      propertyPath: headSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6388427298234346aaa1b6cd65a5fa1,
+        type: 3}
+    - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
+        type: 3}
       propertyPath: availableActions.Array.size
       value: 4
       objectReference: {fileID: 0}
