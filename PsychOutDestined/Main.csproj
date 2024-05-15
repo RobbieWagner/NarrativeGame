@@ -152,6 +152,7 @@
     <Compile Include="Assets\Scripts\SaveData\JsonDataService.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Grid\GridTile.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Dialogue\DialogueManager_UI.cs" />
+    <Compile Include="Assets\Scripts\Combat\UI\InitiativeBar.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Utilities\SaveSystem\SaveData.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatManagerBase.cs" />
     <Compile Include="Assets\Scripts\SequenceEvents\MoveCameraSequenceEvent.cs" />

@@ -73,8 +73,11 @@ namespace PsychOutDestined
             {
                 isUnitActive = false;
                 Debug.Log($"{name} is defeated!");
+                OnDeactivateUnit?.Invoke(this);
             }
         }
+        public delegate void OnDeactivateUnitDelegate(Unit unit);
+        public event OnDeactivateUnitDelegate OnDeactivateUnit;
 
         public override string ToString()
         {
@@ -133,6 +136,11 @@ namespace PsychOutDestined
             return string.IsNullOrWhiteSpace(animatorControllerPath) 
                 ? $"{StaticGameStats.combatAnimatorFilePath}/{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(UnitName)}/{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(UnitName)}"
                 : $"{StaticGameStats.combatAnimatorFilePath}/{animatorControllerPath}";
+        }
+
+        public virtual string GetHeadSpriteResourcePath()
+        {
+            return $"{StaticGameStats.headSpriteFilePath}/{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(UnitName)}";
         }
     }
 }

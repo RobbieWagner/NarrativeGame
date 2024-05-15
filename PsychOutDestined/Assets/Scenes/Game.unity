@@ -166,6 +166,7 @@ MonoBehaviour:
     Heart: 0
     actionFilePaths: []
     animatorFilePath: 
+    headSpriteRelativePath: 
   testUnit: {fileID: 0}
 --- !u!4 &217187760
 Transform:
@@ -659,7 +660,8 @@ MonoBehaviour:
     - Rest
     - PassTurn
     animatorFilePath: Indy/Indy
-  - UnitName: Unit
+    headSpriteRelativePath: Indy
+  - UnitName: Player
     HP: 100
     Stress: 0
     MaxHP: 5
@@ -676,7 +678,8 @@ MonoBehaviour:
     - Rest
     - PassTurn
     animatorFilePath: Player/Player
-  - UnitName: Unit
+    headSpriteRelativePath: 
+  - UnitName: Wes
     HP: 100
     Stress: 0
     MaxHP: 5
@@ -693,6 +696,7 @@ MonoBehaviour:
     - Rest
     - PassTurn
     animatorFilePath: Wes/Wes
+    headSpriteRelativePath: Wes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

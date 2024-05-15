@@ -24,6 +24,7 @@ namespace PsychOutDestined
 
         public List<string> actionFilePaths;
         public string animatorFilePath;
+        public string headSpriteRelativePath;
 
         //TODO: add refs for unitanimator.
 

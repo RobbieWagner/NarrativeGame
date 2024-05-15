@@ -57,6 +57,8 @@ namespace PsychOutDestined
                         availableActions.Add(action);
                 }
 
+                headSprite = Resources.Load<Sprite>(string.IsNullOrWhiteSpace(unitSaveData.headSpriteRelativePath) ? GetHeadSpriteResourcePath() : $"{StaticGameStats.headSpriteFilePath}/{unitSaveData.headSpriteRelativePath}");
+
                 InitializeStats();
 
                 HP = unitSaveData.HP;

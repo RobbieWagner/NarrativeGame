@@ -168,11 +168,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: DEBUG
+  animatorControllerPath: 
   unitAnimator: {fileID: 2358462362019067861}
   unitSprite: {fileID: 4981739120633555086}
-  currentSelectedAction: {fileID: 0}
+  selectedAction: {fileID: 0}
   selectedTargets: []
   isUnitActive: 1
+  lastSelectedTurnMenuOptionIndex: 0
+  lastSelectedActionMenuOptionIndex: 0
+  lastSelectedTargetIndexes: 
+  headSprite: {fileID: 0}
   Class: -1
   maxStatValues:
     _serializedList:

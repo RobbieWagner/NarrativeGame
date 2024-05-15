@@ -17,7 +17,7 @@ namespace PsychOutDestined
         public CombatAction passTurn;
 
         private Unit currentActingUnit;
-        private int currentUnitIndex;
+        public int currentUnitIndex {get; private set;}
 
         private Unit currentTarget;
         private int currentTargetIndex;
@@ -45,6 +45,7 @@ namespace PsychOutDestined
             {
                 if(enemies.Contains(currentActingUnit))
                 {
+                    OnEnemyActionSelectionBegin?.Invoke(currentActingUnit);
                     currentActingUnit.selectedAction = SelectAnAction(currentActingUnit, currentActingUnit.availableActions);
                     if (currentActingUnit.selectedAction != null) 
                         currentActingUnit.selectedTargets = SelectTargetsForSelectedAction(currentActingUnit);
@@ -64,6 +65,8 @@ namespace PsychOutDestined
         public delegate void OnToggleActionSelectionStateDelegate();
         public event OnToggleActionSelectionStateDelegate OnBeginActionSelection;
         public event OnToggleActionSelectionStateDelegate OnEndActionSelection;
+        public delegate void OnEnemyActionSelectionBeginDelegate(Unit unit);
+        public event OnEnemyActionSelectionBeginDelegate OnEnemyActionSelectionBegin;
 
         protected void BeginActionSelection()
         {

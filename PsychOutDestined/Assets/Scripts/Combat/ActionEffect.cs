@@ -110,6 +110,10 @@ namespace PsychOutDestined
                     hitTarget.Key.HP -= healthDelta;
                     Debug.Log($"{user.name} hit {hitTarget.Key.name} for {healthDelta} damage!");
                 }
+                else
+                {
+                    Debug.Log($"{user.name} could not hit {hitTarget.Key.name}: target invalid");
+                }
             }
             if(hitTargets.Any()) 
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), hitTargets.First().Key.transform.position);

@@ -42,19 +42,15 @@ namespace PsychOutDestined
 
                     CombatManagerBase.Instance.OnToggleActionSelectionInfo += ToggleActionSelectionInfo;
                     CombatManagerBase.Instance.OnToggleTargetSelectionInfo += ToggleTargetSelectionInfo;
-                
-                    CombatManagerBase.Instance.OnUpdateInitiativeOrder += UpdateInitiativeOrder;
+
+                    CombatManagerBase.Instance.OnUpdateInitiativeOrder += UpdateInitiativeOrderUI;
+                    initiativeBar?.InitializeInitiativeBar();
                 }
             }
             catch (NullReferenceException e)
             {
                 Debug.LogError("Combat Manager Found Null in Combat UI, Please define a Combat Manager before calling InitializeUI.");
             }
-        }
-
-        private void UpdateInitiativeOrder(List<Unit> initiativeOrder, List<Unit> inactiveUnits)
-        {
-            initiativeBar.SetBarImages(initiativeOrder, inactiveUnits);
         }
 
         protected virtual void AddAllyUI(Unit ally)
@@ -64,6 +60,11 @@ namespace PsychOutDestined
             newUnitUI.combatUI = this;
             newUnitUI.InitializeUnitUI();
             alliesUI.Add(newUnitUI);
+        }
+
+        private void UpdateInitiativeOrderUI(List<Unit> units, List<Unit> inactiveUnits)
+        {
+            initiativeBar?.SetBarImages(units, inactiveUnits);
         }
 
         protected virtual void AddEnemyUI(Unit enemy)

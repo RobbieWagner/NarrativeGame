@@ -15,6 +15,7 @@ namespace PsychOutDestined
         public static string defaultCombatAnimatorFilePath = "Animation/CombatAnimation/Player/Player";
         public static string characterSpriteFilePath = "Sprites/Characters/";
         public static string backgroundSpriteFilePath = "Sprites/Backgrounds/";
+        public static string headSpriteFilePath = "Sprites/Heads";
         public static string soundFilePath = "Sounds/";
         public static string dialogueMusicFilePath = "Sounds/Dialogue/Music/";
         public static string dialogueSoundEffectsFilePath = "Sounds/Dialogue/SoundEffects/";

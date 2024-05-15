@@ -53,7 +53,7 @@ PrefabInstance:
         type: 3}
       propertyPath: headSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9d1026d1d2cccb544aede03070c2b7dd,
+      objectReference: {fileID: 21300000, guid: 5f33d5a9a6d08d74289a9311e085b567,
         type: 3}
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
