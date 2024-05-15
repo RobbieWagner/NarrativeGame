@@ -21,6 +21,7 @@ namespace PsychOutDestined
         [SerializeField] public Canvas WorldSpaceCanvas;
 
         [SerializeField] private InitiativeBar initiativeBar;
+        [SerializeField] private TurnTracker turnTracker;
 
         public virtual IEnumerator InitializeUI()
         {
@@ -45,6 +46,8 @@ namespace PsychOutDestined
 
                     CombatManagerBase.Instance.OnUpdateInitiativeOrder += UpdateInitiativeOrderUI;
                     initiativeBar?.InitializeInitiativeBar();
+
+                    turnTracker?.InitializeTurnTracker();
                 }
             }
             catch (NullReferenceException e)

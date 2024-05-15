@@ -397,8 +397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae22f02f0911dc46ae6d215f25de16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alliesPosition: {x: -3.25, y: 0, z: 0}
-  enemiesPosition: {x: 3.25, y: 0, z: 0}
+  alliesPosition: {x: -2, y: 0, z: 0}
+  enemiesPosition: {x: 2, y: 0, z: 0}
   distanceBetweenAllies: {x: 0.6, y: 0, z: 1.5}
   distanceBetweenEnemies: {x: -0.5, y: 0, z: 1.5}
   camPosition: {x: 0, y: 2.25, z: -6.5}

@@ -162,7 +162,7 @@ namespace PsychOutDestined
             if (currentPhase == CombatPhase.ActionExecution && unitsInInitiativeOrder.Count > 0) 
             {
                 if(currentUnitIndex % unitsInInitiativeOrder.Count == 0)
-                    return CombatPhase.TurnStart;
+                    return CombatPhase.TurnEnd;
                 return CombatPhase.ActionSelection;
             }
             return (CombatPhase)(((int)currentPhase + 1) % 4);
@@ -196,9 +196,12 @@ namespace PsychOutDestined
             foreach (Unit ally in allies) ally.selectedAction = null;
             yield return new WaitForSeconds(.2f);
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.TurnStarted));
+            OnStartTurn?.Invoke();
         }
         public delegate void OnUpdateInitiativeOrderDelegate(List<Unit> initiativeOrder, List<Unit> inactiveUnits);
         public event OnUpdateInitiativeOrderDelegate OnUpdateInitiativeOrder;
+        public delegate void OnStartTurnDelegate();
+        public event OnStartTurnDelegate OnStartTurn;
 
         protected virtual IEnumerator ExecuteUnitAction()
         {

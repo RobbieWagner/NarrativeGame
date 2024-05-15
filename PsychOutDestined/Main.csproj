@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Utilities\Interactables\DialogueInteractable.cs" />
     <Compile Include="Assets\Scripts\SequenceEvents\WaitSequenceEvent.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Utilities\StateMachine\BaseState.cs" />
+    <Compile Include="Assets\Scripts\Combat\UI\TurnTracker.cs" />
     <Compile Include="Assets\Scripts\SceneTransition\SceneTransitionSceneEvent.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\UI\Settings\GraphicsSettings.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Utilities\PlayerInputActions.cs" />
