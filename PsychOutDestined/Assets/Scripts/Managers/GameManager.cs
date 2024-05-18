@@ -12,7 +12,7 @@ namespace PsychOutDestined
         Other = 3
     }
 
-    public class GameManager : MonoBehaviour
+    public partial class GameManager  : MonoBehaviour
     {
         [Header("Pausing")]
         public bool canPause = false;

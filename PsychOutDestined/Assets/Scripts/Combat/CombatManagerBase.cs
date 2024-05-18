@@ -26,7 +26,7 @@ namespace PsychOutDestined
         public bool usePartyUnits = true;
         public int unitLimit = 3;
         protected CombatBase currentCombat;
-        protected CombatUIBase currentUI;
+        [SerializeField] protected CombatUIBase currentUI;
         [HideInInspector] public List<Unit> allies;
         [HideInInspector] public List<Unit> enemies;
         public CombatPhase currentPhase = CombatPhase.None;
@@ -213,12 +213,35 @@ namespace PsychOutDestined
             {
                 List<Unit> intendedTargets = currentActingUnit.selectedAction.GetTargetUnits(currentActingUnit.selectedTargets);
                 OnStartActionExecution?.Invoke(currentActingUnit, intendedTargets);
-                yield return StartCoroutine(CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position,
+
+                #region execution coroutines
+                List<IEnumerator> preExecutionCoroutines = new List<IEnumerator>
+                {
+                    CombatCamera.Instance?.MoveCamera(Vector3.MoveTowards(CombatCamera.Instance.defaultPosition + CombatCamera.Instance.transform.parent.position,
                                                                                     currentActingUnit.transform.position,
-                                                                                    1f)));
-                //show UI for action
-                StartCoroutine(CombatCamera.Instance?.ResetCameraPosition(.75f));
+                                                                                    2f)),
+                    currentUI.moveFlash.SlideInActionUI(currentActingUnit, currentActingUnit.selectedAction)
+                };
+                yield return StartCoroutine(GameManager.Instance.ExecuteCoroutinesConcurrently(preExecutionCoroutines));
+
+                List<IEnumerator> periExecutionCoroutines = new List<IEnumerator> 
+                {
+                    CombatCamera.Instance?.ResetCameraPosition(1f),
+                    currentUI.moveFlash.SlideOutActionUI()
+                };
+                StartCoroutine(GameManager.Instance.ExecuteCoroutinesConcurrently(periExecutionCoroutines));
+
+                // ACTUAL EXECUTION OF THE SELECTED ACTION
                 yield return StartCoroutine(currentActingUnit.selectedAction?.ExecuteAction(currentActingUnit,intendedTargets));
+                // ----------------------------------------
+
+                List<IEnumerator> postExecutionCoroutines = new List<IEnumerator>
+                {
+                    GameManager.Instance.WaitCoroutine(1)
+                };
+                yield return StartCoroutine(GameManager.Instance.ExecuteCoroutinesConcurrently(postExecutionCoroutines));
+                #endregion
+
                 OnEndActionExecution?.Invoke(currentActingUnit, intendedTargets);
                 yield return new WaitForSeconds(.25f);
             }

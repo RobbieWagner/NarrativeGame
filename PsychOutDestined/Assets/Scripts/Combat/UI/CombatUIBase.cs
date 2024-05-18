@@ -22,6 +22,7 @@ namespace PsychOutDestined
 
         [SerializeField] private InitiativeBar initiativeBar;
         [SerializeField] private TurnTracker turnTracker;
+        [SerializeField] public MoveFlash moveFlash;
 
         public virtual IEnumerator InitializeUI()
         {
