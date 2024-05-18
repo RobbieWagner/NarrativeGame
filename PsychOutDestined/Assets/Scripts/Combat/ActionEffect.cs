@@ -112,10 +112,10 @@ namespace PsychOutDestined
                 }
                 else
                 {
-                    Debug.Log($"{user.name} could not hit {hitTarget.Key.name}: target invalid");
+                    Debug.Log($"{user.name} missed attack against {hitTarget.Key.name}");
                 }
             }
-            if(hitTargets.Any()) 
+            if(hitTargets.Where(t => t.Value).Any()) 
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), hitTargets.First().Key.transform.position);
             else
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(ImpactSoundType.Miss), user.transform.position);
