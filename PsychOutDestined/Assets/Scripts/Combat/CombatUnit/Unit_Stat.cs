@@ -21,7 +21,7 @@ namespace PsychOutDestined
         public delegate void OnUnitStatChangedDelegate();
         public event OnUnitStatChangedDelegate OnStatChanged;
 
-        [SerializeField] protected int hp;
+        protected int hp;
         public int HP
         {
             get => hp;

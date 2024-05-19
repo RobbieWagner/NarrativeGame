@@ -74,7 +74,6 @@
     <Compile Include="Assets\Scripts\Camera\GameCamera.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\UI\Pause\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Combat\UI\StatText.cs" />
-    <Compile Include="Assets\Scripts\Combat\CombatUnit\MentalityType.cs" />
     <Compile Include="Assets\Scripts\Exploration\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Menus\ControlsMenu.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Dialogue\DialogueChoice.cs" />
@@ -85,6 +84,7 @@
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Utilities\Interactables\DialogueInteractable.cs" />
     <Compile Include="Assets\Scripts\SequenceEvents\WaitSequenceEvent.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Utilities\StateMachine\BaseState.cs" />
+    <Compile Include="Assets\Scripts\Combat\Mentality\Mentality.cs" />
     <Compile Include="Assets\Scripts\Combat\UI\TurnTracker.cs" />
     <Compile Include="Assets\Scripts\SceneTransition\SceneTransitionSceneEvent.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\UI\Settings\GraphicsSettings.cs" />
@@ -154,6 +154,7 @@
     <Compile Include="Assets\Scripts\Combat\UI\InitiativeBar.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Utilities\SaveSystem\SaveData.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatManagerBase.cs" />
+    <Compile Include="Assets\Scripts\Combat\Mentality\MentalityManager.cs" />
     <Compile Include="Assets\Scripts\SequenceEvents\MoveCameraSequenceEvent.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatBase.cs" />
     <Compile Include="Assets\Scripts\GameSession\GameSession_Exploration.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Assets\Scripts\Combat\CombatEvents\CombatEvent.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Menus\ActionSelection\UseItemButton.cs" />
+    <Compile Include="Assets\Scripts\Combat\Mentality\MentalityEffect.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatUnit\PartyUnit.cs" />
     <Compile Include="Assets\Scripts\Static\StaticGameStats.cs" />
     <Compile Include="Assets\Scripts\Camera\AudioListenerInstance.cs" />
@@ -178,7 +180,6 @@
     <Compile Include="Assets\Scripts\Menus\ActionSelection\ItemsMenu.cs" />
     <Compile Include="Assets\Scripts\SequenceEvents\DialogueSequenceEvent.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatManagerBase_Events.cs" />
-    <Compile Include="Assets\Scripts\Combat\CombatUnit\MentalityManager.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Menus\PauseMenuButtons\QuitToMenuButton.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatUnit\UnitStatDetails.cs" />

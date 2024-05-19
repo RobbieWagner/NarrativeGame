@@ -45,6 +45,9 @@ namespace PsychOutDestined
 
         protected Color BLINK_MIN_COLOR;
 
+        private MentalityType currentMentailityType = MentalityType.FINE;
+        private Mentality currentMentality;
+
         // Initialization
         protected virtual void Awake()
         {
@@ -140,6 +143,29 @@ namespace PsychOutDestined
         public virtual string GetHeadSpriteResourcePath()
         {
             return $"{StaticGameStats.headSpriteFilePath}/{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(UnitName)}";
+        }
+
+        public MentalityType GetMentalityType => Stress >= GetMaxStatValue(UnitStat.Stress) ? MentalityType.PSYCHED_OUT : currentMentailityType;
+        public bool SetMentality(MentalityType mentalityType, Mentality mentality)
+        {
+            if (GetMentalityType != MentalityType.PSYCHED_OUT)
+            {
+                currentMentailityType = mentalityType;
+                if(!currentMentality.RemoveMentalityEffects(this))
+                {
+                    Debug.LogWarning($"Failed to remove mentality {currentMentailityType} from {UnitName}");
+                    return false;
+                }
+                currentMentality = mentality;
+                if(!currentMentality.ApplyMentalityEffects(this))
+                {
+                    Debug.LogWarning($"Failed to apply mentality {currentMentailityType} to {UnitName}");
+                    return false;
+                }
+                return true;
+            }
+
+            return false;
         }
     }
 }
