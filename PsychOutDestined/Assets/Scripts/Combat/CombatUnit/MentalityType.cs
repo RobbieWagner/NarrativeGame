@@ -6,7 +6,9 @@ namespace PsychOutDestined
 {
     public enum MentalityType
     {
+        PSYCHED_OUT,
         FINE,
+        
         HAPPY,
         CONFIDENT,
         SAD,
@@ -19,15 +21,11 @@ namespace PsychOutDestined
         TRAUMATIZED,
         DETERMINED,
         UPLIFTED,
-        TRUSTING
+        TRUSTING,
     }
 
-    [CreateAssetMenu(menuName = "Mentality")]
-    public class Mentality : ScriptableObject
+    public class Mentality
     {
-        public MentalityType mentalityType;
-        [SerializeReference] public List<MentalityEffect> effects;
+        public MentalityType type;
     }
-
-
 }
