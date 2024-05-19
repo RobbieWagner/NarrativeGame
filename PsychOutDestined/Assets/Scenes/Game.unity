@@ -662,7 +662,7 @@ MonoBehaviour:
     animatorFilePath: Indy/Indy
     headSpriteRelativePath: Indy
   - UnitName: Player
-    HP: 100
+    HP: 4
     Stress: 0
     MaxHP: 5
     MaxStress: 5

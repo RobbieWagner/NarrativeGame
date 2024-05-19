@@ -45,8 +45,8 @@ namespace PsychOutDestined
         public virtual bool CanFlee =>  baseFleeChance >= 100 
                                         ? true
                                         : baseFleeChance > 0 
-                                        ? UnityEngine.Random.Range(0, 100) - currentActingUnit.Agility * 2 + 
-                                            (enemies.Any() ? enemies.Select(e => e.Agility).Sum() / enemies.Count * 2 : 0) 
+                                        ? UnityEngine.Random.Range(0, 100) - currentActingUnit.GetStatValue(UnitStat.Agility) * 2 + 
+                                            (enemies.Any() ? enemies.Select(e => e.GetStatValue(UnitStat.Agility)).Sum() / enemies.Count * 2 : 0) 
                                             < baseFleeChance
                                         : false;
 
@@ -186,7 +186,7 @@ namespace PsychOutDestined
             unitsInInitiativeOrder.AddRange(enemies);
             
             List<Unit> currentInactiveUnits = unitsInInitiativeOrder.Where(u => !u.isUnitActive).ToList();
-            unitsInInitiativeOrder = unitsInInitiativeOrder.OrderBy(u => u.Initiative).Where(u => u.isUnitActive).ToList();
+            unitsInInitiativeOrder = unitsInInitiativeOrder.OrderBy(u => u.GetStatValue(UnitStat.Initiative)).Where(u => u.isUnitActive).ToList();
             
             OnUpdateInitiativeOrder?.Invoke(unitsInInitiativeOrder, currentInactiveUnits);
 

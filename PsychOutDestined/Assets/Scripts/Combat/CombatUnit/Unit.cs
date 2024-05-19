@@ -54,7 +54,6 @@ namespace PsychOutDestined
 
         protected virtual void InitializeUnit()
         {
-            unitStats = new Dictionary<UnitStat, int>();
             InitializeStats();
 
             OnHPChanged += CheckUnitStatus;

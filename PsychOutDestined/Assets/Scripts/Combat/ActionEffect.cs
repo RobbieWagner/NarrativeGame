@@ -38,7 +38,7 @@ namespace PsychOutDestined
 
         protected virtual bool UserHitsTarget(Unit user, Unit target)
         {
-            int hitChance = attackAccuracy + user.Focus - target.Agility;
+            int hitChance = attackAccuracy + user.GetStatValue(UnitStat.Focus) - target.GetStatValue(UnitStat.Agility);
             if (hitChance > 100) return true;
             return UnityEngine.Random.Range(0, 100) < hitChance;
         }
@@ -59,7 +59,7 @@ namespace PsychOutDestined
             //TODO: Add crit chance
             foreach (Unit target in targets)
             {
-                int healthDelta = power + user.Heart;
+                int healthDelta = power + user.GetStatValue(UnitStat.Heart);
                 target.HP += healthDelta;
                 Debug.Log($"{user.name} hit {target.name} for {healthDelta} damage!");
             }
@@ -80,7 +80,7 @@ namespace PsychOutDestined
             //TODO: Add crit chance
             foreach (Unit target in targets)
             {
-                int healthDelta = Math.Clamp(power + user.Brawn - target.Defense, 1, int.MaxValue);
+                int healthDelta = Math.Clamp(power + user.GetStatValue(UnitStat.Brawn) - target.GetStatValue(UnitStat.Defense), 1, int.MaxValue);
                 target.HP -= healthDelta;
                 Debug.Log($"{user.name} hit {target.name} for {healthDelta} damage!");
             }
@@ -106,7 +106,7 @@ namespace PsychOutDestined
                 if (hitTarget.Value)
                 {
                     //TODO: Add crit chance
-                    int healthDelta = Math.Clamp(power + user.Brawn - hitTarget.Key.Defense, 1, int.MaxValue);
+                    int healthDelta = Math.Clamp(power + user.GetStatValue(UnitStat.Brawn) - hitTarget.Key.GetStatValue(UnitStat.Defense), 1, int.MaxValue);
                     hitTarget.Key.HP -= healthDelta;
                     Debug.Log($"{user.name} hit {hitTarget.Key.name} for {healthDelta} damage!");
                 }
@@ -132,12 +132,12 @@ namespace PsychOutDestined
         public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
         {
             int statDelta = power;
-            if (power > 0) statDelta += user.Heart / 2;
+            if (power > 0) statDelta += user.GetStatValue(UnitStat.Heart) / 4;
             yield return CombatManagerBase.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
             //Debug.Log($"{user.name} is changing stats");
             foreach (Unit target in targets)
             {
-                target.EffectStatValue(stat, statDelta);
+                target.ModifyStatValue(stat, statDelta);
                 Debug.Log($"{user.name} {(statDelta > 0 ? "raised" : "lowered")} {target}'s {stat} by {Math.Abs(statDelta)}");
             }
             if(targets.Any()) 
@@ -157,7 +157,7 @@ namespace PsychOutDestined
         public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
         {
             int statDelta = power;
-            if (power >= 0) statDelta += user.Heart / 2;
+            if (power >= 0) statDelta += user.GetStatValue(UnitStat.Heart) / 4;
 
             yield return CombatManagerBase.Instance?.StartCoroutine(base.ExecuteActionEffect(user, targets));
             Debug.Log($"{user.name} is changing stats");
@@ -165,7 +165,7 @@ namespace PsychOutDestined
             {
                 if (hitTarget.Value)
                 {
-                    hitTarget.Key.EffectStatValue(stat, statDelta);
+                    hitTarget.Key.ModifyStatValue(stat, statDelta);
                     Debug.Log($"{user.name} {(statDelta > 0 ? "raised" : "lowered")} {hitTarget.Value}'s {stat} by {Math.Abs(statDelta)}");
                 }
             }
@@ -198,8 +198,8 @@ namespace PsychOutDestined
             Debug.Log($"{user.name} is resting");
             yield return null;
 
-            int stressRelieved = ((int)(manaRegenPercent / 100 * user.GetMaxStatValue(UnitStat.Stress))) + user.Psych;
-            int hpRegained = ((int)(hpRegenPercent / 100 * user.GetMaxStatValue(UnitStat.HP))) + (user.Defense / 3 * 2);
+            int stressRelieved = ((int)(manaRegenPercent / 100 * user.GetMaxStatValue(UnitStat.Stress))) + user.GetStatValue(UnitStat.Psych);
+            int hpRegained = ((int)(hpRegenPercent / 100 * user.GetMaxStatValue(UnitStat.HP))) + (user.GetStatValue(UnitStat.Defense) / 3 * 2);
 
             user.Stress -= stressRelieved;
             user.HP += hpRegained;
