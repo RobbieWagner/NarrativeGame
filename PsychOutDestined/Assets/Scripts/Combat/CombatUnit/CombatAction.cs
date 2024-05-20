@@ -36,6 +36,7 @@ namespace PsychOutDestined
         [ContextMenu("Auto Hit Stat Change")] void AddStatChangeActionEffect() { effects.Add(new StatChangeActionEffect()); }
         [ContextMenu("Stat Change")] void AddStatChangeChanceActionEffect() { effects.Add(new StatChangeChanceActionEffect()); }
         [ContextMenu("Replenish")] void AddRestActionEffect() { effects.Add(new Replenish()); }
+        [ContextMenu("Mentality Addition")] void AddMentalityApplicationEffect() { effects.Add(new MentalityApplication()); }
         [ContextMenu("Pass")] void AddPassTurnEffect() { effects.Add(new PassEffect()); }
         [ContextMenu("CLEAR ACTION")] void Clear() { effects.Clear(); }
 

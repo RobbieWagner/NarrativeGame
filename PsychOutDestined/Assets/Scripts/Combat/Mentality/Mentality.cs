@@ -40,11 +40,12 @@ namespace PsychOutDestined
                 int failed = 0;
                 for (int i = 1; i < effects.Count; i++)
                 {
-                    if (effects[i].ApplyMentalityEffect(unit))
+                    if (!effects[i].ApplyMentalityEffect(unit))
                         failed++;
                 }
                 if (failed > 0)
                     Debug.Log($"Failed to apply {failed} effects from mentality");
+                return true;
             }
             Debug.LogWarning($"Failed to Apply new Mentality Effects to unit {unit.UnitName}: no valid effects detected");
             return false;

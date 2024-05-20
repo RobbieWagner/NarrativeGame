@@ -659,6 +659,7 @@ MonoBehaviour:
     - LowerAgility
     - Rest
     - PassTurn
+    - MentalityApplications(Test)/GrantConfidence
     animatorFilePath: Indy/Indy
     headSpriteRelativePath: Indy
   - UnitName: Player

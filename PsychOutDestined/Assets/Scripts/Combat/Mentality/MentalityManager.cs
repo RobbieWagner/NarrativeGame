@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using AYellowpaper.SerializedCollections;
 
 namespace PsychOutDestined
 {
@@ -29,7 +30,7 @@ namespace PsychOutDestined
     public class MentalityManager: MonoBehaviour
     {
         public MentalityType baseMentalityType = MentalityType.FINE;
-        public Dictionary<MentalityType, Mentality> mentalities;
+        [SerializedDictionary("Type","Mentality")][SerializeField] private SerializedDictionary<MentalityType, Mentality> mentalities;
 
         public static MentalityManager Instance { get; private set; }
 

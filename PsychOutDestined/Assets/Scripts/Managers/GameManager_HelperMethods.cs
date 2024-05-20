@@ -27,7 +27,7 @@ namespace PsychOutDestined
                 yield return runningCoroutine;
 
             // At this point, all coroutines have finished
-            Debug.Log("All coroutines have completed.");
+            //Debug.Log("All coroutines have completed.");
         }
 
         public IEnumerator WaitCoroutine(float time)

@@ -111,7 +111,7 @@ namespace PsychOutDestined
                 case UnitStat.MCrit:
                     return maxStatValues[UnitStat.Psych] / 2 + maxStatValues[UnitStat.Focus];
                 case UnitStat.Resistance:
-                    return maxStatValues[UnitStat.Defense] + maxStatValues[UnitStat.Focus] + maxStatValues[UnitStat.Heart];
+                    return maxStatValues[UnitStat.Defense] / 2 + maxStatValues[UnitStat.Focus] / 2 + maxStatValues[UnitStat.Heart] / 2;
             }
             return -1;
         }
@@ -120,7 +120,7 @@ namespace PsychOutDestined
         {
             if (unitStats.ContainsKey(stat))
             {
-                unitStats[stat].RaiseReduction += raise_reduction;
+                unitStats[stat].Modifier += raise_reduction;
                 return true;
             }
             if (stat == UnitStat.HP)
@@ -146,6 +146,7 @@ namespace PsychOutDestined
                     unitStats[stat].Multiplier = multiplier;
                 else
                     unitStats[stat].Multiplier *= multiplier;
+                return true;
             }
 
             Debug.LogWarning($"Could not set stat {stat}: Stat not modifyable, or not found.");

@@ -83,7 +83,8 @@ namespace PsychOutDestined
 
         public override string ToString()
         {
-            return $"Name: {name}\nHP: {HP}";
+            string statDetails = string.Join("\n", unitStats.Values.Select(d => d.ToString()));
+            return $"Name: {name}\nHP: {HP}\n{statDetails}";
         }
 
         public void SetUnitAnimatorState(UnitAnimationState state) => unitAnimator.SetAnimationState(state);
@@ -151,7 +152,7 @@ namespace PsychOutDestined
             if (GetMentalityType != MentalityType.PSYCHED_OUT)
             {
                 currentMentailityType = mentalityType;
-                if(!currentMentality.RemoveMentalityEffects(this))
+                if(currentMentality != null && !currentMentality.RemoveMentalityEffects(this))
                 {
                     Debug.LogWarning($"Failed to remove mentality {currentMentailityType} from {UnitName}");
                     return false;
@@ -162,6 +163,7 @@ namespace PsychOutDestined
                     Debug.LogWarning($"Failed to apply mentality {currentMentailityType} to {UnitName}");
                     return false;
                 }
+                Debug.Log(ToString());
                 return true;
             }
 

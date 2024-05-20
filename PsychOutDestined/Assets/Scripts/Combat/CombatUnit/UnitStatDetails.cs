@@ -17,7 +17,7 @@ namespace PsychOutDestined
         Initiative, // Order in Combat (1d6 + HalfAgility)
         PCrit, // Physical Crit Chance (.001 * (HalfStrength + Agility))
         MCrit, // Mental Crit Chance (.001 * (HalfPsych + Focus))
-        Resistance, // Resistance to gaining stress (Focus + Heart + HalfDefense)
+        Resistance, // Resistance to gaining stress (HalfFocus + HalfHeart + HalfDefense)
     }
     public class UnitStatDetails
     {
@@ -29,20 +29,20 @@ namespace PsychOutDestined
         {
             get
             {
-                return (int) ((statValue + raiseReduction) * multiplier);
+                return (int) ((statValue + modifier) * multiplier);
             }
             private set => statValue = value;
         }
 
-        private int raiseReduction = 0;
-        public int RaiseReduction
+        private int modifier = 0;
+        public int Modifier
         {
-            get => raiseReduction;
+            get => modifier;
             set 
             {
-                if (value == raiseReduction)
+                if (value == modifier)
                     return;
-                raiseReduction = value;
+                modifier = value;
                 OnStatChanged?.Invoke(statValue);
             }
         }
@@ -68,5 +68,9 @@ namespace PsychOutDestined
 
         public delegate void OnStatChangedDelegate(int value);
         public event OnStatChangedDelegate OnStatChanged;
+        public override string ToString()
+        {
+            return $"{statType}: base_value={statValue} current_value={StatValue} +={modifier} *={multiplier}";
+        }
     }
 }

@@ -6,6 +6,9 @@ using DG.Tweening;
 using FMODUnity;
 using System.Linq;
 using RobbieWagnerGames.Common;
+using UnityEngine.Serialization;
+using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.UI.CanvasScaler;
 
 namespace PsychOutDestined
 {
@@ -190,7 +193,8 @@ namespace PsychOutDestined
     public class Replenish : ActionEffect
     {
         [Header("Replenishment")]
-        [SerializeField] private float manaRegenPercent = 0;
+        [FormerlySerializedAs("manaRegenPercent")]
+        [SerializeField] private float stressRegenPercent = 0;
         [SerializeField] private float hpRegenPercent = 0;
 
         public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets = null)
@@ -198,11 +202,36 @@ namespace PsychOutDestined
             Debug.Log($"{user.name} is resting");
             yield return null;
 
-            int stressRelieved = ((int)(manaRegenPercent / 100 * user.GetMaxStatValue(UnitStat.Stress))) + user.GetStatValue(UnitStat.Psych);
+            int stressRelieved = ((int)(stressRegenPercent / 100 * user.GetMaxStatValue(UnitStat.Stress))) + user.GetStatValue(UnitStat.Psych);
             int hpRegained = ((int)(hpRegenPercent / 100 * user.GetMaxStatValue(UnitStat.HP))) + (user.GetStatValue(UnitStat.Defense) / 3 * 2);
 
             user.Stress -= stressRelieved;
             user.HP += hpRegained;
+        }
+    }
+
+    [Serializable]
+    public class MentalityApplication : ActionEffect
+    {
+        [SerializeField] private MentalityType mentalityType;
+
+        public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
+        {
+            yield return null;
+            
+            if(targets != null && targets.Any() && MentalityManager.Instance.ApplyMentality(targets.First(), mentalityType))
+            {
+                int failed = 0;
+                for (int i = 1; i < targets.Count; i++)
+                {
+                    if (!MentalityManager.Instance.ApplyMentality(targets[i], mentalityType))
+                        failed++;
+                }
+                if (failed > 0)
+                    Debug.Log($"Failed to apply mentality {mentalityType} to {failed} units");
+            }
+            else
+                Debug.LogWarning("Could not execute action MENTALITY_APPLICATION: no valid targets found");
         }
     }
 }
