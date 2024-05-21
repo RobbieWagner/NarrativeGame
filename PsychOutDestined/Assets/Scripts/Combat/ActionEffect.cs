@@ -30,6 +30,7 @@ namespace PsychOutDestined
         [Header("Chance")]
         protected Dictionary<Unit, bool> hitTargets;
         [SerializeField] private int attackAccuracy = 100;
+        [SerializeField] protected int stressForMissing = 1;
 
         public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
         {
@@ -75,6 +76,7 @@ namespace PsychOutDestined
     {
         [Header("Attack Action")]
         [SerializeField] private int power;
+        [SerializeField] private int stressAmount = 1;
 
         public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
         {
@@ -85,6 +87,7 @@ namespace PsychOutDestined
             {
                 int healthDelta = Math.Clamp(power + user.GetStatValue(UnitStat.Brawn) - target.GetStatValue(UnitStat.Defense), 1, int.MaxValue);
                 target.HP -= healthDelta;
+                target.Stress += stressAmount;
                 Debug.Log($"{user.name} hit {target.name} for {healthDelta} damage!");
             }
             if(targets.Any()) 
@@ -99,6 +102,7 @@ namespace PsychOutDestined
     {
         [Header("Attack Action")]
         [SerializeField] private int power;
+        [SerializeField] private int stressAmount = 1;
 
         public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets)
         {
@@ -111,6 +115,7 @@ namespace PsychOutDestined
                     //TODO: Add crit chance
                     int healthDelta = Math.Clamp(power + user.GetStatValue(UnitStat.Brawn) - hitTarget.Key.GetStatValue(UnitStat.Defense), 1, int.MaxValue);
                     hitTarget.Key.HP -= healthDelta;
+                    hitTarget.Key.Stress += stressAmount;
                     Debug.Log($"{user.name} hit {hitTarget.Key.name} for {healthDelta} damage!");
                 }
                 else
@@ -122,6 +127,9 @@ namespace PsychOutDestined
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), hitTargets.First().Key.transform.position);
             else
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(ImpactSoundType.Miss), user.transform.position);
+
+            if(hitTargets.Where(t => !t.Value).Any())
+                user.Stress += stressForMissing;
         }
     }
 
@@ -176,6 +184,9 @@ namespace PsychOutDestined
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(impactSound), hitTargets.First().Key.transform.position);
             else
                 AudioManager.PlayOneShot(AudioEventsLibrary.Instance.FindActionImpactSound(ImpactSoundType.Miss), user.transform.position);
+
+            if (hitTargets.Where(t => !t.Value).Any())
+                user.Stress += stressForMissing;
         }
     }
 
@@ -193,8 +204,8 @@ namespace PsychOutDestined
     public class Replenish : ActionEffect
     {
         [Header("Replenishment")]
-        [FormerlySerializedAs("manaRegenPercent")]
-        [SerializeField] private float stressRegenPercent = 0;
+        [FormerlySerializedAs("stressRegenPercent")]
+        [SerializeField] private float stressRelief = 0;
         [SerializeField] private float hpRegenPercent = 0;
 
         public override IEnumerator ExecuteActionEffect(Unit user, List<Unit> targets = null)
@@ -202,7 +213,7 @@ namespace PsychOutDestined
             Debug.Log($"{user.name} is resting");
             yield return null;
 
-            int stressRelieved = ((int)(stressRegenPercent / 100 * user.GetMaxStatValue(UnitStat.Stress))) + user.GetStatValue(UnitStat.Psych);
+            int stressRelieved = (int)(stressRelief + user.GetStatValue(UnitStat.Psych));
             int hpRegained = ((int)(hpRegenPercent / 100 * user.GetMaxStatValue(UnitStat.HP))) + (user.GetStatValue(UnitStat.Defense) / 3 * 2);
 
             user.Stress -= stressRelieved;

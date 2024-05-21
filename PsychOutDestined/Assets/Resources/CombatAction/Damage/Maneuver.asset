@@ -30,3 +30,4 @@ MonoBehaviour:
       data:
         impactSound: 3
         power: 0
+        stressAmount: 8

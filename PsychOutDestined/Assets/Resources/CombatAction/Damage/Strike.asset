@@ -28,5 +28,8 @@ MonoBehaviour:
     - rid: 4231066304365723664
       type: {class: AttackActionEffect, ns: PsychOutDestined, asm: Main}
       data:
+        impactSound: 0
         attackAccuracy: 90
+        stressForMissing: 6
         power: 1
+        stressAmount: 18

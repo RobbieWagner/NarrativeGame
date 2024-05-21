@@ -28,5 +28,6 @@ MonoBehaviour:
     - rid: 4231066304365723649
       type: {class: Replenish, ns: PsychOutDestined, asm: Main}
       data:
-        manaRegenPercent: 30
+        impactSound: 0
+        stressRelief: 25
         hpRegenPercent: 30

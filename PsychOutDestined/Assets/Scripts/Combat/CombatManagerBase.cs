@@ -267,6 +267,12 @@ namespace PsychOutDestined
 
         protected virtual IEnumerator ResolveCombat()
         {
+            var activeAllies = allies.Where(a => a.isUnitActive);
+            foreach (Unit ally in activeAllies)
+            {
+                ally.Stress /= 2;
+            }
+
             Debug.Log("End of Combat Reached");
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatResolved));
             if (allies.Select(a => a.isUnitActive).Any())
