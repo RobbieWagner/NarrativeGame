@@ -32,6 +32,7 @@ namespace PsychOutDestined
             {
                 SetupStatDisplay();
                 DisableStatUI();
+                Unit.OnMentalityChanged += UpdateMentalityText;
             }
         }
     }

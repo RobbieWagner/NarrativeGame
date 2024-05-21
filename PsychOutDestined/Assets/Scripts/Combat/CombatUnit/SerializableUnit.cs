@@ -26,6 +26,8 @@ namespace PsychOutDestined
         public string animatorFilePath;
         public string headSpriteRelativePath;
 
+        public string mentality = MentalityType.FINE.ToString();
+
         //TODO: add refs for unitanimator.
 
         public SerializableUnit(Unit unit)
@@ -45,12 +47,14 @@ namespace PsychOutDestined
 
             actionFilePaths = unit.availableActions.Select(a => StaticGameStats.GetCombatActionResourcePath(a)).ToList();
             animatorFilePath = unit.GetAnimatorResourcePath();
+
+            mentality = unit.GetMentalityType(true).ToString();
         }
 
         public SerializableUnit() {}
         public override string ToString()
         {
-            return $"-----\n{UnitName}:\nHP:{HP}\nMana:{Stress}\nBrawn:{Brawn}\nAgility:{Agility}\nDefense:{Defense}\nPsych:{Psych}\nFocus:{Focus}\nHeart:{Heart}\nActions:{string.Join(",", actionFilePaths)}\nAnimator:{animatorFilePath}\n-----";
+            return $"-----\n{UnitName}:\nHP:{HP}\nMana:{Stress}\nMentality:{mentality}\nBrawn:{Brawn}\nAgility:{Agility}\nDefense:{Defense}\nPsych:{Psych}\nFocus:{Focus}\nHeart:{Heart}\nActions:{string.Join(",", actionFilePaths)}\nAnimator:{animatorFilePath}\n-----";
         }
     }
 }

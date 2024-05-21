@@ -45,8 +45,8 @@ namespace PsychOutDestined
 
         protected Color BLINK_MIN_COLOR;
 
-        private MentalityType currentMentailityType = MentalityType.FINE;
-        private Mentality currentMentality;
+        protected MentalityType currentMentailityType = MentalityType.FINE;
+        protected Mentality currentMentality;
 
         // Initialization
         protected virtual void Awake()
@@ -57,6 +57,9 @@ namespace PsychOutDestined
 
         protected virtual void InitializeUnit()
         {
+            if (currentMentality == null)
+                currentMentality = StaticGameStats.BaseMentality;
+
             InitializeStats();
 
             OnHPChanged += CheckUnitStatus;
@@ -146,10 +149,14 @@ namespace PsychOutDestined
             return $"{StaticGameStats.headSpriteFilePath}/{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(UnitName)}";
         }
 
-        public MentalityType GetMentalityType => Stress >= GetMaxStatValue(UnitStat.Stress) ? MentalityType.PSYCHED_OUT : currentMentailityType;
+        public MentalityType GetMentalityType(bool ignorePsychout = false)
+        {
+            return ignorePsychout || Stress < GetMaxStatValue(UnitStat.Stress) ? currentMentailityType : MentalityType.PSYCHED_OUT;
+        }
+
         public bool SetMentality(MentalityType mentalityType, Mentality mentality)
         {
-            if (GetMentalityType != MentalityType.PSYCHED_OUT)
+            if (GetMentalityType() != MentalityType.PSYCHED_OUT)
             {
                 currentMentailityType = mentalityType;
                 if(currentMentality != null && !currentMentality.RemoveMentalityEffects(this))
@@ -164,10 +171,14 @@ namespace PsychOutDestined
                     return false;
                 }
                 Debug.Log(ToString());
+
+                OnMentalityChanged?.Invoke(mentality, mentalityType);
                 return true;
             }
 
             return false;
         }
+        public delegate void OnMentalityChangedDelegate(Mentality mentality, MentalityType mentalityType);
+        public event OnMentalityChangedDelegate OnMentalityChanged;
     }
 }

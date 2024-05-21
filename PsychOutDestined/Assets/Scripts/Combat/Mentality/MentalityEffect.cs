@@ -22,6 +22,20 @@ namespace PsychOutDestined
     }
 
     [Serializable]
+    public class EmptyMentalityEffect : MentalityEffect 
+    {
+        public override bool ApplyMentalityEffect(Unit unit)
+        {
+            return true;
+        }
+
+        public override bool RemoveMentalityEffect(Unit unit)
+        {
+            return true;
+        }
+    }
+
+    [Serializable]
     // Adds multipliers to the units stat multipliers
     public class StatMultiplier: MentalityEffect
     {

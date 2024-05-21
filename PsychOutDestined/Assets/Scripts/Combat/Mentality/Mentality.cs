@@ -16,6 +16,11 @@ namespace PsychOutDestined
         [ContextMenu("StatModifier")] void AddStatModifierEffect() { effects.Add(new StatMultiplier()); }
         [ContextMenu("CLEAR")] void Clear() { effects.Clear(); }
 
+        public Mentality(List<MentalityEffect> _effects)
+        {
+            effects = _effects;
+        }
+
         public bool RemoveMentalityEffects(Unit unit)
         {
             if(effects != null && effects.Any() && effects.First().RemoveMentalityEffect(unit))

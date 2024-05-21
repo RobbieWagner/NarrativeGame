@@ -31,5 +31,7 @@ namespace PsychOutDestined
             return action.actionType == ActionType.None ? $"{combatActionFilePath}{action.name}.asset" : $"{combatActionFilePath}{action.actionType}/{action.name}.asset";
         }
         #endregion
+
+        public static Mentality BaseMentality = new Mentality(new List<MentalityEffect> { new EmptyMentalityEffect() });
     }
 }

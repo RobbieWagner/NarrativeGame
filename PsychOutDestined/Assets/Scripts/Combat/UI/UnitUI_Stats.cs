@@ -9,6 +9,8 @@ namespace PsychOutDestined
     {
         public Transform statbarParent;
         public Statbar statbarPrefab;
+        private TextMeshProUGUI mentalityText;
+        [SerializeField] private TextMeshProUGUI mentalityTextPrefab;
         [HideInInspector] public Statbar HPBar;
         public Color hpColor;
         public Sprite hpIcon;
@@ -36,6 +38,8 @@ namespace PsychOutDestined
         {
             HPBar = Instantiate(statbarPrefab, statbarParent);
             SetupNewStatbar(HPBar, hpColor, hpIcon, UnitStat.HP);
+            mentalityText = Instantiate(mentalityTextPrefab, statbarParent);
+            UpdateMentalityText(null, unit.GetMentalityType());
             StressBar = Instantiate(statbarPrefab, statbarParent);
             SetupNewStatbar(StressBar, stressColor, stressIcon, UnitStat.Stress);
 
@@ -86,6 +90,11 @@ namespace PsychOutDestined
             psychStatUI.DisableUI();
             focusStatUI.DisableUI();
             heartStatUI.DisableUI();
+        }
+
+        public void UpdateMentalityText(Mentality mentality, MentalityType mentalityType)
+        {
+            mentalityText.text = mentalityType.ToString();
         }
     }
 }
