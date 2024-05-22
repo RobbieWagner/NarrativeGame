@@ -44,11 +44,13 @@ namespace PsychOutDestined
             set
             {
                 if (value == stress) return;
+                bool wasPsychedOut = isPsychedOut;
                 stress = value;
                 if (stress < 0) stress = 0;
                 if (stress > GetMaxStatValue(UnitStat.Stress)) stress = GetMaxStatValue(UnitStat.Stress);
                 OnStressChanged?.Invoke(stress);
                 OnStatChanged?.Invoke();
+                CheckForPsychOutToggle(wasPsychedOut);
             }
         }
         public event OnStatValueChangedDelegate OnStressChanged;

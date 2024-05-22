@@ -19,8 +19,8 @@ namespace PsychOutDestined
         ExecutionPhaseEnded = 6,
         TurnEnded = 7,
         CombatResolved = 8,
-        CombatWon = 9,
-        CombatLost = 10,
+        CombatWon = 9, // IF EVENT NEEDS TO TRIGGER NO MATTER HOW COMBAT ENDS, USE COMBAT TERMINATED/RESOLVED INSTEAD
+        CombatLost = 10, // IF EVENT NEEDS TO TRIGGER NO MATTER HOW COMBAT ENDS, USE COMBAT TERMINATED/RESOLVED INSTEAD
         CombatTerminated = 11,
     }
 

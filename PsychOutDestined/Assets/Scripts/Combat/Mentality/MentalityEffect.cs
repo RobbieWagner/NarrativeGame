@@ -46,7 +46,13 @@ namespace PsychOutDestined
         {
             if (multiplier != 0 && !(stat == UnitStat.HP || stat == UnitStat.Stress))
             {
+                //Makes sure there is at least some difference in the multiplier
                 unit.ModifyStatValue(stat, multiplier);
+                if (multiplier > 1)
+                    unit.ModifyStatValue(stat, 1);
+                else if (multiplier < 1)
+                    unit.ModifyStatValue(stat, -1);
+
                 return true;
             }
 
@@ -57,6 +63,12 @@ namespace PsychOutDestined
         {
             if (multiplier != 0 && !(stat == UnitStat.HP || stat == UnitStat.Stress))
             {
+                //Makes sure to remove the offset change made from multiplier application
+                if (multiplier > 1)
+                    unit.ModifyStatValue(stat, -1);
+                else if(multiplier < 1)
+                    unit.ModifyStatValue(stat, 1);
+
                 unit.ModifyStatValue(stat, 1/multiplier);
                 return true;
             }
@@ -70,7 +82,7 @@ namespace PsychOutDestined
     public class StatModifier: MentalityEffect
     {
         public UnitStat stat;
-        public int modifier = 1;
+        public int modifier = 0;
 
         public override bool ApplyMentalityEffect(Unit unit)
         {
@@ -85,7 +97,7 @@ namespace PsychOutDestined
 
         public override bool RemoveMentalityEffect(Unit unit)
         {
-            if (modifier != 0 && !(stat == UnitStat.HP || stat == UnitStat.Stress))
+            if (!(stat == UnitStat.HP || stat == UnitStat.Stress))
             {
                 unit.ModifyStatValue(stat, -modifier);
                 return true;

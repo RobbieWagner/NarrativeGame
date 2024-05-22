@@ -16,11 +16,6 @@ namespace PsychOutDestined
         [ContextMenu("StatModifier")] void AddStatModifierEffect() { effects.Add(new StatMultiplier()); }
         [ContextMenu("CLEAR")] void Clear() { effects.Clear(); }
 
-        public Mentality(List<MentalityEffect> _effects)
-        {
-            effects = _effects;
-        }
-
         public bool RemoveMentalityEffects(Unit unit)
         {
             if(effects != null && effects.Any() && effects.First().RemoveMentalityEffect(unit))
@@ -33,6 +28,7 @@ namespace PsychOutDestined
                 }
                 if (failed > 0)
                     Debug.Log($"Failed to remove {failed} effects from mentality");
+                return true;
             }
             Debug.LogWarning($"Failed to Remove old Mentality Effects from unit {unit.UnitName}: no valid effects detected");
             return false;

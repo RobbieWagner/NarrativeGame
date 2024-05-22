@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using System;
 
 namespace PsychOutDestined
 {
@@ -66,6 +67,15 @@ namespace PsychOutDestined
 
                 //Load animator/base sprite
                 SetUnitAnimatorState(UnitAnimationState.CombatIdleRight);
+
+                Enum.TryParse(unitSaveData.mentality, true, out currentMentalityType);
+                if(currentMentalityType == MentalityType.NONE)
+                    currentMentalityType = MentalityType.FINE;
+
+                currentMentality = MentalityManager.Instance.GetMentality(currentMentalityType);
+                if (currentMentality == null)
+                    currentMentality = MentalityManager.Instance.GetMentality(MentalityManager.Instance.baseMentalityType);
+                currentMentality.ApplyMentalityEffects(this);
             }
             else
             {

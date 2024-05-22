@@ -181,6 +181,7 @@ namespace PsychOutDestined
 
         protected virtual IEnumerator StartTurn()
         {
+            Debug.Log(string.Join("\n\n", allies.Select(a => a.ToString())));
             unitsInInitiativeOrder = new List<Unit>();
             unitsInInitiativeOrder.AddRange(allies);
             unitsInInitiativeOrder.AddRange(enemies);
@@ -265,7 +266,7 @@ namespace PsychOutDestined
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.TurnEnded));
         }
 
-        protected virtual IEnumerator ResolveCombat()
+        protected virtual IEnumerator ResolveCombat(bool endingEarly = false)
         {
             var activeAllies = allies.Where(a => a.isUnitActive);
             foreach (Unit ally in activeAllies)
@@ -275,10 +276,14 @@ namespace PsychOutDestined
 
             Debug.Log("End of Combat Reached");
             yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatResolved));
-            if (allies.Select(a => a.isUnitActive).Any())
-                yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatWon));
-            else
-                yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatLost));
+
+            if(!endingEarly)
+            {
+                if (allies.Select(a => a.isUnitActive).Any())
+                    yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatWon));
+                else
+                    yield return StartCoroutine(InvokeCombatEventHandler(CombatEventTriggerType.CombatLost));
+            }
 
             //TODO: add end combat screen flashes, then tear down combat
             yield return new WaitForSeconds(1f);
@@ -415,7 +420,8 @@ namespace PsychOutDestined
         {
             if(CanFlee)
             {
-                StartCoroutine(TerminateCombatScene());
+                StartCoroutine(ResolveCombat(true));
+                //StartCoroutine(TerminateCombatScene());
                 return true;
             }
             return false;

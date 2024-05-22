@@ -8,6 +8,7 @@ namespace PsychOutDestined
 {
     public enum MentalityType
     {
+        NONE = -1,
         PSYCHED_OUT,
         FINE,
 
@@ -40,6 +41,14 @@ namespace PsychOutDestined
                 Destroy(gameObject);
             else
                 Instance = this;
+        }
+
+        public Mentality GetMentality(MentalityType mentalityType)
+        {
+            if(mentalities.TryGetValue(mentalityType, out var mentality))
+                return mentality;
+            Debug.LogWarning($"Error retrieving mentality: mentality type {mentalityType} is not defined in mentalities list!!");
+            return mentalities[baseMentalityType];
         }
 
         public bool ApplyMentality(Unit unit, MentalityType mentalityType)

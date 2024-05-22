@@ -163,11 +163,13 @@ MonoBehaviour:
   canStartNewCombat: 1
   usePartyUnits: 1
   unitLimit: 3
+  currentUI: {fileID: 0}
   allies: []
   enemies: []
   currentPhase: -2
   UNIT_OFFSET: {x: 0, y: 1.6, z: -2.6}
   debugCombat: {fileID: 0}
+  baseFleeChance: 100
   turnMenu: {fileID: 513403195}
   isSelectingAction: 0
   isSelectingTargets: 0
@@ -199,7 +201,7 @@ MonoBehaviour:
     - Key: 11
       Value: {fileID: 3535443061338761360}
   battleField: {fileID: 513403194}
-  saveDataAfterwards: 0
+  saveDataAfterwards: 1
 --- !u!1001 &3535443061338761358
 PrefabInstance:
   m_ObjectHideFlags: 0

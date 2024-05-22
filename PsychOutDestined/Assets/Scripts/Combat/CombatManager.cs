@@ -69,7 +69,7 @@ namespace PsychOutDestined
             yield return StartCoroutine(base.EndTurn());
         }
 
-        protected override IEnumerator ResolveCombat()
+        protected override IEnumerator ResolveCombat(bool endingEarly = false)
         {
 
             yield return StartCoroutine(base.ResolveCombat());

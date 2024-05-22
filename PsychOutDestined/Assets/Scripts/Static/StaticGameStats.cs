@@ -28,10 +28,8 @@ namespace PsychOutDestined
 
         public static string GetCombatActionResourcePath(CombatAction action)
         {
-            return action.actionType == ActionType.None ? $"{combatActionFilePath}{action.name}.asset" : $"{combatActionFilePath}{action.actionType}/{action.name}.asset";
+            return action.actionType == ActionType.None ? $"{action.name}" : $"{action.actionType}/{action.name}";
         }
         #endregion
-
-        public static Mentality BaseMentality = new Mentality(new List<MentalityEffect> { new EmptyMentalityEffect() });
     }
 }

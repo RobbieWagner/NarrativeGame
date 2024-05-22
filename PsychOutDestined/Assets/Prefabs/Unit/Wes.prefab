@@ -63,13 +63,19 @@ PrefabInstance:
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
       propertyPath: availableActions.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
+        type: 3}
+      propertyPath: availableActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3006749205d13df4e9cf2e5d2046dceb,
+        type: 2}
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
       propertyPath: availableActions.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 880022823d37eb64ea309923919c47e0,
+      objectReference: {fileID: 11400000, guid: 3006749205d13df4e9cf2e5d2046dceb,
         type: 2}
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
@@ -80,32 +86,32 @@ PrefabInstance:
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
       propertyPath: maxStatValues._serializedList.Array.data[0].Value
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
       propertyPath: maxStatValues._serializedList.Array.data[1].Value
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
       propertyPath: maxStatValues._serializedList.Array.data[2].Value
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
       propertyPath: maxStatValues._serializedList.Array.data[3].Value
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
       propertyPath: maxStatValues._serializedList.Array.data[4].Value
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8191153509161862069, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}
       propertyPath: maxStatValues._serializedList.Array.data[5].Value
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8345805114331548310, guid: 854aed0e7b51d6143b93746ba60fd36c,
         type: 3}

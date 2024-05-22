@@ -167,6 +167,7 @@ MonoBehaviour:
     actionFilePaths: []
     animatorFilePath: 
     headSpriteRelativePath: 
+    mentality: FINE
   testUnit: {fileID: 0}
 --- !u!4 &217187760
 Transform:
@@ -656,15 +657,16 @@ MonoBehaviour:
     Heart: 5
     actionFilePaths:
     - Damage/Strike
-    - LowerAgility
+    - StatChange/LowerAgility
     - Rest
     - PassTurn
-    - MentalityApplications(Test)/GrantConfidence
+    - MentalityApplication/GrantConfidenceAlly
     animatorFilePath: Indy/Indy
     headSpriteRelativePath: Indy
+    mentality: NONE
   - UnitName: Player
     HP: 4
-    Stress: 0
+    Stress: 95
     MaxHP: 5
     MaxStress: 5
     Brawn: 5
@@ -675,11 +677,12 @@ MonoBehaviour:
     Heart: 5
     actionFilePaths:
     - Damage/Strike
-    - LowerAgility
+    - StatChange/LowerAgility
     - Rest
     - PassTurn
     animatorFilePath: Player/Player
     headSpriteRelativePath: 
+    mentality: NONE
   - UnitName: Wes
     HP: 100
     Stress: 0
@@ -693,11 +696,12 @@ MonoBehaviour:
     Heart: 5
     actionFilePaths:
     - Damage/Strike
-    - LowerAgility
+    - StatChange/LowerAgility
     - Rest
     - PassTurn
     animatorFilePath: Wes/Wes
     headSpriteRelativePath: Wes
+    mentality: NONE
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

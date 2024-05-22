@@ -10,15 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c181b03abfa5f54fac436a2a4eb23d3, type: 3}
-  m_Name: FINE
+  m_Name: EMPTY MENTALITY
   m_EditorClassIdentifier: 
-  effects:
-  - rid: 5465739822773043204
+  effects: []
   references:
     version: 2
-    RefIds:
-    - rid: 5465739822773043204
-      type: {class: StatModifier, ns: PsychOutDestined, asm: Main}
-      data:
-        stat: 0
-        modifier: 0
+    RefIds: []

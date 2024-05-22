@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,8 +15,6 @@ namespace PsychOutDestined
         protected override void Awake()
         {
             base.Awake();
-            if (saveDataAfterwards)
-                OnCombatTerminated += UpdateGameSessionDataPostFight;
         }
 
         protected override IEnumerator SetupCombat()
@@ -63,30 +62,17 @@ namespace PsychOutDestined
             else return false;
         }
 
-        private void UpdateGameSessionDataPostFight()
-        {
-            Dictionary<int, PartyUnit> activeParty = new Dictionary<int, PartyUnit>();
-
-            for (int i = 0; i < allies.Count; i++)
-            {
-                activeParty.Add(0, allies[i] as PartyUnit);
-            }
-
-            UpdateGameSessionData(activeParty);
-        }
-
         public void SwitchActiveUnits(int unitToSwitchOut, int unitToSwitchIn)
         {
             //TODO: Implement. Do we want the switch to be saved in game session data, or left alone? (probably saved)
             throw new NotImplementedException();
         }
 
-        private void UpdateGameSessionData(Dictionary<int, PartyUnit> units)
+        protected override IEnumerator ResolveCombat(bool endingEarly = false)
         {
-            if (GameSession.Instance != null)
-                GameSession.Instance.UpdatePartyData(units);
-            else
-                Debug.LogWarning($"Could not append data to Game Session: Game Session not found");
+            yield return StartCoroutine(base.ResolveCombat());
+            if(saveDataAfterwards)
+                GameSession.Instance.playerParty = allies.Select(a => new SerializableUnit(a)).ToList();
         }
     }
 }

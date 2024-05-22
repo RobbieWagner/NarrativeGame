@@ -49,6 +49,8 @@ namespace PsychOutDestined
             animatorFilePath = unit.GetAnimatorResourcePath();
 
             mentality = unit.GetMentalityType(true).ToString();
+
+            Debug.Log($"new serializable unit: {ToString()}");
         }
 
         public SerializableUnit() {}

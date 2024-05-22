@@ -7,6 +7,7 @@ using System.Linq;
 using DG.Tweening;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Globalization;
+using static Codice.CM.Common.CmCallContext;
 
 namespace PsychOutDestined
 {
@@ -45,8 +46,18 @@ namespace PsychOutDestined
 
         protected Color BLINK_MIN_COLOR;
 
-        protected MentalityType currentMentailityType = MentalityType.FINE;
-        protected Mentality currentMentality;
+        [SerializeField] protected MentalityType currentMentalityType = MentalityType.NONE;
+        public MentalityType CurrentMentalityType
+        {
+            get { return Stress >= GetMaxStatValue(UnitStat.Stress) ? MentalityType.PSYCHED_OUT: currentMentalityType; }
+            protected set { currentMentalityType = value; }
+        }
+        [SerializeField] protected Mentality currentMentality = null;
+        public Mentality CurrentMentality
+        {
+            get { return Stress >= GetMaxStatValue(UnitStat.Stress) ? MentalityManager.Instance.GetMentality(MentalityType.PSYCHED_OUT) : currentMentality; }
+            protected set { currentMentality = value; }
+        }
 
         // Initialization
         protected virtual void Awake()
@@ -57,9 +68,6 @@ namespace PsychOutDestined
 
         protected virtual void InitializeUnit()
         {
-            if (currentMentality == null)
-                currentMentality = StaticGameStats.BaseMentality;
-
             InitializeStats();
 
             OnHPChanged += CheckUnitStatus;
@@ -67,6 +75,10 @@ namespace PsychOutDestined
             unitAnimator.SetAnimationState(UnitAnimationState.Idle);
 
             OnUnitInitialized?.Invoke();
+
+            if (currentMentality == null)
+                currentMentality = MentalityManager.Instance.GetMentality(MentalityManager.Instance.baseMentalityType);
+            currentMentality.ApplyMentalityEffects(this);
         }
 
         public delegate void OnUnitInitializedDelegate();
@@ -83,12 +95,6 @@ namespace PsychOutDestined
         }
         public delegate void OnDeactivateUnitDelegate(Unit unit);
         public event OnDeactivateUnitDelegate OnDeactivateUnit;
-
-        public override string ToString()
-        {
-            string statDetails = string.Join("\n", unitStats.Values.Select(d => d.ToString()));
-            return $"Name: {name}\nHP: {HP}\n{statDetails}";
-        }
 
         public void SetUnitAnimatorState(UnitAnimationState state) => unitAnimator.SetAnimationState(state);
 
@@ -149,25 +155,26 @@ namespace PsychOutDestined
             return $"{StaticGameStats.headSpriteFilePath}/{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(UnitName)}";
         }
 
+        #region Mentality
         public MentalityType GetMentalityType(bool ignorePsychout = false)
         {
-            return ignorePsychout || Stress < GetMaxStatValue(UnitStat.Stress) ? currentMentailityType : MentalityType.PSYCHED_OUT;
+            return ignorePsychout || Stress < GetMaxStatValue(UnitStat.Stress) ? currentMentalityType : MentalityType.PSYCHED_OUT;
         }
 
         public bool SetMentality(MentalityType mentalityType, Mentality mentality)
         {
-            if (GetMentalityType() != MentalityType.PSYCHED_OUT)
+            if (CurrentMentalityType != MentalityType.PSYCHED_OUT)
             {
-                currentMentailityType = mentalityType;
-                if(currentMentality != null && !currentMentality.RemoveMentalityEffects(this))
+                if(ValidateCurrentMentality() && !currentMentality.RemoveMentalityEffects(this))
                 {
-                    Debug.LogWarning($"Failed to remove mentality {currentMentailityType} from {UnitName}");
+                    Debug.LogWarning($"Failed to remove mentality {currentMentalityType} from {UnitName}");
                     return false;
                 }
+                CurrentMentalityType = mentalityType;
                 currentMentality = mentality;
                 if(!currentMentality.ApplyMentalityEffects(this))
                 {
-                    Debug.LogWarning($"Failed to apply mentality {currentMentailityType} to {UnitName}");
+                    Debug.LogWarning($"Failed to apply mentality {currentMentalityType} to {UnitName}");
                     return false;
                 }
                 Debug.Log(ToString());
@@ -180,5 +187,52 @@ namespace PsychOutDestined
         }
         public delegate void OnMentalityChangedDelegate(Mentality mentality, MentalityType mentalityType);
         public event OnMentalityChangedDelegate OnMentalityChanged;
+
+        private void CheckForPsychOutToggle(bool wasPsychedOut)
+        {
+            if (isPsychedOut == wasPsychedOut)
+                return;
+            if (isPsychedOut)
+            {
+                if(ValidateCurrentMentality())
+                    SwapMentalityEffects(currentMentality, MentalityManager.Instance.GetMentality(MentalityType.PSYCHED_OUT));
+            }
+            else
+            {
+                if(ValidateCurrentMentality())
+                    SwapMentalityEffects(MentalityManager.Instance.GetMentality(MentalityType.PSYCHED_OUT), currentMentality);
+            }
+        }
+
+        // SHOULD ONLY BE USED FOR PSYCH OUT, GENERALIZING FOR LATER POTENTIAL USE
+        private void SwapMentalityEffects(Mentality mentalityOut, Mentality mentalityIn)
+        {
+            bool removalSuccess = mentalityOut.RemoveMentalityEffects(this);
+            if (!removalSuccess)
+            {
+                Debug.LogWarning("Failed to Remove Effects: removal of current mentality effects failed!");
+                return;
+            }
+            bool applicationSuccess = mentalityIn.ApplyMentalityEffects(this);
+            if (!applicationSuccess) 
+            {
+                Debug.LogWarning("Failed to Apply Effects: Application of mentality effects failed!");
+            }
+        }
+
+        public bool isPsychedOut => Stress >= GetMaxStatValue(UnitStat.Stress);
+
+        public bool ValidateCurrentMentality()
+        {
+            return currentMentality != null && currentMentality.effects != null && currentMentality.effects.Any();
+        }
+
+        #endregion
+
+        public override string ToString()
+        {
+            string statDetails = string.Join("\n", unitStats.Values.Select(d => d.ToString()));
+            return $"Name: {name}\nHP: {HP}\nStress: {Stress}\nActive Mentality Type: {CurrentMentalityType}\nBackground Mentality Type: {currentMentalityType}\n{statDetails}";
+        }
     }
 }

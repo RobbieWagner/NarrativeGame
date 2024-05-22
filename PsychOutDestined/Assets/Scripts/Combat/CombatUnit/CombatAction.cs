@@ -11,7 +11,7 @@ namespace PsychOutDestined
         Damage,
         Healing,
         StatChange,
-        Condition
+        MentalityApplication
     }
 
     [CreateAssetMenu(menuName = "CombatAction")]
