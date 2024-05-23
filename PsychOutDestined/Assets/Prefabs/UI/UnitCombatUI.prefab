@@ -200,7 +200,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 128, y: 80}
+  m_SizeDelta: {x: 128, y: 88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8705338027443275040
 CanvasRenderer:
@@ -342,7 +342,9 @@ MonoBehaviour:
   combatUI: {fileID: 0}
   actionSelectionUIOffset: {x: 0, y: 0, z: 0}
   statbarParent: {fileID: 2172377870653654193}
-  statbarPrefab: {fileID: 3432043901013636648, guid: 10553a5a3c689b641aee5ca4bb10fd28,
+  healthStatbarPrefab: {fileID: 3432043901013636648, guid: 10553a5a3c689b641aee5ca4bb10fd28,
+    type: 3}
+  stressStatbarPrefab: {fileID: 3432043901013636648, guid: 275a3bed2aaa3c04bb704c9a57e1ee7f,
     type: 3}
   mentalityTextPrefab: {fileID: 2266885771747813424, guid: 7bdbe2d0769c21a4baa68528678e5ae0,
     type: 3}

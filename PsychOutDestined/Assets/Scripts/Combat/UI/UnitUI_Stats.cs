@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace PsychOutDestined
@@ -8,7 +9,8 @@ namespace PsychOutDestined
     public partial class UnitUI : MonoBehaviour
     {
         public Transform statbarParent;
-        public Statbar statbarPrefab;
+        public Statbar healthStatbarPrefab;
+        public Statbar stressStatbarPrefab;
         private TextMeshProUGUI mentalityText;
         [SerializeField] private TextMeshProUGUI mentalityTextPrefab;
         [HideInInspector] public Statbar HPBar;
@@ -36,11 +38,11 @@ namespace PsychOutDestined
 
         public void SetupStatDisplay()
         {
-            HPBar = Instantiate(statbarPrefab, statbarParent);
+            HPBar = Instantiate(healthStatbarPrefab, statbarParent);
             SetupNewStatbar(HPBar, hpColor, hpIcon, UnitStat.HP);
             mentalityText = Instantiate(mentalityTextPrefab, statbarParent);
             UpdateMentalityText(null, unit.GetMentalityType());
-            StressBar = Instantiate(statbarPrefab, statbarParent);
+            StressBar = Instantiate(stressStatbarPrefab, statbarParent);
             SetupNewStatbar(StressBar, stressColor, stressIcon, UnitStat.Stress);
 
             brawnStatUI = Instantiate(statTextPrefab, statTextParent.transform);

@@ -77,6 +77,8 @@ namespace PsychOutDestined
             selectionControls.UIInput.Select.performed += SelectTarget;
             selectionControls.UIInput.Cancel.performed += CancelPreviousSelection;
             selectionControls.UIInput.Info.performed += ToggleTargetSelectionInfo;
+
+            //EnableSelectionControls();
         }
 
         protected void StartActionSelection(bool loadLastSelection = false)
@@ -116,6 +118,7 @@ namespace PsychOutDestined
             if (isSelectingTargets)
             {
                 currentTarget.StopBlinking();
+                DisableSelectionControls();
                 StartActionSelection(true);
             }
         }
