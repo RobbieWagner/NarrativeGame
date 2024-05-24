@@ -14,11 +14,13 @@ namespace PsychOutDestined
 
         protected virtual void Awake()
         {
-            SubscribeCombatEvent();
+            StartCoroutine(SubscribeCombatEvent());
         }
 
-        public virtual void SubscribeCombatEvent()
+        public virtual IEnumerator SubscribeCombatEvent()
         {
+            //yields to make sure subscription happens if combat manager has not been established
+            yield return null;
             if (CombatManagerBase.Instance != null)
                 CombatManagerBase.Instance.SubscribeEventToCombatEventHandler(this, eventTrigger);
         }

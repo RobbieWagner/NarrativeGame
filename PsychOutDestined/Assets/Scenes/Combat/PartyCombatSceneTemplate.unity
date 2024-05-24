@@ -260,6 +260,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5731104561520222504, guid: 8dbc6c788cd48844ba409ccb53236a58,
+        type: 3}
+      propertyPath: m_Name
+      value: FlashFightScreenEvent
+      objectReference: {fileID: 0}
     - target: {fileID: 7376871910887621145, guid: 8dbc6c788cd48844ba409ccb53236a58,
         type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -337,7 +342,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5747694281062562861, guid: 8dbc6c788cd48844ba409ccb53236a58, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2407101621948422658, guid: 8dbc6c788cd48844ba409ccb53236a58, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3735572737384377152, guid: 8dbc6c788cd48844ba409ccb53236a58,

@@ -190,6 +190,7 @@
     <Compile Include="Assets\Scripts\Combat\PartyCombatManager.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatManager.cs" />
     <Compile Include="Assets\Scripts\SequenceEvents\SequenceEvent.cs" />
+    <Compile Include="Assets\Scripts\SequenceEvents\FlashScreenSequenceEvent.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager_HelperMethods.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\UI\Credits.cs" />
   </ItemGroup>
