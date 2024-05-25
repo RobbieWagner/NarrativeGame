@@ -67,7 +67,7 @@ namespace PsychOutDestined
 
         public void SaveGameSessionData() => StartCoroutine(SaveGameSessionDataAsync());
 
-        private IEnumerator SaveGameSessionDataAsync()
+        public IEnumerator SaveGameSessionDataAsync()
         {
             yield return new WaitForSecondsRealtime(.1f);
             bool taskComplete = false;

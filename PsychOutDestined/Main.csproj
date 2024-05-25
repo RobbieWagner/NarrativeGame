@@ -63,7 +63,6 @@
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Grid\GridFeature.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Combat\Battlefield.cs" />
-    <Compile Include="Assets\Scripts\EventSequence.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\GroundInfo.cs" />
     <Compile Include="Assets\Scripts\Exploration\OverworldEnemy.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialControls.cs" />
@@ -75,6 +74,7 @@
     <Compile Include="Assets\Scripts\RobbieWagnerGames\UI\Pause\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Combat\UI\StatText.cs" />
     <Compile Include="Assets\Scripts\Exploration\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\GameEvents\EventSequence.cs" />
     <Compile Include="Assets\Scripts\Menus\ControlsMenu.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Dialogue\DialogueChoice.cs" />
     <Compile Include="Assets\Scripts\SceneTransitionController.cs" />
@@ -123,7 +123,6 @@
     <Compile Include="Assets\Scripts\Menus\QuitToDesktopButton.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\UI\MainMenu\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
-    <Compile Include="Assets\Scripts\SceneEvent.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Dialogue\MenuControls.cs" />
     <Compile Include="Assets\Scripts\IInputManager.cs" />
     <Compile Include="Assets\Scripts\Combat\UI\CombatUIBase.cs" />
@@ -158,7 +157,6 @@
     <Compile Include="Assets\Scripts\SequenceEvents\MoveCameraSequenceEvent.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatBase.cs" />
     <Compile Include="Assets\Scripts\GameSession\GameSession_Exploration.cs" />
-    <Compile Include="Assets\Scripts\Exploration\ExplorationEventSystem\SingleTriggerExplorationEvent.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatEvents\CombatEvent.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Menus\ActionSelection\UseItemButton.cs" />
@@ -182,6 +180,7 @@
     <Compile Include="Assets\Scripts\Combat\CombatManagerBase_Events.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Menus\PauseMenuButtons\QuitToMenuButton.cs" />
+    <Compile Include="Assets\Scripts\GameEvents\SceneEvent.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatUnit\UnitStatDetails.cs" />
     <Compile Include="Assets\Scripts\Camera\ExplorationCamera.cs" />
     <Compile Include="Assets\Scripts\Exploration\ExplorationManager.cs" />

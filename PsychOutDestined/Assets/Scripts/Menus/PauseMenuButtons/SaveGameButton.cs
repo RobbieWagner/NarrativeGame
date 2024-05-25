@@ -8,14 +8,8 @@ namespace PsychOutDestined
     {
         public override IEnumerator SelectButton(Menu menu)
         {
-            GameSession.Instance.SaveGameSessionData();
-            GameSession.Instance.OnSaveComplete += CompleteSaveProcess;
+            yield return StartCoroutine(GameSession.Instance.SaveGameSessionDataAsync());
             yield return new WaitForSecondsRealtime(.1f);
-        }
-
-        private void CompleteSaveProcess()
-        {
-            
         }
     }
 }
