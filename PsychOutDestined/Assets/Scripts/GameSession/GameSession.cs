@@ -48,7 +48,7 @@ namespace PsychOutDestined
             });
 
             //TODO: Get this scene load back on the main thread if worried about memory usage
-            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(currentSceneName, LoadSceneMode.Additive); 
+            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(explorationData.CurrentSceneName, LoadSceneMode.Additive); 
             while(!sceneLoad.isDone) await Task.Yield();
 
             InitializePlayerPosition();
@@ -58,7 +58,7 @@ namespace PsychOutDestined
         public delegate void OnLoadCompleteDelegate();
         public event OnLoadCompleteDelegate OnLoadComplete;
 
-        private void InitializePlayerPosition() => PlayerMovement.Instance.SetPosition(currentPlayerPosition);
+        private void InitializePlayerPosition() => PlayerMovement.Instance.SetPosition(explorationData.PlayerPosition());
 
         private void CompleteGameSetup()
         {

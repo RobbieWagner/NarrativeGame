@@ -45,11 +45,14 @@ namespace PsychOutDestined
                 Directory.CreateDirectory(Path.GetDirectoryName(FullPath));
                 FileStream stream = File.Create(FullPath);
                 stream.Close();
-                File.WriteAllText(FullPath, JsonConvert.SerializeObject(Data));
+                string saveData = JsonConvert.SerializeObject(Data);
+                Debug.Log($"saving the following json: {saveData}");
+                File.WriteAllText(FullPath, saveData);
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                Debug.Log(e.ToString());    
                 return false;
             }
         }
@@ -61,37 +64,39 @@ namespace PsychOutDestined
             return result;
         }
 
-        public T LoadData<T>(string RelativePath, T DefaultData, bool isEncrypted = false)
+        public T LoadData<T>(string RelativePath, T DefaultData, bool saveDefaultIfMissing, bool isEncrypted = false)
         {
             string path = CreateValidDataPath(RelativePath);
-            return LoadDataInternal(path, DefaultData, isEncrypted);
+            return LoadDataInternal(path, DefaultData, saveDefaultIfMissing, isEncrypted);
         }
 
-        public T LoadDataInternal<T>(string RelativePath, T DefaultData, bool isEncrypted = false)
+        public T LoadDataInternal<T>(string FullPath, T DefaultData, bool saveDefaultIfMissing = false,  bool isEncrypted = false)
         {
-            if(!File.Exists(RelativePath))
+            if(!File.Exists(FullPath))
             {
-                Debug.LogWarning($"File at path {RelativePath} not found, returning default data...");
+                Debug.LogWarning($"File at path {FullPath} not found, returning default data...");
+                if(saveDefaultIfMissing)
+                    SaveDataInternal(FullPath, DefaultData, isEncrypted);
                 return DefaultData;
             }
 
             try
             {
-                T data = JsonConvert.DeserializeObject<T>(File.ReadAllText(RelativePath));
+                T data = JsonConvert.DeserializeObject<T>(File.ReadAllText(FullPath));
                 return data;
             }
             catch(Exception e)
             {
                 Debug.LogError($"Error loading data: {e}");
-                Debug.LogWarning($"Data at file path {RelativePath} was not of the correct type, returning default data...");
+                Debug.LogWarning($"Data at file path {FullPath} was not of the correct type, returning default data...");
                 return DefaultData;
             }
         }
 
-        public async Task<T> LoadDataAsync<T>(string RelativePath, T DefaultData, bool isEncrypted = false)
+        public async Task<T> LoadDataAsync<T>(string RelativePath, T DefaultData, bool saveDefaultIfMissing = false, bool isEncrypted = false)
         {
             string path = CreateValidDataPath(RelativePath);
-            T result = await Task.Run(() => LoadDataInternal(RelativePath, DefaultData, isEncrypted));
+            T result = await Task.Run(() => LoadDataInternal(RelativePath, DefaultData, saveDefaultIfMissing, isEncrypted));
             return result;
         }
 

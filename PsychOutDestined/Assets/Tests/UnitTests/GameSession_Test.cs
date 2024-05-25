@@ -31,17 +31,20 @@ public class GameSession_Test
     {
         mockDataService.Setup(x => x.LoadData(
                             It.IsAny<string>(), 
-                            It.IsAny<List<SerializableUnit>>(), 
+                            It.IsAny<List<SerializableUnit>>(),
+                            It.IsAny<bool>(),
                             It.IsAny<bool>())).Returns(blankUnitParty);
 
         mockDataService.Setup(x => x.LoadData(
                             It.IsAny<string>(), 
-                            It.IsAny<Vector3>(), 
+                            It.IsAny<Vector3>(),
+                            It.IsAny<bool>(),
                             It.IsAny<bool>())).Returns(Vector3.zero);
         
         mockDataService.Setup(x => x.LoadData(
                             It.IsAny<string>(), 
-                            It.IsAny<string>(), 
+                            It.IsAny<string>(),
+                            It.IsAny<bool>(),
                             It.IsAny<bool>())).Returns("");
     }
 
