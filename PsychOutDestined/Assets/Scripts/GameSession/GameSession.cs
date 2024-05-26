@@ -27,6 +27,8 @@ namespace PsychOutDestined
                 Instance = this;
             }
 
+            SceneTransitionController.Instance.TurnOnScreenCover();
+
             new JsonDataService(); //Initialize for singleton
             StaticGameStats.persistentDataPath = Application.persistentDataPath;
             LoadSaveFiles();

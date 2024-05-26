@@ -20,7 +20,7 @@ namespace PsychOutDestined
 
         public static GameManager Instance { get; private set; }
 
-        private GameMode currentGameMode;
+        private GameMode currentGameMode = GameMode.None;
         public GameMode CurrentGameMode
         {
             get => currentGameMode;

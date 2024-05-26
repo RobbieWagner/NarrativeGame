@@ -110,6 +110,7 @@
     <Compile Include="Assets\Scripts\GameSessionControls.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatUnit\UnitAnimator.cs" />
     <Compile Include="Assets\Scripts\Menus\PlayButton.cs" />
+    <Compile Include="Assets\Scripts\SequenceEvents\ScreenCoverEvent.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\Dialogue\DialogueManager_Reading.cs" />
     <Compile Include="Assets\Scripts\RobbieWagnerGames\UI\Menu.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />

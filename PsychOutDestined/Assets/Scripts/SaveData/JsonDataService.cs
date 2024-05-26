@@ -82,7 +82,8 @@ namespace PsychOutDestined
 
             try
             {
-                T data = JsonConvert.DeserializeObject<T>(File.ReadAllText(FullPath));
+                string dataString = File.ReadAllText(FullPath);
+                T data = JsonConvert.DeserializeObject<T>(dataString);
                 return data;
             }
             catch(Exception e)

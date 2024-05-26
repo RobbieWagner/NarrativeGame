@@ -13,13 +13,13 @@ namespace PsychOutDestined
     public partial class GameSession : MonoBehaviour
     {
         private const string EXPLORATION_SAVE_DATA_PATH = "/Exploration/playerData";
-        private const string DEFAULT_EXPLORATION_SCENE = "ExplorationSceneTemplate";
+        private const string DEFAULT_EXPLORATION_SCENE = "C1S1_School"; //"ExplorationSceneTemplate";
         [HideInInspector] public ExplorationData explorationData;
 
         private void LoadExplorationData()
         {
-            explorationData = new ExplorationData(DEFAULT_EXPLORATION_SCENE, Vector3.zero);
             explorationData = JsonDataService.Instance.LoadData(EXPLORATION_SAVE_DATA_PATH, explorationData, true, false);
+            explorationData = explorationData != null ? explorationData : new ExplorationData(DEFAULT_EXPLORATION_SCENE, Vector3.zero);
 
             if(string.IsNullOrWhiteSpace(explorationData.CurrentSceneName))
                 explorationData.CurrentSceneName = DEFAULT_EXPLORATION_SCENE;
@@ -27,7 +27,6 @@ namespace PsychOutDestined
 
         private void SaveExplorationData()
         {
-
             if (PlayerMovement.Instance == null)
             {
                 Debug.LogWarning("Could not save player overworld position: player not found");

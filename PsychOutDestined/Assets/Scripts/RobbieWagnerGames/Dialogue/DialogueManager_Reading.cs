@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
 using System.Text.RegularExpressions;
+using DG.Tweening;
 
 namespace PsychOutDestined
 {
@@ -98,8 +99,9 @@ namespace PsychOutDestined
                 string tag = Regex.Replace(t, @"\s+", "");
                 tag = tag.Replace("~"," ");
                 tag = tag.ToUpper();
-                
-                if(tag.Contains("SPEAKERISONLEFT"))
+
+                #region tag conditions
+                if (tag.Contains("SPEAKERISONLEFT"))
                 {
                     currentSpeakerIsOnLeft = true;
                 }
@@ -152,12 +154,37 @@ namespace PsychOutDestined
                 {
                     StartCoroutine(ShakeSprite(backgroundImage, 15f));
                 }
+                else if(tag.Contains("SHOWBACKGROUND"))
+                {
+                    backgroundImage.color = Color.clear;
+                    backgroundImage.enabled = true;
+                    backgroundImage.DOColor(Color.white, .75f);
+                }
+                else if(tag.Contains("HIDEBACKGROUND"))
+                {
+                    backgroundImage.DOColor(Color.clear, .75f);
+                    backgroundImage.enabled = false;
+                }
+                else if(tag.Contains("CHANGEBACKGROUNDIMMEDIATE"))
+                {
+                    tag = tag.Remove(tag.IndexOf("CHANGEBACKGROUND"), 16).ToLower();
+                    string filePath = StaticGameStats.backgroundSpriteFilePath + tag;
+                    Sprite sprite = Resources.Load<Sprite>(filePath);
+                    if (sprite == null) 
+                        Debug.LogWarning($"sprite name provided \"{tag}\" is not a valid sprite name, please reconfigure this tag");
+                    else
+                    {
+                        backgroundImage.sprite = sprite;
+                        backgroundImage.enabled = true;
+                    }
+                }
                 else if(tag.Contains("CHANGEBACKGROUND"))
                 {
                     tag = tag.Remove(tag.IndexOf("CHANGEBACKGROUND"), 16).ToLower();
                     string filePath = StaticGameStats.backgroundSpriteFilePath + tag;
                     Sprite sprite = Resources.Load<Sprite>(filePath);
-                    if(sprite == null) Debug.LogWarning($"sprite name provided \"{tag}\" is not a valid sprite name, please reconfigure this tag");
+                    if(sprite == null) 
+                        Debug.LogWarning($"sprite name provided \"{tag}\" is not a valid sprite name, please reconfigure this tag");
                     StartCoroutine(ChangeBackground(sprite));
                 }
 
@@ -181,9 +208,10 @@ namespace PsychOutDestined
                 }
                 else
                     Debug.LogWarning($"\"{t}\" could not be read, please check its formatting/spelling it or have it removed. Refer to the docs for more information on proper tag writing");
+                #endregion
             }
 
-            if(!string.IsNullOrEmpty(speaker))
+            if (!string.IsNullOrEmpty(speaker))
             {
                 SetSpeaker(speaker, currentSpeakerIsOnLeft);
                 ToggleSpeaker(leftSpeakerNamePlate, leftSpeakerName, currentSpeakerIsOnLeft);

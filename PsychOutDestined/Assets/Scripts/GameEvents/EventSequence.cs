@@ -10,7 +10,7 @@ namespace PsychOutDestined
         [Header("Events")]
         [SerializeField] protected List<SequenceEvent> eventSequence;
 
-        protected virtual IEnumerator InvokeEvent(bool setToEventGameMode = true)
+        public virtual IEnumerator InvokeEvent(bool setToEventGameMode = true)
         {
             GameMode prevGameMode = GameMode.None;
             if (setToEventGameMode && GameManager.Instance != null)

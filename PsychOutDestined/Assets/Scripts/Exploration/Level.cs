@@ -12,7 +12,11 @@ namespace PsychOutDestined
         [Header("Combat")]
         public string combatSceneName;
         [HideInInspector] public string explorationSceneName;
-        
+
+        [SerializeField] private ExplorationEvent preLoadEventSequence;
+        [SerializeField] private EventSequence fadeOutScreenCover;
+        [SerializeField] private ExplorationEvent postLoadEventSequence;
+
         private CombatBase currentCombat;
         public CombatBase CurrentCombat
         {
@@ -49,8 +53,20 @@ namespace PsychOutDestined
 
                 explorationSceneName = gameObject.scene.name;
 
-                GameManager.Instance.CurrentGameMode = GameMode.Exploration;
+                StartCoroutine(StartExplorationScene());                
             }
+        }
+
+        private IEnumerator StartExplorationScene()
+        {
+            if (preLoadEventSequence != null)
+                yield return StartCoroutine(preLoadEventSequence.InvokeEvent());
+            if (fadeOutScreenCover != null)
+                yield return StartCoroutine(fadeOutScreenCover.InvokeEvent());
+            if (postLoadEventSequence != null)
+                yield return StartCoroutine(postLoadEventSequence.InvokeEvent());
+
+            GameManager.Instance.CurrentGameMode = GameMode.Exploration;
         }
 
         private void ResetAfterCombat()

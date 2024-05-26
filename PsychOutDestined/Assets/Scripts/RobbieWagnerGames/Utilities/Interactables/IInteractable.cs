@@ -20,8 +20,9 @@ namespace PsychOutDestined
         {
             canInteract = false;
             explorationControls = new ExplorationControls();
-            IInputManager.Instance.RegisterActionCollection(explorationControls);
+            //IInputManager.Instance.RegisterActionCollection(explorationControls);
             explorationControls.Exploration.Interact.performed += OnInteract;
+            GameManager.Instance.OnGameModeChanged += CheckGameMode;
         }
 
         protected virtual void OnTriggerEnter(Collider other)
@@ -69,6 +70,14 @@ namespace PsychOutDestined
             yield return null;
             OnUninteract();
             StopCoroutine(Interact());
+        }
+
+        private void CheckGameMode(GameMode gameMode)
+        {
+            if (gameMode == GameMode.Exploration)
+                IInputManager.Instance.RegisterActionCollection(explorationControls);
+            else
+                IInputManager.Instance.DeregisterActionCollection(explorationControls);
         }
     }
 }

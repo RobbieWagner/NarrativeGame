@@ -39,5 +39,11 @@ namespace PsychOutDestined
             transitionImage.color = Color.clear;
             transitionScreen.enabled = false;
         }
+
+        public void TurnOnScreenCover()
+        {
+            transitionImage.color = Color.black;
+            transitionScreen.enabled = true;
+        }
     }
 }

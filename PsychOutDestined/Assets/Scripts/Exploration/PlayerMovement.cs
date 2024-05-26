@@ -69,7 +69,7 @@ namespace PsychOutDestined
             movementVector = Vector3.zero;
 
             explorationControls = new ExplorationControls();
-            IInputManager.Instance.RegisterActionCollection(explorationControls);
+            //IInputManager.Instance.RegisterActionCollection(explorationControls);
 
             explorationControls.Movement.Move.performed += HandleMovementInput;
             explorationControls.Movement.Move.canceled += StopPlayer;

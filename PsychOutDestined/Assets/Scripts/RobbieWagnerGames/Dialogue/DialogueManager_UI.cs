@@ -38,7 +38,7 @@ namespace PsychOutDestined
             string configuredText = input;
 
             List<char> allowList = new List<char>() {' ', '-', '\'', ',', '.'};
-            string name = JsonDataService.Instance.LoadData(PLAYER_NAME_PATH, "Morgan", false);
+            string name =  JsonDataService.Instance != null ? JsonDataService.Instance.LoadData(PLAYER_NAME_PATH, "Morgan", false) : "Morgan";
 
             bool nameAllowed = true;
             foreach(char c in name)
@@ -80,6 +80,7 @@ namespace PsychOutDestined
         {
             yield return backgroundImage.DOColor(Color.black, .5f).WaitForCompletion();
             backgroundImage.sprite = sprite;
+            backgroundImage.enabled = true;
             yield return backgroundImage.DOColor(Color.white, .5f).WaitForCompletion();
         }
 

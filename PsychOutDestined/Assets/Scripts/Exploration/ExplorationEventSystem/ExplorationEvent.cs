@@ -12,8 +12,7 @@ namespace PsychOutDestined
     {
         NONE = -1,
         TRIGGER_COLLISION,
-        COLLISION,
-        ON_SCENE_LOAD
+        COLLISION
     }
 
     public class ExplorationEvent : EventSequence
@@ -23,19 +22,13 @@ namespace PsychOutDestined
         [SerializeField] protected bool triggersOnce = true;
         [SerializeField] protected List<EventTrigger> triggers;
 
-        protected virtual void Awake()
-        {
-            if (triggers.Contains(EventTrigger.ON_SCENE_LOAD))
-                StartCoroutine(InvokeEvent());
-        }
-
         protected virtual void OnTriggerEnter(Collider other)
         {
             if (triggers.Contains(EventTrigger.TRIGGER_COLLISION) && other.gameObject.CompareTag("Player"))
                 StartCoroutine(InvokeEvent());
         }
 
-        protected override IEnumerator InvokeEvent(bool setToEventGameMode = true)
+        public override IEnumerator InvokeEvent(bool setToEventGameMode = true)
         {
             if (!GameSession.Instance.explorationData.GetSavedExplorationEventData(triggerSaveDataName, out var data) || (!data.triggered || !triggersOnce))
             {
